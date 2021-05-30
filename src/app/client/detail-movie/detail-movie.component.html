@@ -16,19 +16,8 @@
                 </div>
             </div>
         </div>
-        <div id="player"></div>
-        <!-- <div class="col-12">
-            <p>Dữ liệu lấy từ params</p>
-            <p>Tên phim: {{nameMovie}}</p>
-            <p>Mã phim: {{idMovie}}</p>
-        </div> -->
+        <iframe width="560" height="315" [src]="YTUrl | safe" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
     </div>
-    <!-- <video width="320" height="240" controls>
-        <source src={{detailMovie?.trailer}} type="video/mp4">
-        Your browser does not support the video tag.
-    </video> -->
-
-    <!-- <div class="product-video-content" id="slider_video_home">
-        <iframe [src]="safeSrc" width="560" height="315" frameborder="0" webkitallowfullscreen mozallowfullscreen
-      allowfullscreen></iframe>
-    </div> -->

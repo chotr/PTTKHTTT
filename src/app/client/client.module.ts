@@ -8,7 +8,7 @@ import { CardMovieComponent } from './card-movie/card-movie.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 import { DetailMovieComponent } from './detail-movie/detail-movie.component';
 import { ProviderModule } from '../provider/provider.module';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 const routes = [
@@ -46,7 +46,13 @@ const routes = [
     CardMovieComponent,
     DetailMovieComponent,
   ],
-  imports: [CommonModule, RouterModule.forChild(routes), ProviderModule,NgxPaginationModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    ProviderModule,
+    NgxPaginationModule,
+    // PipesModule
+  ],
   exports: [ClientComponent],
 })
 export class ClientModule {}

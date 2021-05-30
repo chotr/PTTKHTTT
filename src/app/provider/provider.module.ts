@@ -6,6 +6,7 @@ import { MaterialModule } from '../material/material.module';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ShortCutPipe } from './pipes/short-cut.pipe';
+import { SafePipe } from './pipes/safe.pipe';
 
 
 
@@ -14,6 +15,7 @@ import { ShortCutPipe } from './pipes/short-cut.pipe';
     LoginComponent,
     SignUpComponent,
     ShortCutPipe,
+    SafePipe,
     
   ],
   imports: [
@@ -22,6 +24,6 @@ import { ShortCutPipe } from './pipes/short-cut.pipe';
     CommonModule,
     ReactiveFormsModule
   ],
-  exports: [ShortCutPipe]
+  exports: [ShortCutPipe, SafePipe]
 })
 export class ProviderModule { }
