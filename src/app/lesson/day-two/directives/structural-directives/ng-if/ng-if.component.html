@@ -1,0 +1,9 @@
+<h2 style="font-size: 20px; color: aqua;">ng-if works!</h2>
+<p *ngIf="flat; else templateElse">Demo ngIf</p>
+<button class="btn btn-success" (click)="createDiv()">Create div</button>
+<button class="btn btn-danger" (click)="collapseDiv()">Collapse div</button>
+
+ <ng-template #templateElse>
+     <!-- chỉ chạy khi có điều kiện, chỉ với true false -->
+     <p>Demo else tempalte work</p>
+ </ng-template>

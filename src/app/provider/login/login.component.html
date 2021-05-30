@@ -1,0 +1,18 @@
+<form [formGroup]="loginForm" (ngSubmit)="login(loginForm)" class="example-form">
+    <mat-form-field class="example-full-width">
+        <mat-label>Tên người dùng</mat-label>
+        <input matInput type="text" formControlName="account">
+        <mat-error *ngIf="account?.touched &&account?.errors">
+            <span *ngIf="account?.errors?.required">
+                Tài khoản không được rổng !
+            </span>
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Mật khẩu</mat-label>
+        <input matInput type="password" formControlName="password">
+    </mat-form-field>
+    <button [disabled]="loginForm.invalid" type="submit" color="accent">Login</button>
+    <a class="nav-link" href="/sign-up">Đăng ký</a>
+</form>

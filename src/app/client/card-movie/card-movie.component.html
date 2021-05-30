@@ -1,0 +1,15 @@
+<div class="card" (click)="navigateTo() ">
+    <img class="card-img-top" [src]="movie?.hinhAnh" alt="" />
+    <div class="card-body">
+        <h4 class="card-title">{{movie?.tenPhim}}</h4>
+        <p directive class="card-text">{{movie?.moTa | shortCut:20}}</p>
+        <!-- <button class="btn btn-primary" routerLink="/client/detail-movie"
+            [queryParams]="{tenPhim: movie?.tenPhim, maPhim: movie?.maPhim}">Chi tiết Phim</button> -->
+            <button class="btn btn-primary" (click)="navigateTo()" >Chi tiết Phim</button>
+
+    </div>
+</div>
+
+<!-- <button  (click)="like()" [ngClass]="action =='like' ? 'btn-primary': 'btn-danger'"> {{action}}</button> -->
+
+<!-- <button class="btn btn-danger" data-toggle="modal" data-target="#modelId" (click)="callDialog()">Demo behavior subject</button> -->
