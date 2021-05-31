@@ -13,6 +13,7 @@ import { JwtInterceptor } from './provider/guards/jwt.interceptor';
 import { DialogComponent } from './share/dialog/dialog.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { QuanTriGheModule } from './client/quan-tri-ghe/quan-tri-ghe.module';
+import { JwPaginationModule } from 'jw-angular-pagination';
 
 
 @NgModule({
@@ -31,9 +32,9 @@ import { QuanTriGheModule } from './client/quan-tri-ghe/quan-tri-ghe.module';
     MaterialModule,
     AppRoutingModule,
     HttpClientModule,
-    // DialogComponent,
-    NgxPaginationModule,
     QuanTriGheModule,
+    JwPaginationModule
+
     
   ],
   providers: [{

@@ -8,8 +8,9 @@ import { MovieService } from '../services/movie.service';
 })
 export class MoviesComponent implements OnInit {
   listMovie: any[] = [];
-  // p: number = 1;
-  // collection: any[];
+  p: number = 1;
+  items = [];
+  pageOfItems: Array<any>;
 
   constructor(private movieService: MovieService) {}
 
@@ -20,4 +21,5 @@ export class MoviesComponent implements OnInit {
       // this.collection = this.listMovie;
     });
   }
+
 }

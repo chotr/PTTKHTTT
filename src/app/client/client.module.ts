@@ -9,6 +9,7 @@ import { PageNotFoundComponent } from '../page-not-found/page-not-found.componen
 import { DetailMovieComponent } from './detail-movie/detail-movie.component';
 import { ProviderModule } from '../provider/provider.module';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { JwPaginationModule } from 'jw-angular-pagination';
 
 
 const routes = [
@@ -51,6 +52,7 @@ const routes = [
     RouterModule.forChild(routes),
     ProviderModule,
     NgxPaginationModule,
+    JwPaginationModule
     // PipesModule
   ],
   exports: [ClientComponent],

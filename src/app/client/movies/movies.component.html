@@ -1,12 +1,14 @@
 <!-- <app-card-movie [movieList] = "listMovie"></app-card-movie> -->
 <div class="container">
     <div class="row">
-        <div class="col-sm-3" *ngFor="let film of listMovie">
+        <div class="col-sm-3" *ngFor="let film of listMovie| paginate: { itemsPerPage: 16, currentPage: p }">
             <div>
                 <app-card-movie [movie]="film"></app-card-movie>
+                
             </div>
 
         </div>
     </div>
-    <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+    
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>

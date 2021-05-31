@@ -1,7 +1,6 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { MovieService } from '../services/movie.service';
-import {NgxPaginationModule} from 'ngx-pagination';
 
 @Component({
   selector: 'app-card-movie',
@@ -13,19 +12,13 @@ export class CardMovieComponent implements OnInit {
   @Input() liked!: any[];
   @Input() movieList: any;
 
-  
   constructor(private router: Router, private movieService: MovieService) {}
 
   action = 'like';
 
   likeInLiked = 0;
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.movieList) {
-      
-    }
-    
-  }
+  ngOnChanges(): void {}
 
   ngOnInit(): void {}
 
@@ -51,7 +44,7 @@ export class CardMovieComponent implements OnInit {
   navigateTo() {
     this.router.navigate(['client/detail-movie', this.movie.maPhim]);
   }
-  callDialog(){
+  callDialog() {
     this.movieService.changeDataMovieModal(this.movie);
   }
 }
