@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { tap, map, catchError } from 'rxjs/operators';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -43,6 +44,7 @@ export class MovieService {
       // totalLike: 0,
     },
   ];
+  public myArr: any[];
 
   constructor(private httpClient: HttpClient) {}
 
@@ -63,10 +65,28 @@ export class MovieService {
       'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=' +
       id;
     return this.httpClient.get(apiDetailMovie).pipe(
-      tap(), catchError((error) => {
-        return this.handleErr(error)
+      tap(),
+      catchError((error) => {
+        return this.handleErr(error);
       })
     );
+  }
+
+  getMoviePagination(
+    pageCurrent: number,
+    numberItem: number
+  ): Observable<any> {
+    const api =
+      'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP09&soTrang=' +
+      pageCurrent +
+      '&soPhanTuTrenTrang=' +
+      numberItem;
+      return this.httpClient.get(api).pipe(
+        tap(),
+        catchError((error) => {
+          return this.handleErr(error);
+        })
+      );
   }
   changeDataMovieModal(movie: any): void {
     this.data.next(movie);
@@ -81,6 +101,7 @@ export class MovieService {
     return throwError(error);
   }
 
+
 }
 export interface ObjPhim {
   maPhim: number;
@@ -93,3 +114,10 @@ export interface ObjPhim {
   ngayKhoiChieu: string;
   danhGia: number;
 }
+// export interface Obj {
+//   currentPage: number;
+//   count: number;
+//   totalPages: number;
+//   totalCount: number;
+//   items: ObjPhim[];
+// }

@@ -1,6 +1,13 @@
 .card_movie{
-    .pagination{
+    .pagination::ng-deep{
         justify-content:center;
         margin-top: 20px;
+        .ngx-pagination {
+            padding: 0px !important;
+          }
     }
+    .row{
+        justify-content: center;
+    }
+
 }

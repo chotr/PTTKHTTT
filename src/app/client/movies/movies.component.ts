@@ -8,18 +8,24 @@ import { MovieService } from '../services/movie.service';
 })
 export class MoviesComponent implements OnInit {
   listMovie: any[] = [];
-  p: number = 1;
-  items = [];
-  pageOfItems: Array<any>;
+  p: number=1;
+  // items = [];
+  numberItemPage: number=10;
+  total: number;
+  // curPage: number;
 
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
-    this.movieService.getDataMovies().subscribe((res) => {
-      this.listMovie = res;
-      this.movieService.changeDataMovieModal(this.listMovie);
-      // this.collection = this.listMovie;
-    });
+    this.movieService
+      .getMoviePagination(this.p, this.numberItemPage)
+      .subscribe((res) => {
+        this.listMovie = res.items;
+        
+        this.movieService.getDataMovies().subscribe((result) => {
+          this.total = result.length;
+          this.movieService.changeDataMovieModal(this.listMovie);
+        });
+      });   
   }
-
 }
