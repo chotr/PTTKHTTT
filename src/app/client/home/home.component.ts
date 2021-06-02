@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
     });
   }
   navigateTo() {
-    this.router.navigate(['client/movies',]);
+    this.router.navigate(['client/movies/Page/1',]);
   }
 
 }
