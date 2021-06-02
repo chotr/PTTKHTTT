@@ -15,6 +15,11 @@ const routes = [
         component: DashboardComponent,
         canActivate: [AuthGuard],
       },
+      {
+        path: '',
+        redirectTo: '/admin/dashboard',
+        canActivate: [AuthGuard],
+      }
     ],
   },
 ];
