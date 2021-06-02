@@ -22,7 +22,11 @@ const routes = [
         component: HomeComponent,
       },
       {
-        path: 'movies',
+        path: 'movies/Page',
+        component: MoviesComponent,
+      },
+      {
+        path: 'movies/Page/'+':page',
         component: MoviesComponent,
       },
       {

@@ -14,12 +14,10 @@ const routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
-        // canActivate: [AuthGuard],
       },
       {
         path: '',
         redirectTo: '/admin/dashboard',
-        // canActivate: [AuthGuard],
       }
     ],
   },
