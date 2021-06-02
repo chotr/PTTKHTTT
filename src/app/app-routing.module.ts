@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminModule } from './admin/admin.module';
 import { ClientModule } from './client/client.module';
+import { HomeComponent } from './client/home/home.component';
 import { MoviesComponent } from './client/movies/movies.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { DayOneComponent } from './lesson/day-one/day-one.component';
@@ -15,6 +16,7 @@ import { ProviderModule } from './provider/provider.module';
 import { SignUpComponent } from './provider/sign-up/sign-up.component';
 
 const routes: Routes = [
+ 
   {
     path: 'lesson',
     component: LessonComponent,
@@ -31,10 +33,6 @@ const routes: Routes = [
     path: 'lesson3',
     component: DayThreeComponent,
   },
-  {
-    path: '',
-    component: LessonComponent,
-  },
   
   {
     path: 'admin',
@@ -43,6 +41,10 @@ const routes: Routes = [
   {
     path: 'client',
     loadChildren: () => ClientModule,
+  },
+  {
+    path: '',
+    component: HomeComponent,
   },
   {
     path:'login',
