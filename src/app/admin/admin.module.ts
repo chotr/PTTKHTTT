@@ -9,16 +9,17 @@ const routes = [
   {
     path: '',
     component: AdminComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'dashboard',
         component: DashboardComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
       },
       {
         path: '',
         redirectTo: '/admin/dashboard',
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
       }
     ],
   },
