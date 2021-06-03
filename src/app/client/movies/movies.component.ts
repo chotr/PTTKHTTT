@@ -19,7 +19,7 @@ export class MoviesComponent implements OnInit {
   listPage: any[] = []
   conditionPre: boolean;
   conditionNext: boolean;
-
+  totalPageArr: number[] = [];
 
   constructor(
     private movieService: MovieService,
@@ -29,11 +29,6 @@ export class MoviesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // if (this.p === 1 ) {
-    //   this.disabled = true
-    // }
-   
-
     this.p = this.activatedRoute.snapshot.paramMap.get('page') as string;
     if (!this.p) {
       this.getParamsFromUrl();
@@ -56,7 +51,7 @@ export class MoviesComponent implements OnInit {
         this.p = res.currentPage;
         this.total = res.totalCount;
         this.totalPage = res.totalPages
-
+        
       }
     });
   }
@@ -68,24 +63,12 @@ export class MoviesComponent implements OnInit {
           this.p = res.currentPage;
           this.total = res.totalCount;
           this.listMovie = res.items;
-        this.totalPage = res.totalPages
-
+          this.totalPage = res.totalPages
+          for (let i = 1; i<=this.totalPage; i++) {
+            this.totalPageArr.push(i);
+          }
         }
       });
-  }
-  pageChanged(p: any){
-    // this.p =page
-    // this.activatedRoute.queryParams.subscribe(params => {
-    //   page = params['page'];
-    // });
-
-    // this.activatedRoute.queryParams.subscribe(params => {
-    //   evt = params['page'];
-    // });
-    this.p = p
-
-    this.router.navigate(['/client/movies/Page', this.p]);
-
   }
   checkPre = (event) => {
     if (this.p === 1) {

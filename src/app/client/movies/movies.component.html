@@ -8,20 +8,17 @@
 
         </div>
     </div>
-    <!-- 
-    <div class="pagination">
-        <pagination-controls (pageChange)="pageChanged(p=$event)" responsive="true">
-        </pagination-controls>
-    </div> -->
-
 
     <nav aria-label="Page navigation example">
         <ul class="pagination">
             <li class="page-item pre"><a [ngClass]="disabledPagePre() ? 'page-link':'page-link disabled'" (click)="checkPre($event)"
                     href="client/movies/Page/{{p*1 - 1}}"
                     >Previous</a></li>
-            <li class="page-item page mx-4"><a href="client/movies/Page/{{p}}">{{p}}/{{totalPage}}</a>
-            </li>
+            <ng-container *ngFor="let p of totalPageArr">
+                <li class="page-item page mx-4"><a href="client/movies/Page/{{p}}">{{p}}</a>
+                </li>
+            </ng-container>
+            
             <li class="page-item next"><a [ngClass]="disabledPageNext() ? 'page-link':'page-link disabled'" (click)="checkNext($event)"
                     href="client/movies/Page/{{p*1 + 1}}"
                     >Next</a></li>
