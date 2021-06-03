@@ -1,13 +1,22 @@
-.card_movie{
-    .pagination::ng-deep{
-        justify-content:center;
-        margin-top: 20px;
-        .ngx-pagination {
-            padding: 0px !important;
-          }
+.card_movie {
+  .pagination::ng-deep {
+    justify-content: center;
+    margin-top: 20px;
+    .ngx-pagination {
+      padding: 0px !important;
     }
-    .row{
-        justify-content: center;
-    }
+  }
+  .row {
+    justify-content: center;
+  }
+  a.disabled {
+    pointer-events: all;
+    cursor: default;
+  }
+  nav{
+      li.page{
+        padding-top: 0.5rem
+      }
 
+  }
 }

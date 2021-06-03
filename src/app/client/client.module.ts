@@ -11,6 +11,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import { LayoutComponent } from './layout/layout.component';
 import { HomeComponent } from './home/home.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 const routes = [
   {
@@ -58,6 +61,8 @@ const routes = [
     ProviderModule,
     NgxPaginationModule,
     JwPaginationModule,
+    NgbModule,
+    MatPaginatorModule
     // PipesModule
   ],
   exports: [ClientComponent, HomeComponent],
