@@ -17,6 +17,9 @@ export class MoviesComponent implements OnInit {
   disabled: boolean
   isReady = false;
   listPage: any[] = []
+  conditionPre: boolean;
+  conditionNext: boolean;
+
 
   constructor(
     private movieService: MovieService,
@@ -29,6 +32,7 @@ export class MoviesComponent implements OnInit {
     // if (this.p === 1 ) {
     //   this.disabled = true
     // }
+   
 
     this.p = this.activatedRoute.snapshot.paramMap.get('page') as string;
     if (!this.p) {
@@ -95,6 +99,22 @@ export class MoviesComponent implements OnInit {
       if (!this.isReady) {
         event.preventDefault();
       }
+    }
+   }
+   disabledPagePre(): boolean {
+     if (this.p === 1) {
+       return false
+     }
+     if (this.p !==1) {
+       return true
+     }
+   }
+   disabledPageNext(): boolean {
+    if (this.p === this.totalPage) {
+      return false
+    }
+    if (this.p !== this.totalPage) {
+      return true
     }
    }
 }

@@ -17,10 +17,14 @@
 
     <nav aria-label="Page navigation example">
         <ul class="pagination">
-            <li class="page-item pre"><a [class.disabled]="disabled ? true: null" (click)="checkPre($event)" class="page-link" href="client/movies/Page/{{p*1 - 1}}">Previous</a></li>
+            <li class="page-item pre"><a [ngClass]="disabledPagePre() ? 'page-link':'page-link disabled'" (click)="checkPre($event)"
+                    href="client/movies/Page/{{p*1 - 1}}"
+                    >Previous</a></li>
             <li class="page-item page mx-4"><a href="client/movies/Page/{{p}}">{{p}}/{{totalPage}}</a>
             </li>
-            <li class="page-item next"><a [class.disabled]="disabled ? true: null" (click)="checkNext($event)" href="client/movies/Page/{{p*1 + 1}}" class="page-link">Next</a></li>
+            <li class="page-item next"><a [ngClass]="disabledPageNext() ? 'page-link':'page-link disabled'" (click)="checkNext($event)"
+                    href="client/movies/Page/{{p*1 + 1}}"
+                    >Next</a></li>
         </ul>
     </nav>
 </div>

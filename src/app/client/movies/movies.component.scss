@@ -13,10 +13,22 @@
     pointer-events: all;
     cursor: default;
   }
-  nav{
-      li.page{
-        padding-top: 0.5rem
+  nav {
+    li.page {
+      padding-top: 0.5rem;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+    .disabled {
+      &:hover {
+        background-color: white!important;
       }
-
+    }
+    .page-link {
+        &:focus{
+            box-shadow: none;
+        }
+    }
   }
 }
