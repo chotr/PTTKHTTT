@@ -13,6 +13,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { HomeComponent } from './home/home.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { UserComponent } from './user/user.component';
 
 
 const routes = [
@@ -24,6 +25,11 @@ const routes = [
         path: 'home',
         component: HomeComponent,
       },
+      {
+        path: 'user',
+        component: UserComponent,
+      },
+      
       
       {
         path: 'movies/Page/'+':page',
@@ -58,6 +64,7 @@ const routes = [
     DetailMovieComponent,
     LayoutComponent,
     HomeComponent,
+    UserComponent,
   ],
   imports: [
     CommonModule,
