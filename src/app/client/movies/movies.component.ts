@@ -14,18 +14,18 @@ export class MoviesComponent implements OnInit {
   numberItemPage: number = 10;
   total: number;
   totalPage: number;
-  disabled: boolean
+  disabled: boolean;
   isReady = false;
-  listPage: any[] = []
+  listPage: any[] = [];
   conditionPre: boolean;
   conditionNext: boolean;
   totalPageArr: number[] = [];
-  public disabledPage:boolean;
+  public disabledPage: boolean;
 
   constructor(
     private movieService: MovieService,
     private activatedRoute: ActivatedRoute,
-    private http: HttpClient, 
+    private http: HttpClient,
     private router: Router
   ) {}
 
@@ -42,10 +42,8 @@ export class MoviesComponent implements OnInit {
       if (res) {
         this.p = res.currentPage;
         this.total = res.totalCount;
-        this.totalPage = res.totalPages
-        
+        this.totalPage = res.totalPages;
       }
-      
     });
   }
   getDataMovie(page: any) {
@@ -56,19 +54,23 @@ export class MoviesComponent implements OnInit {
           this.p = res.currentPage;
           this.total = res.totalCount;
           this.listMovie = res.items;
-          this.totalPage = res.totalPages
-          for (let i = 1; i<=this.totalPage; i++) {
+          this.totalPage = res.totalPages;
+          for (let i = 1; i <= this.totalPage; i++) {
             this.totalPageArr.push(i);
-            
+            // console.log((page = i ? true : false));
+            // if (i === page ) {
+            //   this.disabledPage = true;
+              
+            // } else this.disabledPage = false;
           }
-        console.log(page = this.p ? true : false)
-        console.log(this.p + "abc")
-        if (page === this.p ) {
-          this.disabledPage = true
-        }else
-        this.disabledPage = false
 
+          // if (page === this.p) {
+          //   this.disabledPage = true;
+          // } else this.disabledPage = false;
+
+          
         }
+        console.log(page);
         
       });
   }
@@ -78,29 +80,28 @@ export class MoviesComponent implements OnInit {
         event.preventDefault();
       }
     }
-   }
-   checkNext = (event) => {
+  };
+  checkNext = (event) => {
     if (this.p === this.totalPage) {
       if (!this.isReady) {
         event.preventDefault();
       }
     }
-   }
-   disabledPagePre(): boolean {
-     if (this.p === 1) {
-       return false
-     }
-     if (this.p !==1) {
-       return true
-     }
-   }
-   disabledPageNext(): boolean {
+  };
+  disabledPagePre(): boolean {
+    if (this.p === 1) {
+      return false;
+    }
+    if (this.p !== 1) {
+      return true;
+    }
+  }
+  disabledPageNext(): boolean {
     if (this.p === this.totalPage) {
-      return false
+      return false;
     }
     if (this.p !== this.totalPage) {
-      return true
+      return true;
     }
-   }
-   
+  }
 }

@@ -14,7 +14,7 @@
             <li class="page-item pre"><a [ngClass]="disabledPagePre() ? 'page-link':'page-link disabled'" (click)="checkPre($event)"
                     href="client/movies/Page/{{p*1 - 1}}"
                     >Previous</a></li>
-                    
+
             <li *ngFor="let p of totalPageArr" [class.disabledPage]="disabledPage" class="page-item page mx-4">
                 <a href="client/movies/Page/{{p}}">{{p}}</a>
             </li>

@@ -24,13 +24,14 @@ const routes = [
         path: 'home',
         component: HomeComponent,
       },
-      {
-        path: 'movies/Page',
-        component: MoviesComponent,
-      },
+      
       {
         path: 'movies/Page/'+':page',
         component: MoviesComponent,
+      },
+      {
+        path: 'movies/Page',
+        redirectTo: 'movies/Page/1'
       },
       {
         path: 'detail-movie/',
@@ -40,7 +41,10 @@ const routes = [
         path: 'detail-movie/:idMovie',
         component: DetailMovieComponent,
       },
-
+      {
+        path: '',
+        redirectTo: 'home',
+      },   
       { path: '**', component: PageNotFoundComponent },
     ],
   },

@@ -73,7 +73,7 @@ export class MovieService {
   }
 
   getMoviePagination(
-    pageCurrent: number,
+    pageCurrent: any,
     numberItem: number
   ): Observable<any> {
     const api =
@@ -87,6 +87,7 @@ export class MovieService {
           return this.handleErr(error);
         })
       );
+      
   }
   changeDataMovieModal(movie: any): void {
     this.data.next(movie);
