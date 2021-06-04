@@ -17,6 +17,9 @@
     li.page {
       padding-top: 0.5rem;
     }
+    li.active {
+        background-color: aqua;
+    }
     a:hover {
       text-decoration: none;
     }

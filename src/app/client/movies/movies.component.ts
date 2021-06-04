@@ -20,6 +20,7 @@ export class MoviesComponent implements OnInit {
   conditionPre: boolean;
   conditionNext: boolean;
   totalPageArr: number[] = [];
+  public disabledPage:boolean;
 
   constructor(
     private movieService: MovieService,
@@ -35,15 +36,6 @@ export class MoviesComponent implements OnInit {
     }
     this.getDataMovie(this.p);
   }
-  setPage(page: any) {
-    page = this.activatedRoute.snapshot.paramMap.get('page') as string;
-
-    if (!page) {
-      this.getParamsFromUrl();
-    }
-    this.getDataMovie(page);
-
-  }
 
   getParamsFromUrl() {
     this.activatedRoute.queryParams.subscribe((res) => {
@@ -53,6 +45,7 @@ export class MoviesComponent implements OnInit {
         this.totalPage = res.totalPages
         
       }
+      
     });
   }
   getDataMovie(page: any) {
@@ -66,8 +59,17 @@ export class MoviesComponent implements OnInit {
           this.totalPage = res.totalPages
           for (let i = 1; i<=this.totalPage; i++) {
             this.totalPageArr.push(i);
+            
           }
+        console.log(page = this.p ? true : false)
+        console.log(this.p + "abc")
+        if (page === this.p ) {
+          this.disabledPage = true
+        }else
+        this.disabledPage = false
+
         }
+        
       });
   }
   checkPre = (event) => {
@@ -100,4 +102,5 @@ export class MoviesComponent implements OnInit {
       return true
     }
    }
+   
 }
