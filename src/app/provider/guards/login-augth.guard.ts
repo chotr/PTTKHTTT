@@ -1,12 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  CanActivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-  UrlTree,
-  Router,
-} from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivate, Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 
 @Injectable({
@@ -20,7 +13,7 @@ export class LoginAugthGuard implements CanActivate {
       this.router.navigate(['client/home']);
       return false;
     }
-    
+
     return true;
   }
 }
