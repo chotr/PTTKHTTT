@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { UserComponent } from './user/user.component';
+import { LoginAugthGuard } from '../provider/guards/login-augth.guard';
 
 
 const routes = [
@@ -28,6 +29,7 @@ const routes = [
       {
         path: 'user',
         component: UserComponent,
+        canActivate: [LoginAugthGuard],
       },
       
       

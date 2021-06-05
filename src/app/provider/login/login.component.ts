@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AccountService } from '../services/account.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({})
 
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -29,6 +30,9 @@ export class LoginComponent implements OnInit {
       if (res) {
         localStorage.setItem('account',JSON.stringify(res) );
         alert('login successful')
+        this.router.navigate(['/client/home']);
+        window.location.reload();
+        
 
       }
     })
