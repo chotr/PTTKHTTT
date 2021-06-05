@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
 
   loginService: boolean = false;
 
-  accountInfo: any
+  accountInfo: any;
 
   constructor(
     private loginSer: LoginService,
@@ -22,8 +22,6 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
-
     const account = JSON.parse(localStorage.getItem('account') as string);
     if (account === null) {
       this.accountInfo = null;
@@ -34,9 +32,7 @@ export class NavbarComponent implements OnInit {
     const account = JSON.parse(localStorage.getItem('account') as string);
     if (account !== null) {
       localStorage.removeItem('account');
+      window.location.reload();
     }
-    window.location.reload();
-    this.router.navigate(['/login']);
   }
-  
 }
