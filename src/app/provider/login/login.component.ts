@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
     this.accountService.loginApi(objLogin).subscribe((res) => {
       if (res) {
         localStorage.setItem('account', JSON.stringify(res));
+        window.location.reload();
       }  
     });
   }

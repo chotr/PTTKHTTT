@@ -19,6 +19,7 @@ export class AccessLoginGuard implements CanDeactivate<unknown> {
       this.router.navigate(['/clients/home']);
       return true;
     }
+
     return false;
   }
 }
