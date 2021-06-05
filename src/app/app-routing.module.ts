@@ -8,8 +8,8 @@ import { DayThreeComponent } from './lesson/day-three/day-three.component';
 import { DayTwoComponent } from './lesson/day-two/day-two.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { AccessLoginGuard } from './provider/guards/access-login.guard';
 import { DeactiveGuard } from './provider/guards/deactive.guard';
+import { LoginAugthGuard } from './provider/guards/login-augth.guard';
 import {LoginComponent} from './provider/login/login.component';
 import { ProviderModule } from './provider/provider.module';
 import { SignUpComponent } from './provider/sign-up/sign-up.component';
@@ -48,7 +48,7 @@ const routes: Routes = [
   {
     path:'login',
     component: LoginComponent,
-    canDeactivate: [AccessLoginGuard]
+    canActivate:[LoginAugthGuard]
     
   },
   {

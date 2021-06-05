@@ -17,9 +17,10 @@ export class LoginAugthGuard implements CanActivate {
   canActivate(): boolean {
     const account = JSON.parse(localStorage.getItem('account') as string);
     if (account !== null) {
-      return true;
+      this.router.navigate(['client/home']);
+      return false;
     }
-    this.router.navigate(['login']);
-    return false;
+    
+    return true;
   }
 }
