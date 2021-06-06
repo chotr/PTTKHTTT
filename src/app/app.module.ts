@@ -5,7 +5,6 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule, SETTINGS } from '@angular/fire/firestore';
-
 import { AppComponent } from './app.component';
 import { LessonModule } from './lesson/lesson.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

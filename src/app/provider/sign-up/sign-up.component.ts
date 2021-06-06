@@ -21,7 +21,7 @@ export class SignUpComponent implements OnInit {
       matKhau: value.password,
       email: value.email,
       soDt: value.phone,
-      maNhom: 'GP01',
+      maNhom: 'GP09',
       maLoaiNguoiDung: 'khachHang',
       hoTen: value.name,
     };

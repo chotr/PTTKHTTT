@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from 'src/app/provider/services/account.service';
 
 @Component({
   selector: 'app-user',
@@ -11,7 +12,7 @@ export class UserComponent implements OnInit {
   email: any
   phoneNumber: any
 
-  constructor() { }
+  constructor(private accountService :AccountService) { }
 
   ngOnInit(): void {
     const account = JSON.parse(localStorage.getItem('account') as string);

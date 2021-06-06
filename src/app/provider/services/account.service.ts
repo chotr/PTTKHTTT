@@ -28,6 +28,16 @@ export class AccountService {
       })
     );
   }
+  updateApi(data: any): Observable<any>{
+    const api =
+      'https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung';
+    return this.httpClient.post(api, data).pipe(
+      tap(),
+      catchError((err) => {
+        return this.handleError(err);
+      })
+    );
+  }
 
   handleError(error: any) {
     switch (error.status) {

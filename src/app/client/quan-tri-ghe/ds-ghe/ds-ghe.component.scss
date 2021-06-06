@@ -1,0 +1,33 @@
+.danh_sach_ghe {
+  .screen {
+    height: 15px;
+    width: 100%;
+    background-color: #ffb10094;
+    margin-bottom: 20px;
+  }
+  .info {
+      table{ 
+          margin: auto;
+      }
+    .note {
+      .color {
+        width: 35px;
+        height: 35px;
+        
+      }
+      .screen_color {
+        .color {
+          background-color: ffb10094 !important;
+        }
+      }
+      .item_color {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    p {
+      margin-bottom: 0;
+    }
+  }
+}

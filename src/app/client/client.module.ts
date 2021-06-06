@@ -16,6 +16,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { UserComponent } from './user/user.component';
 import { LoginAugthGuard } from '../provider/guards/login-augth.guard';
 import { UserAcessGuard } from '../provider/guards/user-acess.guard';
+import { DsGheComponent } from './quan-tri-ghe/ds-ghe/ds-ghe.component';
 
 
 const routes = [
@@ -30,6 +31,11 @@ const routes = [
       {
         path: 'user',
         component: UserComponent,
+        canActivate: [UserAcessGuard],
+      },
+      {
+        path: 'danhSachGhe',
+        component: DsGheComponent,
         canActivate: [UserAcessGuard],
       },
       

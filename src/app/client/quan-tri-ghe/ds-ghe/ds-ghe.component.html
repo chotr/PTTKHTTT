@@ -1,1 +1,45 @@
-<app-ghe></app-ghe>
+<div class="danh_sach_ghe container">
+    <div class="row">
+        <div class="col-4 mx-auto p-4 text-center">
+            <div class="screen"></div>
+            <app-ghe *ngFor="let ghe of dsGhe" [item]="ghe"></app-ghe>
+        </div>
+    </div>
+    <div class="info">
+        <div class="so_ghe m-2">
+            <table>
+                <tr>
+                    <td>
+                        Số ghế đã đặt:
+                    </td>
+                </tr>
+                <tr>
+                    <td>Số ghế còn lại:</td>
+                    <td>{{soGheConLai}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="note">
+            <div class="row">
+                <div class="col-4">
+                    <div class="item_color screen_color">
+                        <div class="color mr-2" [ngStyle]="{'background-color':bgColor}"></div>
+                        <p class="detail">Màn hình</p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="item_color ghe_da_dat">
+                        <div class="color mr-2" [ngStyle]="{'background-color':bgColor1}"></div>
+                        <p class="detail">Ghế đã đặt</p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="item_color ghe_chua_dat">
+                        <div class="color mr-2 " [ngStyle]="{'background-color':bgColor2}"></div>
+                        <p class="detail">Ghế chưa đặt</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
