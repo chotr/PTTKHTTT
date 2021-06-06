@@ -1,18 +1,19 @@
-<div>Carousel</div>
-<div>
-    <p>Danh sách</p>
-    <div class="list_movie_home">
-        <div class="card_movie container">
-            <div class="row">
-                <div class="col-sm-3" *ngFor="let film of listMovie.slice(0, 8)">
-                    <app-card-movie [movie]="film"></app-card-movie>
+<div class="home">
+    <div class="Carousel">Carousel</div>
+    <div class="list_movie">
+        <p>Danh sách</p>
+        <div class="list_movie_home">
+            <div class="card_movie container">
+                <div class="row">
+                    <div class="col-sm-3" *ngFor="let film of listMovie.slice(0, 8)">
+                        <app-card-movie [movie]="film"></app-card-movie>
+                    </div>
+
                 </div>
-              
             </div>
         </div>
-
-    </div>
-    <div class="more_movie">
-        <a (click)="navigateTo()" class="more">Xem thêm...</a>
+        <div class="more_movie">
+            <a (click)="navigateTo()" class="more">Xem thêm...</a>
+        </div>
     </div>
 </div>
