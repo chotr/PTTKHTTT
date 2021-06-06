@@ -1,19 +1,35 @@
 .danh_sach_ghe {
+//   background: url("../../../../assets/images/bacground_ds_ghe.jpg") no-repeat center;
+//   background-size: cover;
+//   -webkit-background-size: cover;
+//   -moz-background-size: cover;
+//   -o-background-size: cover;
+//   -ms-background-size: cover;
+//   background-attachment: fixed;
+//   height: 100vh;
+//   width: 100vh;
+
   .screen {
     height: 15px;
     width: 100%;
-    background-color: #ffb10094;
+    background-color: #ffb100;
     margin-bottom: 20px;
   }
   .info {
-      table{ 
-          margin: auto;
-      }
+      color: #fff;
+    table {
+      margin: auto;
+    }
     .note {
+        margin-top: 30px!important;
+        /* padding-left: 30px; */
+        /* padding-right: 30px; */
+        width: 70%;
+        margin: auto;
       .color {
-        width: 35px;
-        height: 35px;
-        
+        width: 45px;
+        height: 25px;
+        border-radius: 8px;
       }
       .screen_color {
         .color {

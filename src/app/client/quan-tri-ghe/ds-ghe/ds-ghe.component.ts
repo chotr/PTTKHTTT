@@ -46,7 +46,7 @@ export class DsGheComponent implements OnInit {
 
   soGheDaDat: number;
   soGheConLai: number;
-  bgColor ='#ffb10094'
+  bgColor ='#ffb100'
   bgColor1='#6c757d'
   bgColor2='#28a745'
 

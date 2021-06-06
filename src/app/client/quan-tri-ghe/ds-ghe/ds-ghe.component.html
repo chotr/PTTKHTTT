@@ -5,7 +5,7 @@
             <app-ghe *ngFor="let ghe of dsGhe" [item]="ghe"></app-ghe>
         </div>
     </div>
-    <div class="info">
+    <div class="info ">
         <div class="so_ghe m-2">
             <table>
                 <tr>
@@ -19,18 +19,18 @@
                 </tr>
             </table>
         </div>
-        <div class="note">
+        <div class="note ">
             <div class="row">
-                <div class="col-4">
-                    <div class="item_color screen_color">
-                        <div class="color mr-2" [ngStyle]="{'background-color':bgColor}"></div>
-                        <p class="detail">Màn hình</p>
-                    </div>
-                </div>
                 <div class="col-4">
                     <div class="item_color ghe_da_dat">
                         <div class="color mr-2" [ngStyle]="{'background-color':bgColor1}"></div>
                         <p class="detail">Ghế đã đặt</p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="item_color screen_color">
+                        <div class="color mr-2" [ngStyle]="{'background-color':bgColor}"></div>
+                        <p class="detail">Màn hình</p>
                     </div>
                 </div>
                 <div class="col-4">
