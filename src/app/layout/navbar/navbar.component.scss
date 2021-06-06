@@ -1,7 +1,12 @@
-.navbar{
-    #navbarNav{
-        .logout{
-            cursor: pointer;
-        }
+.navbar {
+  #navbarNav {
+    .logout {
+      cursor: pointer;
     }
+  }
+}
+.navbar-expand-lg {
+    position: fixed;
+    width: 100%;
+    z-index: 20;
 }
