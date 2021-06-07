@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-ds-ghe',
@@ -44,15 +44,49 @@ export class DsGheComponent implements OnInit {
     { SoGhe: 35, TenGhe: 'số 35', Gia: 100, TrangThai: false },
   ];
 
-  soGheDaDat: number;
+  soGheDaDat: number = 0;
   soGheConLai: number;
-  bgColor ='#ffb100'
-  bgColor1='#6c757d'
-  bgColor2='#28a745'
+  soGheDangDat: any[] = [];
+  bgColor = '#ffb100';
+  bgColor1 = '#6c757d';
+  bgColor2 = '#28a745';
+
+  @ViewChild('dataContainer') dataContainer: ElementRef;
+  // foo =
+  //   '<div class="seat_booking" *ngFor="let ghe of soGheDangDat"><p ><span>Ghế đang chọn: {{ghe.SoGhe}}</span><hr><span>Giá tiền: </span></p></div>';
 
   constructor() {}
 
   ngOnInit(): void {
     this.soGheConLai = this.dsGhe.length;
+  }
+  datGheParent(evt, ghe) {
+    console.log(evt, ghe);
+    if (evt) {
+      this.soGheDaDat++;
+      this.soGheConLai--;
+      this.soGheDangDat.push(ghe);
+      console.log(this.soGheDangDat);
+    } else {
+      this.soGheDaDat--;
+      this.soGheConLai++;
+      for (let i in this.soGheDangDat) {
+        if (this.soGheDangDat[i] === ghe.SoGhe) {
+          this.soGheDangDat.slice(parseInt(i), 1);
+        
+        }
+      }
+      // this.dataContainer.nativeElement.innerHTML = this.htmlString(
+      //   this.soGheDangDat.TenGhe,
+      //   this.soGheDangDat
+      // );
+    }
+  }
+  htmlString(soGhe: any, giaTien: any): any {
+    return (
+      '<div class="seat_booking"><p ><span>Ghế đang chọn: ' +
+      soGhe +
+      '</span><hr><span>Giá tiền: </span></p></div>'
+    );
   }
 }

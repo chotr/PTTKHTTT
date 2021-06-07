@@ -1,7 +1,23 @@
-.home{
-    padding-top:60px;
-    .Carousel{
-        // margin-top: 50px;
-        
-    }
+.home {
+    position: relative;
+  .Carousel {
+    // margin-top: 50px;
+  }
+  .list_movie{
+      .more{
+          display: flex;
+          margin: auto;
+      }
+  }
+
+  .bg_home {
+    background-image: url('../../../assets/images/Untitled.png');
+    background-repeat: no-repeat;
+    // background-attachment: fixed;
+    // background-position: left bottom;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -1;
+  }
 }

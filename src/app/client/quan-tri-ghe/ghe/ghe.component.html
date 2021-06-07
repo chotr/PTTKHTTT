@@ -1,1 +1,1 @@
-<button class="btn btn-success dat_ghe mr-1 mb-1 ">{{item.SoGhe}}</button>
+<button class="btn dat_ghe mr-1 mb-1" [ngClass]="status ? 'btn-success':'btn-light'" (click)="datGhe()">{{item.SoGhe}}</button>
