@@ -45,20 +45,23 @@ export class DsGheComponent implements OnInit {
   ];
 
   soGheDaDat: number = 0;
-  soGheConLai: number;
+  soGheConLai: number = 0;
   soGheDangDat: any[] = [];
   bgColor = '#ffb100';
   bgColor1 = '#6c757d';
-  bgColor2 = '#28a745';
+  bgColor2 = '#f8f9fa';
+  bgColor3 = '#28a745';
 
   @ViewChild('dataContainer') dataContainer: ElementRef;
-  // foo =
-  //   '<div class="seat_booking" *ngFor="let ghe of soGheDangDat"><p ><span>Ghế đang chọn: {{ghe.SoGhe}}</span><hr><span>Giá tiền: </span></p></div>';
 
   constructor() {}
 
   ngOnInit(): void {
-    this.soGheConLai = this.dsGhe.length;
+    for (let ghe of this.dsGhe) {
+      if (!ghe.TrangThai) {
+        this.soGheConLai++;
+      }
+    }
   }
   datGheParent(evt, ghe) {
     console.log(evt, ghe);
@@ -71,9 +74,8 @@ export class DsGheComponent implements OnInit {
       this.soGheDaDat--;
       this.soGheConLai++;
       for (let i in this.soGheDangDat) {
-        if (this.soGheDangDat[i] === ghe.SoGhe) {
-          this.soGheDangDat.slice(parseInt(i), 1);
-        
+        if (this.soGheDangDat[i] === ghe) {
+          this.soGheDangDat.splice(parseInt(i), 1);
         }
       }
       // this.dataContainer.nativeElement.innerHTML = this.htmlString(

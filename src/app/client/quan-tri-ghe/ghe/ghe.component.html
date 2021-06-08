@@ -1,1 +1,7 @@
-<button class="btn dat_ghe mr-1 mb-1" [ngClass]="status ? 'btn-success':'btn-light'" (click)="datGhe()">{{item.SoGhe}}</button>
+<ng-container *ngIf="!item.TrangThai;else gheDaChon">
+    <button class="btn dat_ghe mr-1 mb-1" [ngClass]="status ? 'btn-success':'btn-light'"
+        (click)="datGhe()">{{item.SoGhe}}</button>
+</ng-container>
+<ng-template #gheDaChon>
+    <button class="btn dat_ghe mr-1 mb-1 disabled" style="cursor: not-allowed; background:#6c757d">{{item.SoGhe}}</button>
+</ng-template>
