@@ -1,10 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" routerLink="/client/home">Trang chủ</a>
+  <div class="navbar-brand col-3" routerLink="/client/home">
+    <p class="text">
+      <span class="text_1">sayohyeah</span>
+    </p>
+  </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
+  <div class="collapse navbar-collapse col-6 text-center" id="navbarNav">
     <ul class="navbar-nav">
 
       <li class="nav-item">
@@ -16,15 +20,19 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/lesson3">Lesson 3</a>
       </li>
-      <li *ngIf="accountInfo === null" class="nav-item">
-        <a class="nav-link"  routerLink="/login">Login</a>
-      </li>
-      <li *ngIf="accountInfo !== null" class="nav-item">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a routerLink="/client/user" class="nav-link">User</a></li>
-          <li class="nav-item" (click)="logout()"><a class="nav-link logout" >Logout</a></li>
-        </ul>
-      </li>
     </ul>
+
+  </div>
+  <div class="nav_user col-3 pr-4">
+    <div *ngIf="accountInfo === null" class="login-box">
+      <a class="nav-link" routerLink="/login">Login</a>
+    </div>
+    <div *ngIf="accountInfo !== null" class="nav-item">
+      <ul class="navbar-nav">
+        <li *ngIf="accountInfo.maLoaiNguoiDung === 'QuanTri'" class="nav-item"><a routerLink="/admin" class="nav-link">Quản trị</a></li>
+        <li class="nav-item"><a routerLink="/client/user" class="nav-link">User</a></li>
+        <li class="nav-item" (click)="logout()"><a class="nav-link logout">Logout</a></li>
+      </ul>
+    </div>
   </div>
 </nav>

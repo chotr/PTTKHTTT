@@ -1,18 +1,38 @@
-<form [formGroup]="loginForm" (ngSubmit)="login(loginForm)" class="example-form">
-    <mat-form-field class="example-full-width">
-        <mat-label>Tên người dùng</mat-label>
-        <input matInput type="text" formControlName="account">
-        <mat-error *ngIf="account?.touched &&account?.errors">
-            <span *ngIf="account?.errors?.required">
-                Tài khoản không được rổng !
-            </span>
-        </mat-error>
-    </mat-form-field>
+<div class="login">
+    <div class="title text-center">
+        <h1>Đăng nhập</h1>
+    </div>
+    <div class="form_login">
+        <div class="row">
+            <div class="col-6">
+                <div class="login_text">
+                    <p class="text">
+                        <span class="text_1">sayohyeah</span>
+                        <span class="text_2">.vercel.app</span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-6">
+                <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)" class="example-form form">
+                    <mat-form-field class="example-full-width">
+                        <mat-label class="userName">Tên người dùng</mat-label>
+                        <input matInput type="text" formControlName="account">
+                        <mat-error *ngIf="account?.touched &&account?.errors">
+                            <span *ngIf="account?.errors?.required">
+                                Tài khoản không được rổng !
+                            </span>
+                        </mat-error>
+                    </mat-form-field>
 
-    <mat-form-field class="example-full-width">
-        <mat-label>Mật khẩu</mat-label>
-        <input matInput type="password" formControlName="password">
-    </mat-form-field>
-    <button [disabled]="loginForm.invalid" type="submit" color="accent">Login</button>
-    <a class="nav-link" href="/sign-up">Đăng ký</a>
-</form>
+                    <mat-form-field class="example-full-width">
+                        <mat-label class="password">Mật khẩu</mat-label>
+                        <input matInput type="password" formControlName="password">
+                    </mat-form-field>
+                    <button [disabled]="loginForm.invalid" type="submit" class="btn">Login</button>
+                    <p class="text_if_none_account">Bạn chưa có tài khoản?</p>
+                    <a class="register_link" (click)="navigateTo()">Đăng ký</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -44,4 +44,7 @@ export class LoginComponent implements OnInit {
   get account(): AbstractControl | null {
     return this.loginForm.get('account');
   }
+  navigateTo() {
+    this.router.navigate(['/sign-up']);
+  }
 }

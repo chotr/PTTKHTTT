@@ -11,7 +11,7 @@
         </div>
         <div class="info ">
             <div class="so_ghe m-2">
-                <table>
+                <table class="text-center">
                     <tr>
                         <td>
                             Số ghế đã đặt:
@@ -25,26 +25,29 @@
                 </table>
             </div>
             <div class="note ">
-                <div class="row">
-                    <div class="col-3">
+                <div class="row pb-2">
+                    <div class="col-6">
                         <div class="item_color screen_color">
                             <div class="color mr-2" [ngStyle]="{'background-color':bgColor}"></div>
                             <p class="detail">Màn hình</p>
                         </div>
                     </div>
-                    <div class="col-3">
+                    <div class="col-6">
                         <div class="item_color ghe_da_dat">
                             <div class="color mr-2" [ngStyle]="{'background-color':bgColor1}"></div>
                             <p class="detail">Ghế đã đặt</p>
                         </div>
                     </div>
-                    <div class="col-3">
+
+                </div>
+                <div class="row">
+                    <div class="col-6">
                         <div class="item_color ghe_chua_dat">
                             <div class="color mr-2 " [ngStyle]="{'background-color':bgColor2}"></div>
                             <p class="detail">Ghế chưa đặt</p>
                         </div>
                     </div>
-                    <div class="col-3">
+                    <div class="col-6">
                         <div class="item_color ghe_chua_dat">
                             <div class="color mr-2 " [ngStyle]="{'background-color':bgColor3}"></div>
                             <p class="detail">Ghế đang chọn</p>
@@ -52,16 +55,17 @@
                     </div>
                 </div>
             </div>
-            <div #dataContainer>
+            <div>
                 <table class="price">
                     <tr>
-                        <th>Số ghế chọn</th>
-                        <th>Giá</th>
+                        <th class="p-1">Số ghế chọn</th>
+                        <th class="p-1">Giá</th>
                     </tr>
                     <tr>
-                        <td rowspan="1" class="item w-50"><span *ngFor="let ghe of soGheDangDat">{{ghe.SoGhe}}, </span>
+                        <td rowspan="1" class="item w-50 p-1"><span *ngFor="let ghe of soGheDangDat">{{ghe.SoGhe}},
+                            </span>
                         </td>
-                        <td rowspan="1" class="item w-50"><span *ngFor="let ghe of soGheDangDat">{{ghe.Gia}} </span>
+                        <td rowspan="1" class="item w-50 p-1"><span>{{giaVe}} </span>
                         </td>
                     </tr>
 

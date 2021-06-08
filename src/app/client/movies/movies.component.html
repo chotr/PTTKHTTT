@@ -1,5 +1,8 @@
 <!-- <app-card-movie [movieList] = "listMovie"></app-card-movie> -->
 <div class="card_movie container">
+    <div class="bg_page">
+        <img src="../../../assets/images/banner.jpg" alt="">
+    </div>
     <div class="row">
         <div class="col-sm-3" *ngFor="let film of listMovie">
             <div>
@@ -11,17 +14,15 @@
 
     <nav aria-label="Page navigation example">
         <ul class="pagination">
-            <li class="page-item pre"><a [ngClass]="disabledPagePre() ? 'page-link':'page-link disabled'" (click)="checkPre($event)"
-                    href="client/movies/Page/{{p*1 - 1}}"
-                    >Previous</a></li>
+            <li class="page-item pre"><a [ngClass]="disabledPagePre() ? 'page-link':'page-link disabled'"
+                    (click)="checkPre($event)" href="client/movies/Page/{{p*1 - 1}}">Previous</a></li>
 
             <li *ngFor="let p of totalPageArr" [class.disabledPage]="disabledPage" class="page-item page mx-4">
                 <a href="client/movies/Page/{{p}}">{{p}}</a>
             </li>
-            
-            <li class="page-item next"><a [ngClass]="disabledPageNext() ? 'page-link':'page-link disabled'" (click)="checkNext($event)"
-                    href="client/movies/Page/{{p*1 + 1}}"
-                    >Next</a></li>
+
+            <li class="page-item next"><a [ngClass]="disabledPageNext() ? 'page-link':'page-link disabled'"
+                    (click)="checkNext($event)" href="client/movies/Page/{{p*1 + 1}}">Next</a></li>
         </ul>
     </nav>
 </div>

@@ -1,12 +1,34 @@
 .navbar {
+  @font-face {
+    font-family: azonix;
+    src: url('../../../assets/images/Azonix.otf') format("opentype");
+  }
+  @font-face {
+    font-family: stanley;
+    src: url(../../../assets/images/Stanley.otf) format("opentype");
+  }
+  
   #navbarNav {
-    .logout {
-      cursor: pointer;
-    }
+    justify-content: center;
+  }
+  .logout {
+    cursor: pointer;
+  }
+  .nav_user{
+    display: flex;
+    justify-content: flex-end;
   }
 }
 .navbar-expand-lg {
-    position: fixed;
-    width: 100%;
-    z-index: 20;
+  position: fixed;
+  width: 100%;
+  z-index: 20;
+  .text {
+    font-family: azonix;
+    text-transform: uppercase;
+    color: rgb(48, 128, 128);
+    font-style: italic;
+    margin-bottom: 0;
+    cursor: pointer;
+  }
 }

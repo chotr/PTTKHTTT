@@ -47,6 +47,8 @@ export class DsGheComponent implements OnInit {
   soGheDaDat: number = 0;
   soGheConLai: number = 0;
   soGheDangDat: any[] = [];
+  giaVe: number = 0;
+
   bgColor = '#ffb100';
   bgColor1 = '#6c757d';
   bgColor2 = '#f8f9fa';
@@ -69,10 +71,13 @@ export class DsGheComponent implements OnInit {
       this.soGheDaDat++;
       this.soGheConLai--;
       this.soGheDangDat.push(ghe);
+      this.giaVe = this.soGheDaDat*100;
       console.log(this.soGheDangDat);
     } else {
       this.soGheDaDat--;
       this.soGheConLai++;
+      this.giaVe = this.soGheDaDat*100;
+
       for (let i in this.soGheDangDat) {
         if (this.soGheDangDat[i] === ghe) {
           this.soGheDangDat.splice(parseInt(i), 1);
