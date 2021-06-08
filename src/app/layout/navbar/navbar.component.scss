@@ -17,6 +17,16 @@
   .nav_user{
     display: flex;
     justify-content: flex-end;
+    .dropdown-menu{
+      right: 10%;
+      left: 45%
+    }
+  }
+  .btn{
+    background-color: #e76464;
+    &:focus{
+      box-shadow: none;
+    }
   }
 }
 .navbar-expand-lg {
