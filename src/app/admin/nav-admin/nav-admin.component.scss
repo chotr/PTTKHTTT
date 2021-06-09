@@ -1,0 +1,23 @@
+.nav_admin {
+  position: relative;
+  height: 70px;
+  &::after {
+    content: "";
+    height: 1px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: black;
+    position: absolute;
+  }
+  .path {
+    display: flex;
+    align-items: center;
+    span {
+      font-size: 20px;
+      color: #767676;
+      cursor: context-menu;
+    }
+  }
+}
