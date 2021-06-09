@@ -8,11 +8,7 @@ import { DayThreeComponent } from './lesson/day-three/day-three.component';
 import { DayTwoComponent } from './lesson/day-two/day-two.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { DeactiveGuard } from './provider/guards/deactive.guard';
-import { LoginAugthGuard } from './provider/guards/login-augth.guard';
-import {LoginComponent} from './provider/login/login.component';
 import { ProviderModule } from './provider/provider.module';
-import { SignUpComponent } from './provider/sign-up/sign-up.component';
 
 const routes: Routes = [
  
@@ -42,22 +38,15 @@ const routes: Routes = [
     loadChildren: () => ClientModule,
   },
   {
-    path: '',
+    path: 'client/home',
+    // redirectTo: '/client',
     component: HomeComponent,
   },
-  {
-    path:'login',
-    component: LoginComponent,
-    canActivate:[LoginAugthGuard]
-    
+  { 
+    path: '',
+    loadChildren: () => ClientModule,
   },
-  {
-    path:'sign-up',
-    component: SignUpComponent,
-    canDeactivate: [DeactiveGuard],
-    canActivate: [LoginAugthGuard]
-    
-  },
+
 
   {
     path: '**',

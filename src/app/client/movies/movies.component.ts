@@ -104,4 +104,7 @@ export class MoviesComponent implements OnInit {
       return true;
     }
   }
+  navigateTo(p: any){
+    this.router.navigate(['client/movies/Page', p])
+  }
 }

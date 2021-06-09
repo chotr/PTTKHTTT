@@ -11,7 +11,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { NavbarComponent } from './layout/navbar/navbar.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './provider/guards/jwt.interceptor';
 import { DialogComponent } from './share/dialog/dialog.component';
@@ -22,7 +21,6 @@ import { JwPaginationModule } from 'jw-angular-pagination';
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    NavbarComponent,
     DialogComponent,
   ],
   imports: [

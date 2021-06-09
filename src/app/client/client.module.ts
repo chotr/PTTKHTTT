@@ -11,13 +11,18 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import { LayoutComponent } from './layout/layout.component';
 import { HomeComponent } from './home/home.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { UserComponent } from './user/user.component';
 import { LoginAugthGuard } from '../provider/guards/login-augth.guard';
 import { UserAcessGuard } from '../provider/guards/user-acess.guard';
 import { DsGheComponent } from './quan-tri-ghe/ds-ghe/ds-ghe.component';
-
+import { MaterialModule } from '../material/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { DeactiveGuard } from '../provider/guards/deactive.guard';
+import { NavbarComponent } from '../layout/navbar/navbar.component';
 
 const routes = [
   {
@@ -38,15 +43,27 @@ const routes = [
         component: DsGheComponent,
         canActivate: [UserAcessGuard],
       },
-      
-      
       {
-        path: 'movies/Page/'+':page',
+        path: 'login',
+        component: LoginComponent,
+        // canActivate: [UserAcessGuard],
+        canActivate:[LoginAugthGuard]
+      },
+
+      {
+        path: 'sign-up',
+        component: SignUpComponent,
+        canDeactivate: [DeactiveGuard],
+        canActivate: [LoginAugthGuard],
+      },
+
+      {
+        path: 'movies/Page/' + ':page',
         component: MoviesComponent,
       },
       {
         path: 'movies/Page',
-        redirectTo: 'movies/Page/1'
+        redirectTo: 'movies/Page/1',
       },
       {
         path: 'detail-movie/',
@@ -59,7 +76,7 @@ const routes = [
       {
         path: '',
         redirectTo: 'home',
-      },   
+      },
       { path: '**', component: PageNotFoundComponent },
     ],
   },
@@ -74,6 +91,9 @@ const routes = [
     LayoutComponent,
     HomeComponent,
     UserComponent,
+    LoginComponent,
+    SignUpComponent,
+    NavbarComponent,
   ],
   imports: [
     CommonModule,
@@ -82,7 +102,10 @@ const routes = [
     NgxPaginationModule,
     JwPaginationModule,
     NgbModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     // PipesModule
   ],
   exports: [ClientComponent, HomeComponent],

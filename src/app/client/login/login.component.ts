@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  FormGroup,
   FormControl,
   Validators,
   AbstractControl,
+  FormGroup,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AccountService } from '../services/account.service';
+import { AccountService } from 'src/app/provider/services/account.service';
 
 @Component({
   selector: 'app-login',
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       if (res) {
         localStorage.setItem('account', JSON.stringify(res));
         window.location.reload();
-      }  
+      }
     });
   }
 
@@ -45,6 +45,6 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('account');
   }
   navigateTo() {
-    this.router.navigate(['/sign-up']);
+    this.router.navigate(['/client/sign-up']);
   }
 }

@@ -4,6 +4,10 @@ import { AdminComponent } from './admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from '../provider/guards/auth.guard';
+import { NavbarAdminComponent } from './layout/navbar-admin/navbar-admin.component';
+import { UserManagementComponent } from './user-management/user-management.component';
+import { MovieManagementComponent } from './movie-management/movie-management.component';
+import { ShowtimesManagementComponent } from './showtimes-management/showtimes-management.component';
 
 const routes = [
   {
@@ -16,6 +20,10 @@ const routes = [
         component: DashboardComponent,
       },
       {
+        path: 'user-management',
+        component: UserManagementComponent,
+      },
+      {
         path: '',
         redirectTo: '/admin/dashboard',
       }
@@ -24,7 +32,7 @@ const routes = [
 ];
 
 @NgModule({
-  declarations: [AdminComponent, DashboardComponent],
+  declarations: [AdminComponent, DashboardComponent, NavbarAdminComponent, UserManagementComponent, MovieManagementComponent, ShowtimesManagementComponent],
   imports: [CommonModule, RouterModule.forChild(routes)],
 })
 export class AdminModule {}
