@@ -28,10 +28,23 @@ export class AccountService {
       })
     );
   }
-  updateApi(data: any): Observable<any>{
+  updateApi(data: any): Observable<any> {
     const api =
       'https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung';
     return this.httpClient.post(api, data).pipe(
+      tap(),
+      catchError((err) => {
+        return this.handleError(err);
+      })
+    );
+  }
+  listUser(page: any, numPerPage: any): Observable<any> {
+    const api =
+      'https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=GP09&soTrang=' +
+      page +
+      '&soPhanTuTrenTrang=' +
+      numPerPage;
+    return this.httpClient.get(api).pipe(
       tap(),
       catchError((err) => {
         return this.handleError(err);

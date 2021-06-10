@@ -28,6 +28,11 @@
       box-shadow: none;
     }
   }
+  .navbar-brand{
+    &:focus{
+      outline: none;
+    }
+  }
 }
 .navbar-expand-lg {
   position: fixed;

@@ -9,7 +9,7 @@ import { filter } from 'rxjs/operators';
 })
 export class NavAdminComponent implements OnInit {
   title: any;
-  path: any;
+  path: any = 'Bảng điều khiển';
 
   constructor(private router: Router) {
     router.events
@@ -25,7 +25,7 @@ export class NavAdminComponent implements OnInit {
           this.path = 'Quản lý người dùng';
         }
         if (this.title === 'dashboard') {
-          this.path = 'Dashboard';
+          this.path = 'Bảng điều khiển';
         }
         if (this.title === 'showtimes-management') {
           this.path = 'Quản lý lịch chiếu';

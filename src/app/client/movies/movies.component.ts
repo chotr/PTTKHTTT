@@ -57,18 +57,7 @@ export class MoviesComponent implements OnInit {
           this.totalPage = res.totalPages;
           for (let i = 1; i <= this.totalPage; i++) {
             this.totalPageArr.push(i);
-            // console.log((page = i ? true : false));
-            // if (i === page ) {
-            //   this.disabledPage = true;
-              
-            // } else this.disabledPage = false;
-          }
-
-          // if (page === this.p) {
-          //   this.disabledPage = true;
-          // } else this.disabledPage = false;
-
-          
+          }         
         }
         console.log(page);
         

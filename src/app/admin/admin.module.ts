@@ -25,6 +25,11 @@ const routes = [
         component: UserManagementComponent,
       },
       {
+        path: 'user-management/:page',
+        component: UserManagementComponent,
+      },
+    
+      {
         path: 'movie-management',
         component: MovieManagementComponent,
       },
