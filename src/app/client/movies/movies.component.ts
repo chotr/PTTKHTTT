@@ -58,10 +58,10 @@ export class MoviesComponent implements OnInit {
           this.totalPage = res.totalPages;
           for (let i = 1; i <= this.totalPage; i++) {
             this.totalPageArr.push(i);
-          }         
+          }
         }
         console.log(page);
-        
+
       });
   }
   checkPre = (event) => {
