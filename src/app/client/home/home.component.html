@@ -1,23 +1,26 @@
 <div class="home">
-    <!-- <div class="bg_page">
+  <!-- <div class="bg_page">
         <img src="../../../assets/images/banner.jpg" alt="">
         <div class="bg-blurr"></div>
     </div> -->
-    <div class="Carousel">Carousel</div>
-    <div class="list_movie">
-        <p>Danh sách</p>
-        <div class="list_movie_home">
-            <div class="card_movie container">
-                <div class="row">
-                    <div class="col-sm-3" *ngFor="let film of listMovie.slice(0, 8)">
-                        <app-card-movie [movie]="film"></app-card-movie>
-                    </div>
+  <div class="Carousel">Carousel</div>
+  <div class="list_movie">
+    <p>Danh sách</p>
+    <div class="list_movie_home">
+      <div class="card_movie container">
+        <div class="row">
+          <div class="col-sm-3" *ngFor="let film of listMovie.slice(0,8)">
+            <app-card-movie [movie]="film"></app-card-movie>
+          </div>
 
-                </div>
-            </div>
         </div>
-        <div class="more_movie">
-            <button type="button" (click)="navigateTo()" class="btn btn-success more ">Xem thêm...</button>
-        </div>
+      </div>
     </div>
+    <div class="more_movie">
+      <button type="button" (click)="navigateTo()" class="btn btn-success more ">Xem thêm...</button>
+    </div>
+    <div class="cinema container my-5 py-5 bg-dark">
+        <app-cinemas [listCinema]="listCinema" [listCRP]="listCRP" (newItem)="ChangeMaCumRap($event)"></app-cinemas>
+        <!-- [listCumRap]="listCumRap"  -->
+  </div>
 </div>

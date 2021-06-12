@@ -23,6 +23,8 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { DeactiveGuard } from '../provider/guards/deactive.guard';
 import { NavbarComponent } from '../layout/navbar/navbar.component';
+import { CinemasComponent } from './cinemas/cinemas.component';
+
 
 const routes = [
   {
@@ -94,6 +96,8 @@ const routes = [
     LoginComponent,
     SignUpComponent,
     NavbarComponent,
+    CinemasComponent,
+
   ],
   imports: [
     CommonModule,
