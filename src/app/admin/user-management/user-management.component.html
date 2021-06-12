@@ -1,44 +1,114 @@
 <div class="user_managemnet container">
-    <div class="add_user">
-        <button class="btn btn-primary my-4">Thêm tài khoản</button>
-    </div>
-    <table class="table table-hover">
-        <thead class="thead-dark">
-            <tr>
-                <th>Tài khoản</th>
-                <th>Họ tên</th>
-                <th>Email</th>
-                <th>Số điện thoại</th>
-                <th>Loại tài khoản</th>
-                <th>Thao tác</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let user of users">
-                <td>{{user.taiKhoan}}</td>
-                <td>{{user.hoTen}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.soDt}}</td>
-                <td>{{user.maLoaiNguoiDung}}</td>
-                <td>
-                    <button class="btn btn-success mr-2">Sửa</button>
-                    <button class="btn btn-danger">Xóa</button>
-                </td>
+   <div class="add_user">
+      <button type="button" class="btn btn-primary my-4" data-toggle="modal" data-target="#exampleModal">Thêm tài
+         khoản</button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-body">
+                  <form #signUpForm="ngForm" class="container" (ngSubmit)="signUp(signUpForm)">
+                     <div class="form_register">
+                        <div class="form-group">
+                           <span class="form_cpn">Tài khoản:</span>
+                           <input class="form-control" #accountControl="ngModel" name="account" ngModel required
+                              minlength="4" />
+                           <div class="alert alert-danger" *ngIf="accountControl.touched &&accountControl.errors">
+                              <span *ngIf="accountControl.errors.required" class="text text-danger">
+                                 Tài khoản không được rổng !
+                              </span>
+                              <span *ngIf="accountControl.errors.minlength" class="text text-danger">
+                                 Vui lòng nhập hơn 4 ký tự !
+                              </span>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <span class="form_cpn">Mật khẩu:</span>
+                           <input class="form-control" type="password" name="password" ngModel required />
+                        </div>
+                        <div class="form-group">
+                           <span class="form_cpn">Email:</span>
+                           <input class="form-control" #emailControl="ngModel" autocomplete="new-email" name="email" ngModel required
+                              pattern="regexEmail" />
+                           <div class="alert alert-danger" *ngIf="emailControl.touched && emailControl.errors">
+                              <span *ngIf="emailControl.errors.required" class="text text-danger">
+                                 Email không được rổng !
+                              </span>
+                              <span *ngIf="emailControl.errors.pattern" class="text text-danger">
+                                 Vui lòng nhập đúng định dạng email!
+                              </span>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <span class="form_cpn">Số điện thoại:</span>
+                           <input class="form-control" name="phone" ngModel required />
+                        </div>
+                        <div class="form-group">
+                           <span class="form_cpn">Họ tên:</span>
+                           <input class="form-control" name="name" ngModel required />
+                        </div>
+                        <div class="form-group">
+                           <span class="form_cpn">Loại người dùng:</span>
+                           <select class="form-control" name="state" ngModel>
+                              <option value="" disabled>Chọn...</option>
+                              <option *ngFor="let state of states" [ngValue]="state">
+                                 {{ state.abbrev }}
+                              </option>
+                           </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary mr-2">Cập nhật</button>
+                        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <table class="table table-hover">
+      <thead class="thead-dark">
+         <tr>
+            <th>Tài khoản</th>
+            <th>Họ tên</th>
+            <th>Email</th>
+            <th>Số điện thoại</th>
+            <th>Loại tài khoản</th>
+            <th>Thao tác</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr *ngFor="let user of users">
+            <td>{{user.taiKhoan}}</td>
+            <td>{{user.hoTen}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.soDt}}</td>
+            <td>{{user.maLoaiNguoiDung}}</td>
+            <td>
+               <button #btnCapNhat 
+                  [attr.data-account]="user.taiKhoan" 
+                  [attr.data-hoTen]="user.hoTen"   
+                  [attr.data-email]="user.email" 
+                  [attr.data-phone]="user.soDt"
+                  [attr.data-maLoaiNguoiDung]="user.maLoaiNguoiDung" 
+                  (click)="update(btnCapNhat)" 
+                  type="button"
+                  class="btn btn-success mr-2" data-toggle="modal" data-target="#exampleModal">Chỉnh sửa</button>
+               <button class="btn btn-danger">Xóa</button>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+   <nav aria-label="Page navigation example py-4">
+      <ul class="pagination">
+         <li class="page-item pre "><a [ngClass]="disabledPagePre() ? 'page-link':'page-link disabled'"
+               (click)="checkPre($event)" href="admin/user-management/{{pageCurrent*1 - 1}}">Previous</a></li>
 
-            </tr>
-        </tbody>
-    </table>
-    <nav aria-label="Page navigation example py-4">
-        <ul class="pagination">
-            <li class="page-item pre "><a [ngClass]="disabledPagePre() ? 'page-link':'page-link disabled'"
-                    (click)="checkPre($event)" href="admin/user-management/{{pageCurrent*1 - 1}}">Previous</a></li>
+         <li *ngFor="let p of totalPageArr" [class.disabledPage]="disabledPage" class="page-item page">
+            <a class="page-link" href="admin/user-management/{{p}}" routerLinkActive="active">{{p}}</a>
+         </li>
 
-            <li *ngFor="let p of totalPageArr" [class.disabledPage]="disabledPage" class="page-item page">
-                <a class="page-link" href="admin/user-management/{{p}} " routerLinkActive="active">{{p}}</a>
-            </li>
-
-            <li class="page-item next"><a [ngClass]="disabledPageNext() ? 'page-link':'page-link disabled'"
-                    (click)="checkNext($event)" href="admin/user-management/{{pageCurrent*1 + 1}}">Next</a></li>
-        </ul>
-    </nav>
+         <li class="page-item next"><a [ngClass]="disabledPageNext() ? 'page-link':'page-link disabled'"
+               (click)="checkNext($event)" href="admin/user-management/{{pageCurrent*1 + 1}}">Next</a></li>
+      </ul>
+   </nav>
 </div>

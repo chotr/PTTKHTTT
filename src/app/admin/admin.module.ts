@@ -9,6 +9,8 @@ import { UserManagementComponent } from './user-management/user-management.compo
 import { MovieManagementComponent } from './movie-management/movie-management.component';
 import { ShowtimesManagementComponent } from './showtimes-management/showtimes-management.component';
 import { NavAdminComponent } from './nav-admin/nav-admin.component';
+import { ProviderModule } from '../provider/provider.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes = [
   {
@@ -20,18 +22,22 @@ const routes = [
         path: 'dashboard',
         component: DashboardComponent,
       },
+
       {
-        path: 'user-management',
-        component: UserManagementComponent,
+        path: 'movie-management/:page',
+        component: MovieManagementComponent,
+      },
+      {
+        path: 'movie-management',
+        redirectTo: 'movie-management/1',
       },
       {
         path: 'user-management/:page',
         component: UserManagementComponent,
       },
-    
       {
-        path: 'movie-management',
-        component: MovieManagementComponent,
+        path: 'user-management',
+        redirectTo: 'user-management/1',
       },
       {
         path: 'showtimes-management',
@@ -40,13 +46,27 @@ const routes = [
       {
         path: '',
         redirectTo: '/admin/dashboard',
-      }
+      },
     ],
   },
 ];
 
 @NgModule({
-  declarations: [AdminComponent, DashboardComponent, NavbarAdminComponent, UserManagementComponent, MovieManagementComponent, ShowtimesManagementComponent, NavAdminComponent],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  declarations: [
+    AdminComponent,
+    DashboardComponent,
+    NavbarAdminComponent,
+    UserManagementComponent,
+    MovieManagementComponent,
+    ShowtimesManagementComponent,
+    NavAdminComponent,
+  ],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    ProviderModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
 export class AdminModule {}

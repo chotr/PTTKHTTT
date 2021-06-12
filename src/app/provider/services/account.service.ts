@@ -52,6 +52,26 @@ export class AccountService {
     );
   }
 
+  addUsser(data: any): Observable<any> {
+    const api = 'https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThemNguoiDung';
+    return this.httpClient.post(api, data).pipe(
+      tap(),
+      catchError((err) => {
+        return this.handleError(err);
+      })
+    );
+  }
+ 
+  deleteUser(data: any): Observable<any> {
+    const api = ' https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung';
+    return this.httpClient.delete(api, data).pipe(
+      tap(),
+      catchError((err) => {
+        return this.handleError(err);
+      })
+    );
+  }
+
   handleError(error: any) {
     switch (error.status) {
       case 500:

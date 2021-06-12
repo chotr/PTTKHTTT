@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from 'src/app/provider/services/account.service';
 
@@ -8,6 +8,17 @@ import { AccountService } from 'src/app/provider/services/account.service';
   styleUrls: ['./user-management.component.scss'],
 })
 export class UserManagementComponent implements OnInit {
+  @ViewChild('signUpForm') signUpFormTag: any;
+
+  states = [
+    {name: 'KhachHang', abbrev: 'Khách hàng'},
+    {name: 'QuanTri', abbrev: 'Quản trị'},
+  ];
+
+  regexEmail =
+    '/^(([^<>()[].,;:s@"]+(.[^<>()[].,;:s@"]+)*)|(".+"))@(([^<>()[].,;:s@"]+.)+[^<>()[].,;:s@"]{2,})$/i';
+
+
   users = [];
   pageCurrent: any;
   numPerPage: number = 20;
@@ -20,6 +31,7 @@ export class UserManagementComponent implements OnInit {
   conditionNext: boolean;
   totalPageArr: number[] = [];
   public disabledPage: boolean;
+  public routerLinkVariable = '/admin/user-management';
 
   constructor(
     private accountService: AccountService,
@@ -90,7 +102,45 @@ export class UserManagementComponent implements OnInit {
       return true;
     }
   }
-  navigateTo(p: any){
-    this.router.navigate(['client/movies/Page', p])
+  signUp(form: any): void {
+    const { value } = form;
+    const signUp = {
+      taiKhoan: value.account,
+      matKhau: value.password,
+      email: value.email,
+      soDt: value.phone,
+      maNhom: 'GP09',
+      maLoaiNguoiDung:value.state.name,
+      hoTen: value.name,
+    };
+    this.accountService.addUsser(signUp).subscribe((res) => {
+      if (res) {
+        alert('Thành công');
+      this.signUpFormTag.reset();
+      }
+    });
+  }
+  ngAfterViewInit(): void {
+    console.log(this.signUpFormTag);
+  }
+  
+  update(data){
+    let taiKhoan = data.getAttribute('data-account')
+    let hoTen = data.getAttribute('data-hoTen')
+    let email = data.getAttribute('data-email')
+    let soDt = data.getAttribute('data-phone')
+    let maLoaiNguoiDung = data.getAttribute('data-maLoaiNguoiDung')
+    this.signUpFormTag.setValue({
+      taiKhoan: taiKhoan,
+      email: email,
+      soDt: soDt,
+      maLoaiNguoiDung:maLoaiNguoiDung,
+      hoTen: hoTen,
+
+    })
+    console.log(this.signUpFormTag.value)
+
+
+
   }
 }

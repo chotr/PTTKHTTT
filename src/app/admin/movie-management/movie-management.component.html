@@ -1,1 +1,42 @@
-<p>movie-management works!</p>
+<div class="movie_management container">
+    <div class="add_movie"></div>
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Hình ảnh</th>
+                <th>Tên phim</th>
+                <th>Mô tả</th>
+                <th>Trailer</th>
+                <th>Ngày khởi chiếu</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let film of listMovie">
+                <td><img [src]="film.hinhAnh" width="60px" alt=""></td>
+                <td>{{film.tenPhim}}</td>
+                <td>{{film.moTa | shortCut: 50}}</td>
+                <td>{{film.trailer}}</td>
+                <td>{{film.ngayKhoiChieu| date : 'dd/MM/yyyy HH:mm:ss'}}</td>
+                <td>
+                    <button type="button" class="btn btn-success mr-2" data-toggle="modal"
+                        data-target="#exampleModal">Chỉnh sửa</button>
+                    <button class="btn btn-danger">Xóa</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item pre"><a [ngClass]="disabledPagePre() ? 'page-link':'page-link disabled'"
+                    (click)="checkPre($event)" href="admin/movie-management/{{p*1 - 1}}">Previous</a></li>
+
+            <li *ngFor="let p of totalPageArr" [class.disabledPage]="disabledPage" class="page-item page">
+                <a class="page-link" href="admin/movie-management/{{p}}" routerLinkActive="active">{{p}}</a>
+            </li>
+
+            <li class="page-item next"><a [ngClass]="disabledPageNext() ? 'page-link':'page-link disabled'"
+                    (click)="checkNext($event)" href="admin/movie-management/{{p*1 + 1}}">Next</a></li>
+        </ul>
+    </nav>
+</div>

@@ -21,6 +21,7 @@ export class MoviesComponent implements OnInit {
   conditionNext: boolean;
   totalPageArr: number[] = [];
   public disabledPage: boolean;
+  public routerLinkVariable = "client/movies/Page";
 
   constructor(
     private movieService: MovieService,
@@ -93,7 +94,7 @@ export class MoviesComponent implements OnInit {
       return true;
     }
   }
-  navigateTo(p: any){
-    this.router.navigate(['client/movies/Page', p])
-  }
+  // navigateTo(p: any){
+  //   this.router.navigate(['client/movies/Page', p])
+  // }
 }
