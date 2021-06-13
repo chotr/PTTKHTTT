@@ -39,6 +39,7 @@ export class DetailMovieComponent implements OnInit {
     this.movieSer.getDetailMovie(idMovie).subscribe((res) => {
       if (res) {
         this.detailMovie = res;
+        console.log(this.detailMovie)
         let trailer = this.detailMovie.trailer;
         this.url = trailer
       }

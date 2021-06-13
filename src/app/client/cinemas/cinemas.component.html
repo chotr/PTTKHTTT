@@ -8,36 +8,36 @@
   </div>
   <div class="col-3">
     <div div class="text-white d-flex mb-3" *ngFor="let cr of listCRP" style="border-bottom: 2px solid red;">
-      <div class="img">
-        <img src="https://s3img.vcdn.vn/123phim/2021/01/bhd-star-bitexco-16105952137769.png" width="50px" height="50px">
-      </div>
-      <div class="text">
-        <p>{{cr.tenCumRap}}</p>
-        <span>{{cr.diaChi| shortCut: 20}}</span>
-        <p> <a href="#"> [Chi tiết]</a></p>
+      <div class="content" (click)="layLichChieu(cr)">
+        <div class="img">
+          <img src="https://s3img.vcdn.vn/123phim/2021/01/bhd-star-bitexco-16105952137769.png" width="50px"
+            height="50px">
+        </div>
+        <div class="text">
+          <p>{{cr.tenCumRap}}</p>
+          <span>{{cr.diaChi| shortCut: 20}}</span>
+          <p> <a href="#"> [Chi tiết]</a></p>
+        </div>
       </div>
 
     </div>
   </div>
   <div class="col-6">
-      <div class="itemPhim mb-2 text-white" *ngFor="let phim of listPhim; let i = index">
-        <div class="top" href='#demo' data-toggle="collapse">
-          <img [src]="phim.hinhAnh" alt="" width="70px" height="70px">
-          <span >{{phim.tenPhim}}</span>
-          <p>120 phút - TIX 8.6 - IMDb 0</p>
-          <p>{{phim.lstLichChieuTheoPhim[0].ngayChieuGioChieu }}</p>
-          <button class="btn btn-info">{{gioChieu}} ~ {{gioChieu}} </button>
-          
-        </div>
-        <div id='demo1' class="collapse">
-            <p>2D Digital</p>
-            <p>Lorem ipsum, dolor sit ameolestias ltium eatibus ipspernatur delectus enim doloremque?</p>
-        </div>
+    <div class="itemPhim mb-2 text-white" *ngFor="let phim of listPhim; let i = index">
+      <div class="top" href='#demo' data-toggle="collapse">
+        <img [src]="phim.hinhAnh" alt="" width="70px" height="70px">
+        <span>{{phim.tenPhim}}</span>
+        <p>120 phút - TIX 8.6 - IMDb 0</p>
+        <p>{{phim.lstLichChieuTheoPhim[0].ngayChieuGioChieu }}</p>
+        <button class="btn btn-info">{{gioChieu}} ~ {{gioChieu}} </button>
+
       </div>
+      <div id='demo1' class="collapse">
+        <p>2D Digital</p>
+        <p>Lorem ipsum, dolor sit ameolestias ltium eatibus ipspernatur delectus enim doloremque?</p>
+      </div>
+    </div>
   </div>
 
 
 </div>
-
-
-

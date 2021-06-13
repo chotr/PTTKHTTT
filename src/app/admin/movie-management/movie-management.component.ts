@@ -56,7 +56,7 @@ export class MovieManagementComponent implements OnInit {
           this.p = res.currentPage;
           this.total = res.totalCount;
           this.listMovie = res.items;
-          console.log(this.listMovie)
+          // console.log(this.listMovie)
           this.totalPage = res.totalPages;
           for (let i = 1; i <= this.totalPage; i++) {
             this.totalPageArr.push(i);

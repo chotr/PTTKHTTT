@@ -4,44 +4,57 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'app-cinemas',
   templateUrl: './cinemas.component.html',
-  styleUrls: ['./cinemas.component.scss']
+  styleUrls: ['./cinemas.component.scss'],
 })
 export class CinemasComponent implements OnInit {
+  // @Input() listCinema: any;
+  // @Input() listCRP: any;
+  listMovie: any[] = [];
+  listCinema: any[] = [];
+  listCRP: any[] = [];
 
-  @Input() listCinema: any;
-  @Input() listCRP: any;
+  listCinemaArr = [];
+  maHeThongRap: any;
+
   listCumRap: any;
-  listPhim: any;
+  listPhim=[];
   listLichChieu: any;
   gioChieu: any;
+  maCumRapPhim = 'BHDStar';
+  arrAbc = [];
 
   @Output() newItem = new EventEmitter<string>();
 
-  constructor(private cinemaSer: CinemasService) { }
+  constructor(private cinemaSer: CinemasService) {}
 
   ngOnInit(): void {
-    this.cinemaSer.layThongtinHeThongLichChieu("BHDStar").subscribe((res)=> {
-      // console.log(res);
-      // this.listCumRap = res[0].lstCumRap;
-      // console.log(this.listCumRap);
-      this.listPhim = res[0].lstCumRap[0].danhSachPhim;
-      console.log(this.listPhim);
-      this.gioChieu = this.listPhim[0].lstLichChieuTheoPhim[0].ngayChieuGioChieu.slice(14,19) ;
-   
-      // lstLichChieuTheoPhim[0].ngayChieuGioChieu
-  })
-  this.cinemaSer.layThongtinLichChieu("1337").subscribe((res) => {
-   
-      // this.listLichChieu = res;
-      // console.log(this.listLichChieu);
-  })
-
+    this.cinemaSer.getCinemaInfor().subscribe((res) => {
+      this.listCinema = res;
+      this.maHeThongRap = res.maHeThongRap;
+      this.cinemaSer.getCinemaComplex(this.maCumRapPhim).subscribe((resu) => {
+        this.listCRP = resu;
+      });
+    });
+    this.getInfoShowTimes();
+  }
+  getInfoShowTimes() {
+    this.cinemaSer
+      .layThongtinHeThongLichChieu(this.maCumRapPhim)
+      .subscribe((res) => {
+        for (let i of res) {
+          for (let j of i.lstCumRap) {
+            this.listCRP = i.lstCumRap;
+            for (let phim of j.danhSachPhim) {
+              this.listPhim.push(phim);
+            }
+          }
+        }
+      });
   }
 
-  layThongTinRap(value: string){
-  //  console.log(value);
-   this.newItem.emit(value);
+  layThongTinRap(item: any) {
+    this.maCumRapPhim = item;
+    this.getInfoShowTimes();
   }
-
-
+  layLichChieu(evt) {}
 }

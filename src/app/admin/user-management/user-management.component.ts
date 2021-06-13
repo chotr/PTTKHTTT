@@ -138,7 +138,7 @@ export class UserManagementComponent implements OnInit {
       hoTen: hoTen,
 
     })
-    console.log(this.signUpFormTag.value)
+    // console.log(this.signUpFormTag.value)
 
 
 
