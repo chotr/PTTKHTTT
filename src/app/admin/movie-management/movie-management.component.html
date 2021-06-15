@@ -1,25 +1,50 @@
 <div class="movie_management container">
-    <div class="add_movie"></div>
+    <div class="add_movie">
+        <button type="button" (click)="resetForm()" class="btn btn-primary my-4" data-toggle="modal" data-target="#exampleModal">Thêm
+            phim</button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form #addMovieForm="ngForm" class="container">
+                            <app-form-add-movie [movie]="movie"></app-form-add-movie>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
     <table class="table table-hover">
         <thead class="thead-dark">
             <tr>
                 <th>Hình ảnh</th>
+                <th style="width:10%">Mã phim</th>
                 <th>Tên phim</th>
                 <th>Mô tả</th>
                 <th>Trailer</th>
-                <th>Ngày khởi chiếu</th>
-                <th>Thao tác</th>
+                <th style="width:12%">Ngày khởi chiếu</th>
+                <th style="width:17%">Thao tác</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let film of listMovie">
                 <td><img [src]="film.hinhAnh" width="60px" alt=""></td>
+                <td>{{film.maPhim}}</td>
                 <td>{{film.tenPhim}}</td>
-                <td>{{film.moTa | shortCut: 50}}</td>
-                <td>{{film.trailer}}</td>
+                <td>{{film.moTa | shortCut: 40}}</td>
+                <td>{{film.trailer| shortCut: 30}}</td>
                 <td>{{film.ngayKhoiChieu| date : 'dd/MM/yyyy HH:mm:ss'}}</td>
                 <td>
-                    <button type="button" class="btn btn-success mr-2" data-toggle="modal"
+                    <button #updateBtn 
+                    [attr.data-maPhim]="film.maPhim"
+                    [attr.data-tenPhim]="film.tenPhim"
+                    [attr.data-moTa]="film.moTa"
+                    [attr.data-trailer]="film.trailer"
+                    [attr.data-ngayKhoiChieu]="film.ngayKhoiChieu"
+                    [attr.data-biDanh]="film.biDanh"
+                    (click)="update(updateBtn)" type="button" class="btn btn-success mr-2" data-toggle="modal"
                         data-target="#exampleModal">Chỉnh sửa</button>
                     <button class="btn btn-danger">Xóa</button>
                 </td>

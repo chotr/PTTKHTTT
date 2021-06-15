@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NgStyleComponent } from './ng-style.component';
+import { FormAddMovieComponent } from './form-add-movie.component';
 
-describe('NgStyleComponent', () => {
-  let component: NgStyleComponent;
-  let fixture: ComponentFixture<NgStyleComponent>;
+describe('FormAddMovieComponent', () => {
+  let component: FormAddMovieComponent;
+  let fixture: ComponentFixture<FormAddMovieComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NgStyleComponent ]
+      declarations: [ FormAddMovieComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NgStyleComponent);
+    fixture = TestBed.createComponent(FormAddMovieComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

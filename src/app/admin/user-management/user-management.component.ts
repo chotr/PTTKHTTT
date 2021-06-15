@@ -1,4 +1,11 @@
-import { Component, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from 'src/app/provider/services/account.service';
 
@@ -7,17 +14,12 @@ import { AccountService } from 'src/app/provider/services/account.service';
   templateUrl: './user-management.component.html',
   styleUrls: ['./user-management.component.scss'],
 })
-export class UserManagementComponent implements OnInit {
-  @ViewChild('signUpForm') signUpFormTag: any;
-
-  states = [
-    {name: 'KhachHang', abbrev: 'Khách hàng'},
-    {name: 'QuanTri', abbrev: 'Quản trị'},
-  ];
+export class UserManagementComponent implements OnInit, AfterViewInit {
+  @ViewChild('signUpForm') signUpFormTag: NgForm;
+  @ViewChild('updateForm') updateForm: NgForm
 
   regexEmail =
     '/^(([^<>()[].,;:s@"]+(.[^<>()[].,;:s@"]+)*)|(".+"))@(([^<>()[].,;:s@"]+.)+[^<>()[].,;:s@"]{2,})$/i';
-
 
   users = [];
   pageCurrent: any;
@@ -33,6 +35,16 @@ export class UserManagementComponent implements OnInit {
   public disabledPage: boolean;
   public routerLinkVariable = '/admin/user-management';
 
+  user =  {
+    taiKhoan: '',
+    matKhau: '',
+    email: '',
+    soDt: '',
+    maNhom: 'GP09',
+    maLoaiNguoiDung: '',
+    hoTen: '',
+  };
+
   constructor(
     private accountService: AccountService,
     private router: Router,
@@ -46,7 +58,7 @@ export class UserManagementComponent implements OnInit {
     if (!this.pageCurrent) {
       this.getParamsFromUrl();
     }
-    this.getDataMovie(this.pageCurrent);
+    this.getDataUser(this.pageCurrent);
   }
   getParamsFromUrl() {
     this.activatedRoute.queryParams.subscribe((res) => {
@@ -57,13 +69,12 @@ export class UserManagementComponent implements OnInit {
       }
     });
   }
-  getDataMovie(page: any) {
+  getDataUser(page: any) {
     this.accountService.listUser(page, this.numPerPage).subscribe((res) => {
       if (res) {
         this.pageCurrent = res.currentPage;
         this.total = res.totalCount;
         this.users = res.items;
-        console.log(this.users);
 
         this.totalPage = res.totalPages;
         for (let i = 1; i <= this.totalPage; i++) {
@@ -110,37 +121,61 @@ export class UserManagementComponent implements OnInit {
       email: value.email,
       soDt: value.phone,
       maNhom: 'GP09',
-      maLoaiNguoiDung:value.state.name,
+      maLoaiNguoiDung: value.state.name,
       hoTen: value.name,
     };
     this.accountService.addUsser(signUp).subscribe((res) => {
       if (res) {
         alert('Thành công');
-      this.signUpFormTag.reset();
+        this.signUpFormTag.reset();
       }
     });
   }
-  ngAfterViewInit(): void {
-    console.log(this.signUpFormTag);
-  }
   
-  update(data){
-    let taiKhoan = data.getAttribute('data-account')
-    let hoTen = data.getAttribute('data-hoTen')
-    let email = data.getAttribute('data-email')
-    let soDt = data.getAttribute('data-phone')
-    let maLoaiNguoiDung = data.getAttribute('data-maLoaiNguoiDung')
-    this.signUpFormTag.setValue({
-      taiKhoan: taiKhoan,
-      email: email,
-      soDt: soDt,
-      maLoaiNguoiDung:maLoaiNguoiDung,
-      hoTen: hoTen,
-
-    })
-    // console.log(this.signUpFormTag.value)
+  ngAfterViewInit(): void {
+    console.log(this.updateForm);
+  }
+  update(data: any): void {
+    this.user = {
+      taiKhoan : data.getAttribute('data-account'),
+      matKhau: data.getAttribute('data-password'),
+      email: data.getAttribute('data-email'),
+      soDt: data.getAttribute('data-phone'),
+      maLoaiNguoiDung: data.getAttribute('data-maLoaiNguoiDung'),
+      maNhom: 'GP09',
+      hoTen: data.getAttribute('data-hoTen'),
+    }
 
 
+  }
+  updateSubmit(form: any): void {
+    const { value } = form;
+    const update = {
+      taiKhoan: value.account,
+      matKhau: value.password,
+      email: value.email,
+      soDt: value.phone,
+      maNhom: 'GP09',
+      maLoaiNguoiDung: this.user.maLoaiNguoiDung,
+      hoTen: value.name,
+    };
+    this.accountService.updateApi(update).subscribe((res) => {
+      if (res) {
+        alert('Thành công');
+      }
+    });
+  }
 
+  addUser(){
+    for (let index in this.user) {
+      this.user[index] = null;
+    }
+    this.user.maNhom = "GP09"
+  }
+
+  delete(user: any) {
+    this.accountService.deleteUser(user).subscribe((res) => {
+      console.log(res);
+    });
   }
 }

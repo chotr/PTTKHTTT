@@ -1,14 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from 'src/app/client/services/movie.service';
 
 @Component({
   selector: 'app-movie-management',
   templateUrl: './movie-management.component.html',
-  styleUrls: ['./movie-management.component.scss']
+  styleUrls: ['./movie-management.component.scss'],
 })
 export class MovieManagementComponent implements OnInit {
+  @ViewChild('addMovieForm') addMovieFormTag: NgForm;
 
   listMovie: any[] = [];
   public p: any;
@@ -21,8 +23,18 @@ export class MovieManagementComponent implements OnInit {
   conditionPre: boolean;
   conditionNext: boolean;
   totalPageArr: number[] = [];
+  movie = {
+    maPhim: '',
+    tenPhim: '',
+    biDanh: '',
+    trailer: '',
+    hinhAnh: {},
+    moTa: '',
+    maNhom: 'GP09',
+    ngayKhoiChieu: '',
+    danhGia: 0,
+  };
   public disabledPage: boolean;
-
 
   constructor(
     private movieService: MovieService,
@@ -60,11 +72,45 @@ export class MovieManagementComponent implements OnInit {
           this.totalPage = res.totalPages;
           for (let i = 1; i <= this.totalPage; i++) {
             this.totalPageArr.push(i);
-          }         
+          }
         }
-        
       });
   }
+  addMovie(form: any) {
+    const { value } = form;
+    const addMovie = {
+      maPhim: value.maPhim,
+      tenPhim: '',
+      biDanh: '',
+      trailer: '',
+      hinhAnh: {},
+      moTa: '',
+      maNhom: 'GP09',
+      ngayKhoiChieu: '',
+      danhGia: 0,
+    };
+  }
+  update(data) {
+    this.movie = {
+      maPhim: data.getAttribute('data-maPhim'),
+      tenPhim: data.getAttribute('data-tenPhim'),
+      biDanh: data.getAttribute('data-biDanh'),
+      trailer: data.getAttribute('data-trailer'),
+      hinhAnh: {},
+      moTa: data.getAttribute('data-moTa'),
+      maNhom: 'GP09',
+      ngayKhoiChieu: data.getAttribute('data-ngayKhoiChieu'),
+      danhGia: 0,
+    }
+  }
+  resetForm() {
+    for (let index in this.movie) {
+      this.movie[index] = null;
+    }
+    this.movie.maNhom = "GP09"
+    console.log(this.movie)
+  }
+
   checkPre = (event) => {
     if (this.p === 1) {
       if (!this.isReady) {

@@ -1,9 +1,0 @@
-<div class="card">
-    <img class="card-img-top" [src]="film.imgUrl" alt="" />
-    <div class="card-body">
-        <h4 class="card-title">{{film.name}}</h4>
-        <p class="card-text">{{film.details}}</p>
-        <p #abc class="card-text">Liked: {{likeInLiked}}</p>
-    </div>
-    <button  (click)="like()" [ngClass]="action =='like' ? 'btn-primary': 'btn-danger'"> {{action}}</button>
-</div>

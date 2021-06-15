@@ -6,7 +6,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule, SETTINGS } from '@angular/fire/firestore';
 import { AppComponent } from './app.component';
-import { LessonModule } from './lesson/lesson.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,7 +24,6 @@ import { JwPaginationModule } from 'jw-angular-pagination';
   ],
   imports: [
     BrowserModule,
-    LessonModule,
     BrowserAnimationsModule,
     MaterialModule,
     AppRoutingModule,

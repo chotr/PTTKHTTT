@@ -11,6 +11,8 @@ import { ShowtimesManagementComponent } from './showtimes-management/showtimes-m
 import { NavAdminComponent } from './nav-admin/nav-admin.component';
 import { ProviderModule } from '../provider/provider.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormComponent } from './layout/form/form.component';
+import { FormAddMovieComponent } from './layout/form-add-movie/form-add-movie.component';
 
 const routes = [
   {
@@ -60,6 +62,8 @@ const routes = [
     MovieManagementComponent,
     ShowtimesManagementComponent,
     NavAdminComponent,
+    FormComponent,
+    FormAddMovieComponent,
   ],
   imports: [
     CommonModule,

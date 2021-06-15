@@ -7,8 +7,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./cinemas.component.scss'],
 })
 export class CinemasComponent implements OnInit {
-  // @Input() listCinema: any;
-  // @Input() listCRP: any;
   listMovie: any[] = [];
   listCinema: any[] = [];
   listCRP: any[] = [];
@@ -17,7 +15,7 @@ export class CinemasComponent implements OnInit {
   maHeThongRap: any;
 
   listCumRap: any;
-  listPhim=[];
+  listPhim = [];
   listLichChieu: any;
   gioChieu: any;
   maCumRapPhim = 'BHDStar';
@@ -42,11 +40,18 @@ export class CinemasComponent implements OnInit {
       .layThongtinHeThongLichChieu(this.maCumRapPhim)
       .subscribe((res) => {
         for (let i of res) {
+          // console.log(i)
           for (let j of i.lstCumRap) {
             this.listCRP = i.lstCumRap;
-            for (let phim of j.danhSachPhim) {
-              this.listPhim.push(phim);
+            // console.log(j);
+            if (j.maCumRap === this.listCRP) {
+              for (let phim of j.danhSachPhim) {
+                this.listPhim.push(phim);
+                console.log(this.listPhim);
+              }
             }
+
+            
           }
         }
       });
@@ -57,4 +62,5 @@ export class CinemasComponent implements OnInit {
     this.getInfoShowTimes();
   }
   layLichChieu(evt) {}
+  clg;
 }

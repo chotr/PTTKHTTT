@@ -1,0 +1,32 @@
+<div class="form_add_movie">
+    <div class="form-group">
+        <span class="form_cpn">Mã phim:</span>
+        <input class="form-control" name="maPhim" [(ngModel)]="movie.maPhim" required />
+    </div>
+    <div class="form-group">
+        <span class="form_cpn">Tên phim:</span>
+        <input class="form-control" name="tenPhim" [(ngModel)]="movie.tenPhim" required />
+    </div>
+    <div class="form-group">
+        <span class="form_cpn">Bí danh:</span>
+        <input class="form-control" name="biDanh" [(ngModel)]="movie.biDanh" required />
+    </div>
+    <div class="form-group">
+        <span class="form_cpn">Trailer:</span>
+        <input class="form-control" name="trailer" [(ngModel)]="movie.trailer" required />
+    </div>
+    <div class="form-group">
+        <span class="form_cpn">Hình ảnh:</span>
+        <input class="form-control-file" type="file" name="hinhAnh" ngModel required />
+    </div>
+    <div class="form-group">
+        <span class="form_cpn">Mô tả:</span>
+        <input class="form-control" name="moTa" [(ngModel)]="movie.moTa" required />
+    </div>
+    <div class="form-group">
+        <span class="form_cpn">Ngày khởi chiếu:</span>
+        <input class="form-control" name="ngayKhoiChieu" [(ngModel)]="movie.ngayKhoiChieu" required placeholder="dd/MM/yyyyThh:mm:ss" />
+    </div>
+    <button type="submit" class="btn btn-primary mr-2">Cập nhật</button>
+    <button type="submit" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+</div>

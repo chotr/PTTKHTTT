@@ -1,0 +1,52 @@
+<div class="form_register">
+    <div class="form-group">
+        <span class="form_cpn">Tài khoản:</span>
+        <input class="form-control" #accountControl="ngModel" name="account" [(ngModel)]="user.taiKhoan" required
+            minlength="4" />
+        <div class="alert alert-danger" *ngIf="accountControl.touched &&accountControl.errors">
+            <span *ngIf="accountControl.errors.required" class="text text-danger">
+                Tài khoản không được rổng !
+            </span>
+            <span *ngIf="accountControl.errors.minlength" class="text text-danger">
+                Vui lòng nhập hơn 4 ký tự !
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <span class="form_cpn">Mật khẩu:</span>
+        <input class="form-control" #password="ngModel" type="password" name="password" [(ngModel)]="user.matKhau"
+            required />
+    </div>
+    <div class="form-group">
+        <span class="form_cpn">Email:</span>
+        <input class="form-control" #emailControl="ngModel" type="text" autocomplete="new-email" name="email"
+            [(ngModel)]="user.email" required pattern="regexEmail" />
+        <div class="alert alert-danger" *ngIf="emailControl.touched && emailControl.errors">
+            <span *ngIf="emailControl.errors.required" class="text text-danger">
+                Email không được rổng !
+            </span>
+            <span *ngIf="emailControl.errors.pattern" class="text text-danger">
+                Vui lòng nhập đúng định dạng email!
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <span class="form_cpn">Số điện thoại:</span>
+        <input class="form-control" name="phone" [(ngModel)]="user.soDt" required />
+    </div>
+    <div class="form-group">
+        <span class="form_cpn">Họ tên:</span>
+        <input class="form-control" name="name" [(ngModel)]="user.hoTen" required />
+    </div>
+    <div class="form-group">
+        <span class="form_cpn">Loại người dùng:</span>
+        <select class="custom-select mr-sm-2" name="maLoaiNguoiDung" [(ngModel)]="user.maLoaiNguoiDung" id="inlineFormCustomSelect">
+            <option disabled selected>Chọn...</option>
+            <option *ngFor="let state of states" [ngValue]="state">
+                {{ state.abbrev }}
+            </option>
+          </select>
+    </div>
+    <button type="submit" class="btn btn-primary mr-2">Cập nhật</button>
+    <button type="submit" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+</div>

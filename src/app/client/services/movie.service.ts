@@ -3,47 +3,12 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { tap, map, catchError } from 'rxjs/operators';
 
-
 @Injectable({
   providedIn: 'root',
 })
 export class MovieService {
   private data = new BehaviorSubject({});
   public movieModal = this.data.asObservable();
-  listFilm = [
-    {
-      id: '1',
-      name: 'Movie 1',
-      price: '500000',
-      details: 'test details',
-      imgUrl: '/assets/images/cart.png',
-      // totalLike: 0,
-    },
-    {
-      id: '2',
-      name: 'Movie 2',
-      price: '500000',
-      details: 'test details',
-      imgUrl: '/assets/images/cart.png',
-      // totalLike: 0,
-    },
-    {
-      id: '3',
-      name: 'Movie 3',
-      price: '500000',
-      details: 'test details',
-      imgUrl: '/assets/images/cart.png',
-      // totalLike: 0,
-    },
-    {
-      id: '4',
-      name: 'Movie 4',
-      price: '500000',
-      details: 'test details',
-      imgUrl: '/assets/images/cart.png',
-      // totalLike: 0,
-    },
-  ];
   public myArr: any[];
 
   constructor(private httpClient: HttpClient) {}
@@ -72,22 +37,29 @@ export class MovieService {
     );
   }
 
-  getMoviePagination(
-    pageCurrent: any,
-    numberItem: number
-  ): Observable<any> {
+  getMoviePagination(pageCurrent: any, numberItem: number): Observable<any> {
     const api =
       'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP09&soTrang=' +
       pageCurrent +
       '&soPhanTuTrenTrang=' +
       numberItem;
-      return this.httpClient.get(api).pipe(
-        tap(),
-        catchError((error) => {
-          return this.handleErr(error);
-        })
-      );
-      
+    return this.httpClient.get(api).pipe(
+      tap(),
+      catchError((error) => {
+        return this.handleErr(error);
+      })
+    );
+  }
+
+  addMovie(data: any): Observable<any> {
+    const api =
+      'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhimUploadHinh';
+    return this.httpClient.post(api, data).pipe(
+      tap(),
+      catchError((err) => {
+        return this.handleErr(err);
+      })
+    );
   }
   changeDataMovieModal(movie: any): void {
     this.data.next(movie);
@@ -101,8 +73,6 @@ export class MovieService {
     }
     return throwError(error);
   }
-
-
 }
 export interface ObjPhim {
   maPhim: number;
@@ -122,4 +92,3 @@ export interface ObjPhim {
 //   totalCount: number;
 //   items: ObjPhim[];
 // }
-

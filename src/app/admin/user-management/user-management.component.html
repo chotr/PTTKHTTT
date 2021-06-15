@@ -1,6 +1,6 @@
 <div class="user_managemnet container">
    <div class="add_user">
-      <button type="button" class="btn btn-primary my-4" data-toggle="modal" data-target="#exampleModal">Thêm tài
+      <button type="button" (click)="addUser()" class="btn btn-primary my-4" data-toggle="modal" data-target="#exampleModal">Thêm tài
          khoản</button>
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
@@ -8,57 +8,7 @@
             <div class="modal-content">
                <div class="modal-body">
                   <form #signUpForm="ngForm" class="container" (ngSubmit)="signUp(signUpForm)">
-                     <div class="form_register">
-                        <div class="form-group">
-                           <span class="form_cpn">Tài khoản:</span>
-                           <input class="form-control" #accountControl="ngModel" name="account" ngModel required
-                              minlength="4" />
-                           <div class="alert alert-danger" *ngIf="accountControl.touched &&accountControl.errors">
-                              <span *ngIf="accountControl.errors.required" class="text text-danger">
-                                 Tài khoản không được rổng !
-                              </span>
-                              <span *ngIf="accountControl.errors.minlength" class="text text-danger">
-                                 Vui lòng nhập hơn 4 ký tự !
-                              </span>
-                           </div>
-                        </div>
-                        <div class="form-group">
-                           <span class="form_cpn">Mật khẩu:</span>
-                           <input class="form-control" type="password" name="password" ngModel required />
-                        </div>
-                        <div class="form-group">
-                           <span class="form_cpn">Email:</span>
-                           <input class="form-control" #emailControl="ngModel" autocomplete="new-email" name="email" ngModel required
-                              pattern="regexEmail" />
-                           <div class="alert alert-danger" *ngIf="emailControl.touched && emailControl.errors">
-                              <span *ngIf="emailControl.errors.required" class="text text-danger">
-                                 Email không được rổng !
-                              </span>
-                              <span *ngIf="emailControl.errors.pattern" class="text text-danger">
-                                 Vui lòng nhập đúng định dạng email!
-                              </span>
-                           </div>
-                        </div>
-                        <div class="form-group">
-                           <span class="form_cpn">Số điện thoại:</span>
-                           <input class="form-control" name="phone" ngModel required />
-                        </div>
-                        <div class="form-group">
-                           <span class="form_cpn">Họ tên:</span>
-                           <input class="form-control" name="name" ngModel required />
-                        </div>
-                        <div class="form-group">
-                           <span class="form_cpn">Loại người dùng:</span>
-                           <select class="form-control" name="state" ngModel>
-                              <option value="" disabled>Chọn...</option>
-                              <option *ngFor="let state of states" [ngValue]="state">
-                                 {{ state.abbrev }}
-                              </option>
-                           </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary mr-2">Cập nhật</button>
-                        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
-                     </div>
+                     <app-form [user]="user"></app-form>
                   </form>
                </div>
             </div>
@@ -84,19 +34,26 @@
             <td>{{user.soDt}}</td>
             <td>{{user.maLoaiNguoiDung}}</td>
             <td>
-               <button #btnCapNhat 
-                  [attr.data-account]="user.taiKhoan" 
-                  [attr.data-hoTen]="user.hoTen"   
-                  [attr.data-email]="user.email" 
-                  [attr.data-phone]="user.soDt"
-                  [attr.data-maLoaiNguoiDung]="user.maLoaiNguoiDung" 
-                  (click)="update(btnCapNhat)" 
-                  type="button"
-                  class="btn btn-success mr-2" data-toggle="modal" data-target="#exampleModal">Chỉnh sửa</button>
+               <button #btnCapNhat [attr.data-account]="user.taiKhoan" [attr.data-hoTen]="user.hoTen"
+                  [attr.data-email]="user.email" [attr.data-phone]="user.soDt" [attr.data-password]="user.matKhau"
+                  [attr.data-maLoaiNguoiDung]="user.maLoaiNguoiDung" (click)="update(btnCapNhat)" type="button"
+                  class="btn btn-success mr-2" data-toggle="modal" data-target="#exampleModal1">Chỉnh sửa</button>
                <button class="btn btn-danger">Xóa</button>
             </td>
          </tr>
       </tbody>
+      <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+         aria-hidden="true">
+         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-body">
+                  <form #updateForm="ngForm" class="container" (ngSubmit)="updateSubmit(updateForm)">
+                     <app-form [user]="user"></app-form>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
    </table>
    <nav aria-label="Page navigation example py-4">
       <ul class="pagination">
