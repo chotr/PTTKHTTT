@@ -133,7 +133,7 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
   }
   
   ngAfterViewInit(): void {
-    console.log(this.updateForm);
+    console.log(this.signUpFormTag);
   }
   update(data: any): void {
     this.user = {

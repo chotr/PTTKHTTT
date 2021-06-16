@@ -7,7 +7,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <form #addMovieForm="ngForm" class="container">
+                        <form #addMovieForm="ngForm" (ngSubmit)="addMovie(addMovieForm)" class="container">
                             <app-form-add-movie [movie]="movie"></app-form-add-movie>
                         </form>
                     </div>

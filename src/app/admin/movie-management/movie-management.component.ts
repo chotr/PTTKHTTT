@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from 'src/app/client/services/movie.service';
@@ -9,7 +9,7 @@ import { MovieService } from 'src/app/client/services/movie.service';
   templateUrl: './movie-management.component.html',
   styleUrls: ['./movie-management.component.scss'],
 })
-export class MovieManagementComponent implements OnInit {
+export class MovieManagementComponent implements OnInit, AfterViewInit {
   @ViewChild('addMovieForm') addMovieFormTag: NgForm;
 
   listMovie: any[] = [];
@@ -51,6 +51,10 @@ export class MovieManagementComponent implements OnInit {
     this.getDataMovie(this.p);
   }
 
+  ngAfterViewInit(): void {
+    console.log(this.addMovieFormTag)
+  }
+
   getParamsFromUrl() {
     this.activatedRoute.queryParams.subscribe((res) => {
       if (res) {
@@ -80,15 +84,20 @@ export class MovieManagementComponent implements OnInit {
     const { value } = form;
     const addMovie = {
       maPhim: value.maPhim,
-      tenPhim: '',
-      biDanh: '',
-      trailer: '',
+      tenPhim: value.tenPhim,
+      biDanh: value.biDanh,
+      trailer: value.trailer,
       hinhAnh: {},
-      moTa: '',
+      moTa: value.moTa,
       maNhom: 'GP09',
-      ngayKhoiChieu: '',
+      ngayKhoiChieu: value.ngayKhoiChieu,
       danhGia: 0,
     };
+    this.movieService.addMovie(addMovie).subscribe(data => {
+      if (data) {
+        alert('Thành công')
+      }
+    });
   }
   update(data) {
     this.movie = {

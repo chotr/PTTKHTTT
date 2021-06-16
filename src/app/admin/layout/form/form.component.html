@@ -19,7 +19,7 @@
     </div>
     <div class="form-group">
         <span class="form_cpn">Email:</span>
-        <input class="form-control" #emailControl="ngModel" type="text" autocomplete="new-email" name="email"
+        <input class="form-control" #emailControl="ngModel" type="email" name="email"
             [(ngModel)]="user.email" required pattern="regexEmail" />
         <div class="alert alert-danger" *ngIf="emailControl.touched && emailControl.errors">
             <span *ngIf="emailControl.errors.required" class="text text-danger">
