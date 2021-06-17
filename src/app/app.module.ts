@@ -15,7 +15,7 @@ import { JwtInterceptor } from './provider/guards/jwt.interceptor';
 import { DialogComponent } from './share/dialog/dialog.component';
 import { QuanTriGheModule } from './client/quan-tri-ghe/quan-tri-ghe.module';
 import { JwPaginationModule } from 'jw-angular-pagination';
-
+import { DatePipe } from '@angular/common'
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +40,7 @@ import { JwPaginationModule } from 'jw-angular-pagination';
       multi: true,
     },
     AngularFirestore,
+    DatePipe
   ],
   bootstrap: [AppComponent],
 })

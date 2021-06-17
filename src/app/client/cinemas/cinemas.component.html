@@ -1,43 +1,66 @@
-<div class="row">
-  <div class="col-2 logo">
+<div class="row cinema  ">
+  <div class="col-2 cinema_Info">
     <ul>
-      <li *ngFor="let cinema of listCinema" class="mb-4 pb-3" style="border-bottom: 2px solid red;">
-        <a><img [src]="cinema.logo" (click)="layThongTinRap(cinema.maHeThongRap)" width="50px" height="50px"></a>
+      <li *ngFor="let cinema of listCinema"  >
+        <a  (click)="layThongTinRap(cinema.maHeThongRap)"><img [src]="cinema.logo" width="50px" height="50px"></a>
       </li>
     </ul>
   </div>
-  <div class="col-3">
+  <div class="col-3 theater_cluster " >
     <div div class="text-white d-flex mb-3" *ngFor="let cr of listCRP" style="border-bottom: 2px solid red;">
-      <div class="content" (click)="layLichChieu(cr)">
+      <div class="content" (click)="layLichChieu(cr.maCumRap)">
         <div class="img">
-          <img src="https://s3img.vcdn.vn/123phim/2021/01/bhd-star-bitexco-16105952137769.png" width="50px"
-            height="50px">
+          <img [src]="img" width="50px" height="50px">
         </div>
         <div class="text">
           <p>{{cr.tenCumRap}}</p>
-          <span>{{cr.diaChi| shortCut: 20}}</span>
+          <span>{{cr.diaChi| shortCut: 32}}</span>
           <p> <a href="#"> [Chi tiết]</a></p>
         </div>
       </div>
 
     </div>
   </div>
-  <div class="col-6">
-    <div class="itemPhim mb-2 text-white" *ngFor="let phim of listPhim; let i = index">
-      <div class="top" href='#demo' data-toggle="collapse">
-        <img [src]="phim.hinhAnh" alt="" width="70px" height="70px">
-        <span>{{phim.tenPhim}}</span>
-        <p>120 phút - TIX 8.6 - IMDb 0</p>
-        <p>{{phim.lstLichChieuTheoPhim[0].ngayChieuGioChieu }}</p>
-        <button class="btn btn-info">{{gioChieu}} ~ {{gioChieu}} </button>
+  <div class="col-7 movies">
+    <div *ngIf="isPhim == false" >
+      <h2 class="text-white">Cụm rạp này hôm nay không có phim</h2>
+    </div>
+    <div class="listPhim mb-2 text-white" *ngFor="let phim of listPhimNgayHienTai; let i = index">
+      <div class="wrapper__collapse">
+          <div class="top" data-toggle="collapse"  [attr.data-target]="'#phim-'+phim.maPhim">
+            <div class="d-flex">
+            <img [src]="phim.hinhAnh" alt="" width="70px" height="70px">
+              <div class="infoP">
+                <p><span>C13</span> - {{phim.tenPhim}}</p>
+                <p>120 phút - TIX 8.6 - IMDb 0</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 digital">2D Digital</div>
+                <div class="col-12">
+                  <div  *ngFor="let lc of phim.lstLichChieuTheoPhim">
+                    <button *ngIf="kiemTraNgayChieu(lc.ngayChieuGioChieu)" class=" btn btn-success  btn-time">
+                      <span class="timeSt">{{lc.ngayChieuGioChieu | date: 'HH:mm'}}</span> ~ {{timeEndFormat(lc.ngayChieuGioChieu)}}
+                    </button>
+                  </div>
+                </div>
+            </div>
+
+          </div>
+          <div class="collapse show" [id]="'phim-'+ phim.maPhim">
+            <!-- show lịch chiếu  -->
+            <p>2D Digital</p>
+            <p>Lorem ipsum, dolor sit ameolestias ltium eatibus ipspernatur delectus enim doloremque?</p>
+          </div>
+        </div>
 
       </div>
-      <div id='demo1' class="collapse">
-        <p>2D Digital</p>
-        <p>Lorem ipsum, dolor sit ameolestias ltium eatibus ipspernatur delectus enim doloremque?</p>
-      </div>
-    </div>
+
+
+
   </div>
 
 
 </div>
+
