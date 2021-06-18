@@ -31,7 +31,6 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
   conditionPre: boolean;
   conditionNext: boolean;
   totalPageArr: number[] = [];
-  isDisabled: boolean;
   public disabledPage: boolean;
   public routerLinkVariable = '/admin/user-management';
 
@@ -122,6 +121,12 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
       return true;
     }
   }
+  // getSelect(evt: any) {
+  //   this.user.maLoaiNguoiDung = evt
+  // }
+  // getForm(evt: any){
+  //   this.user = evt
+  // }
   signUp(form: any): void {
     const { value } = form;
     const signUp = {
@@ -145,6 +150,7 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
     // console.log(this.signUpFormTag);
   }
   update(data: any): void {
+    // this.isDisabled = true
     this.user = {
       taiKhoan : data.getAttribute('data-account'),
       matKhau: data.getAttribute('data-password'),
@@ -154,7 +160,8 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
       maNhom: 'GP09',
       hoTen: data.getAttribute('data-hoTen'),
     }
-    this.isDisabled = true
+    
+
   }
   updateSubmit(form: any): void {
     const { value } = form;
@@ -170,17 +177,17 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
     this.accountService.updateApi(update).subscribe((res) => {
       if (res) {
         alert('Thành công');
-        window.location.reload();
       }
     });
     console.log(update)
   }
 
   addUser(){
-    for (let index in this.user) {
+    for (let index in this.signUpFormTag) {
       this.user[index] = null;
     }
-    this.isDisabled = false
+    this.user.maNhom = "GP09"
+
   }
 
   deleteUser(user: any) {
@@ -189,6 +196,5 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
         alert('Thành công')
       }
     });
-    console.log(user)
   }
 }

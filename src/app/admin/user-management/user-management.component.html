@@ -104,8 +104,8 @@
                      <div class="form_register">
                         <div class="form-group">
                            <span class="form_cpn">Tài khoản:</span>
-                           <input [disabled]="isDisabled" class="form-control" #accountControl="ngModel" name="account"
-                              [(ngModel)]="user.taiKhoan" required minlength="4" />
+                           <input style="cursor:not-allowed; pointer-events: none;background: #dddddd;"  class="form-control" #accountControl="ngModel" name="account"
+                              [(ngModel)]="user.taiKhoan"  required minlength="4" />
                            <div class="alert alert-danger" *ngIf="accountControl.touched &&accountControl.errors">
                               <span *ngIf="accountControl.errors.required" class="text text-danger">
                                  Tài khoản không được rổng !
