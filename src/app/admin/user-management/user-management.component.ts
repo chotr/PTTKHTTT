@@ -16,10 +16,9 @@ import { AccountService } from 'src/app/provider/services/account.service';
 })
 export class UserManagementComponent implements OnInit, AfterViewInit {
   @ViewChild('signUpForm') signUpFormTag: NgForm;
-  @ViewChild('updateForm') updateForm: NgForm
+  @ViewChild('updateForm') updateForm: any
 
-  regexEmail =
-    '/^(([^<>()[].,;:s@"]+(.[^<>()[].,;:s@"]+)*)|(".+"))@(([^<>()[].,;:s@"]+.)+[^<>()[].,;:s@"]{2,})$/i';
+ 
 
   users = [];
   pageCurrent: any;
@@ -32,8 +31,17 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
   conditionPre: boolean;
   conditionNext: boolean;
   totalPageArr: number[] = [];
+  isDisabled: boolean;
   public disabledPage: boolean;
   public routerLinkVariable = '/admin/user-management';
+
+  states = [
+    { name: 'KhachHang', abbrev: 'KhachHang' },
+    { name: 'QuanTri', abbrev: 'QuanTri' },
+  ];
+
+  regexEmail =
+  '/^(([^<>()[].,;:s@"]+(.[^<>()[].,;:s@"]+)*)|(".+"))@(([^<>()[].,;:s@"]+.)+[^<>()[].,;:s@"]{2,})$/i';
 
   user =  {
     taiKhoan: '',
@@ -44,6 +52,7 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
     maLoaiNguoiDung: '',
     hoTen: '',
   };
+  
 
   constructor(
     private accountService: AccountService,
@@ -121,7 +130,7 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
       email: value.email,
       soDt: value.phone,
       maNhom: 'GP09',
-      maLoaiNguoiDung: value.state.name,
+      maLoaiNguoiDung: value.maLoaiNguoiDung,
       hoTen: value.name,
     };
     this.accountService.addUsser(signUp).subscribe((res) => {
@@ -133,7 +142,7 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
   }
   
   ngAfterViewInit(): void {
-    console.log(this.signUpFormTag);
+    // console.log(this.signUpFormTag);
   }
   update(data: any): void {
     this.user = {
@@ -145,8 +154,7 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
       maNhom: 'GP09',
       hoTen: data.getAttribute('data-hoTen'),
     }
-
-
+    this.isDisabled = true
   }
   updateSubmit(form: any): void {
     const { value } = form;
@@ -156,26 +164,31 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
       email: value.email,
       soDt: value.phone,
       maNhom: 'GP09',
-      maLoaiNguoiDung: this.user.maLoaiNguoiDung,
+      maLoaiNguoiDung: value.maLoaiNguoiDung,
       hoTen: value.name,
     };
     this.accountService.updateApi(update).subscribe((res) => {
       if (res) {
         alert('Thành công');
+        window.location.reload();
       }
     });
+    console.log(update)
   }
 
   addUser(){
     for (let index in this.user) {
       this.user[index] = null;
     }
-    this.user.maNhom = "GP09"
+    this.isDisabled = false
   }
 
-  delete(user: any) {
+  deleteUser(user: any) {
     this.accountService.deleteUser(user).subscribe((res) => {
-      console.log(res);
+      if (res) {
+        alert('Thành công')
+      }
     });
+    console.log(user)
   }
 }

@@ -23,6 +23,8 @@ export class MovieManagementComponent implements OnInit, AfterViewInit {
   conditionPre: boolean;
   conditionNext: boolean;
   totalPageArr: number[] = [];
+  isDisabled: boolean;
+  
   movie = {
     maPhim: '',
     tenPhim: '',
@@ -80,6 +82,10 @@ export class MovieManagementComponent implements OnInit, AfterViewInit {
         }
       });
   }
+
+  getImage(evt: any) : void {
+    this.movie.hinhAnh = evt
+  }
   addMovie(form: any) {
     const { value } = form;
     const addMovie = {
@@ -87,7 +93,7 @@ export class MovieManagementComponent implements OnInit, AfterViewInit {
       tenPhim: value.tenPhim,
       biDanh: value.biDanh,
       trailer: value.trailer,
-      hinhAnh: {},
+      hinhAnh: this.movie.hinhAnh,
       moTa: value.moTa,
       maNhom: 'GP09',
       ngayKhoiChieu: value.ngayKhoiChieu,
@@ -111,6 +117,8 @@ export class MovieManagementComponent implements OnInit, AfterViewInit {
       ngayKhoiChieu: data.getAttribute('data-ngayKhoiChieu'),
       danhGia: 0,
     }
+    this.isDisabled = true
+    console.log(data.getAttribute('data-hinhAnh'))
   }
   resetForm() {
     for (let index in this.movie) {
@@ -118,6 +126,7 @@ export class MovieManagementComponent implements OnInit, AfterViewInit {
     }
     this.movie.maNhom = "GP09"
     console.log(this.movie)
+    this.isDisabled = false;
   }
 
   checkPre = (event) => {

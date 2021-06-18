@@ -8,7 +8,7 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <form #addMovieForm="ngForm" (ngSubmit)="addMovie(addMovieForm)" class="container">
-                            <app-form-add-movie [movie]="movie"></app-form-add-movie>
+                            <app-form-add-movie [isDisabled]="isDisabled" (newItemEvent)="getImage($event)" [movie]="movie"></app-form-add-movie>
                         </form>
                     </div>
                 </div>
@@ -38,6 +38,7 @@
                 <td>{{film.ngayKhoiChieu| date : 'dd/MM/yyyy HH:mm:ss'}}</td>
                 <td>
                     <button #updateBtn 
+                    [attr.data-hinhAnh]="film.hinhAnh"
                     [attr.data-maPhim]="film.maPhim"
                     [attr.data-tenPhim]="film.tenPhim"
                     [attr.data-moTa]="film.moTa"
