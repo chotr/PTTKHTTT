@@ -65,13 +65,14 @@ export class AccountService {
   }
  
   deleteUser(data: any): Observable<any> {
-    const api = ' https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung';
-    return this.httpClient.delete(api, data).pipe(
+    const api = ' https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=' + data;
+    return this.httpClient.delete(api,{responseType: 'text'}).pipe(
       tap(),
       catchError((err) => {
         return this.handleError(err);
       })
     );
+    
   }
 
   handleError(error: any) {

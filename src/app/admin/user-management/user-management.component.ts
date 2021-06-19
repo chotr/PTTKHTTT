@@ -16,9 +16,7 @@ import { AccountService } from 'src/app/provider/services/account.service';
 })
 export class UserManagementComponent implements OnInit, AfterViewInit {
   @ViewChild('signUpForm') signUpFormTag: NgForm;
-  @ViewChild('updateForm') updateForm: any
-
- 
+  @ViewChild('updateForm') updateForm: any;
 
   users = [];
   pageCurrent: any;
@@ -40,9 +38,9 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
   ];
 
   regexEmail =
-  '/^(([^<>()[].,;:s@"]+(.[^<>()[].,;:s@"]+)*)|(".+"))@(([^<>()[].,;:s@"]+.)+[^<>()[].,;:s@"]{2,})$/i';
+    '/^(([^<>()[].,;:s@"]+(.[^<>()[].,;:s@"]+)*)|(".+"))@(([^<>()[].,;:s@"]+.)+[^<>()[].,;:s@"]{2,})$/i';
 
-  user =  {
+  user = {
     taiKhoan: '',
     matKhau: '',
     email: '',
@@ -51,7 +49,6 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
     maLoaiNguoiDung: '',
     hoTen: '',
   };
-  
 
   constructor(
     private accountService: AccountService,
@@ -145,23 +142,21 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
       }
     });
   }
-  
+
   ngAfterViewInit(): void {
     // console.log(this.signUpFormTag);
   }
   update(data: any): void {
     // this.isDisabled = true
     this.user = {
-      taiKhoan : data.getAttribute('data-account'),
+      taiKhoan: data.getAttribute('data-account'),
       matKhau: data.getAttribute('data-password'),
       email: data.getAttribute('data-email'),
       soDt: data.getAttribute('data-phone'),
       maLoaiNguoiDung: data.getAttribute('data-maLoaiNguoiDung'),
       maNhom: 'GP09',
       hoTen: data.getAttribute('data-hoTen'),
-    }
-    
-
+    };
   }
   updateSubmit(form: any): void {
     const { value } = form;
@@ -179,21 +174,21 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
         alert('Thành công');
       }
     });
-    console.log(update)
+    console.log(update);
   }
 
-  addUser(){
+  addUser() {
     for (let index in this.signUpFormTag) {
       this.user[index] = null;
     }
-    this.user.maNhom = "GP09"
-
+    this.user.maNhom = 'GP09';
   }
 
   deleteUser(user: any) {
     this.accountService.deleteUser(user).subscribe((res) => {
       if (res) {
-        alert('Thành công')
+        alert('Xóa thành công');
+        window.location.reload();
       }
     });
   }
