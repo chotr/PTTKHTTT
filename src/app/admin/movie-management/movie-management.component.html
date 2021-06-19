@@ -56,7 +56,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <form #updateMovie="ngForm" class="container">
+                        <form #updateMovie="ngForm" (ngSubmit) ="updateForm()" class="container">
                             <app-form-add-movie [isDisabled]="isDisabled" (outForm)="getForm($event)" [movie]="movie"></app-form-add-movie>
                         </form>
                     </div>

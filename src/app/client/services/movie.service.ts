@@ -60,6 +60,17 @@ export class MovieService {
         return this.handleErr(err);
       })
     );
+
+  }
+  updateMovie(data: any): Observable<any> {
+    const api =
+      'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhimUpload';
+    return this.httpClient.post(api, data).pipe(
+      tap(),
+      catchError((err) => {
+        return this.handleErr(err);
+      })
+    );
   }
   deleteMovie(data: any): Observable<any> {
     const api =

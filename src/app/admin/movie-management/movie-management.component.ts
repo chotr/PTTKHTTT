@@ -100,19 +100,18 @@ export class MovieManagementComponent implements OnInit, AfterViewInit {
     }
   }
   addMovie() {
-    const addMovie = {
-      maPhim: this.movie.maPhim,
-      tenPhim: this.movie.tenPhim,
-      biDanh: this.movie.biDanh,
-      trailer: this.movie.trailer,
-      hinhAnh: this.movie.hinhAnh,
-      moTa: this.movie.moTa,
-      maNhom: 'GP09',
-      ngayKhoiChieu: this.movie.ngayKhoiChieu,
-      danhGia: 0,
-    };
+    // const addMovie = {
+    //   maPhim: this.movie.maPhim,
+    //   tenPhim: this.movie.tenPhim,
+    //   biDanh: this.movie.biDanh,
+    //   trailer: this.movie.trailer,
+    //   hinhAnh: this.movie.hinhAnh,
+    //   moTa: this.movie.moTa,
+    //   maNhom: 'GP09',
+    //   ngayKhoiChieu: this.movie.ngayKhoiChieu,
+    //   danhGia: 0,
+    // };
     const uploadData = new FormData();
-    // uploadData.append('maPhim', this.movie.maPhim)
     for(let key in this.movie){
       uploadData.append(key, this.movie[key]);
     }
@@ -122,7 +121,19 @@ export class MovieManagementComponent implements OnInit, AfterViewInit {
         alert('Thành công')
       }
     });
-    console.log(uploadData)
+  }
+  updateForm(){
+    const uploadData = new FormData();
+    for(let key in this.movie){
+      uploadData.append(key, this.movie[key]);
+    }
+
+    this.movieService.updateMovie(uploadData).subscribe(data => {
+      if (data) {
+        alert('Thành công')
+        window.location.reload();
+      }
+    });
   }
   update(data) {
     this.movie = {
