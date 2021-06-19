@@ -7,8 +7,8 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <form #addMovieForm="ngForm" (ngSubmit)="addMovie(addMovieForm)" class="container">
-                            <app-form-add-movie [isDisabled]="isDisabled" (newItemEvent)="getImage($event)" [movie]="movie"></app-form-add-movie>
+                        <form #addMovieForm="ngForm" (ngSubmit)="addMovie()" class="container">
+                            <app-form-add-movie [isDisabled]="isDisabled" (outForm)="getForm($event)" [movie]="movie"></app-form-add-movie>
                         </form>
                     </div>
                 </div>
@@ -46,11 +46,23 @@
                     [attr.data-ngayKhoiChieu]="film.ngayKhoiChieu"
                     [attr.data-biDanh]="film.biDanh"
                     (click)="update(updateBtn)" type="button" class="btn btn-success mr-2" data-toggle="modal"
-                        data-target="#exampleModal">Chỉnh sửa</button>
-                    <button class="btn btn-danger">Xóa</button>
+                        data-target="#exampleModal1">Chỉnh sửa</button>
+                    <button class="btn btn-danger" (click)="deleteMovie(film.maPhim)">Xóa</button>
                 </td>
             </tr>
         </tbody>
+        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form #updateMovie="ngForm" class="container">
+                            <app-form-add-movie [isDisabled]="isDisabled" (outForm)="getForm($event)" [movie]="movie"></app-form-add-movie>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </table>
     <nav aria-label="Page navigation example">
         <ul class="pagination">

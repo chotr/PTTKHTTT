@@ -1,4 +1,5 @@
-import { Component, Input,Output, OnInit, EventEmitter } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-form-add-movie',
@@ -7,16 +8,28 @@ import { Component, Input,Output, OnInit, EventEmitter } from '@angular/core';
 })
 export class FormAddMovieComponent implements OnInit {
   @Input() movie: any;
-  fileToUpload: File | null = null;
-  @Output() newItemEvent = new EventEmitter();
-  @Input() isDisabled : boolean;
+  @Output() private newItemEvent = new EventEmitter();
+  @Output() private outForm = new EventEmitter();
+  @Input() isDisabled: boolean;
+
+  movies = new FormGroup({
+    maPhim: new FormControl(),
+    tenPhim: new FormControl(),
+    biDanh: new FormControl(),
+    trailer: new FormControl(),
+    hinhAnh: new FormControl(),
+    moTa: new FormControl(),
+    ngayKhoiChieu: new FormControl(),
+  });
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.outForm.emit(this.movies);
+  }
 
   handleFileInput(files: FileList) {
-    this.fileToUpload = files.item(0);
-    this.newItemEvent.emit(files.item(0));
+    // this.newItemEvent.emit(files.item(0));
+    this.movie.hinhAnh = files.item(0);
   }
 }

@@ -86,24 +86,43 @@ export class MovieManagementComponent implements OnInit, AfterViewInit {
   getImage(evt: any) : void {
     this.movie.hinhAnh = evt
   }
-  addMovie(form: any) {
-    const { value } = form;
-    const addMovie = {
-      maPhim: value.maPhim,
-      tenPhim: value.tenPhim,
-      biDanh: value.biDanh,
-      trailer: value.trailer,
-      hinhAnh: this.movie.hinhAnh,
-      moTa: value.moTa,
+  getForm(evt:any){
+    this.movie={
+      maPhim: evt.maPhim,
+      tenPhim: evt.tenPhim,
+      biDanh: evt.biDanh,
+      trailer: evt.trailer,
+      hinhAnh: evt.hinhAnh,
+      moTa: evt.moTa,
       maNhom: 'GP09',
-      ngayKhoiChieu: value.ngayKhoiChieu,
+      ngayKhoiChieu: evt.ngayKhoiChieu,
+      danhGia: 0,
+    }
+  }
+  addMovie() {
+    const addMovie = {
+      maPhim: this.movie.maPhim,
+      tenPhim: this.movie.tenPhim,
+      biDanh: this.movie.biDanh,
+      trailer: this.movie.trailer,
+      hinhAnh: this.movie.hinhAnh,
+      moTa: this.movie.moTa,
+      maNhom: 'GP09',
+      ngayKhoiChieu: this.movie.ngayKhoiChieu,
       danhGia: 0,
     };
-    this.movieService.addMovie(addMovie).subscribe(data => {
+    const uploadData = new FormData();
+    // uploadData.append('maPhim', this.movie.maPhim)
+    for(let key in this.movie){
+      uploadData.append(key, this.movie[key]);
+    }
+
+    this.movieService.addMovie(uploadData).subscribe(data => {
       if (data) {
         alert('Thành công')
       }
     });
+    console.log(uploadData)
   }
   update(data) {
     this.movie = {
@@ -118,15 +137,21 @@ export class MovieManagementComponent implements OnInit, AfterViewInit {
       danhGia: 0,
     }
     this.isDisabled = true
-    console.log(data.getAttribute('data-hinhAnh'))
   }
   resetForm() {
     for (let index in this.movie) {
       this.movie[index] = null;
     }
     this.movie.maNhom = "GP09"
-    console.log(this.movie)
-    this.isDisabled = false;
+    this.isDisabled = true;
+  }
+  deleteMovie(id: any){
+    this.movieService.deleteMovie(id).subscribe(data =>{
+      if (data) {
+        alert('Xóa thành công')
+        window.location.reload();
+      }
+    })
   }
 
   checkPre = (event) => {

@@ -61,6 +61,17 @@ export class MovieService {
       })
     );
   }
+  deleteMovie(data: any): Observable<any> {
+    const api =
+      'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/XoaPhim?MaPhim=' +
+      data;
+    return this.httpClient.delete(api, { responseType: 'text' }).pipe(
+      tap(),
+      catchError((err) => {
+        return this.handleErr(err);
+      })
+    );
+  }
   changeDataMovieModal(movie: any): void {
     this.data.next(movie);
   }
