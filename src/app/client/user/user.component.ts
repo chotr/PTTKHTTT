@@ -11,6 +11,13 @@ export class UserComponent implements OnInit {
   name: any
   email: any
   phoneNumber: any
+  avatar: any;
+  user: {
+    taiKhoan:'',
+    email:'',
+    soDt:'',
+    hoTen:''
+  }
 
   constructor(private accountService :AccountService) { }
 
@@ -21,9 +28,20 @@ export class UserComponent implements OnInit {
       this.name = account.hoTen;
       this.email = account.email;
       this.phoneNumber = account.soDT;
-      
+
+      let first = account.taiKhoan;
+      first = first.split('');
+      this.avatar = first[0];    
     }
 
+  }
+  getInfo(data: any) {
+    this.user = {
+      taiKhoan: data.getAttribute('data-taiKhoan'),
+      email: data.getAttribute('data-email'),
+      soDt: data.getAttribute('data-phone'),
+      hoTen: data.getAttribute('data-hoTen'),
+    }
   }
 
 }

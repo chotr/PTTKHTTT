@@ -1,24 +1,54 @@
 <div class="profile">
-    <table>
-        <tr>
-            <td>Tên tài khoản:</td>
-            <td>{{userName}}</td>
-        </tr>
-        <tr>
-            <td>Họ và tên:</td>
-            <td>{{name}}</td>
-        </tr>
-        <tr>
-            <td>Email:</td>
-            <td>{{email}}</td>
+    <div class="content row">
+        <div class="left">
+            <div class="background">
+                <div class="text">
+                    {{avatar}}
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <table>
+                <tr>
+                    <td>Tên tài khoản:</td>
+                    <td>{{userName}}</td>
+                </tr>
+                <tr>
+                    <td>Họ và tên:</td>
+                    <td>{{name}}</td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td>{{email}}</td>
+                </tr>
+                <tr>
+                    <td>Số điện thoại:</td>
+                    <td>{{phoneNumber}}</td>
+                </tr>
+            </table>
+            <div class="changeInfo">
+                <button  #editInfo
+                [attr.data-taiKhoan]="userName"
+                [attr.data-email]="email"
+                [attr.data-phone]="phoneNumber"
+                [attr.data-hoTen]="name"
+                (click)="getInfo(editInfo)"
+                  type="button" class="btn" data-toggle="modal" data-target="#editModal">Chỉnh sửa</button>
+                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+                    aria-hidden="true">
+                    <form>
+                        <app-modal [user]="user"></app-modal>
+                    </form>
+                </div>
+                <button type="button" class="btn" data-toggle="modal" data-target="#changePassModal">Đổi mật
+                    khẩu</button>
+                <div class="modal fade" id="changePassModal" tabindex="-1" role="dialog"
+                    aria-labelledby="changePassModalLabel" aria-hidden="true">
+                    <app-pass-modal></app-pass-modal>
+                </div>
+            </div>
 
-        </tr>
-        <tr>
-            <td>Số điện thoại:</td>
-            <td>{{phoneNumber}}</td>
+        </div>
 
-        </tr>
-    </table>
-
-    
+    </div>
 </div>

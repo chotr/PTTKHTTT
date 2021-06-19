@@ -24,6 +24,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { DeactiveGuard } from '../provider/guards/deactive.guard';
 import { NavbarComponent } from '../layout/navbar/navbar.component';
 import { CinemasComponent } from './cinemas/cinemas.component';
+import { ModalComponent } from './user/modal/modal.component';
+import { PassModalComponent } from './user/pass-modal/pass-modal.component';
 
 
 const routes = [
@@ -97,6 +99,8 @@ const routes = [
     SignUpComponent,
     NavbarComponent,
     CinemasComponent,
+    ModalComponent,
+    PassModalComponent,
 
   ],
   imports: [
