@@ -20,6 +20,8 @@ export class ShowtimesManagementComponent implements OnInit, AfterViewInit {
 
   dateShow:''
   price:0
+  time:''
+
 
   constructor(
     private cinemaSer: CinemasService,
@@ -81,18 +83,22 @@ export class ShowtimesManagementComponent implements OnInit, AfterViewInit {
   getPrice(evt) {
     this.price = evt.target.value;
   }
+  getTime(evt) {
+    this.time = evt.target.value;
+  }
   submitShowtime() {
+    let day = this.dateShow + ' ' + this.time;
     let obj = {
       maPhim: this.selectedPhim,
-      ngayChieuGioChieu: this.dateShow,
+      ngayChieuGioChieu: day,
       maRap: this.selectedMaRap,
       giaVe: this.price,
     };
     this.cinemaSer.showtime(obj).subscribe(data => {
       if (data) {
-        alert('Thêm thànhcông')
+        alert('Thêm thành công')
       }
     })
-    console.log(obj)
+    console.log(day)
   }
 }
