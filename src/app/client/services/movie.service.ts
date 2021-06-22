@@ -82,16 +82,7 @@ export class MovieService {
       })
     );
   }
-  showtime(data): Observable<any> {
-    const api =
-      'http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/TaoLichChieu';
-    return this.httpClient.post(api, data).pipe(
-      tap(),
-      catchError((err) => {
-        return this.handleErr(err);
-      })
-    );
-  }
+  
   changeDataMovieModal(movie: any): void {
     this.data.next(movie);
   }

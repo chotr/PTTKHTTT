@@ -51,6 +51,16 @@ export class CinemasService {
       })
     );
   }
+  showtime(data): Observable<any> {
+    const api =
+      'http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/TaoLichChieu';
+    return this.httpClient.post(api, data).pipe(
+      tap(),
+      catchError((err) => {
+        return this.handleErr(err);
+      })
+    );
+  }
 
 
 
