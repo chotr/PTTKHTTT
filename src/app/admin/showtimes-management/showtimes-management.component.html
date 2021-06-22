@@ -15,13 +15,21 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="form-group">
-                            <span class="form_cpn">Chọn mã hệ thống rạp:</span>
+                            <span class="form_cpn">Chọn phim</span>
+                            <ng-select placeholder="Chọn..." [(ngModel)]="selectedPhim">
+                                <ng-option (click)="getst($event)" *ngFor="let phim of dsPhim" [value]="phim.value">
+                                    <span class="image">
+                                        <img [src]="phim.image" class="mr-4" style="width: 30px" >
+                                    </span>
+                                    <span>{{phim.name}}</span>
+                                </ng-option>
+                             </ng-select>
+                        </div>
+                        <div class="form-group">
+                            <span class="form_cpn">Chọn mã hệ thống rạp</span>
                             <ng-select class="ngSelect" (ngModelChange)="mySelectHandler($event)" placeholder="Chọn..." [(ngModel)]="selectedmaHeThong">
                                 <ng-option *ngFor="let rap of maHeThongRap" [value]="rap.name">{{rap.name}}</ng-option>
                              </ng-select>
-                            <!-- <ng-select [items]="maHeThongRap" bindLabel="name" placeholder="Chọn rạp"
-                                [(ngModel)]="selectedmaHeThong">
-                            </ng-select> -->
                         </div>
                         <div class="form-group">
                             <span class="form_cpn">Chọn cụm rạp</span>
@@ -35,8 +43,16 @@
                                 <ng-option *ngFor="let rap of maRap" [value]="rap.value">{{rap.name}}</ng-option>
                              </ng-select>
                         </div>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <div class="form-group">
+                            <span class="form_cpn">Ngày giờ chiếu</span>
+                            <input type="text" class="form-control" placeholder="Nhập...">
+                        </div>
+                        <div class="form-group">
+                            <span class="form_cpn">Giá vé</span>
+                            <input type="text" class="form-control" placeholder="Nhập...">
+                        </div>
+                        <button type="button" class="btn btn-primary">Cập nhật</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
                     </div>
                 </div>
             </div>

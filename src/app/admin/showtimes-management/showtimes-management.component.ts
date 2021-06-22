@@ -1,6 +1,7 @@
 import { AfterViewInit } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { CinemasService } from 'src/app/client/services/cinemas.service';
+import { MovieService } from 'src/app/client/services/movie.service';
 
 @Component({
   selector: 'app-showtimes-management',
@@ -14,17 +15,33 @@ export class ShowtimesManagementComponent implements OnInit, AfterViewInit {
   selectedCumRap: any;
   maRap = [];
   selectedMaRap: any;
+  dsPhim = [];
+  selectedPhim: any;
 
-  constructor(private cinemaSer: CinemasService) {}
+  constructor(
+    private cinemaSer: CinemasService,
+    private movieService: MovieService
+  ) {}
 
-  ngOnInit(): void {
-    // this.getNameCinema();
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     this.getNameCinema();
-    // this.mySelectHandler(this.selectedmaHeThong)
-    // this.
+    this.getMovie();
+  }
+  getMovie() {
+    this.movieService.getDataMovies().subscribe((data) => {
+      for (let phim of data) {
+        this.dsPhim.push({
+          value: phim.maPhim,
+          name: phim.tenPhim,
+          image: phim.hinhAnh,
+        });
+      }
+    });
+  }
+  getst(evt) {
+    console.log(evt);
   }
   getNameCinema() {
     this.cinemaSer.getCinemaInfor().subscribe((res) => {
@@ -34,31 +51,25 @@ export class ShowtimesManagementComponent implements OnInit, AfterViewInit {
     });
   }
   mySelectHandler(evt) {
+    let btam = [];
     this.cinemaSer.getCinemaComplex(evt).subscribe((res) => {
       for (let ma of res) {
-        // this.cumRap = null;
-        this.cumRap.push({ value: ma.maCumRap, name: ma.tenCumRap });
-
-        // if (this.cumRap == null) {
-
-        // } else if(this.cumRap !== null){
-        //   this.cumRap = null
-        //   this.mySelectHandler(evt)
-        // }
-        
+        btam.push({ value: ma.maCumRap, name: ma.tenCumRap });
       }
+      this.cumRap = btam;
     });
   }
   selectMaRap() {
+    let getRap = [];
     this.cinemaSer.getCinemaComplex(this.selectedmaHeThong).subscribe((res) => {
       for (let ma of res) {
-        console.log(ma);
         if (ma.maCumRap === this.selectedCumRap) {
           for (let rap of ma.danhSachRap) {
-            this.maRap.push({ value: rap.maRap, name: rap.tenRap });
+            getRap.push({ value: rap.maRap, name: rap.tenRap });
           }
         }
       }
+      this.maRap = getRap;
     });
   }
 }
