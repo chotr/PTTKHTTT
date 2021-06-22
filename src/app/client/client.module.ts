@@ -26,6 +26,7 @@ import { NavbarComponent } from '../layout/navbar/navbar.component';
 import { CinemasComponent } from './cinemas/cinemas.component';
 import { ModalComponent } from './user/modal/modal.component';
 import { PassModalComponent } from './user/pass-modal/pass-modal.component';
+import { ShowtimeComponent } from './showtime/showtime.component';
 
 
 const routes = [
@@ -101,6 +102,8 @@ const routes = [
     CinemasComponent,
     ModalComponent,
     PassModalComponent,
+    ShowtimeComponent,
+
 
   ],
   imports: [

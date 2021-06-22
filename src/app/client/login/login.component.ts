@@ -15,7 +15,6 @@ import { AccountService } from 'src/app/provider/services/account.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({});
-
   constructor(private accountService: AccountService, private router: Router) {}
 
   ngOnInit(): void {
@@ -36,6 +35,7 @@ export class LoginComponent implements OnInit {
     this.accountService.loginApi(objLogin).subscribe((res) => {
       if (res) {
         localStorage.setItem('account', JSON.stringify(res));
+        
         window.location.reload();
       }
     });

@@ -3,17 +3,33 @@
         <div class="modal-body">
             <div class="form-group">
                 <span class="form_cpn">Nhập mật khẩu hiện tại:</span>
-                <input class="form-control" type="password" name="curPass" ngModel required />
+                <input class="form-control" #curPassControl="ngModel" type="password" name="curPass" ngModel required pattern={{pass}} />
+                <div class="alert alert-danger" *ngIf="curPassControl.touched && curPassControl.errors">
+                    <span *ngIf="curPassControl.errors.required" class="text text-danger">
+                        Vui lòng nhập mật khẩu !
+                    </span>
+                    <span *ngIf="curPassControl.errors.pattern" class="text text-danger">
+                        Mật khẩu sai !
+                    </span>
+                </div>
             </div>
             <div class="form-group">
                 <span class="form_cpn">Nhập mật khẩu mới:</span>
-                <input class="form-control" type="password" name="matKhau" ngModel required />
+                <input class="form-control" type="password" (change)="getPass($event.target.value)" name="matKhau" ngModel required />
             </div>
             <div class="form-group">
                 <span class="form_cpn">Nhập lại mật khẩu mới:</span>
-                <input class="form-control" type="password" name="newPass" ngModel required />
+                <input class="form-control" #retypeControl="ngModel" type="password" (change)="getRetype($event)" name="newPass" ngModel required pattern={{retype}} />
+                <div class="alert alert-danger" *ngIf="retypeControl.touched && retypeControl.errors">
+                    <span *ngIf="retypeControl.errors.required" class="text text-danger">
+                        Vui lòng nhập lại mật khẩu mới !
+                    </span>
+                    <span *ngIf="retypeControl.errors.pattern" class="text text-danger">
+                        Mật khẩu không khớp !
+                    </span>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary mr-2">Cập nhật</button>
+            <button type="submit" (click)="getValue()" class="btn btn-primary mr-2">Cập nhật</button>
             <button type="submit" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
         </div>
     </div>

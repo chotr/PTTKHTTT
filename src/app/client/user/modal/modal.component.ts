@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-modal',
@@ -7,9 +8,23 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ModalComponent implements OnInit {
   @Input() user: any;
+
+  @Output() outputFormEdt = new EventEmitter()
+
+  userForm = new FormGroup({
+    email: new FormControl(),
+    hoTen: new FormControl(),
+    soDt: new FormControl(),
+  })
   constructor() { }
 
   ngOnInit(): void {
+    this.outputFormEdt.emit(this.userForm)
+    
+    
+  }
+  getConsole(){
+    console.log(this.user.email)
   }
 
 }

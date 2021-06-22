@@ -32,6 +32,7 @@ export class NavbarComponent implements OnInit {
     const account = JSON.parse(localStorage.getItem('account') as string);
     if (account !== null) {
       localStorage.removeItem('account');
+      this.router.navigate(['client/home'])
       window.location.reload();
     }
   }

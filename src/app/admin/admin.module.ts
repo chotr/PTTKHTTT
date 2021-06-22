@@ -12,7 +12,10 @@ import { NavAdminComponent } from './nav-admin/nav-admin.component';
 import { ProviderModule } from '../provider/provider.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormComponent } from './layout/form/form.component';
+import { MaterialModule } from '../material/material.module';
 import { FormAddMovieComponent } from './layout/form-add-movie/form-add-movie.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 const routes = [
   {
@@ -71,6 +74,9 @@ const routes = [
     ProviderModule,
     FormsModule,
     ReactiveFormsModule,
+    ProviderModule,
+    MaterialModule,
+    NgSelectModule
   ],
 })
 export class AdminModule {}

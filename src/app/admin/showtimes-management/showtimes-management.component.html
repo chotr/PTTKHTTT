@@ -1,1 +1,46 @@
-<p>showtimes-management works!</p>
+<!-- <ng-select [items]="cities" bindLabel="name" placeholder="Select city" [(ngModel)]="selectedCity">
+</ng-select>
+<p>
+    Selected city: {{selectedCity | json}}
+</p> -->
+<div class="showtime_mng container">
+    <div class="addShowtime">
+        <button type="button" class="btn btn-primary my-4" data-toggle="modal" data-target="#exampleModal">
+            Thêm lịch chiếu
+        </button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <span class="form_cpn">Chọn mã hệ thống rạp:</span>
+                            <ng-select class="ngSelect" (ngModelChange)="mySelectHandler($event)" placeholder="Chọn..." [(ngModel)]="selectedmaHeThong">
+                                <ng-option *ngFor="let rap of maHeThongRap" [value]="rap.name">{{rap.name}}</ng-option>
+                             </ng-select>
+                            <!-- <ng-select [items]="maHeThongRap" bindLabel="name" placeholder="Chọn rạp"
+                                [(ngModel)]="selectedmaHeThong">
+                            </ng-select> -->
+                        </div>
+                        <div class="form-group">
+                            <span class="form_cpn">Chọn cụm rạp</span>
+                            <ng-select (ngModelChange)="selectMaRap()"  placeholder="Chọn..." [(ngModel)]="selectedCumRap">
+                                <ng-option *ngFor="let rap of cumRap" [value]="rap.value">{{rap.name}}</ng-option>
+                             </ng-select>
+                        </div>
+                        <div class="form-group">
+                            <span class="form_cpn">Chọn rạp</span>
+                            <ng-select  placeholder="Chọn..." [(ngModel)]="selectedMaRap">
+                                <ng-option *ngFor="let rap of maRap" [value]="rap.value">{{rap.name}}</ng-option>
+                             </ng-select>
+                        </div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
