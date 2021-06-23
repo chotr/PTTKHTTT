@@ -27,6 +27,7 @@ import { CinemasComponent } from './cinemas/cinemas.component';
 import { ModalComponent } from './user/modal/modal.component';
 import { PassModalComponent } from './user/pass-modal/pass-modal.component';
 import { ShowtimeComponent } from './showtime/showtime.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 const routes = [
@@ -117,6 +118,7 @@ const routes = [
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    CarouselModule
     // PipesModule
   ],
   exports: [ClientComponent, HomeComponent],

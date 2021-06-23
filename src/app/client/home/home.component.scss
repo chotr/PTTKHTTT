@@ -2,9 +2,48 @@
   // position: relative;
 
   .Carousel {
-    // margin-top: 50px;
+    .fade_bg {
+      position: relative;
+      &::before {
+        // background-color: rgba(0, 0, 0, 0.37);
+        // background-image: linear-gradient( #ffffff00, black);
+        background: linear-gradient(
+          0deg,
+          #000000ba 0%,
+          rgb(75 75 75 / 0%) 100%
+        );
+        content: "";
+        display: block;
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        z-index: 10;
+      }
+    }
+
+    // .owl-carousel {
+    //   .owl-item.ng-tns-c177-0.ng-trigger.ng-trigger-autoHeight {
+    //     position: relative;
+    //     &::after {
+    //       content: " ";
+    //       position: absolute;
+    //       top: 0;
+    //       left: 0;
+    //       width: 100%;
+    //       background: #030000;
+    //     }
+    //   }
+    // }
   }
   .list_movie {
+    .title {
+      padding: 50px;
+      color: #cbafaf;
+      background-image: linear-gradient(black, #ffffff00);
+      h1 {
+        font-size: 37px;
+      }
+    }
     .more {
       display: flex;
       margin: auto;
@@ -19,7 +58,7 @@
       border: 3px solid #f1f1f1;
       position: absolute;
       top: 0;
-      left:0;
+      left: 0;
       bottom: 0;
       transform: translate(-50%, -50%);
       z-index: 0;

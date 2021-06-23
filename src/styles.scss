@@ -1,12 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
-// @import "~@ng-select/ng-select/themes/material.theme.css";
+
 @import "~@ng-select/ng-select/themes/default.theme.css";
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
 html,
 body {
   margin: 0;
   height: 100%;
-  // width: 100%;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 
   background-image: url("./assets/images/banner.jpg");
