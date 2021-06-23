@@ -1,57 +1,37 @@
-<div class="row cinema  ">
-    <div class="col-2 cinema_Info">
-        <ul>
-            <li *ngFor="let cinema of listCinema">
-                <a (click)="layThongTinRap(cinema.maHeThongRap)"><img [src]="cinema.logo" width="50px"
-                        height="50px"></a>
-            </li>
-        </ul>
-    </div>
-    <div class="col-3 theater_cluster ">
-        <div div class="text-white d-flex mb-3" *ngFor="let cr of listCRP" style="border-bottom: 2px solid red;">
-            <div class="content" (click)="layLichChieu(cr.maCumRap)">
-                <div class="img">
-                    <img [src]="img" width="50px" height="50px">
-                </div>
-                <div class="text">
-                    <p>{{cr.tenCumRap}}</p>
-                    <span>{{cr.diaChi| shortCut: 32}}</span>
-                    <p> <a href="#"> [Chi tiết]</a></p>
-                </div>
-            </div>
-
+<div class="getShowtime">
+    <div class="row">
+        <div class="col-md-1">
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item" *ngFor="let info of arrheThongRap"><img (click)="getCinema(info.maHeThongRap)"
+                        class="logo" [src]="info.logo"></li>
+            </ul>
         </div>
-    </div>
-    <div class="col-7 movies">
-        <div *ngIf="isPhim == false">
-            <h2 class="text-white">Cụm rạp này hôm nay không có phim</h2>
-        </div>
-        <div class="listPhim mb-2 text-white" *ngFor="let phim of listPhimNgayHienTai; let i = index">
-            <div class="wrapper__collapse">
-                <div class="top" [attr.data-target]="'#phim-'+phim.maPhim">
-                    <div class="info">
-                        <img [src]="phim.hinhAnh" alt="" width="70px" height="70px">
-                        <div class="infoP">
-                            <p><span>C13</span> - {{phim.tenPhim}}</p>
+        <div class="col-md-4">
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item" *ngFor="let cumRap of arrCumRap">
+                   <a class="nav-link" (click)="getcumRap(cumRap.maCumRap)">
+                    <div class="row">
+                        <div class="col-3">
+                            <img class="img_cinema" [src]="hinhAnh" alt="">
+                        </div>
+                        <div class="col-9">
+                            <span>{{cumRap.tenCumRap}}</span>
+                            <span>{{cumRap.diaChi}}</span>
                         </div>
                     </div>
-
-                    <div class="showTime" *ngFor="let lc of phim.lstLichChieuTheoPhim">
-                        <div class="">
-                            <button *ngIf="kiemTraNgayChieu(lc.ngayChieuGioChieu)" class=" btn btn-success btn-time">
-                                <span class="timeSt">{{lc.ngayChieuGioChieu | date: 'HH:mm'}}</span>
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
+                   </a>
+                </li>
+            </ul>
         </div>
-
-
-
+        <div class="col-7">
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item" *ngFor="let phim of listPhim">
+                   <p *ngIf="listPhim===null">Không có phim</p>
+                   <div *ngIf="listPhim!==null">
+                       <img class="img_cinema" [src]="phim.hinhAnh" alt="">
+                   </div>
+                </li>
+            </ul>
+        </div>
     </div>
-
-
 </div>

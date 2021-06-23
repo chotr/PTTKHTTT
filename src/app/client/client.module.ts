@@ -44,7 +44,7 @@ const routes = [
         canActivate: [UserAcessGuard],
       },
       {
-        path: 'danhSachGhe',
+        path: 'danhSachGhe/:id',
         component: DsGheComponent,
         canActivate: [UserAcessGuard],
       },

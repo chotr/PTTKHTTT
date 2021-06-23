@@ -2,6 +2,7 @@
 import { CinemasService } from './../services/cinemas.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-cinemas',
@@ -38,7 +39,7 @@ export class CinemasComponent implements OnInit {
 
   @Output() newItem = new EventEmitter<string>();
 
-  constructor(private cinemaSer: CinemasService, public datepipe: DatePipe) {}
+  constructor(private cinemaSer: CinemasService, public datepipe: DatePipe, private router: Router,private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.cinemaSer.getCinemaInfor().subscribe((res) => {
@@ -63,7 +64,6 @@ export class CinemasComponent implements OnInit {
         this.listCumRap = res[0].lstCumRap;
         for(let item of this.listCumRap){
           if(item.maCumRap == this.maCTR ){ //bhd-star-cineplex-3-2
-            // console.log(item.danhSachPhim);
             this.listPhim = item.danhSachPhim;
           }
         }
@@ -75,11 +75,9 @@ export class CinemasComponent implements OnInit {
       let flag = false;
      this.listPhimNgayHienTai = this.listPhim.filter((phim) => {
         for(let lichChieu of phim.lstLichChieuTheoPhim){
+          console.log(lichChieu)
           const ngayChieu = this.dateFormat(lichChieu.ngayChieuGioChieu);
-          // console.log(ngayChieu);
           if(ngayChieu == "01-01-2019") { // 21-05-2020 // === this.ngayHienTai so sanh vs ngay hienTai
-            // console.log(phim);
-            // console.log(ngayChieu);
             flag = true;
             return phim;
           }
@@ -89,16 +87,12 @@ export class CinemasComponent implements OnInit {
         this.isPhim = flag;
 
     })
-
-    // console.log(this.listPhimNgayHienTai);
-
   }
 
   kiemTraNgayChieu (value: any): boolean{
       const ngayChieu =  this.dateFormat(value);
       // const ngayHienTai = this.dateFormat(this.today); //so sanh vs ngay hienTai
       const ngayTest = "01-01-2019";
-      // console.log(ngayChieu);
       if(ngayChieu == ngayTest){
         return true;
       }
@@ -161,4 +155,8 @@ export class CinemasComponent implements OnInit {
     this.getInfoShowTimes();
 
   }
+  navigateTo(id) {
+    this.router.navigate(['client/danhSachGhe', id])
+  }
+  
 }

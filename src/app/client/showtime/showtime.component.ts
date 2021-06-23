@@ -1,5 +1,12 @@
 import { DatePipe } from '@angular/common';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  resolveForwardRef,
+} from '@angular/core';
 import { CinemasService } from '../services/cinemas.service';
 
 @Component({
@@ -7,156 +14,77 @@ import { CinemasService } from '../services/cinemas.service';
   templateUrl: './showtime.component.html',
   styleUrls: ['./showtime.component.scss'],
 })
-export class ShowtimeComponent implements OnInit {
-  listMovie: any[] = [];
-  listCinema: any[] = [];
-  listCRP: any[] = [];
-
-  listCinemaArr = [];
-  maHeThongRap: any;
-
-  listCumRap: any;
+export class ShowtimeComponent implements OnInit, AfterViewInit {
+  arrheThongRap = [];
+  maHeThongRap = 'BHDStar';
+  arrCumRap = [];
+  cumRap = 'BHD Star Cineplex - 3/2';
   listPhim = [];
-  listLichChieu: any;
-  gioChieu: any;
-  maCumRapPhim = 'BHDStar';
-  arrAbc = [];
-  maCTR = 'bhd-star-cineplex-vincom-thao-dien';
-  img = 'assets/images/bhd.jpg';
-  //
-  date = new Date();
-  listNgayChieuPhimHienTai: any[] = [];
-  ngayChieuPhim: any;
-  ngayHienTai = this.dateFormat(this.date);
-  isPhim = false;
-  phimHT: any;
-  listPhimNgayHienTai: any[] = [];
-
-  curDate = new Date();
-  dateCur: any;
-  showtime:any;
-
-  @Output() newItem = new EventEmitter<string>();
+  hinhAnh =
+    'https://cdn.alongwalker.net/master_media/uploads/2021/01/12042611/galaxy-da-nang-gia-ve-review-rap-chieu-phim-hien-dai-danh-cho-gioi-tre-16104255687319.jpg';
 
   constructor(private cinemaSer: CinemasService, public datepipe: DatePipe) {}
 
   ngOnInit(): void {
+    let objectimg = [
+      {
+        img: 'https://cdn.alongwalker.net/master_media/uploads/2021/01/12042611/galaxy-da-nang-gia-ve-review-rap-chieu-phim-hien-dai-danh-cho-gioi-tre-16104255687319.jpg',
+      },
+      {
+        img: 'https://info-imgs.vgcloud.vn/2020/05/09/22/rap-chieu-phim-mo-cua-tro-lai-voi-khuyen-mai-soc-nhung-van-vang-hiu-3.jpg',
+      },
+      {
+        img: 'https://afamilycdn.com/150157425591193600/2021/5/4/batch70eb29557732826cdb2318-16201401042561018656523.jpg',
+      },
+    ];
+    this.getInfoCinemas();
+  }
+  ngAfterViewInit(): void {
+    this.getCinemaComplex();
+    this.getPhim();
+  }
+
+  getInfoCinemas() {
     this.cinemaSer.getCinemaInfor().subscribe((res) => {
-      this.listCinema = res;
-      this.maHeThongRap = res.maHeThongRap;
-    });
-    this.getInfoShowTimes();
-    this.getThongTinCumRam();
-    this.dateCur =
-      ('0' + this.curDate.getDate()).slice(-2) +
-      '-' +
-      ('0' + (this.curDate.getMonth() + 1)).slice(-2) +
-      '-' +
-      ('0' + this.curDate.getFullYear());
-    let curshowtime = this.dateCur.split('-');
-    var year = Number(curshowtime[2]);
-    this.showtime = curshowtime[0] + '-' + curshowtime[1] + '-' + (year - 2);
-    console.log(this.showtime)
-  }
-
-  getThongTinCumRam() {
-    this.defaultCR();
-    this.cinemaSer.getCinemaComplex(this.maCumRapPhim).subscribe((resu) => {
-      this.listCRP = resu;
+      this.arrheThongRap = res;
     });
   }
-
-  getInfoShowTimes() {
+  getCinema(evt) {
+    this.maHeThongRap = evt;
+    this.cinemaSer.getCinemaComplex(this.maHeThongRap).subscribe((res) => {
+      this.arrCumRap = res;
+    });
+  }
+  getCinemaComplex() {
+    this.cinemaSer.getCinemaComplex(this.maHeThongRap).subscribe((res) => {
+      this.arrCumRap = res;
+    });
+  }
+  getcumRap(evt) {
+    this.cumRap = evt;
     this.cinemaSer
-      .layThongtinHeThongLichChieu(this.maCumRapPhim)
+      .layThongtinHeThongLichChieu(this.maHeThongRap)
       .subscribe((res) => {
-        this.listCumRap = res[0].lstCumRap;
-        for (let item of this.listCumRap) {
-          if (item.maCumRap == this.maCTR) {
-            //bhd-star-cineplex-3-2
-            // console.log(item.danhSachPhim);
-            this.listPhim = item.danhSachPhim;
+        // console.log(res)
+      });
+      this.getPhim()
+  }
+  getPhim() {
+    let movie = [];
+    this.cinemaSer
+      .layThongtinHeThongLichChieu(this.maHeThongRap)
+      .subscribe((res) => {
+        for (let heThong of res) {
+          console.log(heThong)
+          for (let cumRap of heThong.lstCumRap) {
+              console.log(cumRap.maCumRap)
+              this.listPhim = cumRap.danhSachPhim
+            if (this.cumRap == cumRap.maCumRap) {
+              for (let phim of cumRap.danhSachPhim);
+            }
           }
         }
-        this.layDSPhimDC();
+        // console.log(this.listPhim);
       });
-  }
-  layDSPhimDC() {
-    let flag = false;
-    this.listPhimNgayHienTai = this.listPhim.filter((phim) => {
-      for (let lichChieu of phim.lstLichChieuTheoPhim) {
-        const ngayChieu = this.dateFormat(lichChieu.ngayChieuGioChieu);
-        if (ngayChieu == "01-01-2019") {
-          flag = true;
-          return phim;
-        }
-      }
-
-      this.isPhim = flag;
-    });
-  }
-
-  kiemTraNgayChieu(value: any): boolean {
-    const ngayChieu = this.dateFormat(value);
-    // const ngayHienTai = this.dateFormat(this.today); //so sanh vs ngay hienTai
-    const ngayTest = '01-01-2019';
-    // console.log(ngayChieu);
-    if (ngayChieu == ngayTest) {
-      return true;
-    }
-    return false;
-  }
-
-  dateFormat(value: any): string {
-    let date1 = new Date(value);
-    let latest_date = this.datepipe.transform(date1, 'dd-MM-yyyy');
-    return latest_date;
-  }
-  timeEndFormat(value: any): string {
-    const date = new Date(value);
-    let time = this.datepipe.transform(date, 'HH:mm');
-    const hours = ('0' + (date.getHours() + 2)).slice(-2);
-    const minutes = ('0' + date.getMinutes()).slice(-2);
-    const timeEnd = hours + ':' + minutes;
-    // let time  = this.datepipe.transform(timeEnd, 'HH:mm');
-    return timeEnd;
-  }
-
-  defaultCR() {
-    switch (this.maCumRapPhim) {
-      case 'BHDStar':
-        this.maCTR = 'bhd-star-cineplex-vincom-thao-dien';
-        this.img = 'assets/images/bhd.jpg';
-        break;
-      case 'CGV':
-        this.maCTR = 'cgv-aeon-binh-tan';
-        this.img = 'assets/images/cgv.jpg';
-        break;
-      case 'CineStar':
-        this.maCTR = 'cns-hai-ba-trung';
-        this.img = 'assets/images/CineStar.jpg';
-        break;
-      case 'Galaxy':
-        this.maCTR = 'glx-huynh-tan-phat';
-        this.img = 'assets/images/glx.jpg';
-        break;
-      case 'LotteCinima':
-        this.maCTR = 'lotte-cantavil';
-        this.img = 'assets/images/lotte.jpg';
-        break;
-      case 'MegaGS':
-        this.maCTR = 'megags-cao-thang';
-        this.img = 'assets/images/megac.jpg';
-        break;
-    }
-  }
-  layThongTinRap(item: any) {
-    this.maCumRapPhim = item;
-    this.getThongTinCumRam();
-    this.getInfoShowTimes();
-  }
-  layLichChieu(maCumRap) {
-    this.maCTR = maCumRap;
-    this.getInfoShowTimes();
   }
 }

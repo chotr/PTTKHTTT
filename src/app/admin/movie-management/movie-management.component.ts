@@ -96,21 +96,10 @@ export class MovieManagementComponent implements OnInit, AfterViewInit {
       moTa: evt.moTa,
       maNhom: 'GP09',
       ngayKhoiChieu: evt.ngayKhoiChieu,
-      danhGia: 0,
+      danhGia: 7,
     }
   }
   addMovie() {
-    // const addMovie = {
-    //   maPhim: this.movie.maPhim,
-    //   tenPhim: this.movie.tenPhim,
-    //   biDanh: this.movie.biDanh,
-    //   trailer: this.movie.trailer,
-    //   hinhAnh: this.movie.hinhAnh,
-    //   moTa: this.movie.moTa,
-    //   maNhom: 'GP09',
-    //   ngayKhoiChieu: this.movie.ngayKhoiChieu,
-    //   danhGia: 0,
-    // };
     const uploadData = new FormData();
     for(let key in this.movie){
       uploadData.append(key, this.movie[key]);
@@ -145,7 +134,7 @@ export class MovieManagementComponent implements OnInit, AfterViewInit {
       moTa: data.getAttribute('data-moTa'),
       maNhom: 'GP09',
       ngayKhoiChieu: data.getAttribute('data-ngayKhoiChieu'),
-      danhGia: 0,
+      danhGia: 7,
     }
     this.isDisabled = true
   }

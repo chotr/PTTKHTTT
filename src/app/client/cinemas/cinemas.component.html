@@ -31,27 +31,20 @@
             <div class="d-flex">
             <img [src]="phim.hinhAnh" alt="" width="70px" height="70px">
               <div class="infoP">
-                <p><span>C13</span> - {{phim.tenPhim}}</p>
-                <p>120 phút - TIX 8.6 - IMDb 0</p>
+                <p>{{phim.tenPhim}}</p>
               </div>
             </div>
 
             <div class="row">
-              <div class="col-12 digital">2D Digital</div>
                 <div class="col-12">
                   <div  *ngFor="let lc of phim.lstLichChieuTheoPhim">
-                    <button *ngIf="kiemTraNgayChieu(lc.ngayChieuGioChieu)" class=" btn btn-success  btn-time">
-                      <span class="timeSt">{{lc.ngayChieuGioChieu | date: 'HH:mm'}}</span> ~ {{timeEndFormat(lc.ngayChieuGioChieu)}}
+                    <button (click)="navigateTo(lc.maLichChieu)" *ngIf="kiemTraNgayChieu(lc.ngayChieuGioChieu)"  class=" btn btn-success  btn-time">
+                      <span class="timeSt">{{lc.ngayChieuGioChieu | date: 'HH:mm'}}</span>
                     </button>
                   </div>
                 </div>
             </div>
 
-          </div>
-          <div class="collapse show" [id]="'phim-'+ phim.maPhim">
-            <!-- show lịch chiếu  -->
-            <p>2D Digital</p>
-            <p>Lorem ipsum, dolor sit ameolestias ltium eatibus ipspernatur delectus enim doloremque?</p>
           </div>
         </div>
 

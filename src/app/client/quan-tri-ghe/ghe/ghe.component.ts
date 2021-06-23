@@ -10,6 +10,7 @@ export class GheComponent implements OnInit {
   status: boolean=false;
   @Output() emitStatus = new EventEmitter();
   @Input() item: any;
+  @Output() emitPrice = new EventEmitter();
 
   constructor() { }
 
@@ -24,6 +25,7 @@ export class GheComponent implements OnInit {
     }
 
     this.emitStatus.emit(this.status)
+
   }
 
 }
