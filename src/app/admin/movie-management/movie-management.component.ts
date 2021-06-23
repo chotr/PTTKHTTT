@@ -3,6 +3,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from 'src/app/client/services/movie.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-movie-management',
@@ -24,7 +25,7 @@ export class MovieManagementComponent implements OnInit, AfterViewInit {
   conditionNext: boolean;
   totalPageArr: number[] = [];
   isDisabled: boolean;
-  
+
   movie = {
     maPhim: '',
     tenPhim: '',
@@ -54,7 +55,7 @@ export class MovieManagementComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log(this.addMovieFormTag)
+    console.log(this.addMovieFormTag);
   }
 
   getParamsFromUrl() {
@@ -83,11 +84,11 @@ export class MovieManagementComponent implements OnInit, AfterViewInit {
       });
   }
 
-  getImage(evt: any) : void {
-    this.movie.hinhAnh = evt
+  getImage(evt: any): void {
+    this.movie.hinhAnh = evt;
   }
-  getForm(evt:any){
-    this.movie={
+  getForm(evt: any) {
+    this.movie = {
       maPhim: evt.maPhim,
       tenPhim: evt.tenPhim,
       biDanh: evt.biDanh,
@@ -97,30 +98,55 @@ export class MovieManagementComponent implements OnInit, AfterViewInit {
       maNhom: 'GP09',
       ngayKhoiChieu: evt.ngayKhoiChieu,
       danhGia: 7,
-    }
+    };
   }
   addMovie() {
     const uploadData = new FormData();
-    for(let key in this.movie){
+    for (let key in this.movie) {
       uploadData.append(key, this.movie[key]);
     }
 
-    this.movieService.addMovie(uploadData).subscribe(data => {
+    this.movieService.addMovie(uploadData).subscribe((data) => {
       if (data) {
-        alert('Thành công')
+        Swal.fire({
+          title: 'Thông báo',
+          text: 'Thêm thành công!',
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonText: 'Xác nhận!',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            for (let index in this.movie) {
+              this.movie[index] = null;
+            }
+            this.movie.maNhom = 'GP09';
+            this.getDataMovie(this.p)
+          }
+        });
+      }else {
+        
       }
     });
   }
-  updateForm(){
+  updateForm() {
     const uploadData = new FormData();
-    for(let key in this.movie){
+    for (let key in this.movie) {
       uploadData.append(key, this.movie[key]);
     }
 
-    this.movieService.updateMovie(uploadData).subscribe(data => {
+    this.movieService.updateMovie(uploadData).subscribe((data) => {
       if (data) {
-        alert('Thành công')
-        window.location.reload();
+        Swal.fire({
+          title: 'Thông báo',
+          text: 'Cập nhật thành công!',
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonText: 'Xác nhận!',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.getDataMovie(this.p)
+          }
+        });
       }
     });
   }
@@ -135,23 +161,33 @@ export class MovieManagementComponent implements OnInit, AfterViewInit {
       maNhom: 'GP09',
       ngayKhoiChieu: data.getAttribute('data-ngayKhoiChieu'),
       danhGia: 7,
-    }
-    this.isDisabled = true
+    };
+    this.isDisabled = true;
   }
   resetForm() {
     for (let index in this.movie) {
       this.movie[index] = null;
     }
-    this.movie.maNhom = "GP09"
+    this.movie.maNhom = 'GP09';
     this.isDisabled = true;
   }
-  deleteMovie(id: any){
-    this.movieService.deleteMovie(id).subscribe(data =>{
+  deleteMovie(id: any) {
+    this.movieService.deleteMovie(id).subscribe((data) => {
       if (data) {
-        alert('Xóa thành công')
-        window.location.reload();
+        Swal.fire({
+          title: 'Thông báo',
+          text: 'Xóa thành công!',
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonText: 'Xác nhận!',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.getDataMovie(this.p)
+          }
+        });
+
       }
-    })
+    });
   }
 
   checkPre = (event) => {

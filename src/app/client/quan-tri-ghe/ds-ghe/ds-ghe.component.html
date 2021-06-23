@@ -63,21 +63,23 @@
                         <th class="p-1">Tổng</th>
                     </tr>
                     <tr>
-                        <td rowspan="1" class="item p-1" style="width: 40%;"><span *ngFor="let ghe of soGheDangDat">{{ghe.tenGhe}};
+                        <td rowspan="1" class="item p-1" style="width: 40%;"><span #dataContainer
+                                *ngFor="let ghe of soGheDangDat">{{ghe.tenGhe}};
                             </span>
                         </td>
-                        <td rowspan="1" class="item p-1" style="width: 40%;"><span *ngFor="let ghe of soGheDangDat">{{ghe.giaVe | number}};
-                        </span>
+                        <td rowspan="1" class="item p-1" style="width: 40%;"><span #dataContainer1
+                                *ngFor="let ghe of soGheDangDat">{{ghe.giaVe | number}};
+                            </span>
                         </td>
                         <td rowspan="1" class="item p-1" style="width: 20%;">
-                            <span>{{totalPrice | number}}</span>
+                            <span #dataContainer2>{{totalPrice | number}}</span>
                         </td>
                     </tr>
                 </table>
             </div>
         </div>
         <div class="booking_button text-center py-4">
-            <button class="btn btn-success ">Đặt vé</button>
+            <button (click)="bookingSubmit()" class="btn btn-success">Đặt vé</button>
         </div>
     </div>
 </div>

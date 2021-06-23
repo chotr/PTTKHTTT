@@ -1,7 +1,8 @@
-import { AfterViewInit } from '@angular/core';
+import { AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { CinemasService } from 'src/app/client/services/cinemas.service';
 import { MovieService } from 'src/app/client/services/movie.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-showtimes-management',
@@ -9,6 +10,9 @@ import { MovieService } from 'src/app/client/services/movie.service';
   styleUrls: ['./showtimes-management.component.scss'],
 })
 export class ShowtimesManagementComponent implements OnInit, AfterViewInit {
+  @ViewChild('searchInput') searchInput: ElementRef;
+  @ViewChild('searchInput1') searchInput1: ElementRef;
+  @ViewChild('searchInput2') searchInput2: ElementRef;
   maHeThongRap = [];
   selectedmaHeThong: any;
   cumRap = [];
@@ -18,10 +22,9 @@ export class ShowtimesManagementComponent implements OnInit, AfterViewInit {
   dsPhim = [];
   selectedPhim: any;
 
-  dateShow:''
-  price:0
-  time:''
-
+  dateShow: '';
+  price: any;
+  time: '';
 
   constructor(
     private cinemaSer: CinemasService,
@@ -77,7 +80,7 @@ export class ShowtimesManagementComponent implements OnInit, AfterViewInit {
       this.maRap = getRap;
     });
   }
-  getDate(evt){
+  getDate(evt) {
     this.dateShow = evt.target.value;
   }
   getPrice(evt) {
@@ -94,11 +97,38 @@ export class ShowtimesManagementComponent implements OnInit, AfterViewInit {
       maRap: this.selectedMaRap,
       giaVe: this.price,
     };
-    this.cinemaSer.showtime(obj).subscribe(data => {
+    this.cinemaSer.showtime(obj).subscribe((data) => {
       if (data) {
-        alert('Thêm thành công')
+        Swal.fire({
+          title: 'Thông báo',
+          text: 'Thêm thành công!',
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonText: 'Xác nhận!',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.getNameCinema();
+            this.getMovie();
+            this.getMovie();
+            this.maHeThongRap = [];
+            this.selectedmaHeThong = null;
+            this.cumRap = [];
+            this.selectedCumRap = null;
+            this.maRap = [];
+            this.selectedMaRap = null;
+            this.dsPhim = [];
+            this.selectedPhim = null;
+            this.dateShow = null;
+            this.price = null;
+            this.time = null;
+            this.searchInput.nativeElement.value = '';
+            this.searchInput1.nativeElement.value = '';
+            this.searchInput2.nativeElement.value = '';
+
+          }
+        });
       }
-    })
-    console.log(day)
+    });
+    console.log(day);
   }
 }

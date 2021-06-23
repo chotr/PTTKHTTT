@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -88,7 +89,16 @@ export class AccountService {
   handleError(error: any) {
     switch (error.status) {
       case 500:
-        alert(error.error);
+        Swal.fire({
+          title: 'Thông báo',
+          text: error.error,
+          icon: 'error',
+          showCancelButton: false,
+          confirmButtonText: 'Xác nhận!',
+        }).then((result) => {
+          if (result.isConfirmed) {
+          }
+        });
         break;
     }
     return throwError(error);

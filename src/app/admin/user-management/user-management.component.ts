@@ -8,6 +8,7 @@ import {
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from 'src/app/provider/services/account.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-management',
@@ -137,8 +138,18 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
     };
     this.accountService.addUsser(signUp).subscribe((res) => {
       if (res) {
-        alert('Thành công');
-        this.signUpFormTag.reset();
+        Swal.fire({
+          title: 'Thông báo',
+          text: 'Đặt vé thành công!',
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonText: 'Xác nhận!',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.signUpFormTag.reset();
+            this.getDataUser(this.pageCurrent)
+          }
+        });
       }
     });
   }
@@ -171,10 +182,19 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
     };
     this.accountService.updateApi(update).subscribe((res) => {
       if (res) {
-        alert('Thành công');
+        Swal.fire({
+          title: 'Thông báo',
+          text: 'Cập nhật thành công!',
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonText: 'Xác nhận!',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.getDataUser(this.pageCurrent)
+          }
+        });
       }
     });
-    console.log(update);
   }
 
   addUser() {
@@ -187,8 +207,17 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
   deleteUser(user: any) {
     this.accountService.deleteUser(user).subscribe((res) => {
       if (res) {
-        alert('Xóa thành công');
-        window.location.reload();
+        Swal.fire({
+          title: 'Thông báo',
+          text: 'Xóa thành công!',
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonText: 'Xác nhận!',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.getDataUser(this.pageCurrent)
+          }
+        });
       }
     });
   }
