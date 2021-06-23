@@ -14,9 +14,10 @@ export class DsGheComponent implements OnInit, OnChanges {
   soGheDaDat: number = 0;
   soGheConLai:number = 0;
   soGheDangDat: any[] = [];
-  giaVe: number = 0;
+  giaVee: number = 0;
   id: any;
-  price=0;
+  price=[];
+  totalPrice = 0;
 
   bgColor = '#ffb100';
   bgColor1 = '#6c757d';
@@ -45,32 +46,37 @@ export class DsGheComponent implements OnInit, OnChanges {
     this.getDataSeat(this.id);
   }
   datGheParent(evt, ghe) {
-    let ge
+    let giave = []
+    let total = 0
+
     // console.log(evt, ghe);
     if (evt) {
       this.soGheDaDat++;
       this.soGheConLai--;
       this.soGheDangDat.push(ghe);
-      this.giaVe = this.soGheDaDat ;
+      // this.giaVee = this.soGheDaDat ;
       // console.log(this.soGheDangDat);
     } else {
       this.soGheDaDat--;
       this.soGheConLai++;
-      this.giaVe = this.soGheDaDat * this.price;
+      // this.giaVee = this.soGheDaDat * this.price;
 
       for (let i in this.soGheDangDat) {
         if (this.soGheDangDat[i] === ghe) {
           this.soGheDangDat.splice(parseInt(i), 1);
-          ge = this.soGheDangDat[i].giaVe
-          for(let gia of this.soGheDangDat[i]){
-            // gia.giaVe = ge
-          }
         }
       }
     }
-    console.log(ge)
+    for(let gia of this.soGheDangDat){
+      giave.push(gia.giaVe);
 
-    console.log(this.soGheDangDat)
+    }
+    this.price = giave
+    for(let i of this.price){
+      total += i
+    }
+    this.totalPrice = total
+
   }
   getParamsFromUrl() {
     this.activatedRoute.queryParams.subscribe((res) => {

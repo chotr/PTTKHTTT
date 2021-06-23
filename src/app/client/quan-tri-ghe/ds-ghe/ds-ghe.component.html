@@ -1,7 +1,7 @@
 <div class="danh_sach_ghe">
-    <div class="bg_page">
+    <!-- <div class="bg_page">
         <img src="../../../../assets/images/banner.jpg" alt="">
-    </div>
+    </div> -->
     <div class="bg-booking">
         <div class="row">
             <div class="col-6 mx-auto p-4 text-center">
@@ -60,17 +60,24 @@
                     <tr>
                         <th class="p-1">Số ghế chọn</th>
                         <th class="p-1">Giá</th>
+                        <th class="p-1">Tổng</th>
                     </tr>
                     <tr>
-                        <td rowspan="1" class="item w-50 p-1"><span *ngFor="let ghe of soGheDangDat">{{ghe.tenGhe}},
+                        <td rowspan="1" class="item p-1" style="width: 40%;"><span *ngFor="let ghe of soGheDangDat">{{ghe.tenGhe}};
                             </span>
                         </td>
-                        <td rowspan="1" class="item w-50 p-1"><span *ngFor="let ghe of soGheDangDat">{{ghe.giaVe}},
+                        <td rowspan="1" class="item p-1" style="width: 40%;"><span *ngFor="let ghe of soGheDangDat">{{ghe.giaVe | number}};
                         </span>
+                        </td>
+                        <td rowspan="1" class="item p-1" style="width: 20%;">
+                            <span>{{totalPrice | number}}</span>
                         </td>
                     </tr>
                 </table>
             </div>
+        </div>
+        <div class="booking_button text-center py-4">
+            <button class="btn btn-success ">Đặt vé</button>
         </div>
     </div>
 </div>
