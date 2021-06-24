@@ -4,6 +4,12 @@
   .Carousel {
     .fade_bg {
       position: relative;
+      // height: 60%;
+      img{
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
       &::before {
         // background-color: rgba(0, 0, 0, 0.37);
         // background-image: linear-gradient( #ffffff00, black);
