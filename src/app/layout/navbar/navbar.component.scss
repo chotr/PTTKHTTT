@@ -1,31 +1,5 @@
-.navbar { 
-  #navbarNav {
-    justify-content: center;
-  }
-  .logout {
-    cursor: pointer;
-  }
-  .nav_user{
-    display: flex;
-    justify-content: flex-end;
-    .dropdown-menu{
-      right: 10%;
-      left: 45%
-    }
-  }
-  .btn{
-    background-color: #e76464;
-    &:focus{
-      box-shadow: none;
-    }
-  }
-  .navbar-brand{
-    &:focus{
-      outline: none;
-    }
-  }
-}
 .navbar-expand-lg {
+  font-size: 18px;
   position: fixed;
   width: 100%;
   z-index: 20;
@@ -36,5 +10,35 @@
     font-style: italic;
     margin-bottom: 0;
     cursor: pointer;
+  }
+  #navbarNav {
+    justify-content: center;
+  }
+  .logout {
+    cursor: pointer;
+  }
+  .nav_user {
+    display: flex;
+    justify-content: flex-end;
+    .dropdown-menu {
+      right: 10%;
+      left: 45%;
+    }
+  }
+  .btn {
+    background-color: #e76464;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  .navbar-brand {
+    &:focus {
+      outline: none;
+    }
+  }
+  .navbar-nav {
+    a {
+      color: black !important;
+    }
   }
 }

@@ -1,4 +1,5 @@
 .history_booking{
+    cursor: context-menu;
     .title {
         padding: 50px;
         color: #cbafaf;
@@ -6,5 +7,8 @@
           font-size: 37px;
           cursor: context-menu;
         }
+    }
+    .table{
+        background: #f8f9fad9;
     }
 }
