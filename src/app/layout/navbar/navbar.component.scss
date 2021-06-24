@@ -1,13 +1,4 @@
-.navbar {
-  @font-face {
-    font-family: azonix;
-    src: url('../../../assets/images/Azonix.otf') format("opentype");
-  }
-  @font-face {
-    font-family: stanley;
-    src: url(../../../assets/images/Stanley.otf) format("opentype");
-  }
-  
+.navbar { 
   #navbarNav {
     justify-content: center;
   }

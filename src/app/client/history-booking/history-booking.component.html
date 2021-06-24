@@ -1,0 +1,33 @@
+<div class="history_booking container">
+    <div class="title my-2 text-center">
+        <h1>Lịch sử đặt vé</h1>
+    </div>
+    <table class="table bg-light">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Thứ tự</th>
+                <th scope="col">Tên phim</th>
+                <th scope="col">Rạp chiếu</th>
+                <th scope="col">Số lượng ghế</th>
+                <th scope="col">Ngày đặt</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let item of arr; index as i">
+                <tr>
+                    <td> {{i+1}} </td>
+                    <td>{{item.tenPhim}}</td>
+                    <!-- <ng-container *ngFor="let dsGhe in item">
+                        <td>{{dsGhe}}</td>
+                    </ng-container> -->
+                    <!-- <td>{{item.danhSachGhe}}</td> -->
+                    <td>{{item.danhSachGhe[0].tenHeThongRap}}</td>
+                    <td>{{item.danhSachGhe.length}}</td>
+                    <td>{{item.ngayDat | date:'dd/MM/yyyy'}}</td>
+                </tr>
+                <!-- <tr *ngFor="let item of group.items"><td>{{item}}</td></tr> -->
+            </ng-container>
+        </tbody>
+
+    </table>
+</div>

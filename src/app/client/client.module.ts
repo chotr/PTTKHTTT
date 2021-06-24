@@ -28,7 +28,8 @@ import { ModalComponent } from './user/modal/modal.component';
 import { PassModalComponent } from './user/pass-modal/pass-modal.component';
 import { ShowtimeComponent } from './showtime/showtime.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-
+import { HistoryBookingComponent } from './history-booking/history-booking.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 const routes = [
   {
@@ -45,6 +46,12 @@ const routes = [
         canActivate: [UserAcessGuard],
       },
       {
+        path: 'lichSuDatVe',
+        component: HistoryBookingComponent,
+        canActivate: [UserAcessGuard],
+      },
+
+      {
         path: 'danhSachGhe/:id',
         component: DsGheComponent,
         canActivate: [UserAcessGuard],
@@ -53,7 +60,7 @@ const routes = [
         path: 'login',
         component: LoginComponent,
         // canActivate: [UserAcessGuard],
-        canActivate:[LoginAugthGuard]
+        canActivate: [LoginAugthGuard],
       },
 
       {
@@ -104,8 +111,7 @@ const routes = [
     ModalComponent,
     PassModalComponent,
     ShowtimeComponent,
-
-
+    HistoryBookingComponent,
   ],
   imports: [
     CommonModule,
@@ -118,7 +124,7 @@ const routes = [
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    CarouselModule
+    CarouselModule,
     // PipesModule
   ],
   exports: [ClientComponent, HomeComponent],

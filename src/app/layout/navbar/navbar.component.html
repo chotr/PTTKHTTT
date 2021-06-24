@@ -28,17 +28,29 @@
     </div>
     <div *ngIf="accountInfo !== null" class="nav-item">
       <ul class="navbar-nav">
-        <li *ngIf="accountInfo.maLoaiNguoiDung === 'QuanTri'" class="nav-item"><a class="nav-link" id="navbarDropdown"
+        <li *ngIf="accountInfo.maLoaiNguoiDung === 'QuanTri'" class="nav-item">
+          <a class="nav-link" id="navbarDropdown"
             role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Quản trị</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" routerLink="/admin">Trang quản lý</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" routerLink="/client/user">Thông tin</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/client/lichSuDatVe">Lịch sử đặt vé</a>
+
           </div>
         </li>
         <li *ngIf="accountInfo.maLoaiNguoiDung === 'KhachHang'" class="nav-item"><a routerLink="/client/user"
-            class="nav-link">User</a></li>
-        <li class="nav-item" (click)="logout()"><a class="nav-link logout">Đăng xuất</a></li>
+            class="nav-link" id="navbarDropdown"
+            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" routerLink="/client/user">Thông tin</a>              
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" routerLink="/client/lichSuDatVe">Lịch sử đặt vé</a>
+  
+            </div>
+          </li>
+        <li class="nav-item" routerLink="/client/home" (click)="logout()"><a class="nav-link logout">Đăng xuất</a></li>
       </ul>
     </div>
   </div>
