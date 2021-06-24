@@ -1,54 +1,58 @@
-<div class="row cinema  ">
+<div class="row cinema">
   <div class="col-2 cinema_Info">
     <ul>
-      <li *ngFor="let cinema of listCinema"  >
-        <a  (click)="layThongTinRap(cinema.maHeThongRap)"><img [src]="cinema.logo" width="50px" height="50px"></a>
+      <li *ngFor="let cinema of listCinema; let i = index" [class.active]="selectedIndex === i" (click)="setIndex(i)">
+        <a (click)="layThongTinRap(cinema.maHeThongRap)"><img [src]="cinema.logo" width="50px" height="50px"></a>
       </li>
     </ul>
   </div>
-  <div class="col-3 theater_cluster " >
-    <div div class="text-white d-flex mb-3" *ngFor="let cr of listCRP" style="border-bottom: 2px solid red;">
+  <div class="col-3 theater_cluster ">
+    <div div class="text-white cumRap mb-3" [class.active]="selectedIndex2 === i" (click)="setIndex2(i)"
+      *ngFor="let cr of listCRP; let i = index">
       <div class="content" (click)="layLichChieu(cr.maCumRap)">
-        <div class="img">
-          <img [src]="img" width="50px" height="50px">
-        </div>
-        <div class="text">
-          <p>{{cr.tenCumRap}}</p>
-          <span>{{cr.diaChi| shortCut: 32}}</span>
-          <p> <a href="#"> [Chi tiết]</a></p>
+        <div class="row">
+          <div class="img col-2 pr-2">
+            <img [src]="img" width="50px" height="50px">
+          </div>
+          <div class="text col-10">
+            <p>{{cr.tenCumRap | shortCut: 25}}</p>
+            <span>{{cr.diaChi| shortCut: 25}}</span>
+            <p> <a href="#"> [Chi tiết]</a></p>
+          </div>
         </div>
       </div>
 
     </div>
   </div>
   <div class="col-7 movies">
-    <div *ngIf="isPhim == false" >
+    <div *ngIf="isPhim == false">
       <h2 class="text-white">Cụm rạp này hôm nay không có phim</h2>
     </div>
     <div class="listPhim mb-2 text-white" *ngFor="let phim of listPhimNgayHienTai; let i = index">
       <div class="wrapper__collapse">
-          <div class="top" data-toggle="collapse"  [attr.data-target]="'#phim-'+phim.maPhim">
-            <div class="d-flex">
-            <img [src]="phim.hinhAnh" alt="" width="70px" height="70px">
-              <div class="infoP">
-                <p>{{phim.tenPhim}}</p>
+        <div class="top" data-toggle="collapse" [attr.data-target]="'#phim-'+phim.maPhim">
+          <div class="d-flex">
+            <img class="img_movie mr-3 mb-3" [src]="phim.hinhAnh" alt="" width="70px" height="70px">
+            <div class="infoP">
+              <p>{{phim.tenPhim}}</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <div *ngFor="let lc of phim.lstLichChieuTheoPhim">
+                <button (click)="navigateTo(lc.maLichChieu)" *ngIf="kiemTraNgayChieu(lc.ngayChieuGioChieu)"
+                  class=" btn btn-success  btn-time">
+                  <span class="timeSt">{{lc.ngayChieuGioChieu | date: 'HH:mm'}}</span>
+                </button>
               </div>
             </div>
-
-            <div class="row">
-                <div class="col-12">
-                  <div  *ngFor="let lc of phim.lstLichChieuTheoPhim">
-                    <button (click)="navigateTo(lc.maLichChieu)" *ngIf="kiemTraNgayChieu(lc.ngayChieuGioChieu)"  class=" btn btn-success  btn-time">
-                      <span class="timeSt">{{lc.ngayChieuGioChieu | date: 'HH:mm'}}</span>
-                    </button>
-                  </div>
-                </div>
-            </div>
-
           </div>
-        </div>
 
+        </div>
       </div>
+
+    </div>
 
 
 
@@ -56,4 +60,3 @@
 
 
 </div>
-

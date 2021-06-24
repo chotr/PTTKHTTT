@@ -25,7 +25,7 @@ export class CinemasComponent implements OnInit {
   gioChieu: any;
   maCumRapPhim = 'BHDStar';
   arrAbc = [];
-  maCTR = "bhd-star-cineplex-vincom-thao-dien";
+  maCTR = "BHD Star Cineplex - 3/2";
   img  = "assets/images/bhd.jpg";
   //
   date = new Date();
@@ -36,6 +36,8 @@ export class CinemasComponent implements OnInit {
   isPhim = false;
   phimHT: any;
   listPhimNgayHienTai:any[] = [];
+  selectedIndex: number = null;
+  selectedIndex2: number = null;
 
   @Output() newItem = new EventEmitter<string>();
 
@@ -119,7 +121,7 @@ export class CinemasComponent implements OnInit {
   defaultCR(){
     switch (this.maCumRapPhim) {
       case 'BHDStar':
-          this.maCTR = "bhd-star-cineplex-vincom-thao-dien"
+          this.maCTR = "BHD Star Cineplex - 3/2"
           this.img = "assets/images/bhd.jpg"
         break;
       case 'CGV':
@@ -155,6 +157,13 @@ export class CinemasComponent implements OnInit {
     this.getInfoShowTimes();
 
   }
+  setIndex(index: number) {
+    this.selectedIndex = index;
+ }
+ setIndex2(index: number) {
+  this.selectedIndex2= index;
+}
+
   navigateTo(id) {
     this.router.navigate(['client/danhSachGhe', id])
   }

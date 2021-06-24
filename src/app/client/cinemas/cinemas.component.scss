@@ -1,66 +1,96 @@
-.cinema{
-  // height: 700px;
-  margin-bottom: 40px;
-  border: 1px solid navajowhite;
-  // padding:20px 0 ;
-  .cinema_Info{
-    border: 1px solid cadetblue;
+.cinema {
+  // margin-bottom: 40px;
+  padding-top: 30px;
+  .cinema_Info {
     width: 100px;
     padding: 0;
     margin: 0;
     // padding:20px 0 ;
-    ul{
+    ul {
       padding: 0;
-      li{
-
+      li {
         padding: 0;
-        margin: 0 ;
+        margin: 0;
         list-style: none;
-        a{
+        position: relative;
+        a {
           margin: 0;
           display: block;
           padding: 20px 40px;
           text-align: center;
           height: 100%;
-          img{
+          img {
             width: 60px;
             height: 60px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid red;
+            border-radius: 50%;
           }
+        }
+        &::before {
+          position: absolute;
+          content: "";
+          height: 1px;
+          width: 50%;
+          bottom: 0;
+          background: #5c5c5c;
+          margin: auto;
+          right: 0;
+          left: 0;
         }
       }
     }
-
+    .active {
+      img {
+        -webkit-box-shadow: 0px 1px 14px 0px rgba(255, 255, 255, 1);
+        -moz-box-shadow: 0px 1px 14px 0px rgba(255, 255, 255, 1);
+        box-shadow: 0px 1px 14px 0px rgba(255, 255, 255, 1);
+      }
+    }
   }
-  .theater_cluster{
+  .theater_cluster {
     padding: 20px 0;
-    border: 1px solid chartreuse;
-  }
-  .movies{
-    padding:20px 0 ;
-    border: 1px solid navy;
+    // .active {
+    //   -webkit-box-shadow: 0px 1px 14px 0px rgba(255, 255, 255, 1);
+    //   -moz-box-shadow: 0px 1px 14px 0px rgba(255, 255, 255, 1);
+    //   box-shadow: 0px 1px 14px 0px rgba(255, 255, 255, 1);
+    // }
 
-    .digital{
+    p {
+      margin-bottom: 0;
+    }
+    .cumRap {
+      margin-bottom: 20px !important;
+      padding-bottom: 20px;
+      position: relative;
+      &::before {
+        position: absolute;
+        content: "";
+        height: 1px;
+        width: 83%;
+        bottom: 0;
+        background: #5c5c5c;
+        margin: auto;
+        left: 0;
+      }
+    }
+  }
+  .movies {
+    padding: 20px 0;
+
+    .digital {
       font-size: 18px;
       margin-bottom: 20px;
     }
-    .btn-time{
+    .btn-time {
       font-size: 15px;
       float: left;
       margin-right: 20px;
       margin-bottom: 14px;
-      &:hover{
-        color: red;
+      &:hover {
         transition: all 0.5s;
-
       }
-      .timeSt{
+      .timeSt {
         font-size: 18px;
       }
     }
   }
-
-
-
 }

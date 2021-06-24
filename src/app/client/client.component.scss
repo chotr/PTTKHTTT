@@ -1,13 +1,4 @@
 .router{
-    // background: #00000038;
-    background-color: #ffffff00;
     padding-top: 50px;
     height: 100%;
-}
-@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-    .router {
-      -webkit-backdrop-filter: blur(10px);
-      backdrop-filter: blur(10px);
-      background-color: #ffffff00; 
-    }   
 }

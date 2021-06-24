@@ -1,3 +1,16 @@
-.detail_movie{
-    height: 300px;
+.detailMovie {
+    background-color: #ffffff00;
+    .detail_movie{
+        height: 300px;
+    }
+    .row{
+        width: 100%;
+    }
 }
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    .detailMovie {
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      background-color: #ffffff00;  
+    }
+  }
