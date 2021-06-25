@@ -2,6 +2,7 @@
   background: #00000038;
 
   .Carousel {
+    // display: none;
     .fade_bg {
       position: relative;
       img{
@@ -25,6 +26,7 @@
     }
   }
   .list_movie {
+  display: none;
     .title {
       padding: 50px;
       color: #cbafaf;
@@ -57,16 +59,9 @@
       text-align: center;
     }
   }
-
-  .bg_home {
-    background-image: url("../../../assets/images/Untitled.png");
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    z-index: -1;
-  }
   .cinema{
+    display: none;
     background-color: #343a40bd!important;
+    margin-bottom: 20px;
   }
 }

@@ -1,9 +1,5 @@
-<div class="home">
-  <!-- <div class="bg_page">
-        <img src="../../../assets/images/banner.jpg" alt="">
-        <div class="bg-blurr"></div>
-    </div> -->
-  <div class="Carousel">
+<div class="home" id="home">
+  <div #carouselSlide class="Carousel" id="Carousel">
     <owl-carousel-o style="height:80%" [options]="customOptions">
       <ng-template class="fade" carouselSlide><div class="fade_bg"><img width="1280px" height="550px" src="../../../assets/images/banner1.png"></div></ng-template>  
       <ng-template class="fade" carouselSlide><div class="fade_bg"><img width="1280px" height="550px" src="../../../assets/images/banner2.png"></div></ng-template>  
@@ -12,7 +8,7 @@
     <div class="bg-fade">
     </div>
   </div>
-  <div class="list_movie">
+  <div class="list_movie" id="list_movie">
     <div class="title text-center"><h1>Danh sách phim</h1></div>
     <div class="list_movie_home">
       <div class="card_movie container">
@@ -27,10 +23,18 @@
     <div class="more_movie">
       <button type="button" (click)="navigateTo()" class="btn btn-success more mt-4">Xem thêm...</button>
     </div>
-    <div class="cinema container  mt-5">
+    <div class="cinema container  mt-5" id="cinema">
         <!-- <app-cinemas [listCinema]="listCinema" [listCRP]="listCRP" (newItem)="ChangeMaCumRap($event)"></app-cinemas> -->
         <app-cinemas></app-cinemas>
         <!-- <app-showtime></app-showtime> -->
         <!-- [listCumRap]="listCumRap"  -->
+  </div>
+</div>
+<div class="spinner" id="spinner">
+  <div class="loader">
+  <p class="text-center text-white">Đang tải</p>
+      <div class="inner one"></div>
+      <div class="inner two"></div>
+      <div class="inner three"></div>
   </div>
 </div>

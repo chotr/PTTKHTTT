@@ -1,16 +1,35 @@
 .detailMovie {
-    background-color: #ffffff00;
-    .detail_movie{
-        height: 300px;
-    }
-    .row{
-        width: 100%;
-    }
-}
-@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-    .detailMovie {
-      -webkit-backdrop-filter: blur(10px);
-      backdrop-filter: blur(10px);
-      background-color: #ffffff00;  
+    // height: 100%;
+  background-color: #ffffff00;
+  //   margin-top: 50px;
+  .content {
+    display: none;
+  }
+
+  .detail_movie {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+  }
+  .row {
+    width: 100%;
+  }
+  .detail {
+    height: 500px;
+    .info {
+      position: absolute;
+      top: 10%;
     }
   }
+  .spinner{
+      height: 98vh;
+    // height: 100%;
+  }
+}
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .detailMovie {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: #ffffff00;
+  }
+}

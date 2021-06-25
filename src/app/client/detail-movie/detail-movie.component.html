@@ -1,30 +1,42 @@
-<div class="detailMovie">
-    <div class="container">
-        <div class="row">
-            <div class="col-4">
-                <img class="detail_movie" [src]="detailMovie?.hinhAnh">
-            </div>
-            <div class="col-8">
+<div class="detailMovie" >
+    <div class="content container" id="content">
+        <div class="detail">
+            <div class="info">
                 <div class="row">
-                    <div class="col-12">
-                        <p>{{detailMovie?.tenPhim}}</p>
+                    <div class="col-2">
+                        <img class="detail_movie" [src]="detailMovie?.hinhAnh">
                     </div>
-                    <div class="col-12">
-                        <p>{{detailMovie?.moTa}}</p>
+                    <div class="col-10">
+                        <div class="row">
+                            <div class="col-12">
+                                <p>{{detailMovie?.tenPhim}}</p>
+                            </div>
+                            <div class="col-12">
+                                <p>{{detailMovie?.moTa}}</p>
+                            </div>
+                            <div class="col-12">
+                                <p>{{detailMovie?.ngayKhoiChieu}}</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-12">
-                        <p>{{detailMovie?.ngayKhoiChieu}}</p>
-                    </div>
+
                 </div>
             </div>
+        </div>
+        <div class="trailer">
             <div class="video">
                 <iframe id="iframe" frameborder="0" allowfullscreen="1"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     title="YouTube video player" width="640" height="360" [src]="url | safe"></iframe>
             </div>
-
-            <div id="player"></div>
-
         </div>
-    </div>
+    </div>  
 </div>
+<div class="spinner" id="spinner">
+    <div class="loader">
+    <p class="text-center text-white">Đang tải</p>
+        <div class="inner one"></div>
+        <div class="inner two"></div>
+        <div class="inner three"></div>
+    </div>
+  </div>

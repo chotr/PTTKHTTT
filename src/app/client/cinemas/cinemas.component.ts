@@ -9,8 +9,6 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./cinemas.component.scss'],
 })
 export class CinemasComponent implements OnInit {
-  // @Input() listCinema: any;
-  // @Input() listCRP: any;
   listMovie: any[] = [];
   listCinema: any[] = [];
   listCRP: any[] = [];
@@ -54,7 +52,6 @@ export class CinemasComponent implements OnInit {
     });
     this.getInfoShowTimes();
     this.getThongTinCumRam();
-    // this.selectedIndex(1);
   }
 
   getThongTinCumRam() {

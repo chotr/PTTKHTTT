@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CinemasService } from '../services/cinemas.service';
 import { MovieService } from '../services/movie.service';
@@ -10,6 +10,8 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+
+  @ViewChild('carouselSlide') carouselSlide:any;
   listMovie: any[] = [];
   customOptions: OwlOptions = {
     loop: true,
@@ -46,10 +48,21 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.moviesService.getDataMovies().subscribe((res) => {
+      if (res) {
+        this.hideloader()
+      }
       this.listMovie = res;
     });
   }
   navigateTo() {
     this.router.navigate(['client/movies/Page']);
+  }
+  hideloader(){
+    document.getElementById('spinner').style.display = 'none';
+    document.getElementById('list_movie').style.display = 'block';
+    document.getElementById('cinema').style.display = 'block';
+
+
+
   }
 }

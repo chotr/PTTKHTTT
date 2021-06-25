@@ -37,13 +37,18 @@ export class DetailMovieComponent implements OnInit {
   }
   getDataMovie(idMovie: string) {
     this.movieSer.getDetailMovie(idMovie).subscribe((res) => {
-      if (res) {
-        this.detailMovie = res;
-        console.log(this.detailMovie)
-        let trailer = this.detailMovie.trailer;
-        this.url = trailer
+      if (res) {       
+        this.hideloader();
       }
+      this.detailMovie = res;
+        console.log(this.detailMovie);
+        let trailer = this.detailMovie.trailer;
+        this.url = trailer;
     });
+  }
+  hideloader(){
+    document.getElementById('spinner').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
   }
 
 }

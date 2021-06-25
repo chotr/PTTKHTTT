@@ -30,6 +30,7 @@ import { ShowtimeComponent } from './showtime/showtime.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HistoryBookingComponent } from './history-booking/history-booking.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { FooterComponent } from '../layout/footer/footer.component';
 
 const routes = [
   {
@@ -112,6 +113,7 @@ const routes = [
     PassModalComponent,
     ShowtimeComponent,
     HistoryBookingComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,

@@ -17,11 +17,13 @@ import { QuanTriGheModule } from './client/quan-tri-ghe/quan-tri-ghe.module';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import { DatePipe } from '@angular/common'
 import { NgSelectModule } from '@ng-select/ng-select';
+
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
     DialogComponent,
+
   ],
   imports: [
     BrowserModule,

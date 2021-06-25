@@ -28,15 +28,19 @@ export class HistoryBookingComponent implements OnInit {
       taiKhoan: this.userName,
     }
     this.accountService.detailUser(obj).subscribe((res)=>{
+      if(res){
+        this.hideloader();
+      }
       for(let ele of res.thongTinDatVe) {
-        // console.log(ele)
         this.arr.push(ele);
-        // this.arr = ele
       }
     console.log(this.arr)
 
       
     })
+  }
+  hideloader(){
+    document.getElementById('spinner').style.display = 'none';
   }
 
 }
