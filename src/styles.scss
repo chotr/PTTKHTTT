@@ -10,7 +10,7 @@ body {
   height: 100%;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 
-  background-image: url("./assets/images/banner.jpg");
+  background-image: url("./assets/images/dark-blue-blur-desktop-background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -38,7 +38,7 @@ body {
     height: 60px;
     border-radius: 50%;
     perspective: 800px;
-    z-index: 30;
+    z-index: 25;
   }
 
   .inner {

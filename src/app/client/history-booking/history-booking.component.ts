@@ -41,6 +41,8 @@ export class HistoryBookingComponent implements OnInit {
   }
   hideloader(){
     document.getElementById('spinner').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+
   }
 
 }
