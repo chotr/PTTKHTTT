@@ -1,23 +1,40 @@
-.card{
-    color: white;
-    height: 80%;
-    margin-bottom: 40px;
-    background-color: #ffffff00;
-    text-align: center;
-    cursor: pointer;
-    border: none;
-    width: 85%;
-    margin: auto;
-    img{
-        height: 320px;
-        border-radius: 5px;
-        object-fit: cover;
+@import "../../../sass/Base/customize";
+@import "../../../sass/Base/reset";
+@import "../../../sass/Helper/mixin";
+@import "../../../sass/Helper/variables";
+
+.card {
+  color: white;
+  height: 80%;
+  background-color: #ffffff00;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  width: 85%;
+  margin: auto;
+  img {
+    height: 320px;
+    border-radius: 5px;
+    object-fit: cover;
+  }
+  .card-body {
+    padding: 0 !important;
+    padding-top: 1rem !important;
+    h4 {
+      font-size: 17px;
+      font-family: "Roboto", serif;
     }
-    .card-body{
-        padding: 0!important;
-        padding-top: 1rem!important;
-        h4{
-            font-size: 17px;
-        }
+  }
+}
+@include responsive("large") {
+  .card {
+    img {
+      height: 200px;
     }
+    .card-body {
+      h4 {
+        font-size: 14px;
+      }
+    }
+  }
 }

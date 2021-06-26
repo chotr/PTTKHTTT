@@ -165,4 +165,8 @@ export class CinemasComponent implements OnInit {
   navigateTo(id) {
     this.router.navigate(['client/danhSachGhe', id]);
   }
+  navigateToCR(id) {
+    this.router.navigate(['client/detail', this.maCumRapPhim + '?maCR=' + id]);
+    console.log(this.maCumRapPhim);
+  }
 }

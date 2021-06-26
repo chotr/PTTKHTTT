@@ -15,6 +15,8 @@ export class NavbarComponent implements OnInit {
 
   accountInfo: any;
 
+  userName: any
+
   constructor(
     private loginSer: LoginService,
     private router: Router,
@@ -25,6 +27,9 @@ export class NavbarComponent implements OnInit {
     const account = JSON.parse(localStorage.getItem('account') as string);
     if (account === null) {
       this.accountInfo = null;
+    }
+    if(account !== null){
+      this.userName = account.taiKhoan
     }
     this.accountInfo = account;
   }

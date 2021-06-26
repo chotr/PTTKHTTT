@@ -17,11 +17,10 @@
           <div class="text col-10">
             <p>{{cr.tenCumRap | shortCut: 25}}</p>
             <span>{{cr.diaChi| shortCut: 25}}</span>
-            <p> <a href="#"> [Chi tiết]</a></p>
+            <p> <a class="text" (click)="navigateToCR(cr.maCumRap)"> [Chi tiết]</a></p>
           </div>
         </div>
       </div>
-
     </div>
   </div>
   <div class="col-7 movies">
@@ -37,7 +36,6 @@
               <p>{{phim.tenPhim}}</p>
             </div>
           </div>
-
           <div class="row">
             <div class="col-12">
               <div *ngFor="let lc of phim.lstLichChieuTheoPhim">
@@ -48,15 +46,8 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
-
     </div>
-
-
-
   </div>
-
-
 </div>

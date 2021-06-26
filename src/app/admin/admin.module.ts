@@ -15,6 +15,8 @@ import { FormComponent } from './layout/form/form.component';
 import { MaterialModule } from '../material/material.module';
 import { FormAddMovieComponent } from './layout/form-add-movie/form-add-movie.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { CinemaManagementComponent } from './cinema-management/cinema-management.component';
+import { CinemasComponent } from '../client/cinemas/cinemas.component';
 
 
 const routes = [
@@ -49,6 +51,10 @@ const routes = [
         component: ShowtimesManagementComponent,
       },
       {
+        path: 'cinema-management',
+        component: CinemaManagementComponent,
+      },
+      {
         path: '',
         redirectTo: '/admin/dashboard',
       },
@@ -67,6 +73,7 @@ const routes = [
     NavAdminComponent,
     FormComponent,
     FormAddMovieComponent,
+    CinemaManagementComponent,
   ],
   imports: [
     CommonModule,

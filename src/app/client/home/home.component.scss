@@ -1,6 +1,4 @@
 .home {
-  // background: #00000038;
-
   .Carousel {
     // display: none;
     .fade_bg {
@@ -34,6 +32,7 @@
       h1 {
         font-size: 37px;
         cursor: context-menu;
+        font-family: 'Roboto', sans-serif!important;
       }
     }
     .more {
@@ -41,24 +40,6 @@
       margin: auto;
     }
   }
-  // .bg_page {
-  //   .bg-Blur {
-  //     background-color: rgb(0, 0, 0); 
-  //     background-color: rgba(0, 0, 0, 0.4); 
-  //     color: white;
-  //     font-weight: bold;
-  //     border: 3px solid #f1f1f1;
-  //     position: absolute;
-  //     top: 0;
-  //     left: 0;
-  //     bottom: 0;
-  //     transform: translate(-50%, -50%);
-  //     z-index: 0;
-  //     width: 100%;
-  //     padding: 20px;
-  //     text-align: center;
-  //   }
-  // }
   .cinema{
     display: none;
     background-color: #343a40bd!important;

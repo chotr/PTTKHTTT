@@ -31,6 +31,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HistoryBookingComponent } from './history-booking/history-booking.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FooterComponent } from '../layout/footer/footer.component';
+import { DetailCinemaComponent } from './detail-cinema/detail-cinema.component';
 
 const routes = [
   {
@@ -69,6 +70,10 @@ const routes = [
         component: SignUpComponent,
         canDeactivate: [DeactiveGuard],
         canActivate: [LoginAugthGuard],
+      },
+      {
+        path: 'detail/:id',
+        component: DetailCinemaComponent
       },
 
       {
@@ -113,7 +118,8 @@ const routes = [
     PassModalComponent,
     ShowtimeComponent,
     HistoryBookingComponent,
-    FooterComponent
+    FooterComponent,
+    DetailCinemaComponent
   ],
   imports: [
     CommonModule,

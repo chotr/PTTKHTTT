@@ -82,7 +82,15 @@ export class CinemasService {
       })
     );
   }
-
+  getDetailCenema(id: any) : Observable<any> {
+    const api = 'https://60d70ea4307c300017a5f606.mockapi.io/api/infoCinema/infoCinema/'+id;
+    return this.httpClient.get(api).pipe(
+      tap(),
+      catchError((err) => {
+        return this.handleErr(err);
+      })
+    );
+  }
   handleErr(error: any) {
     switch (error.status) {
       case 500: {

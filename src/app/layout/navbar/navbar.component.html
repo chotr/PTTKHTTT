@@ -1,57 +1,44 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="navbar-brand col-3" routerLink="/client/home">
-    <p class="text">
-      <span class="text_1">sayohyeah</span>
-    </p>
-  </div>
-  <div class="collapse navbar-collapse col-6 text-center" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/client/home">Lịch Chiếu</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/client/home">Cụm rạp</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/client/home">Tin tức</a>
-      </li>
-    </ul>
-
-  </div>
-  <div class="nav_user col-3 pr-4">
-    <div *ngIf="accountInfo === null" class="login-box">
-      <button class="btn" routerLink="/client/login">Đăng nhập</button>
-    </div>
-    <div *ngIf="accountInfo !== null" class="nav-item">
-      <ul class="navbar-nav">
-        <li *ngIf="accountInfo.maLoaiNguoiDung === 'QuanTri'" class="nav-item">
-          <a class="nav-link" id="navbarDropdown"
-            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Quản trị</a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" routerLink="/admin">Trang quản lý</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" routerLink="/client/user">Thông tin</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" routerLink="/client/lichSuDatVe">Lịch sử đặt vé</a>
-
-          </div>
-        </li>
-        <li *ngIf="accountInfo.maLoaiNguoiDung === 'KhachHang'" class="nav-item"><a routerLink="/client/user"
-            class="nav-link" id="navbarDropdown"
-            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" routerLink="/client/user">Thông tin</a>              
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" routerLink="/client/lichSuDatVe">Lịch sử đặt vé</a>
-  
-            </div>
-          </li>
-        <li class="nav-item" routerLink="/client/home" (click)="logout()"><a class="nav-link logout">Đăng xuất</a></li>
-      </ul>
-    </div>
-  </div>
+<nav class="navbar navbar-expand-xl navbar-light">
+	<a routerLink="/client/home" class="navbar-brand">SAYOHYEAH</a>
+	<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div id="navbarCollapse" class="collapse navbar-collapse">
+		<div class="navbar-nav ml-auto">
+			<a routerLink="/client/home" class="nav-item nav-link">Lịch chiếu</a>
+			<a routerLink="/client/home" class="nav-item nav-link">Cụm rạp</a>
+			<a routerLink="/client/home" class="nav-item nav-link">Tin tức</a>
+		</div>
+		<div class="navbar-nav ml-auto">
+			<div *ngIf="accountInfo === null" class="nav-item">
+				<button class="btn" routerLink="/client/login">Đăng nhập</button>
+			</div>
+			<div *ngIf="accountInfo !== null" class="nav-item dropdown">
+				<a *ngIf="accountInfo.maLoaiNguoiDung === 'QuanTri'" data-toggle="dropdown"
+					class="nav-link dropdown-toggle user-action"><svg viewBox="0 0 512 512"
+						xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+						<linearGradient id="a" gradientTransform="matrix(1 0 0 -1 0 -10018)"
+							gradientUnits="userSpaceOnUse" x1="0" x2="512" y1="-10274" y2="-10274">
+							<stop offset="0" stop-color="#31d8ff" />
+							<stop offset="1" stop-color="#ff80ff" />
+						</linearGradient>
+						<path
+							d="m512 256c0 141.386719-114.613281 256-256 256s-256-114.613281-256-256 114.613281-256 256-256 256 114.613281 256 256zm0 0"
+							fill="url(#a)" />
+						<path
+							d="m381.425781 393.421875h-250.851562c-6.601563 0-12.429688-4.316406-14.351563-10.636719l-59.574218-195.972656c-1.734376-5.707031.078124-11.902344 4.613281-15.773438 4.539062-3.875 10.941406-4.6875 16.304687-2.078124l86.261719 41.996093 80.839844-93.210937c2.847656-3.28125 6.984375-5.171875 11.332031-5.171875s8.480469 1.890625 11.332031 5.171875l80.839844 93.210937 86.261719-41.996093c5.367187-2.609376 11.765625-1.792969 16.304687 2.078124 4.535157 3.871094 6.351563 10.066407 4.613281 15.773438l-59.574218 195.972656c-1.921875 6.320313-7.75 10.636719-14.351563 10.636719zm-239.730469-30h228.609376l46.34375-152.433594-65.695313 31.980469c-6.105469 2.972656-13.449219 1.472656-17.898437-3.660156l-77.054688-88.839844-77.054688 88.84375c-4.449218 5.128906-11.789062 6.628906-17.894531 3.65625l-65.695312-31.980469zm0 0"
+							fill="#fff" />
+					</svg> {{userName}}</a>
+				<a *ngIf="accountInfo.maLoaiNguoiDung === 'KhachHang'" href="#" data-toggle="dropdown"
+					class="nav-link dropdown-toggle user-action">ND {{userName}}</a>
+				<div class="dropdown-menu">
+					<a *ngIf="accountInfo.maLoaiNguoiDung === 'QuanTri'" routerLink="/admin" class="dropdown-item">Quản lý</a>
+					<a routerLink="/client/user" class="dropdown-item">Thông tin</a>
+					<a routerLink="/client/lichSuDatVe" class="dropdown-item">Lịch sử đặt vé</a>
+					<div class="dropdown-divider"></div>
+					<a routerLink="/client/home" (click)="logout()" class="dropdown-item"><i class="material-icons">&#xE8AC;</i> Đăng xuất</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </nav>
