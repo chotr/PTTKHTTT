@@ -1,42 +1,75 @@
-<div class="detailMovie" >
+<div class="detailMovie">
     <div class="content container" id="content">
         <div class="detail">
             <div class="info">
                 <div class="row">
-                    <div class="col-2">
+                    <div class=" image_movie col-3">
                         <img class="detail_movie" [src]="detailMovie?.hinhAnh">
                     </div>
-                    <div class="col-10">
-                        <div class="row">
-                            <div class="col-12">
-                                <p>{{detailMovie?.tenPhim}}</p>
+                    <div class="info_text col-9">
+                        <div class="info_text_movie">
+                            <div class="row">
+                                <div class="col-8 text">
+                                    <div class="date">
+                                        <p>{{detailMovie?.ngayKhoiChieu | date:'dd/MM/yyyy'}}</p>
+                                    </div>
+                                    <div class="name">
+                                        <p>{{detailMovie?.tenPhim}}</p>
+                                    </div>
+                                    <div class="digital">
+                                        <p>120 phút - 0 IMDb - 2D/Digital</p>
+                                    </div>
+                                </div>
+                                <div class="col-4 point">
+                                    <div class="single-chart">
+                                        <svg viewBox="0 0 36 36" class="circular-chart orange">
+                                          <path class="circle-bg"
+                                            d="M18 2.0845
+                                              a 15.9155 15.9155 0 0 1 0 31.831
+                                              a 15.9155 15.9155 0 0 1 0 -31.831"
+                                          />
+                                          <path class="circle"
+                                            stroke-dasharray="{point}, 100"
+                                            d="M18 2.0845
+                                              a 15.9155 15.9155 0 0 1 0 31.831
+                                              a 15.9155 15.9155 0 0 1 0 -31.831"
+                                          />
+                                          <text x="18" y="20.35" class="percentage">{{point}}</text>
+                                        </svg>
+                                      </div>
+                                </div>
                             </div>
-                            <div class="col-12">
-                                <p>{{detailMovie?.moTa}}</p>
-                            </div>
-                            <div class="col-12">
-                                <p>{{detailMovie?.ngayKhoiChieu}}</p>
-                            </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="title">
+                            <h3>Nội dung</h3>
+                        </div>
+                        <div class="text">
+                            <p>{{detailMovie?.moTa}}</p>
                         </div>
                     </div>
 
                 </div>
             </div>
         </div>
-        <div class="trailer">
-            <div class="video">
-                <iframe id="iframe" frameborder="0" allowfullscreen="1"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    title="YouTube video player" width="640" height="360" [src]="url | safe"></iframe>
+        <div class="overview text-center">
+            <div class="trailer">
+
+                <div class="video">
+                    <iframe id="iframe" frameborder="0" allowfullscreen="1"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        title="YouTube video player" width="555" height="270" [src]="url | safe"></iframe>
+                </div>
             </div>
         </div>
-    </div>  
+
+    </div>
 </div>
 <div class="spinner" id="spinner">
     <div class="loader">
-    <p class="text-center text-white">Đang tải</p>
+        <p class="text-center text-white">Đang tải</p>
         <div class="inner one"></div>
         <div class="inner two"></div>
         <div class="inner three"></div>
     </div>
-  </div>
+</div>

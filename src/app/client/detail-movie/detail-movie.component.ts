@@ -9,17 +9,17 @@ import { MovieService } from '../services/movie.service';
 })
 export class DetailMovieComponent implements OnInit {
   @ViewChild('iframe') iframe: ElementRef;
-  url: string = ''
-
+  url: string = '';
 
   detailMovie: any;
   id: string | null | undefined;
+
+  point: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private movieSer: MovieService
   ) {}
-
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.paramMap.get('idMovie') as string;
@@ -37,18 +37,18 @@ export class DetailMovieComponent implements OnInit {
   }
   getDataMovie(idMovie: string) {
     this.movieSer.getDetailMovie(idMovie).subscribe((res) => {
-      if (res) {       
+      if (res) {
         this.hideloader();
       }
       this.detailMovie = res;
-        console.log(this.detailMovie);
-        let trailer = this.detailMovie.trailer;
-        this.url = trailer;
+      console.log(this.detailMovie);
+      let trailer = this.detailMovie.trailer;
+      this.url = trailer;
+      this.point = res.danhGia
     });
   }
-  hideloader(){
+  hideloader() {
     document.getElementById('spinner').style.display = 'none';
     document.getElementById('content').style.display = 'block';
   }
-
 }

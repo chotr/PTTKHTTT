@@ -40,6 +40,9 @@ export class UserComponent implements OnInit, AfterViewInit, OnChanges {
   }
   getUser() {
     this.accountService.detailUser(this.userInfo).subscribe((res) => {
+      if (res) {
+        this.hideloader()
+      }
       this.pass = res.matKhau;
       this.name = res.hoTen;
       this.email = res.email;
@@ -95,6 +98,7 @@ export class UserComponent implements OnInit, AfterViewInit, OnChanges {
     };
     this.accountService.updateApi(this.userInfo).subscribe((data) => {
       if (data) {
+        
         Swal.fire({
           title: 'Thông báo',
           text: 'Cập nhật thành công',
@@ -128,11 +132,17 @@ export class UserComponent implements OnInit, AfterViewInit, OnChanges {
     };
     this.accountService.updateApi(user).subscribe((data) => {
       if (data) {
+
         alert('Cập nhật thành công');
         window.location.reload();
       }
     });
     console.log(user);
     console.log(this.pass);
+  }
+  hideloader(){
+    document.getElementById('spinner').style.display = 'none';
+    document.getElementById('profile').style.display = 'block';
+
   }
 }

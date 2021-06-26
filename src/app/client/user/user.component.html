@@ -1,4 +1,4 @@
-<div class="profile">
+<div class="profile" id="profile">
     <div class="content row">
         <div class="left">
             <div class="background">
@@ -57,32 +57,11 @@
         </div>
     </div>
 </div>
-
-<!-- <div class="form_edit">
-    <div class="form-group">
-        <span class="form_cpn">Email:</span>
-        <input class="form-control" #emailControl="ngModel" type="email"
-            name="email" [(ngModel)]="userInfo.email" required
-            pattern='^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$' />
-        <div class="alert alert-danger"
-            *ngIf="emailControl.touched && emailControl.errors">
-            <span *ngIf="emailControl.errors.required" class="text text-danger">
-                Email không được rổng !
-            </span>
-            <span *ngIf="emailControl.errors.pattern" class="text text-danger">
-                Vui lòng nhập đúng định dạng email!
-            </span>
-        </div>
+<div class="spinner" id="spinner">
+    <div class="loader">
+        <p class="text-center text-white">Đang tải</p>
+        <div class="inner one"></div>
+        <div class="inner two"></div>
+        <div class="inner three"></div>
     </div>
-    <div class="form-group">
-        <span class="form_cpn">Số điện thoại:</span>
-        <input class="form-control" name="phone" ngModel required />
-    </div>
-    <div class="form-group">
-        <span class="form_cpn">Họ tên:</span>
-        <input class="form-control" name="name" ngModel required />
-    </div>
-    <button type="submit" class="btn btn-primary mr-2">Cập nhật</button>
-    <button type="submit" class="btn btn-secondary"
-        data-dismiss="modal">Thoát</button>
-</div> -->
+</div>
