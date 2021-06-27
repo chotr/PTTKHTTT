@@ -1,20 +1,20 @@
 <div class="row cinema">
-  <div class="col-2 cinema_Info">
+  <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 cinema_Info">
     <ul>
-      <li *ngFor="let cinema of listCinema; let i = index" [class.active]="selectedIndex === i" (click)="setIndex(i)">
+      <li *ngFor="let cinema of listCinema; let i = index" class="logo" [class.active]="selectedIndex === i" (click)="setIndex(i)">
         <a (click)="layThongTinRap(cinema.maHeThongRap)"><img [src]="cinema.logo" width="50px" height="50px"></a>
       </li>
     </ul>
   </div>
-  <div class="col-3 theater_cluster ">
+  <div class=" col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3 theater_cluster ">
     <div div class="text-white cumRap mb-3" [class.active]="selectedIndex2 === i" (click)="setIndex2(i)"
       *ngFor="let cr of listCRP; let i = index">
       <div class="content" (click)="layLichChieu(cr.maCumRap)">
         <div class="row">
-          <div class="img col-2 pr-2">
+          <div class="img col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 pr-2">
             <img [src]="img" width="50px" height="50px">
           </div>
-          <div class="text col-10">
+          <div class="text col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
             <p>{{cr.tenCumRap | shortCut: 25}}</p>
             <span>{{cr.diaChi| shortCut: 25}}</span>
             <p> <a class="text" (click)="navigateToCR(cr.maCumRap)"> [Chi tiết]</a></p>
@@ -23,7 +23,7 @@
       </div>
     </div>
   </div>
-  <div class="col-7 movies">
+  <div class=" col-6 col-sm-6 col-md-6 col-lg-7 col-xl-7 movies">
     <div *ngIf="isPhim == false">
       <h2 class="text-white">Cụm rạp này hôm nay không có phim</h2>
     </div>
@@ -39,9 +39,9 @@
           <div class="row">
             <div class="col-12">
               <div *ngFor="let lc of phim.lstLichChieuTheoPhim">
-                <button (click)="navigateTo(lc.maLichChieu)" *ngIf="kiemTraNgayChieu(lc.ngayChieuGioChieu)"
-                  class=" btn btn-success  btn-time">
-                  <span class="timeSt">{{lc.ngayChieuGioChieu | date: 'HH:mm'}}</span>
+                <ng-container *ngIf="kiemTraNgayChieu(lc.ngayChieuGioChieu)"></ng-container>
+                <button (click)="navigateTo(lc.maLichChieu)" class=" btn  btn-time">
+                  {{lc.ngayChieuGioChieu | date: 'HH:mm'}}
                 </button>
               </div>
             </div>

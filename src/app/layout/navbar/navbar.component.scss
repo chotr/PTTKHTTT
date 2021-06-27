@@ -74,6 +74,9 @@
   a {
     cursor: pointer;
   }
+  .navbar-toggler {
+    border: none;
+  }
   .dropdown {
     .nav-link {
       font-weight: 400;
@@ -110,9 +113,7 @@
       width: 1em;
       height: 1em;
     }
-    .navbar-toggler {
-      border: none;
-    }
+
     .dropdown-item {
       i {
         font-size: 14px;

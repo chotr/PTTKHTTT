@@ -43,9 +43,20 @@
     .more {
       display: flex;
       margin: auto;
+      color: #bcd4d4;
+      animation: MoveUpDown 1.5s linear infinite;
+      transition: all 0.5s;
+      span {
+        margin-top: 1px;
+      }
+      &:hover {
+        color: #ffffff;
+      }
     }
   }
   .cinema {
+    width: 90%;
+    margin: auto;
     display: none;
     background-color: #343a40bd !important;
     margin-bottom: 20px;
@@ -60,6 +71,39 @@
           font-size: 28px;
         }
       }
+      .more {
+        font-size: 14px;
+      }
     }
+  }
+}
+@include responsive("medium") {
+  .home {
+    .list_movie {
+      .title {
+        padding: 35px !important;
+        h1 {
+          font-size: 25px !important;
+        }
+      }
+    }
+  }
+}
+@include responsive("small") {
+  .home {
+    .cinema {
+      width: 100%;
+
+    }
+  }
+}
+
+@keyframes MoveUpDown {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }

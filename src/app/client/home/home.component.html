@@ -21,13 +21,10 @@
       </div>
     </div>
     <div class="more_movie">
-      <button type="button" (click)="navigateTo()" class="btn btn-success more mt-4">Xem thêm...</button>
+      <button type="button" (click)="navigateTo()" class="btn more mt-4">Xem thêm...<span><i class="bi bi-caret-right-fill"></i></span></button>
     </div>
-    <div class="cinema container  mt-5" id="cinema">
-        <!-- <app-cinemas [listCinema]="listCinema" [listCRP]="listCRP" (newItem)="ChangeMaCumRap($event)"></app-cinemas> -->
+    <div class="cinema  mt-5" id="cinema">
         <app-cinemas></app-cinemas>
-        <!-- <app-showtime></app-showtime> -->
-        <!-- [listCumRap]="listCumRap"  -->
   </div>
 </div>
 <div class="spinner" id="spinner">
