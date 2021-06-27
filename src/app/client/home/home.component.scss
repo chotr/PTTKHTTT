@@ -1,9 +1,13 @@
+@import "../../../sass/Base/customize";
+@import "../../../sass/Base/reset";
+@import "../../../sass/Helper/mixin";
+@import "../../../sass/Helper/variables";
 .home {
   .Carousel {
     // display: none;
     .fade_bg {
       position: relative;
-      img{
+      img {
         width: 100%;
         height: auto;
         object-fit: cover;
@@ -24,7 +28,7 @@
     }
   }
   .list_movie {
-  display: none;
+    display: none;
     .title {
       padding: 50px;
       color: #cbafaf;
@@ -32,7 +36,8 @@
       h1 {
         font-size: 37px;
         cursor: context-menu;
-        font-family: 'Roboto', sans-serif!important;
+        font-family: "Roboto", sans-serif !important;
+        margin-bottom: 0;
       }
     }
     .more {
@@ -40,9 +45,21 @@
       margin: auto;
     }
   }
-  .cinema{
+  .cinema {
     display: none;
-    background-color: #343a40bd!important;
+    background-color: #343a40bd !important;
     margin-bottom: 20px;
+  }
+}
+@include responsive("large") {
+  .home {
+    .list_movie {
+      .title {
+        padding: 42px;
+        h1 {
+          font-size: 28px;
+        }
+      }
+    }
   }
 }

@@ -1,4 +1,15 @@
-.router{
-    padding-top: 50px;
-    // height: 100%;
+@import "../../sass/Base/customize";
+@import "../../sass/Base/reset";
+@import "../../sass/Helper/mixin";
+@import "../../sass/Helper/variables";
+
+.router {
+  padding-top: 50px;
+  // height: 100%;
+}
+
+@include responsive("large") {
+  .router {
+    padding-top: 39px;
+  }
 }

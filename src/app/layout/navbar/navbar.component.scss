@@ -13,7 +13,6 @@
   left: 0;
   right: 0;
   z-index: 10;
-//   background: #fff;
   border-bottom: 1px solid #d6d6d6;
   padding: 7px 18px;
 }
@@ -23,10 +22,7 @@
   font-size: 20px;
   font-family: "Merienda One", sans-serif;
 }
-.navbar .navbar-brand i {
-  font-size: 20px;
-  margin-right: 5px;
-}
+
 .navbar .nav-item {
   font-family: "Roboto", sans-serif !important;
   font-size: 15px;
@@ -44,9 +40,8 @@
   border-color: #e5e5e5;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   left: -15px;
-  margin: .425rem 0 0;
+  margin: 0.425rem 0 0;
   background: #fffffff5;
-
 }
 .navbar .dropdown-menu a {
   color: #777;
@@ -76,8 +71,8 @@
 }
 .navbar {
   background: #fffffff5;
-  a{
-	  cursor: pointer;
+  a {
+    cursor: pointer;
   }
   .dropdown {
     .nav-link {
@@ -109,12 +104,31 @@
   }
 }
 @include responsive("large") {
-	.navbar{
-		padding: 4px 18px;
-		.navbar-toggler-icon {
-			width: 1.0em;
-			height: 1.0em;
-		}
-
-	}
+  .navbar {
+    padding: 4px 18px;
+    .navbar-toggler-icon {
+      width: 1em;
+      height: 1em;
+    }
+    .navbar-toggler {
+      border: none;
+    }
+    .dropdown-item {
+      i {
+        font-size: 14px;
+      }
+    }
+    .nav-item {
+      font-size: 14px;
+    }
+    .navbar-brand{
+      font-size: 17px;
+    }
+    .dropdown {
+      .nav-link {
+        font-weight: 400;
+        font-size: 13px;
+      }
+    }
+  }
 }
