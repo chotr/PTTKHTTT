@@ -60,6 +60,11 @@
     p {
       margin-bottom: 0;
     }
+    .text{
+      .tenCR{
+        color: aqua;
+      }
+    }
     .cumRap {
       cursor: pointer;
       margin-bottom: 20px !important;
@@ -158,6 +163,9 @@
       }
     }
     .theater_cluster {
+      .cumRap{
+        padding-bottom: 10px;
+      }
       .img {
         padding-top: 10px;
       }
