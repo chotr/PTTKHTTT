@@ -7,10 +7,16 @@
     padding: 5px;
     font-size: 15px;
 }
+@include responsive("medium"){
+    .dat_ghe{
+        width: 32px;
+        font-size: 13px;
+    }
+}
 
 @include responsive("small"){
     .dat_ghe{
-        width: 30px;
-        font-size: 12px;
+        width: 28px;
+        font-size: 11px;
     }
 }
