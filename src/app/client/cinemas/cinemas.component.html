@@ -39,10 +39,12 @@
           <div class="row">
             <div class="col-12">
               <div *ngFor="let lc of phim.lstLichChieuTheoPhim">
-                <ng-container *ngIf="kiemTraNgayChieu(lc.ngayChieuGioChieu)"></ng-container>
-                <button (click)="navigateTo(lc.maLichChieu)" class=" btn  btn-time">
-                  {{lc.ngayChieuGioChieu | date: 'HH:mm'}}
-                </button>
+                <ng-container *ngIf="kiemTraNgayChieu(lc.ngayChieuGioChieu)">
+                  <button (click)="navigateTo(lc.maLichChieu)" class=" btn  btn-time">
+                    {{lc.ngayChieuGioChieu | date: 'HH:mm'}}
+                  </button>
+                </ng-container>
+                
               </div>
             </div>
           </div>
