@@ -17,6 +17,8 @@ export class NavbarComponent implements OnInit {
 
   userName: any
 
+  showBox = true;
+
   constructor(
     private loginSer: LoginService,
     private router: Router,
@@ -40,5 +42,8 @@ export class NavbarComponent implements OnInit {
       this.router.navigate(['client/home'])
       window.location.reload();
     }
+  }
+  onClickedOutside(e: Event) {
+    this.showBox = false;
   }
 }

@@ -17,6 +17,7 @@ import { QuanTriGheModule } from './client/quan-tri-ghe/quan-tri-ghe.module';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import { DatePipe } from '@angular/common'
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ClickOutsideModule } from 'ng-click-outside';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     NgSelectModule,
+    ClickOutsideModule,
   ],
   providers: [
     {
