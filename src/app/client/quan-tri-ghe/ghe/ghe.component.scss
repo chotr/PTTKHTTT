@@ -1,5 +1,16 @@
+@import "../../../../sass/Base/customize";
+@import "../../../../sass/Base/reset";
+@import "../../../../sass/Helper/mixin";
+@import "../../../../sass/Helper/variables";
 .dat_ghe{
     width: 40px;
     padding: 5px;
     font-size: 15px;
+}
+
+@include responsive("small"){
+    .dat_ghe{
+        width: 30px;
+        font-size: 12px;
+    }
 }

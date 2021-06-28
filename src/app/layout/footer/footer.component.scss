@@ -1,22 +1,37 @@
+@import "../../../sass/Base/customize";
+@import "../../../sass/Base/reset";
+@import "../../../sass/Helper/mixin";
+@import "../../../sass/Helper/variables";
 footer {
+  cursor: context-menu;
   background: #292929;
   color: grey;
-  p,
+
   a {
-    font-family: "Playfair Display", serif;
+    font-family: "Roboto", sans-serif;
     margin-bottom: 40px;
     position: relative;
+    font-size: 14px;
+    transition: all 0.5s;
+  }
+  h6 {
+    font-size: 17px;
+    color: darkgrey;
+  }
+  .doiTac {
+    .content {
+      img {
+        width: 35px;
+        height: 35px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        background: wheat;
+        border-radius: 50%;
+      }
+    }
   }
 }
-footer h6:after {
-  position: absolute;
-  content: "";
-  background: grey;
-  width: 12%;
-  height: 1px;
-  left: 0;
-  bottom: -20px;
-}
+
 .btn-footer {
   color: grey;
 
@@ -30,38 +45,14 @@ footer h6:after {
 .btn-footer:hover {
   text-decoration: none;
 }
-.form-footer input[type="text"] {
-  border: none;
-  border-radius: 16px 0 0 16px;
-  outline: none;
-  padding-left: 10px;
-}
-::placeholder {
-  font-size: 10px;
-  padding-left: 10px;
-  font-style: italic;
-}
-.form-footer input[type="button"] {
-  border: none;
-  background: #232323;
-  margin-left: -5px;
-  color: #fff;
-  outline: none;
-  border-radius: 0 16px 16px 0;
-  padding: 2px 12px;
-}
-.social .fa {
-  color: grey;
-  font-size: 22px;
-  padding: 10px 15px;
-  background: #3c3c3c;
-}
+
 footer ul li {
-  list-style: none;
   display: block;
+  line-height: 35px;
 }
 footer ul {
   padding-left: 0;
+  line-height: 20px;
 }
 footer ul li a {
   text-decoration: none;
@@ -75,4 +66,42 @@ a:hover {
 .logo-part {
   border-right: 1px solid grey;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h1 {
+    font-size: 22px;
+    font-family: "Merienda One", sans-serif;
+  }
 }
+@include responsive("large") {
+  footer {
+    .logo {
+      padding: 0;
+    }
+  }
+}
+@include responsive("medium") {
+  footer {
+    padding: 20px 0!important;
+    padding-left: 10px!important;
+    .logo {
+      .logo-part {
+        border: none;
+      }
+    }
+    .contact{
+      margin-bottom: 15px;
+    }
+    .btn-footer{
+      padding: 7px 17px;
+    }
+  }
+}
+@include responsive("small") {
+  footer {
+    padding-left: 10px;
+  }
+}
+

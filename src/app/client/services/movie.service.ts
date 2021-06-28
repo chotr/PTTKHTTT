@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { tap, map, catchError } from 'rxjs/operators';
@@ -63,6 +63,10 @@ export class MovieService {
     );
   }
   updateMovie(data: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    });
     const api =
       'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhimUpload';
     return this.httpClient.post(api, data).pipe(
@@ -83,7 +87,7 @@ export class MovieService {
       })
     );
   }
-  
+
   changeDataMovieModal(movie: any): void {
     this.data.next(movie);
   }

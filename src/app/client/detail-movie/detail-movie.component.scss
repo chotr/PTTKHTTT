@@ -233,9 +233,10 @@
         left: 0;
       }
       .overview {
+        width: 34%;
         iframe {
-          height: 160px;
-          width: 290px;
+          height: 150px;
+          width: 270px;
         }
       }
     }
@@ -287,7 +288,7 @@
       }
     }
     .detail {
-      height: 280px;
+      height: 320px;
       .info {
         .image_movie {
           padding-right: 0;

@@ -1,15 +1,23 @@
+@import "../../../../sass/Base/customize";
+@import "../../../../sass/Base/reset";
+@import "../../../../sass/Helper/mixin";
+@import "../../../../sass/Helper/variables";
 .danh_sach_ghe {
   padding-bottom: 50px;
   .row {
     margin: 0;
     padding: 0;
   }
-
+  .bg-booking {
+    width: 530px;
+    margin: auto;
+  }
   .screen {
+    margin-top: 20px!important;
     height: 15px;
     width: 100%;
     background-color: #ffb100;
-    margin-bottom: 20px;
+    margin-bottom: 20px!important;
   }
   .info {
     color: #fff;
@@ -37,7 +45,7 @@
         justify-content: center;
         align-items: center;
       }
-      p{
+      p {
         width: 100px;
       }
     }
@@ -52,9 +60,35 @@
       th {
         border: 1px solid;
       }
-      td{
+      td {
         border: 1px solid;
       }
+    }
+  }
+}
+
+@include responsive("medium") {
+  .danh_sach_ghe {
+    .text-center {
+      padding: 0;
+    }
+    .screen {
+      width: 95%;
+      margin: auto;
+    }
+  }
+}
+@include responsive("small") {
+  .danh_sach_ghe {
+    .text-center {
+      padding: 0;
+    }
+    .screen {
+      width: 95%;
+      margin: auto;
+    }
+    .bg-booking {
+      width: 440px;
     }
   }
 }
