@@ -13,7 +13,9 @@
 }
 
 @include responsive("large") {
-  .router {
-    padding-top: 39px;
+  .main{
+    .router {
+      padding-top: 39px;
+    }
   }
-}
+  }

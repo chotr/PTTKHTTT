@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from '../services/movie.service';
 
@@ -8,7 +8,7 @@ import { MovieService } from '../services/movie.service';
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss'],
 })
-export class MoviesComponent implements OnInit {
+export class MoviesComponent implements OnInit, AfterViewInit {
   listMovie: any[] = [];
   public p: any;
   numberItemPage: number = 10;
@@ -20,8 +20,7 @@ export class MoviesComponent implements OnInit {
   conditionPre: boolean;
   conditionNext: boolean;
   totalPageArr: number[] = [];
-  public disabledPage: boolean;
-  public routerLinkVariable = "client/movies/Page";
+  selectedIndex: number;
 
   constructor(
     private movieService: MovieService,
@@ -44,6 +43,7 @@ export class MoviesComponent implements OnInit {
         this.p = res.currentPage;
         this.total = res.totalCount;
         this.totalPage = res.totalPages;
+        this.selectedIndex = res.currentPage;
       }
     });
   }
@@ -56,12 +56,11 @@ export class MoviesComponent implements OnInit {
           this.total = res.totalCount;
           this.listMovie = res.items;
           this.totalPage = res.totalPages;
+          this.selectedIndex = res.currentPage;
           for (let i = 1; i <= this.totalPage; i++) {
             this.totalPageArr.push(i);
           }
         }
-        console.log(page);
-
       });
   }
   checkPre = (event) => {
@@ -78,23 +77,56 @@ export class MoviesComponent implements OnInit {
       }
     }
   };
-  disabledPagePre(): boolean {
-    if (this.p === 1) {
-      return false;
-    }
-    if (this.p !== 1) {
-      return true;
+  navigateTo(p: any) {
+    this.router.navigate(['client/movies/Page', p]);
+    this.movieService
+      .getMoviePagination(p, this.numberItemPage)
+      .subscribe((res) => {
+        if (res) {
+          this.listMovie = res.items;
+        }
+      });
+  }
+  navigateToPrev() {
+    const abc = this.activatedRoute.snapshot.paramMap.get('page') as string;
+    const url = parseInt(abc) - 1;
+
+    if (parseInt(abc) > 1) {
+      this.router.navigate(['client/movies/Page', url]);
+      this.movieService
+        .getMoviePagination(url, this.numberItemPage)
+        .subscribe((res) => {
+          if (res) {
+            this.listMovie = res.items;
+            this.selectedIndex = res.currentPage;
+          }
+        });
     }
   }
-  disabledPageNext(): boolean {
-    if (this.p === this.totalPage) {
-      return false;
-    }
-    if (this.p !== this.totalPage) {
-      return true;
+  navigateToNext() {
+    const abc = this.activatedRoute.snapshot.paramMap.get('page') as string;
+    const url = parseInt(abc) + 1;
+
+    if (parseInt(abc) < this.totalPage) {
+      this.router.navigate(['client/movies/Page', url]);
+      this.movieService
+        .getMoviePagination(url, this.numberItemPage)
+        .subscribe((res) => {
+          if (res) {
+            this.listMovie = res.items;
+            this.selectedIndex = res.currentPage;
+          }
+        });
     }
   }
-  // navigateTo(p: any){
-  //   this.router.navigate(['client/movies/Page', p])
-  // }
+  setIndex(index: number) {
+    this.movieService
+      .getMoviePagination(index, this.numberItemPage)
+      .subscribe((res) => {
+        if (res) {
+          this.selectedIndex = res.currentPage;
+        }
+      });
+  }
+  ngAfterViewInit(): void {}
 }

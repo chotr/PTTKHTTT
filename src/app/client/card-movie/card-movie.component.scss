@@ -55,8 +55,9 @@
 }
 @include responsive("medium"){
   .card{
+    height: 90%;
     img {
-      height: 170px;
+      height: 190px;
     }
     .card-body {
 
@@ -69,6 +70,7 @@
 @include responsive("small"){
   .card{
     width: 70%;
+    height: 80%;
     img {
       height: 280px;
     }

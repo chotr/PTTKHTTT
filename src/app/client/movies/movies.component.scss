@@ -1,3 +1,5 @@
+@import "../../../sass/Helper/mixin";
+@import "../../../sass/Helper/variables";
 .card_movie {
   padding-top: 50px;
   .pagination::ng-deep {
@@ -15,22 +17,40 @@
     cursor: default;
   }
   nav {
+    li {
+      cursor: pointer;
+    }
 
     li.active {
-        background-color: aqua;
+      background-color: aqua;
     }
     a:hover {
       text-decoration: none;
     }
-    .disabled {
+    a.disabled {
+      cursor: context-menu;
+      color: darkgrey;
+      background-color: #bababa !important;
+      border-color: #bababa !important;
       &:hover {
-        background-color: white!important;
+        background-color: white !important;
       }
     }
     .page-link {
-        &:focus{
-            box-shadow: none;
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+}
+@include responsive("medium") {
+  .card_movie {
+    ul {
+      li {
+        a {
+          padding: 0.3rem 0.55rem;
         }
+      }
     }
   }
 }

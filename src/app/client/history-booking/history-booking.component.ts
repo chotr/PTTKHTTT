@@ -10,6 +10,9 @@ import { CinemasService } from '../services/cinemas.service';
 export class HistoryBookingComponent implements OnInit {
   userName: any;
   arr = []
+  p=1
+  arrHistory = []
+  public responsive: boolean = true;
 
   constructor(private cinema: CinemasService, private accountService: AccountService) { }
 
@@ -34,14 +37,14 @@ export class HistoryBookingComponent implements OnInit {
       for(let ele of res.thongTinDatVe) {
         this.arr.push(ele);
       }
-    console.log(this.arr)
+      this.arrHistory = this.arr.reverse()
 
       
     })
   }
   hideloader(){
     document.getElementById('spinner').style.display = 'none';
-    document.getElementById('content').style.display = 'block';
+    document.getElementById('history_booking').style.display = 'block';
 
   }
 

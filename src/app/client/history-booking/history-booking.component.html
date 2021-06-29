@@ -1,4 +1,4 @@
-<div class="history_booking container">
+<div class="history_booking container" id="history_booking">
     <div class="content" id="content">
         <div class="title my-2 text-center">
             <h1>Lịch sử đặt vé</h1>
@@ -16,9 +16,10 @@
 
             <tbody>
 
-                <ng-container *ngFor="let item of arr; index as i">
+                <ng-container
+                    *ngFor="let item of arrHistory| paginate: { itemsPerPage: 10, currentPage: p }; index as i">
                     <tr>
-                        <td> {{i+1}} </td>
+                        <td>{{i+1}}</td>
                         <td>{{item.tenPhim}}</td>
                         <td>{{item.danhSachGhe[0].tenHeThongRap}}</td>
                         <td>{{item.danhSachGhe.length}}</td>
@@ -26,10 +27,10 @@
                     </tr>
                 </ng-container>
             </tbody>
-
         </table>
-       
+
     </div>
+    <pagination-controls class="pagination text-center" (pageChange)="p = $event" [responsive]="responsive"></pagination-controls>
 </div>
 <div class="spinner" id="spinner">
     <div class="loader">
