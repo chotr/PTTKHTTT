@@ -1,3 +1,5 @@
+@import "../../../sass/Helper/mixin";
+@import "../../../sass/Helper/variables";
 .profile {
   height: 100vh;
   cursor: context-menu;
@@ -30,28 +32,107 @@
       border-radius: 50%;
     }
   }
-  .right{
+  .right {
     height: 65%;
-    width: 45%;
+    width: 60%;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    background:#cbcbcbde;
+    background: #cbcbcbde;
     border-bottom-right-radius: 15px;
     border-top-right-radius: 15px;
     padding-left: 20px;
     font-size: 17px;
-    .btn{
-        color:#32329e;
-        &:focus{
-            box-shadow: none;
-        }
+    .btn {
+      color: #32329e;
+      &:focus {
+        box-shadow: none;
+      }
     }
-    table{
-        height: 60%;
-        margin-bottom: 10px;
-
+    table {
+      height: 60%;
+      margin-bottom: 10px;
     }
-    
+  }
+}
+@include responsive("large") {
+  .profile {
+    .content {
+      width: 100%;
+    }
+    .left {
+      height: 60%;
+      .text {
+        width: 70px;
+        height: 70px;
+      }
+    }
+    .right {
+      height: 65%;
+      font-size: 14px;
+      width: 55%;
+      .btn {
+        font-size: 14px;
+      }
+    }
+  }
+}
+@include responsive("medium") {
+  .profile {
+    .content {
+      width: 100%;
+    }
+    .left {
+      .text {
+        width: 60px;
+        height: 60px;
+      }
+    }
+    .right {
+      width: 65%;
+      height: 60%;
+      font-size: 14px;
+      .btn {
+        font-size: 14px;
+      }
+    }
+  }
+}
+@include responsive("small") {
+  .profile {
+    .left {
+      height: 55%;
+      .text {
+        width: 55px;
+        height: 55px;
+      }
+    }
+    .right {
+      width: 70%;
+      height: 55%;
+      font-size: 12px;
+      .btn {
+        font-size: 12px;
+      }
+    }
+  }
+}
+@include responsive("mobile") {
+  .profile {
+    .left {
+      height: 55%;
+      .text {
+        width: 45px;
+        height: 45px;
+      }
+    }
+    .right {
+      width: 75%;
+      height: 55%;
+      font-size: 11px;
+      .btn {
+        font-size: 11px;
+      }
+    }
   }
 }

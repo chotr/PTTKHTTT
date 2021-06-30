@@ -1,3 +1,7 @@
+@import "../../../sass/Base/customize";
+@import "../../../sass/Helper/variables";
+@import "../../../sass/Helper/mixin";
+
 .nav_admin {
   position: relative;
   height: 70px;
@@ -19,5 +23,10 @@
       color: #767676;
       cursor: context-menu;
     }
+  }
+}
+@include responsive("large") {
+  .nav_admin{
+    
   }
 }
