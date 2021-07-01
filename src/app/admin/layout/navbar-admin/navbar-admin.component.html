@@ -1,29 +1,32 @@
 <div class="menu">
-    <ul class="nav flex-column">
-        <li class="navbar-brand" routerLink="/client/home">
-            <p class="text">
-                <span class="text_1">sayohyeah</span>
-            </p>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" routerLink="/admin/dashboard" routerLinkActive="active"><span><i
-                        class="bi bi-pie-chart"></i></span>Bảng điều khiển</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" routerLink="/admin/user-management/" [queryParams]="" routerLinkActive="active">
-                <span><i class="bi bi-person"></i></span>Quản lý người dùng</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" routerLink="/admin/movie-management"  [queryParams]="" routerLinkActive="active"><span><i
-                        class="bi bi-film"></i></span>Quản lý phim</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" routerLink="/admin/showtimes-management" routerLinkActive="active"><span><i
-                        class="bi bi-calendar4-event"></i></span>Quản lý lịch chiếu</a>
-        </li>
-        <!-- <li class="nav-item">
-            <a class="nav-link" routerLink="/admin/cinema-management" routerLinkActive="active"><span><i
-                        class="bi bi-calendar4-event"></i></span>Quản lý hệ thống rạp</a>
-        </li> -->
-    </ul>
+    <nav class="nav__cont">
+        <ul class="nav">
+            <li class="nav__items navbar-brand ">
+                <img class="home" src="../../../../assets/icon/home.png" alt="">
+                <p class="text">
+                    <span class="text_1">sayohyeah</span>
+                </p>
+            </li>
+            <li class="nav__items ">
+                <div class="item"><span class="icon"><i class="bi bi-pie-chart"></i></span><span class="link"
+                        routerLink="/admin/dashboard" routerLinkActive="active"><a>Bảng điều khiển</a></span></div>
+            </li>
+            <li class="nav__items ">
+                <div class="item"><span class="icon"><i class="bi bi-person"></i></span><span class="link"
+                        routerLink="/admin/user-management/" [queryParams]="" routerLinkActive="active"><a>Quản lý người
+                            dùng</a></span></div>
+            </li>
+            <li class="nav__items ">
+                <div class="item"><span class="icon"><i class="bi bi-film"></i></span><span class="link"
+                        routerLink="/admin/movie-management" [queryParams]="" routerLinkActive="active"><a>Quản lý
+                            phim</a></span></div>
+            </li>
+            <li class="nav__items ">
+                <div class="item"><span class="icon"><i class="bi bi-calendar4-event"></i></span><span class="link"
+                        routerLink="/admin/showtimes-management" routerLinkActive="active"><a>Quản lý lịch chiếu</a></span>
+                </div>
+            </li>
+
+        </ul>
+    </nav>
 </div>
