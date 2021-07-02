@@ -12,7 +12,7 @@
       <div class="content" (click)="layLichChieu(cr.maCumRap)">
         <div class="row">
           <div class="img col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 pr-2">
-            <img [src]="img" width="50px" height="50px">
+            <img [src]="img" width="50px" height="50px" style="border-radius: 5px;">
           </div>
           <div class="text col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
             <p class="tenCR">{{cr.tenCumRap | shortCut: 25}}</p>
@@ -29,24 +29,27 @@
     </div>
     <div class="listPhim mb-2 text-white" *ngFor="let phim of listPhimNgayHienTai; let i = index">
       <div class="wrapper__collapse">
-        <div class="top" data-toggle="collapse" [attr.data-target]="'#phim-'+phim.maPhim">
-          <div class="d-flex">
+        <div class="top" >
+          <div class="d-flex" data-toggle="collapse" [attr.data-target]="'#phim-'+phim.maPhim">
             <img class="img_movie mr-3 mb-3" [src]="phim.hinhAnh" alt="" width="70px" height="70px">
             <div class="infoP">
               <p>{{phim.tenPhim}}</p>
+              <span>116 phút - TIX 8.6 - IMDb 0</span>
             </div>
           </div>
-          <div class="row">
-            <div class="col-12">
-              <div *ngFor="let lc of phim.lstLichChieuTheoPhim">
+          <div class="row collapse show" [id]="'phim-'+ phim.maPhim" >
+            <div class="col-9 time">
+              <h3 class="hh">2D Digital</h3>
+              <div *ngFor="let lc of phim.lstLichChieuTheoPhim" >
                 <ng-container *ngIf="kiemTraNgayChieu(lc.ngayChieuGioChieu)">
-                  <button (click)="navigateTo(lc.maLichChieu)" class=" btn  btn-time">
-                    {{lc.ngayChieuGioChieu | date: 'HH:mm'}}
+                  <button [disabled]="disabledT" (click)="navigateTo(lc.maLichChieu)" class=" btn  btn-time">
+                    {{lc.ngayChieuGioChieu | date: 'HH:mm'}} - {{timeEndFormat(lc.ngayChieuGioChieu)}}
                   </button>
-                </ng-container>                
+                </ng-container>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>

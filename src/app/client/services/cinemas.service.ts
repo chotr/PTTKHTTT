@@ -41,7 +41,7 @@ export class CinemasService {
       })
     );
   }
-  layThongtinLichChieu(idPhim: string): Observable<any> {
+  layThongtinLichChieuTheoPhim(idPhim: string): Observable<any> {
     const apiLichChieu =
       `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=` +
       idPhim;

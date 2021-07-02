@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../movie-management/movie-management.component.scss"
+    ],
+    "names": [],
+    "file": "movie-management.component.css"
+}

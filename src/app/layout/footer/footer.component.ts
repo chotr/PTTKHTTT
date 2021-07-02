@@ -13,7 +13,7 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
     this.cinema.getCinemaInfor().subscribe((data) => {
       this.listCinema = data;
-      console.log(this.listCinema)
+      // console.log(this.listCinema);
     });
   }
 }

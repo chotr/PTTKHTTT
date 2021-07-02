@@ -1,0 +1,62 @@
+.register {
+  width: 40%;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+.register .title {
+  color: #e1c9c9;
+  cursor: context-menu;
+}
+
+.register .form_register {
+  margin-top: 40px;
+  background: rgba(128, 128, 128, 0.34);
+  border-radius: 15px;
+  padding: 40px;
+}
+
+.register .form_register .form-group {
+  padding: 10px 0;
+}
+
+.register .form_register .form-group .form_cpn {
+  color: #e1c9c9;
+  font-size: 15px;
+}
+
+.register .form_register .form-group input {
+  color: #e1c9c9;
+  background-color: #ffffff00;
+  border: none;
+  border-bottom: 1px solid black;
+  border-radius: 0;
+  padding: 0;
+  height: 30px;
+}
+
+.register .form_register .form-group input:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+  border-bottom: 1px solid black;
+}
+
+.register .form_register .form-group .alert-danger {
+  background-color: #ffffff00;
+  border: none;
+  padding: 0;
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+
+.register .form_register .form-group .alert-danger .text-danger {
+  font-size: 15px;
+}
+
+.register .form_register .btn {
+  background-color: #e1c9c9;
+  display: flex;
+  margin: 50px auto 0;
+}
+/*# sourceMappingURL=sign-up.component.css.map */

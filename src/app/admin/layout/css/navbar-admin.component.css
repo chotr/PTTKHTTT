@@ -1,0 +1,57 @@
+.menu {
+  position: fixed;
+  z-index: 1;
+  height: 100%;
+  background-image: url(../../../../assets/images/sidebar-5.jpg);
+}
+
+.menu .text {
+  font-family: azonix;
+  text-transform: uppercase;
+  color: white;
+  font-style: italic;
+  margin-bottom: 0;
+  cursor: pointer;
+  padding: 20px 10px;
+  font-size: 25px;
+}
+
+.menu .nav {
+  background-color: #fb404bd4;
+  height: 100%;
+}
+
+.menu .nav a {
+  padding: 10px 10px;
+  color: white;
+  display: flex;
+}
+
+.menu .nav a span {
+  padding-right: 10px;
+  font-size: 20px;
+}
+
+.menu .nav li {
+  padding: 10px 20px;
+}
+
+.menu .nav .navbar-brand {
+  position: relative;
+}
+
+.menu .nav .navbar-brand::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 90%;
+  right: 5%;
+  left: 6%;
+  background: #ffffff38;
+}
+
+.menu .nav a.active {
+  background: #fffcfc4f;
+  border-radius: 5px;
+}
+/*# sourceMappingURL=navbar-admin.component.css.map */

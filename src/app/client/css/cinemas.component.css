@@ -1,0 +1,190 @@
+.cinema {
+  width: 100%;
+  padding-top: 30px;
+}
+
+.cinema .cinema_Info {
+  width: 100px;
+  padding: 0;
+  margin: 0;
+}
+
+.cinema .cinema_Info ul {
+  padding: 0;
+}
+
+.cinema .cinema_Info ul li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: relative;
+}
+
+.cinema .cinema_Info ul li a {
+  margin: 0;
+  display: block;
+  padding: 20px 40px;
+  text-align: center;
+  height: 100%;
+}
+
+.cinema .cinema_Info ul li a img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  background: wheat;
+}
+
+.cinema .cinema_Info ul li::before {
+  position: absolute;
+  content: "";
+  height: 1px;
+  width: 50%;
+  bottom: 0;
+  background: #5c5c5c;
+  margin: auto;
+  right: 0;
+  left: 0;
+}
+
+.cinema .cinema_Info .active img {
+  box-shadow: 0px 1px 14px 0px white;
+  transition: all 0.5s;
+}
+
+.cinema .theater_cluster {
+  padding: 20px 0;
+}
+
+.cinema .theater_cluster p {
+  margin-bottom: 0;
+}
+
+.cinema .theater_cluster .text .tenCR {
+  color: aqua;
+}
+
+.cinema .theater_cluster .cumRap {
+  cursor: pointer;
+  margin-bottom: 20px !important;
+  padding-bottom: 20px;
+  position: relative;
+  opacity: 0.3;
+  transition: all 0.5s;
+}
+
+.cinema .theater_cluster .cumRap::before {
+  position: absolute;
+  content: "";
+  height: 1px;
+  width: 83%;
+  bottom: 0;
+  background: #5c5c5c;
+  margin: auto;
+  left: 0;
+}
+
+.cinema .theater_cluster .active {
+  opacity: 1 !important;
+  transition: all 0.5s;
+}
+
+.cinema .movies {
+  padding: 20px 0;
+}
+
+.cinema .movies .digital {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.cinema .movies .btn-time {
+  font-size: 15px;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 14px;
+  background-color: #cecece;
+  border-color: #cecece;
+}
+
+.cinema .movies .btn-time:hover {
+  transition: all 0.5s;
+}
+
+.cinema .movies .btn-time .timeSt {
+  font-size: 18px;
+}
+
+@media screen and (max-width: 1200px) {
+  .cinema .cinema_Info ul li a img {
+    width: 50px;
+    height: 50px;
+  }
+  .cinema .cinema_Info .logo a {
+    padding: 25px 0 !important;
+  }
+  .cinema .theater_cluster .img img {
+    width: 43px;
+    height: 43px;
+  }
+  .cinema .theater_cluster .text {
+    font-size: 13px;
+  }
+  .cinema .movies h2 {
+    font-size: 17px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .cinema .cinema_Info ul li a img {
+    width: 40px;
+    height: 40px;
+  }
+  .cinema .theater_cluster .cumRap {
+    padding-bottom: 10px;
+  }
+  .cinema .theater_cluster .img {
+    padding-top: 10px;
+  }
+  .cinema .movies .wrapper__collapse .img_movie {
+    width: 55px;
+    height: 55px;
+  }
+  .cinema .movies .btn-time {
+    padding: 3px 10px;
+    margin-right: 12px;
+  }
+}
+
+@media screen and (max-width: 767.89px) {
+  .cinema .theater_cluster .text {
+    padding: 0 25px;
+    font-size: 11px;
+  }
+  .cinema .theater_cluster .cumRap {
+    padding-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .cinema .cinema_Info .logo a {
+    padding: 25px 0 !important;
+  }
+  .cinema .theater_cluster .text {
+    padding: 0 25px;
+    font-size: 11px;
+    line-height: 15px;
+  }
+  .cinema .theater_cluster .cumRap {
+    padding-bottom: 10px;
+  }
+  .cinema .theater_cluster .img img {
+    width: 39px;
+    height: 39px;
+  }
+  .cinema .movies h2 {
+    font-size: 15px;
+  }
+}
+/*# sourceMappingURL=cinemas.component.css.map */

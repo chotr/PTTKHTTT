@@ -36,6 +36,7 @@ export class CinemasComponent implements OnInit {
   selectedIndex: number = 0;
   selectedIndex2: number = 0;
 
+
   @Output() newItem = new EventEmitter<string>();
 
   constructor(
@@ -73,9 +74,12 @@ export class CinemasComponent implements OnInit {
           }
         }
         this.layDSPhimDC();
+
+
       });
   }
   layDSPhimDC() {
+
     let flag = false;
     this.listPhimNgayHienTai = this.listPhim.filter((phim) => {
       for (let lichChieu of phim.lstLichChieuTheoPhim) {
@@ -89,16 +93,31 @@ export class CinemasComponent implements OnInit {
       }
 
       this.isPhim = flag;
+
     });
   }
 
+  timeSt: any;
+  timeHienTai: any;
+  disabledT: boolean = true;
   kiemTraNgayChieu(value: any): boolean {
     const ngayChieu = this.dateFormat(value);
+    const date = new Date(value);
+    this.timeSt = this.datepipe.transform(date, 'HH');
+    this.timeHienTai = this.date.getHours();
+
     // const ngayHienTai = this.dateFormat(this.today); //so sanh vs ngay hienTai
     const ngayTest = '01-01-2019';
+    if(this.timeSt  > this.timeHienTai ){
+      this.disabledT = false;
+    }
+    else {
+      this.disabledT = true;
+    }
     if (ngayChieu == ngayTest) {
       return true;
     }
+
     return false;
   }
 
@@ -107,6 +126,9 @@ export class CinemasComponent implements OnInit {
     let latest_date = this.datepipe.transform(date1, 'dd-MM-yyyy');
     return latest_date;
   }
+
+
+
   timeEndFormat(value: any): string {
     const date = new Date(value);
     let time = this.datepipe.transform(date, 'HH:mm');

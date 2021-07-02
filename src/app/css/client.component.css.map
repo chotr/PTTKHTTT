@@ -1,0 +1,13 @@
+{
+    "version": 3,
+    "mappings": "AAKA,AAAA,KAAK,CAAA;EACH,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;CAKb;;AAPD,AAGE,KAHG,CAGH,OAAO,CAAC;EACN,WAAW,EAAE,IAAI;CAElB;;AGeK,MAAM,CAAC,MAAM,MAAM,SAAS,EAAE,KAAK;EHXzC,AACE,KADG,CACH,OAAO,CAAC;IACN,WAAW,EAAE,IAAI;GAClB",
+    "sources": [
+        "../client/client.component.scss",
+        "../../sass/Base/_customize.scss",
+        "../../sass/Base/_reset.scss",
+        "../../sass/Helper/_mixin.scss",
+        "../../sass/Helper/_variables.scss"
+    ],
+    "names": [],
+    "file": "client.component.css"
+}

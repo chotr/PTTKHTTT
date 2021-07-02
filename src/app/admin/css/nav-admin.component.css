@@ -1,0 +1,27 @@
+.nav_admin {
+  position: relative;
+  height: 70px;
+}
+
+.nav_admin::after {
+  content: "";
+  height: 1px;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #cccccc;
+  position: absolute;
+}
+
+.nav_admin .path {
+  display: flex;
+  align-items: center;
+}
+
+.nav_admin .path span {
+  font-size: 20px;
+  color: #767676;
+  cursor: context-menu;
+}
+/*# sourceMappingURL=nav-admin.component.css.map */

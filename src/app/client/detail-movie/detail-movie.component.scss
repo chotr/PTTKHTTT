@@ -114,7 +114,91 @@
     // height: 100%;
     width: 100%;
   }
+
 }
+.contentbot{
+  .link{
+    text-decoration: none;
+    color: red;
+    font-size: 20px;
+  }
+  .cinema {
+    background-color: #343a40bd;
+    width: 100%;
+    // margin-bottom: 40px;
+    padding-top: 30px;
+    .cinema_Info {
+      width: 100px;
+      padding: 0;
+      margin: 0;
+      // padding:20px 0 ;
+      ul {
+        padding: 0;
+        li {
+          padding: 0;
+          margin: 0;
+          list-style: none;
+          position: relative;
+          a {
+            margin: 0;
+            display: block;
+            padding: 20px 40px;
+            text-align: center;
+            height: 100%;
+            img {
+              width: 60px;
+              height: 60px;
+              border-radius: 50%;
+              cursor: pointer;
+              background: wheat;
+            }
+          }
+          &::before {
+            position: absolute;
+            content: "";
+            height: 1px;
+            width: 50%;
+            bottom: 0;
+            background: #5c5c5c;
+            margin: auto;
+            right: 0;
+            left: 0;
+          }
+        }
+      }
+      .active {
+        img {
+          -webkit-box-shadow: 0px 1px 14px 0px rgba(255, 255, 255, 1);
+          -moz-box-shadow: 0px 1px 14px 0px rgba(255, 255, 255, 1);
+          box-shadow: 0px 1px 14px 0px rgba(255, 255, 255, 1);
+          transition: all 0.5s;
+        }
+      }
+    }
+    .time{
+      margin: 0 13px;
+       border: #5c5c5c solid 1px;
+       .btn-time {
+        font-size: 15px;
+        float: left;
+        margin-right: 20px;
+        margin-bottom: 14px;
+        background-color: #cecece;
+        border-color: #cecece;
+        &:hover {
+          transition: all 0.5s;
+          // color: rgba(187, 13, 13, 0.795);
+        }
+        .timeSt {
+          font-size: 18px;
+        }
+      }
+    }
+
+  }
+}
+
+
 
 @keyframes progress {
   0% {

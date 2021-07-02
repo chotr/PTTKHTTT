@@ -1,0 +1,67 @@
+.detail_cinema {
+  color: white;
+  cursor: context-menu;
+}
+
+.detail_cinema .content {
+  display: none;
+  position: relative;
+}
+
+.detail_cinema .content::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  background-color: #2e2d2d;
+  top: 27%;
+  bottom: 0;
+  z-index: 1;
+}
+
+.detail_cinema img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.detail_cinema .row {
+  width: 100%;
+}
+
+.detail_cinema .detail {
+  height: 400px;
+  position: relative;
+  z-index: 10;
+}
+
+.detail_cinema .detail .info {
+  position: absolute;
+  top: 18%;
+  width: 100%;
+}
+
+.detail_cinema .detail .info .image_cinema {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  z-index: 20;
+}
+
+.detail_cinema .detail .info .info_text {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.detail_cinema .detail .info .info_text .date {
+  color: white;
+  font-weight: 500;
+  font-size: 27px;
+}
+
+.detail_cinema .detail .info .info_text .name {
+  font-size: 15px;
+  color: #999999;
+}
+/*# sourceMappingURL=detail-cinema.component.css.map */

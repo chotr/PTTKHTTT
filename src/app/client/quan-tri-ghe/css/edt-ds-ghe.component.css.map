@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../edt-ds-ghe/edt-ds-ghe.component.scss"
+    ],
+    "names": [],
+    "file": "edt-ds-ghe.component.css"
+}

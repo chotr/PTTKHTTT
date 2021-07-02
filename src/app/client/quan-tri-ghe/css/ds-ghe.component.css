@@ -1,0 +1,100 @@
+.danh_sach_ghe {
+  padding-bottom: 50px;
+}
+
+.danh_sach_ghe .row {
+  margin: 0;
+  padding: 0;
+}
+
+.danh_sach_ghe .bg-booking {
+  width: 530px;
+  margin: auto;
+}
+
+.danh_sach_ghe .screen {
+  margin-top: 20px !important;
+  height: 15px;
+  width: 100%;
+  background-color: #ffb100;
+  margin-bottom: 20px !important;
+}
+
+.danh_sach_ghe .info {
+  color: #fff;
+}
+
+.danh_sach_ghe .info table {
+  margin: auto;
+}
+
+.danh_sach_ghe .info .note {
+  margin-top: 30px !important;
+  width: 100%;
+}
+
+.danh_sach_ghe .info .note .color {
+  width: 45px;
+  height: 25px;
+  border-radius: 8px;
+}
+
+.danh_sach_ghe .info .note .screen_color .color {
+  background-color: ffb10094 !important;
+}
+
+.danh_sach_ghe .info .note .item_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.danh_sach_ghe .info .note p {
+  width: 100px;
+}
+
+.danh_sach_ghe .info p {
+  margin-bottom: 0;
+}
+
+.danh_sach_ghe .info .price {
+  width: 100%;
+  background: white;
+  color: black;
+  margin-top: 30px;
+}
+
+.danh_sach_ghe .info .price th {
+  border: 1px solid;
+}
+
+.danh_sach_ghe .info .price td {
+  border: 1px solid;
+}
+
+@media screen and (max-width: 767.89px) {
+  .danh_sach_ghe .text-center {
+    padding: 0;
+  }
+  .danh_sach_ghe .screen {
+    width: 95%;
+    margin: auto;
+  }
+  .danh_sach_ghe .bg-booking {
+    width: 450px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .danh_sach_ghe .text-center {
+    padding: 0;
+  }
+  .danh_sach_ghe .screen {
+    width: 95%;
+    margin: auto;
+  }
+  .danh_sach_ghe .bg-booking {
+    width: 385px;
+  }
+}
+/*# sourceMappingURL=ds-ghe.component.css.map */

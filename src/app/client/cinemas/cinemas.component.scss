@@ -55,8 +55,11 @@
     }
   }
   .theater_cluster {
-    padding: 20px 0;
+    margin: 0;
 
+    // max-height: 600px;
+    // overflow-y: scroll;
+    padding: 20px 0;
     p {
       margin-bottom: 0;
     }
@@ -90,25 +93,35 @@
   }
   .movies {
     padding: 20px 0;
+    .listPhim{
+        margin-bottom: 10px;
 
-    .digital {
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
-    .btn-time {
-      font-size: 15px;
-      float: left;
-      margin-right: 20px;
-      margin-bottom: 14px;
-      background-color: #cecece;
-      border-color: #cecece;
-      &:hover {
-        transition: all 0.5s;
-      }
-      .timeSt {
+      .digital {
         font-size: 18px;
+        margin-bottom: 20px;
       }
+      .time{
+        margin: 0 13px;
+         border: #5c5c5c solid 1px;
+         .btn-time {
+          font-size: 15px;
+          float: left;
+          margin-right: 20px;
+          margin-bottom: 14px;
+          background-color: #cecece;
+          border-color: #cecece;
+          &:hover {
+            transition: all 0.5s;
+            // color: rgba(187, 13, 13, 0.795);
+          }
+          .timeSt {
+            font-size: 18px;
+          }
+        }
+      }
+
     }
+
   }
 }
 @include responsive("extra-large") {
@@ -171,16 +184,21 @@
       }
     }
     .movies {
+
       .wrapper__collapse {
         .img_movie {
           width: 55px;
           height: 55px;
         }
+
       }
+
       .btn-time{
         padding: 3px 10px;
         margin-right: 12px;
+
       }
+
     }
   }
 }

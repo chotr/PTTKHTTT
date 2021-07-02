@@ -1,0 +1,101 @@
+.history_booking {
+  display: none;
+  cursor: context-menu;
+}
+
+.history_booking .title {
+  padding: 50px;
+  color: #cbafaf;
+}
+
+.history_booking .title h1 {
+  font-size: 37px;
+  cursor: context-menu;
+}
+
+.history_booking .table {
+  background: #f8f9fad9;
+}
+
+.history_booking pagination-controls ::ng-deep {
+  align-items: center;
+  justify-content: center;
+}
+
+.history_booking pagination-controls ::ng-deep .ngx-pagination li {
+  background: white !important;
+  margin-right: 0;
+  border: 1px solid #dee2e6;
+  color: #007bff;
+}
+
+.history_booking pagination-controls ::ng-deep .ngx-pagination li a {
+  padding: 0.4rem 0.7rem;
+}
+
+.history_booking pagination-controls ::ng-deep .ngx-pagination li a::before {
+  display: none;
+}
+
+.history_booking pagination-controls ::ng-deep .ngx-pagination li a::after {
+  display: none;
+}
+
+.history_booking pagination-controls ::ng-deep .ngx-pagination li:focus {
+  color: white !important;
+}
+
+.history_booking pagination-controls ::ng-deep .ngx-pagination li:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.history_booking pagination-controls ::ng-deep .ngx-pagination li:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.history_booking pagination-controls ::ng-deep .ngx-pagination li.current {
+  background-color: #007bff !important;
+  border-color: #007bff !important;
+  color: white !important;
+  padding: 0.4rem 0.7rem;
+}
+
+.history_booking pagination-controls ::ng-deep .ngx-pagination li.disabled {
+  color: darkgrey;
+  padding: 0.4rem 0.7rem !important;
+  background-color: #bababa !important;
+  border-color: #bababa !important;
+}
+
+.history_booking pagination-controls ::ng-deep .ngx-pagination li.disabled::before {
+  display: none;
+}
+
+.history_booking pagination-controls ::ng-deep .ngx-pagination li.disabled::after {
+  display: none;
+}
+
+.history_booking pagination-controls ::ng-deep .ngx-pagination li.small-screen {
+  padding: 0.4rem 0.7rem !important;
+}
+
+@media screen and (max-width: 576px) {
+  .history_booking .table {
+    font-size: 12px !important;
+  }
+  .history_booking .table td, .history_booking .table th {
+    padding: 5px;
+  }
+  .history_booking pagination-controls ::ng-deep .ngx-pagination li a {
+    padding: 0.3rem 0.5rem !important;
+  }
+  .history_booking pagination-controls ::ng-deep .ngx-pagination li.disabled {
+    padding: 0.3rem 0.5rem !important;
+  }
+  .history_booking pagination-controls ::ng-deep .ngx-pagination li.small-screen {
+    padding: 0.3rem 0.5rem !important;
+  }
+}
+/*# sourceMappingURL=history-booking.component.css.map */

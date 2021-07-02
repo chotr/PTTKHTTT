@@ -1,58 +1,54 @@
 <div class="detailMovie">
-    <div class="content container" id="content">
-        <div class="detail">
-            <div class="info">
-                <div class="row">
-                    <div class=" image_movie col-4 col-sm-3">
-                        <img class="detail_movie" [src]="detailMovie?.hinhAnh">
-                    </div>
-                    <div class="info_text col-8 col-sm-9">
-                        <div class="info_text_movie">
-                            <div class="row">
-                                <div class="col-8 text">
-                                    <div class="date">
-                                        <p>{{detailMovie?.ngayKhoiChieu | date:'dd/MM/yyyy'}}</p>
-                                    </div>
-                                    <div class="name">
-                                        <p>{{detailMovie?.tenPhim}}</p>
-                                    </div>
-                                    <div class="digital">
-                                        <p>120 phút - 0 IMDb - 2D/Digital</p>
-                                    </div>
-                                </div>
-                                <div class="col-4 point">
-                                    <div class="single-chart">
-                                        <svg viewBox="0 0 36 36" class="circular-chart orange">
-                                          <path class="circle-bg"
-                                            d="M18 2.0845
-                                              a 15.9155 15.9155 0 0 1 0 31.831
-                                              a 15.9155 15.9155 0 0 1 0 -31.831"
-                                          />
-                                          <path class="circle"
-                                            stroke-dasharray="{point}, 100"
-                                            d="M18 2.0845
-                                              a 15.9155 15.9155 0 0 1 0 31.831
-                                              a 15.9155 15.9155 0 0 1 0 -31.831"
-                                          />
-                                          <text x="18" y="20.35" class="percentage">{{point}}</text>
-                                        </svg>
-                                      </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="line"></div>
-                        <div class="title">
-                            <h3>Nội dung</h3>
-                        </div>
-                        <div class="text">
-                            <p>{{detailMovie?.moTa}}</p>
-                        </div>
-                    </div>
+  <div class="content container" id="content">
 
+    <div class="detail">
+      <div class="info">
+        <div class="row">
+          <div class=" image_movie col-4 col-sm-3">
+            <img class="detail_movie" [src]="detailMovie?.hinhAnh">
+          </div>
+          <div class="info_text col-8 col-sm-9">
+            <div class="info_text_movie">
+              <div class="row">
+                <div class="col-8 text">
+                  <div class="date">
+                    <p>{{detailMovie?.ngayKhoiChieu | date:'dd/MM/yyyy'}}</p>
+                  </div>
+                  <div class="name">
+                    <p>{{detailMovie?.tenPhim}}</p>
+                  </div>
+                  <div class="digital">
+                    <p>120 phút - 0 IMDb - 2D/Digital</p>
+                  </div>
                 </div>
+                <div class="col-4 point">
+                  <div class="single-chart">
+                    <svg viewBox="0 0 36 36" class="circular-chart orange">
+                      <path class="circle-bg" d="M18 2.0845
+                                              a 15.9155 15.9155 0 0 1 0 31.831
+                                              a 15.9155 15.9155 0 0 1 0 -31.831" />
+                      <path class="circle" stroke-dasharray="{point}, 100" d="M18 2.0845
+                                              a 15.9155 15.9155 0 0 1 0 31.831
+                                              a 15.9155 15.9155 0 0 1 0 -31.831" />
+                      <text x="18" y="20.35" class="percentage">{{point}}</text>
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </div>
+            <div class="line"></div>
+            <div class="title">
+              <h3>Nội dung</h3>
+            </div>
+            <div class="text">
+              <p>{{detailMovie?.moTa}}</p>
+            </div>
+          </div>
+
         </div>
-        <div class="overview text-center">
+      </div>
+    </div>
+    <!-- <div class="overview text-center">
             <div class="trailer">
                 <div class="video">
                     <iframe id="iframe" frameborder="0" allowfullscreen="1"
@@ -60,15 +56,94 @@
                         title="YouTube video player" width="555" height="270" [src]="url | safe"></iframe>
                 </div>
             </div>
-        </div>
+        </div> -->
 
+
+
+  </div>
+  <div class="contentbot container my-2">
+    <div class="row">
+      <div class="col-12 text-center text-danger">
+        <a class=" link mr-2" (click)="chooseAction('LichChieu')">LichChieu</a>
+        <a class=" link mr-2" (click)="chooseAction('ThongTin')">ThongTin</a>
+        <a class=" link mr-2" (click)="chooseAction('DanhGia')">DanhGia</a>
+      </div>
     </div>
+    <div class="row movies" [ngSwitch]="loaiAction">
+      <div class="col-12" *ngSwitchCase="'LichChieu'">
+        LichChieu
+        <div class="cinema row">
+          <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 cinema_Info">
+            <ul>
+              <li *ngFor="let cinema of heThongRap; let i = index" class="logo" [class.active]="selectedIndex === i"
+                (click)="setIndex(i)">
+                <a (click)="layThongTinRap(cinema.maHeThongRap)"><img [src]="cinema.logo" width="50px"
+                    height="50px"></a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-9 ml-3">
+            <div class="ngaythang">
+              <ul class="d-flex  justify-content-start align-items-center text-center" style="height:100px; max-width: 900px; overflow-x:scroll; list-style: none;">
+                <li *ngFor="let ngaylol of listNgay"  class="pr-5 text-info" >
+                  <p>{{ngaylol| date: 'EEEE'}}</p>
+                  <p>{{ngaylol| date: 'dd/MM'}} </p>
+                </li>
+              </ul>
+          </div>
+            <div *ngIf="isPhim == false">
+              Không có suất chiếu
+            </div>
+            <div class="listPhim mb-2 text-white" *ngFor="let cumRap of cumRapDangCoPhim">
+              <div class="wrapper__collapse">
+                <div class="row py-3" data-toggle="collapse" [attr.data-target]="'#cumrap-'+cumRap.maCumRap">
+
+                  <div>
+                    <img class="ml-4"  [src]="img" width="50px" height="50px" style="border-radius: 5px;">
+                  </div>
+
+                  <div class="col-10 text pl-2 py-3" style="color: aqua ;">
+                     <p class="tenCR">{{cumRap.tenCumRap}}</p>
+                  </div>
+
+                </div>
+                <div class="row collapse show" [id]="'cumrap-'+ cumRap.maCumRap">
+                  <div class="col-12 time">
+                    <h3>2D Digital</h3>
+                    <div *ngFor="let lc of cumRap.lichChieuPhim">
+                      <ng-container *ngIf="kiemTraNgayChieu(lc.ngayChieuGioChieu)">
+                        <button [disabled]="disabledT" (click)="navigateTo(phim.maLichChieu)" class=" btn btn-time">
+                          {{lc.ngayChieuGioChieu | date: 'HH:mm'}} - {{timeEndFormat(lc.ngayChieuGioChieu)}}
+                        </button>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-12" *ngSwitchCase="'ThongTin'">
+        ThongTin
+      </div>
+      <div class="col-12" *ngSwitchCase="'DanhGia'">
+        DanhGia
+      </div>
+    </div>
+  </div>
 </div>
+
 <div class="spinner" id="spinner">
-    <div class="loader">
-        <p class="text-center text-white">Đang tải</p>
-        <div class="inner one"></div>
-        <div class="inner two"></div>
-        <div class="inner three"></div>
-    </div>
+  <div class="loader">
+    <p class="text-center text-white">Đang tải</p>
+    <div class="inner one"></div>
+    <div class="inner two"></div>
+    <div class="inner three"></div>
+  </div>
 </div>
