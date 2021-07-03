@@ -1,16 +1,30 @@
 // @import "~@ng-select/ng-select/themes/material.theme.css";
-.showTime{
-    .addShowtime{
-        .ng-select {
-            padding-bottom: 0!important;            
-        }
-        .form-group{
-            input{
-                &:focus{
-                    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 0 3px rgb(0 126 255 / 10%)!important;
-                }
-            }
-        }
+@import "../../../sass/Base/customize";
+@import "../../../sass/Helper/variables";
+@import "../../../sass/Helper/mixin";
+
+.showTime {
+  padding-left: 15px;
+  .addShowtime {
+    .ng-select {
+      padding-bottom: 0 !important;
     }
-    
+    .form-group {
+      input {
+        &:focus {
+          box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%),
+            0 0 0 3px rgb(0 126 255 / 10%) !important;
+        }
+      }
+    }
+  }
+}
+
+@include responsive("large") {
+  .showtime_mng {
+    .add {
+      padding: 5px;
+      font-size: 12px;
+    }
+  }
 }

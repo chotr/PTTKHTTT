@@ -1,0 +1,71 @@
+@import "../../../sass/Base/customize";
+@import "../../../sass/Helper/variables";
+@import "../../../sass/Helper/mixin";
+
+.movie_management {
+  padding-left: 15px;
+  .table_movie {
+    width: 100%;
+    overflow: auto;
+    table {
+      border-collapse: collapse;
+      font-size: 14px;
+      td,
+      th {
+        padding: 0.5rem;
+        vertical-align: middle;
+      }
+      .btn {
+        font-size: 14px;
+        padding: 5px 7px;
+      }
+    }
+  }
+}
+@include responsive("extra-large"){
+    .movie_management{
+        .table_movie {
+            table {
+              font-size: 12px;
+              td,
+              th {
+                padding: 0.3rem;
+              }
+              .btn {
+                font-size: 12px;
+                padding: 5px 5px;
+              }
+              img{
+                  width: 50px;
+              }
+            }
+          }
+    }
+}
+@include responsive("large"){
+    .movie_management{
+        padding-right: 0 !important;
+        .add {
+            padding: 5px;
+            font-size: 12px;
+          }
+        .table_movie {
+            table {
+                font-size: 11px;
+                width: 900px;
+                margin: auto;
+              td,
+              th {
+                padding: 0.3rem;
+              }
+              .btn {
+                font-size: 12px;
+                padding: 5px 5px;
+              }
+              img{
+                  width: 40px;
+              }
+            }
+          }
+    }
+}

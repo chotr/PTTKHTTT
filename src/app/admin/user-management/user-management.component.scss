@@ -24,7 +24,7 @@
 }
 @include responsive("extra-large") {
   .user_managemnet {
-      padding-right: 0!important;
+    padding-right: 0 !important;
     .table_user {
       table {
         font-size: 12px;
@@ -43,10 +43,14 @@
 @include responsive("large") {
   .user_managemnet {
     padding-right: 0 !important;
+    .add {
+      padding: 5px;
+      font-size: 12px;
+    }
     .table_user {
       table {
         font-size: 11px;
-        width: 700px;
+        width: 900px;
         margin: auto;
         td,
         th {
@@ -63,7 +67,7 @@
 @include responsive("medium") {
   .user_managemnet {
     table {
-    //   font-size: 12px !important;
+      //   font-size: 12px !important;
     }
   }
 }

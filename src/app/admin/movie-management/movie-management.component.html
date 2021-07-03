@@ -1,6 +1,6 @@
-<div class="movie_management container">
+<div class="movie_management">
     <div class="add_movie">
-        <button type="button" (click)="resetForm()" class="btn btn-primary my-4" data-toggle="modal" data-target="#exampleModal">Thêm
+        <button type="button" (click)="resetForm()" class="btn btn-primary add my-4" data-toggle="modal" data-target="#exampleModal">Thêm
             phim</button>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -16,54 +16,56 @@
         </div>
 
     </div>
-    <table class="table table-hover">
-        <thead class="thead-dark">
-            <tr>
-                <th>Hình ảnh</th>
-                <th style="width:10%">Mã phim</th>
-                <th>Tên phim</th>
-                <th>Mô tả</th>
-                <th>Trailer</th>
-                <th style="width:12%">Ngày khởi chiếu</th>
-                <th style="width:18%">Thao tác</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let film of listMovie">
-                <td><img [src]="film.hinhAnh" width="60px" alt=""></td>
-                <td>{{film.maPhim}}</td>
-                <td>{{film.tenPhim}}</td>
-                <td>{{film.moTa | shortCut: 40}}</td>
-                <td>{{film.trailer| shortCut: 30}}</td>
-                <td>{{film.ngayKhoiChieu| date : 'dd/MM/yyyy HH:mm:ss'}}</td>
-                <td>
-                    <button #updateBtn 
-                    [attr.data-hinhAnh]="film.hinhAnh"
-                    [attr.data-maPhim]="film.maPhim"
-                    [attr.data-tenPhim]="film.tenPhim"
-                    [attr.data-moTa]="film.moTa"
-                    [attr.data-trailer]="film.trailer"
-                    [attr.data-ngayKhoiChieu]="film.ngayKhoiChieu"
-                    [attr.data-biDanh]="film.biDanh"
-                    (click)="update(updateBtn)" type="button" class="btn btn-success mr-2" data-toggle="modal"
-                        data-target="#exampleModal1">Chỉnh sửa</button>
-                    <button class="btn btn-danger" (click)="deleteMovie(film.maPhim)">Xóa</button>
-                </td>
-            </tr>
-        </tbody>
-        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <form #updateMovie="ngForm" (ngSubmit) ="updateForm()" class="container">
-                            <app-form-add-movie [isDisabled]="isDisabled" (outForm)="getForm($event)" [movie]="movie"></app-form-add-movie>
-                        </form>
+    <div class="table_movie">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Hình ảnh</th>
+                    <th style="width:10%">Mã phim</th>
+                    <th>Tên phim</th>
+                    <th>Mô tả</th>
+                    <th>Trailer</th>
+                    <th style="width:12%">Ngày khởi chiếu</th>
+                    <th style="width:18%">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let film of listMovie">
+                    <td><img [src]="film.hinhAnh" width="60px" alt=""></td>
+                    <td>{{film.maPhim}}</td>
+                    <td>{{film.tenPhim}}</td>
+                    <td>{{film.moTa | shortCut: 30}}</td>
+                    <td>{{film.trailer| shortCut: 25}}</td>
+                    <td>{{film.ngayKhoiChieu| date : 'dd/MM/yyyy HH:mm:ss'}}</td>
+                    <td>
+                        <button #updateBtn 
+                        [attr.data-hinhAnh]="film.hinhAnh"
+                        [attr.data-maPhim]="film.maPhim"
+                        [attr.data-tenPhim]="film.tenPhim"
+                        [attr.data-moTa]="film.moTa"
+                        [attr.data-trailer]="film.trailer"
+                        [attr.data-ngayKhoiChieu]="film.ngayKhoiChieu"
+                        [attr.data-biDanh]="film.biDanh"
+                        (click)="update(updateBtn)" type="button" class="btn btn-success mr-2" data-toggle="modal"
+                            data-target="#exampleModal1">Chỉnh sửa</button>
+                        <button class="btn btn-danger" (click)="deleteMovie(film.maPhim)">Xóa</button>
+                    </td>
+                </tr>
+            </tbody>
+            <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <form #updateMovie="ngForm" (ngSubmit) ="updateForm()" class="container">
+                                <app-form-add-movie [isDisabled]="isDisabled" (outForm)="getForm($event)" [movie]="movie"></app-form-add-movie>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </table>
+        </table>
+    </div>
     <nav aria-label="Page navigation example">
         <ul class="pagination">
             <li class="page-item pre"><a [ngClass]="disabledPagePre() ? 'page-link':'page-link disabled'"
