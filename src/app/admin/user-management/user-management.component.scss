@@ -43,6 +43,7 @@
 @include responsive("large") {
   .user_managemnet {
     padding-right: 0 !important;
+    padding-left: 10px;
     .add {
       padding: 5px;
       font-size: 12px;
@@ -66,6 +67,7 @@
 }
 @include responsive("medium") {
   .user_managemnet {
+    padding-left: 5px;
     table {
       //   font-size: 12px !important;
     }

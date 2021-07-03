@@ -231,47 +231,66 @@
 @include responsive("medium") {
   .menu {
     .nav__cont {
-      width: 6%;
+      width: 7%;
       &:hover {
-        width: 200px;
-        .nav__items {
-          a {
-            display: block;
+        .navbar-brand {
+          width: 195px;
+          height: 80px;
+          &::after {
+            width: 102%;
           }
         }
       }
     }
     .nav {
-      height: 100%;
-      width: 100%;
     }
     .nav__items {
-      width: 200px;
       .text {
-        font-size: 25px;
       }
       .icon {
-        font-size: 15px;
-        margin: auto;
-        width: 65px;
+        margin-left: 12px;
       }
       .link {
-        font-size: 12px;
-        padding: 12px 10px;
-        width: 160px;
-        padding-right: 0;
         a {
-          display: none;
         }
       }
     }
     .navbar-brand {
+      width: 45px;
       &::after {
-        height: 1px;
-        width: 90%;
-        right: 5%;
-        left: 6%;
-        bottom: 5px;
+      }
+    }
+  }
+}
+@include responsive("medium") {
+  .menu {
+    .nav__cont {
+      &:hover {
+        .navbar-brand {
+          width: 195px;
+          height: 80px;
+          &::after {
+            width: 102%;
+          }
+        }
+      }
+    }
+    .nav {
+    }
+    .nav__items {
+      .text {
+      }
+      .icon {
+        margin-left: 5px;
+      }
+      .link {
+        a {
+        }
+      }
+    }
+    .navbar-brand {
+      width: 30px;
+      &::after {
       }
     }
   }
