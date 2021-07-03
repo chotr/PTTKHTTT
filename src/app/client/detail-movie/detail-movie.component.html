@@ -79,8 +79,8 @@
             </div>
             <div class="content_showtimes col-9 ml-3">
               <ul class="nav d-flex">
-                <li class="nav-item" *ngFor="let day of dayOnWeek" [class.active]="day.id === 'today-tab'">
-                  <a (click)="getListOnDay(day.stt)" >{{day.name}}</a>
+                <li class="nav-item" *ngFor="let day of dayOnWeek" (click)="getIdDay(day.id)" [class.disabled]="day.stt < indexDis" [class.active]="day.id === active">
+                  <a (click)="getListOnDay(day.stt)">{{day.name}}</a>
                 </li>
               </ul>
 

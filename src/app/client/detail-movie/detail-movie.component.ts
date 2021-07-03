@@ -45,6 +45,7 @@ export class DetailMovieComponent implements OnInit {
     this.displayDate();
     this.dayOnST = this.datepipe.transform(this.dayCur, 'dd-MM-yyyy');
     this.layLC(this.dayOnST);
+    this.tabDisabled();
   }
 
   addDays(dateObj, numDays) {
@@ -197,13 +198,13 @@ export class DetailMovieComponent implements OnInit {
 
   // xscasccsacsacsacsavsacsacsavasvsavasvdavsavsavsavsav
   dayOnWeek = [
-    { stt: '1', name: 'Hai', value: 'Mon', id: 'Mon-tab' },
-    { stt: '2', name: 'Ba', value: 'Tue', id: 'Tue-tab' },
-    { stt: '3', name: 'Tư', value: 'Wed', id: 'Wed-tab' },
-    { stt: '4', name: 'Năm', value: 'Thu', id: 'Thu-tab' },
-    { stt: '5', name: 'Sáu', value: 'Fri', id: 'Fri-tab' },
-    { stt: '6', name: 'Bảy', value: 'Sat', id: 'Sat-tab' },
-    { stt: '7', name: 'CN', value: 'Sun', id: 'Sun-tab' },
+    { stt: 1, name: 'Hai', value: 'Mon', id: 'Mon-tab' },
+    { stt: 2, name: 'Ba', value: 'Tue', id: 'Tue-tab' },
+    { stt: 3, name: 'Tư', value: 'Wed', id: 'Wed-tab' },
+    { stt: 4, name: 'Năm', value: 'Thu', id: 'Thu-tab' },
+    { stt: 5, name: 'Sáu', value: 'Fri', id: 'Fri-tab' },
+    { stt: 6, name: 'Bảy', value: 'Sat', id: 'Sat-tab' },
+    { stt: 7, name: 'CN', value: 'Sun', id: 'Sun-tab' },
   ];
   dayCur = new Date().toString();
   today: any;
@@ -214,6 +215,15 @@ export class DetailMovieComponent implements OnInit {
   curList = [];
   dayOnST: any;
   nstt: any;
+  active = 'today-tab';
+  indexDis: any;
+  tabDisabled() {
+    for (let day of this.dayOnWeek) {
+      if (day.id === 'today-tab') {
+        this.indexDis = day.stt;
+      }
+    }
+  }
   getDay() {
     let date;
     date = this.dayCur;
@@ -235,9 +245,8 @@ export class DetailMovieComponent implements OnInit {
       }
     }
   }
+  // lấy số thứ tự của thẻ đang chọn
   getListOnDay(index: number) {
-    this.curList = null;
-
     let day = this.dmy.split('/');
     let dd = day[0];
     let mm = day[1];
@@ -278,6 +287,8 @@ export class DetailMovieComponent implements OnInit {
 
     this.layLC(fullDate);
   }
+
+  // cần
   layLC(day: any) {
     this.cinemasService
       .layThongtinLichChieuTheoPhim(this.id)
@@ -285,5 +296,8 @@ export class DetailMovieComponent implements OnInit {
         this.heThongRap = res.heThongRapChieu;
         this.getcumRapChieu(this.maHeThongRap, day);
       });
+  }
+  getIdDay(id) {
+    this.active = id;
   }
 }

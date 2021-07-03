@@ -140,6 +140,10 @@
         color: black;
         border: 1px solid black;
       }
+      li.disabled {
+        pointer-events: none; 
+        background: rgb(173, 173, 173);
+      }
     }
   }
   .movies {
@@ -153,13 +157,11 @@
   .cinema {
     background-color: #343a40bd;
     width: 100%;
-    // margin-bottom: 40px;
     padding-top: 30px;
     .cinema_Info {
       width: 100px;
       padding: 0;
       margin: 0;
-      // padding:20px 0 ;
       ul {
         padding: 0;
         li {
