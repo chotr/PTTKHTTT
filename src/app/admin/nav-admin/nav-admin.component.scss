@@ -30,8 +30,30 @@
 @include responsive("large") {
   .nav_admin {
     .path {
+      padding-right: 0;
       span {
         font-size: 16px;
+        
+      }
+    }
+  }
+}
+@include responsive("medium") {
+  .nav_admin {
+    .path {
+      span {
+        font-size: 14px;
+        
+      }
+    }
+  }
+}
+@include responsive("small") {
+  .nav_admin {
+    .path {
+      span {
+        font-size: 13px;
+        margin-left: 10px;
         
       }
     }
