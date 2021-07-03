@@ -43,7 +43,7 @@
               <div *ngFor="let lc of phim.lstLichChieuTheoPhim" >
                 <ng-container *ngIf="kiemTraNgayChieu(lc.ngayChieuGioChieu)">
                   <button [disabled]="disabledT" (click)="navigateTo(lc.maLichChieu)" class=" btn  btn-time">
-                    {{lc.ngayChieuGioChieu | date: 'HH:mm'}} - {{timeEndFormat(lc.ngayChieuGioChieu)}}
+                    {{lc.ngayChieuGioChieu | date: 'HH:mm'}}
                   </button>
                 </ng-container>
               </div>

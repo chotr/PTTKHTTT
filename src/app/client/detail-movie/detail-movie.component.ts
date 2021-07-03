@@ -17,11 +17,11 @@ export class DetailMovieComponent implements OnInit {
   id: string | null | undefined;
 
   point: any;
-  loaiAction: string = "LichChieu";
+  loaiAction: string = 'LichChieu';
   heThongRap: any;
-  maHeThongRap ="BHDStar";
-  maCTR = "";
-  img ="assets/images/bhd.jpg";
+  maHeThongRap = 'BHDStar';
+  maCTR = '';
+  img = 'assets/images/bhd.jpg';
   CumRap: any;
   selectedIndex: number = 0;
   listNgay: any[] = [];
@@ -29,7 +29,7 @@ export class DetailMovieComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private movieSer: MovieService,
     private cinemasService: CinemasService,
-    public datepipe: DatePipe,
+    public datepipe: DatePipe
   ) {}
 
   ngOnInit(): void {
@@ -41,30 +41,28 @@ export class DetailMovieComponent implements OnInit {
 
     this.getDataMovieSchedule(this.id);
 
-      this.getListNgay();
+    this.getDay();
+    this.displayDate();
+    this.dayOnST = this.datepipe.transform(this.dayCur, 'dd-MM-yyyy');
+    this.layLC(this.dayOnST);
   }
 
   addDays(dateObj, numDays) {
-    dateObj.setDate(dateObj.getDate()+ numDays);
+    dateObj.setDate(dateObj.getDate() + numDays);
     return dateObj;
   }
-  getListNgay(){
-    // let now = new Date();
-    // let netxTWeek = this.addDays(now, 2);
-    // console.log(netxTWeek);
-      for (let index = 0; index < 15; index++) {
-        let now = new Date();
-        let netxTWeek = this.addDays(now, index);
-        console.log(netxTWeek);
-          this.listNgay.push(netxTWeek);
-      }
-      console.log(this.listNgay);
+  getListNgay() {
+    for (let index = 0; index < 15; index++) {
+      let now = new Date();
+      let netxTWeek = this.addDays(now, index);
+
+      this.listNgay.push(netxTWeek);
+    }
   }
   getParamsFromUrl() {
     this.activatedRoute.queryParams.subscribe((res) => {
       if (res) {
         this.detailMovie = res.maPhim;
-
       }
     });
   }
@@ -74,55 +72,46 @@ export class DetailMovieComponent implements OnInit {
         this.hideloader();
       }
       this.detailMovie = res;
-      // console.log(this.detailMovie);
+
       let trailer = this.detailMovie.trailer;
       this.url = trailer;
-      this.point = res.danhGia
+      this.point = res.danhGia;
     });
   }
+
   getDataMovieSchedule(idMovie: string) {
-    this.cinemasService.layThongtinLichChieuTheoPhim(idMovie).subscribe((res) => {
-      // console.log(res);
-      this.heThongRap = res.heThongRapChieu;
-      // console.log(this.heThongRap);
-      this.getcumRapChieu(this.maHeThongRap, "01-01-2019");
-    })
+    this.cinemasService
+      .layThongtinLichChieuTheoPhim(idMovie)
+      .subscribe((res) => {
+        this.heThongRap = res.heThongRapChieu;
 
+        this.getcumRapChieu(this.maHeThongRap, this.dayOnST);
+      });
   }
-
 
   cumRapDangCoPhim: any;
   isPhim: boolean = false;
   getcumRapChieu(maHT: string, ngayChonLich: string) {
+    for (let cr of this.heThongRap) {
+      if (cr.maHeThongRap == this.maHeThongRap) {
+        this.CumRap = cr.cumRapChieu;
+      }
+    }
+    this.isPhim = false;
+    this.cumRapDangCoPhim = this.CumRap.filter((cumRap) => {
+      for (let CTR of cumRap.lichChieuPhim) {
+        console.log(CTR);
 
-      console.log(this.heThongRap);
-      for(let cr of this.heThongRap){
-        if(cr.maHeThongRap == this.maHeThongRap) {
-          this.CumRap = cr.cumRapChieu ;
-          console.log(this.CumRap);
-
+        const ngayChieu = this.dateFormat(CTR.ngayChieuGioChieu);
+        if (ngayChieu === ngayChonLich) {
+          this.isPhim = true;
+          return cumRap;
         }
       }
-      this.isPhim = false;
-      this.cumRapDangCoPhim = this.CumRap.filter((cumRap) => {
-        // console.log(cumRap)
-          for(let CTR of cumRap.lichChieuPhim) {
-            // console.log(cl.ngayChieuGioChieu);
-            const ngayChieu = this.dateFormat(CTR.ngayChieuGioChieu);
-            if(ngayChieu == ngayChonLich) {
-              console.log(ngayChieu);
-              console.log(cumRap);
-              this.isPhim = true;
-              return cumRap;
-            }
-          }
-      })
-
-      console.log(this.cumRapDangCoPhim);
-
+    });
   }
 
-  defaultCR(maHeThong:string) {
+  defaultCR(maHeThong: string) {
     switch (maHeThong) {
       case 'BHDStar':
         // this.maCTR = 'BHD Star Cineplex - 3/2';
@@ -168,18 +157,18 @@ export class DetailMovieComponent implements OnInit {
     document.getElementById('spinner').style.display = 'none';
     document.getElementById('content').style.display = 'block';
   }
-  chooseAction(loai: string){
+  chooseAction(loai: string) {
     this.loaiAction = loai;
   }
   setIndex(index: number) {
     this.selectedIndex = index;
   }
 
-  layThongTinRap(maCR: string){
+  layThongTinRap(maCR: string) {
     this.maHeThongRap = maCR;
-    console.log(this.maHeThongRap)
-    this.getcumRapChieu(this.maHeThongRap, "01-01-2019");
+    this.getcumRapChieu(this.maHeThongRap, '01-01-2019');
     this.defaultCR(maCR);
+    this.layLC(this.dayOnST);
   }
 
   date = new Date();
@@ -193,11 +182,10 @@ export class DetailMovieComponent implements OnInit {
     this.timeHienTai = this.date.getHours();
 
     // const ngayHienTai = this.dateFormat(this.today); //so sanh vs ngay hienTai
-    const ngayTest = "01-01-2019";
-    if(this.timeSt  > this.timeHienTai ){
+    const ngayTest = this.dayOnST;
+    if (this.timeSt > this.timeHienTai) {
       this.disabledT = false;
-    }
-    else {
+    } else {
       this.disabledT = true;
     }
     if (ngayChieu == ngayTest) {
@@ -207,4 +195,95 @@ export class DetailMovieComponent implements OnInit {
     return false;
   }
 
+  // xscasccsacsacsacsavsacsacsavasvsavasvdavsavsavsavsav
+  dayOnWeek = [
+    { stt: '1', name: 'Hai', value: 'Mon', id: 'Mon-tab' },
+    { stt: '2', name: 'Ba', value: 'Tue', id: 'Tue-tab' },
+    { stt: '3', name: 'Tư', value: 'Wed', id: 'Wed-tab' },
+    { stt: '4', name: 'Năm', value: 'Thu', id: 'Thu-tab' },
+    { stt: '5', name: 'Sáu', value: 'Fri', id: 'Fri-tab' },
+    { stt: '6', name: 'Bảy', value: 'Sat', id: 'Sat-tab' },
+    { stt: '7', name: 'CN', value: 'Sun', id: 'Sun-tab' },
+  ];
+  dayCur = new Date().toString();
+  today: any;
+  listMV = [];
+  listTime = [];
+  dmy: any;
+  CR = [];
+  curList = [];
+  dayOnST: any;
+  nstt: any;
+  getDay() {
+    let date;
+    date = this.dayCur;
+    date = date.split(' ');
+    this.today = date[0];
+    this.dmy = this.datepipe.transform(this.dayCur, 'dd/MM/yyyy');
+  }
+  displayDate() {
+    for (let day of this.dayOnWeek) {
+      if (day.value === this.today) {
+        day.id = 'today-tab';
+        day.name = 'Hôm nay';
+        day.value = 'today';
+      }
+    }
+    for (let sd of this.dayOnWeek) {
+      if (sd.value === 'today') {
+        this.nstt = sd.stt;
+      }
+    }
+  }
+  getListOnDay(index: number) {
+    this.curList = null;
+
+    let day = this.dmy.split('/');
+    let dd = day[0];
+    let mm = day[1];
+    let yyyy = day[2];
+
+    var today = new Date();
+    var lastDayOfMonth = new Date(
+      today.getFullYear(),
+      today.getMonth() + 1,
+      0
+    ).toString();
+
+    let datString = lastDayOfMonth.split(' ');
+    let maxDay = parseInt(datString[2]);
+
+    let newDay = parseInt(dd) - (parseInt(this.nstt) - index);
+
+    let newMonth = mm;
+    let newYear = yyyy;
+
+    if (newDay > maxDay) {
+      let temp = newDay - maxDay;
+      newDay = temp;
+      newMonth = newMonth + 1;
+    }
+    if (newMonth > 12) {
+      newMonth = 1;
+      newYear = newYear + 1;
+    }
+
+    let fullDate =
+      ('0' + newDay).slice(-2) +
+      '-' +
+      ('0' + newMonth).slice(-2) +
+      '-' +
+      newYear;
+    this.dayOnST = fullDate;
+
+    this.layLC(fullDate);
+  }
+  layLC(day: any) {
+    this.cinemasService
+      .layThongtinLichChieuTheoPhim(this.id)
+      .subscribe((res) => {
+        this.heThongRap = res.heThongRapChieu;
+        this.getcumRapChieu(this.maHeThongRap, day);
+      });
+  }
 }
