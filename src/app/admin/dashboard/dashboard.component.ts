@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
        {
            display: true,
            ticks: {
-             fontSize: 14
+             fontSize: 13
            }
        }
        
@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit {
       {
           display: true,
           ticks: {
-            fontSize: 12
+            fontSize: 11
           }
       }
       
