@@ -1,0 +1,41 @@
+.dashboard {
+  margin-top: 35px;
+  padding-left: 15px;
+  .amount_detail {
+    color: wheat;
+    margin-bottom: 35px;
+  }
+  .new_movie {
+    background: #2c97df;
+  }
+  .user {
+    background: #ff6262;
+  }
+  .coming_movie{
+      background: #ff9c21;
+  }
+  .user,
+  .new_movie,.coming_movie {
+    height: 100px;
+    margin-left: 20px;
+    display: flex;
+    .info {
+      margin-left: auto;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      .amount {
+        font-size: 20px;
+      }
+    }
+    .icon {
+      margin-right: auto;
+      font-size: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+  }
+}

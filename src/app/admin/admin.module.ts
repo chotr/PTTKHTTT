@@ -17,6 +17,7 @@ import { FormAddMovieComponent } from './layout/form-add-movie/form-add-movie.co
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CinemaManagementComponent } from './cinema-management/cinema-management.component';
 import { CinemasComponent } from '../client/cinemas/cinemas.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 const routes = [
@@ -83,7 +84,8 @@ const routes = [
     ReactiveFormsModule,
     ProviderModule,
     MaterialModule,
-    NgSelectModule
+    NgSelectModule,
+    ChartsModule
   ],
 })
 export class AdminModule {}

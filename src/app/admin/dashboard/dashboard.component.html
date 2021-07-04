@@ -1,1 +1,54 @@
-<p>dashboard works!</p>
+<div class="dashboard">
+    <div class="amount_detail">
+        <div class="row">
+            <div class="user col-3">
+                <div class="icon">
+                    <span><i class="bi bi-people-fill"></i></span>
+                </div>
+                <div class="info">
+                    <div class="amount">{{amountUsers}}</div>
+                    <div class="title">Người dùng</div>
+                </div>
+            </div>
+            <div class="new_movie col-3">
+                <div class="icon">
+                    <span><i class="bi bi-film"></i></span>
+                </div>
+                <div class="info">
+                    <div class="amount">{{amountUsers}}</div>
+                    <div class="title">Phim mới</div>
+                </div>
+            </div>
+            <div class="coming_movie col-3">
+                <div class="icon">
+                    <span><i class="bi bi-calendar3-event"></i></span>
+                </div>
+                <div class="info">
+                    <div class="amount">{{amountUsers}}</div>
+                    <div class="title">Phim sắp chiếu</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="chart">
+        <div class="row">
+            <div class="col-6">
+                <div class="chart-wrapper">
+                    <canvas baseChart style="position: relative; height:270px" [datasets]="barChartData"
+                        [labels]="barChartLabels" [options]="barChartOptions" [plugins]="barChartPlugins"
+                        [legend]="barChartLegend" [chartType]="barChartType">
+                    </canvas>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="chart-wrapper1">
+                    <canvas baseChart style="position: relative; height:270px" [datasets]="barChartData1"
+                        [labels]="barChartLabels1" [options]="barChartOptions1" [plugins]="barChartPlugins1"
+                        [legend]="barChartLegend1" [chartType]="barChartType1" [colors]="barChartColors">
+
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

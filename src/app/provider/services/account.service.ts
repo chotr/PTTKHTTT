@@ -39,6 +39,15 @@ export class AccountService {
       })
     );
   }
+  listUserFull() : Observable<any> {
+    const api = 'https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP09';
+    return this.httpClient.get(api).pipe(
+      tap(),
+      catchError((err) => {
+        return this.handleError(err);
+      })
+    );
+  }
   listUser(page: any, numPerPage: any): Observable<any> {
     const api =
       'https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=GP09&soTrang=' +
