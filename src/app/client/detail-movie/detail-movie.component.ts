@@ -110,6 +110,7 @@ export class DetailMovieComponent implements OnInit {
         }
       }
     });
+    console.log(this.cumRapDangCoPhim);
   }
 
   defaultCR(maHeThong: string) {

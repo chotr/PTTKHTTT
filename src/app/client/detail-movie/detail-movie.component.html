@@ -4,8 +4,13 @@
     <div class="detail">
       <div class="info">
         <div class="row">
-          <div class=" image_movie col-4 col-sm-3">
-            <img class="detail_movie" [src]="detailMovie?.hinhAnh">
+          <div class="detail_movie col-4 col-sm-3">
+            <div class="detail-img">
+              <img class="image_movie" [src]="detailMovie?.hinhAnh">
+              <a class="play-video" data-toggle="modal" data-target="#overview">
+                <img  src="assets/images/play-video.png"  />
+              </a>
+            </div>
           </div>
           <div class="info_text col-8 col-sm-9">
             <div class="info_text_movie">
@@ -38,19 +43,20 @@
             </div>
             <div class="line"></div>
             <div class="title">
-              <h3>Nội dung</h3>
+              <h3>Trailer</h3>
             </div>
-            <div class="text">
-              <p>{{detailMovie?.moTa}}</p>
-            </div>
+            <div class="text ">
+              <!-- <p>{{detailMovie?.moTa}}</p> -->
+              </div>
           </div>
 
         </div>
       </div>
     </div>
-    <div class="overview text-center">
-      <div class="trailer">
-        <div class="video">
+
+    <div class="overview text-center" id="overview">
+      <div class="trailer" id="trailer">
+        <div class="video" id="video">
           <iframe id="iframe" frameborder="0" allowfullscreen="1"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             title="YouTube video player" width="555" height="270" [src]="url | safe"></iframe>
@@ -59,7 +65,7 @@
     </div>
     <div class="contentbot">
       <div class="row">
-        <div class="col-12 text-center text-danger">
+        <div class="col-12 action text-center">
           <a class=" link mr-2" (click)="chooseAction('LichChieu')">Lịch chiếu</a>
           <a class=" link mr-2" (click)="chooseAction('ThongTin')">Thông tin</a>
           <a class=" link mr-2" (click)="chooseAction('DanhGia')">Đánh giá</a>
@@ -117,6 +123,21 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="col-12" *ngSwitchCase="'ThongTin'">
+          <div class="text d-flex justify-content-center" style="line-height: 1.5rem; color: rgb(146, 154, 161); padding: 10px 0;">
+            <!-- <p>{{detailMovie?.moTa}}</p> -->
+              <div class="col-4" style="margin-top: 10px;">
+                <p>Ngày công chiếu: {{detailMovie?.ngayKhoiChieu | date:'dd/MM/yyyy'}}</p>
+                <p>Đạo diễn: Lorem ipsum dolor.</p>
+                <p>Diễn viên: Lorem ipsum dolor sit amet.</p>
+                <p>Thể loại: Hành động</p>
+                <p>Ngôn ngữ: Tiếng Việt</p>
+              </div>
+              <div class="col-6">
+                    <p class="text-light">Nội dung</p>
+                    <p>{{detailMovie?.moTa}}</p>
+              </div>
         </div>
       </div>
     </div>
