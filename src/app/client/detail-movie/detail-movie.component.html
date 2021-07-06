@@ -4,11 +4,11 @@
     <div class="detail">
       <div class="info">
         <div class="row">
-          <div class="detail_movie col-4 col-sm-3">
-            <div class="detail-img">
-              <img class="image_movie" [src]="detailMovie?.hinhAnh">
-              <a class="play-video" data-toggle="modal" data-target="#overview">
-                <img  src="assets/images/play-video.png"  />
+          <div class=" image_movie col-4 col-sm-3">
+            <div class="img">
+              <img class="detail_movie" [src]="detailMovie?.hinhAnh">
+              <a class="icon">
+               <img class="img_playVideo"  src="assets/images/play-video.png" style="width: 50px ; height: 50px;" type="button" data-toggle="modal"  data-target="#myModal" >
               </a>
             </div>
           </div>
@@ -38,34 +38,36 @@
                       <text x="18" y="20.35" class="percentage">{{point}}</text>
                     </svg>
                   </div>
+                  <h3 class="">66 người đánh giá</h3>
                 </div>
+
               </div>
             </div>
             <div class="line"></div>
-            <div class="title">
-              <h3>Trailer</h3>
-            </div>
-            <div class="text ">
-              <!-- <p>{{detailMovie?.moTa}}</p> -->
-              </div>
-          </div>
+            <!-- <div class="title">
+              <h3>Nội dung</h3>
 
+            </div>
+            <div class="text">
+              <p>{{detailMovie?.moTa}}</p>
+            </div> -->
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="overview text-center" id="overview">
-      <div class="trailer" id="trailer">
-        <div class="video" id="video">
+    <!-- <div class="overview text-center" id="overview">
+      <h3 class="text-left">Trailer: </h3>
+      <div class="trailer">
+        <div class="video">
           <iframe id="iframe" frameborder="0" allowfullscreen="1"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             title="YouTube video player" width="555" height="270" [src]="url | safe"></iframe>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="contentbot">
       <div class="row">
-        <div class="col-12 action text-center">
+        <div class="col-12 text-center action ">
           <a class=" link mr-2" (click)="chooseAction('LichChieu')">Lịch chiếu</a>
           <a class=" link mr-2" (click)="chooseAction('ThongTin')">Thông tin</a>
           <a class=" link mr-2" (click)="chooseAction('DanhGia')">Đánh giá</a>
@@ -114,30 +116,28 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-12" *ngSwitchCase="'ThongTin'">
-                  ThongTin
-                </div>
-                <div class="col-12" *ngSwitchCase="'DanhGia'">
-                  DanhGia
-                </div>
+
               </div>
             </div>
           </div>
         </div>
         <div class="col-12" *ngSwitchCase="'ThongTin'">
-          <div class="text d-flex justify-content-center" style="line-height: 1.5rem; color: rgb(146, 154, 161); padding: 10px 0;">
+          <div class="text d-flex justify-content-center" style="line-height: 1.5rem; color: rgb(146, 154, 161); padding: 5px 0; padding-bottom: 30px;">
             <!-- <p>{{detailMovie?.moTa}}</p> -->
-              <div class="col-4" style="margin-top: 10px;">
+              <div class="col-4" style="margin-top: 5px;">
                 <p>Ngày công chiếu: {{detailMovie?.ngayKhoiChieu | date:'dd/MM/yyyy'}}</p>
                 <p>Đạo diễn: Lorem ipsum dolor.</p>
                 <p>Diễn viên: Lorem ipsum dolor sit amet.</p>
                 <p>Thể loại: Hành động</p>
                 <p>Ngôn ngữ: Tiếng Việt</p>
               </div>
-              <div class="col-6">
+              <div class="col-6 my-0 py-0">
                     <p class="text-light">Nội dung</p>
                     <p>{{detailMovie?.moTa}}</p>
               </div>
+        </div>
+        <div class="col-12" *ngSwitchCase="'DanhGia'">
+          DanhGia
         </div>
       </div>
     </div>
@@ -152,3 +152,33 @@
     <div class="inner three"></div>
   </div>
 </div>
+
+
+
+<!-- Modal -->
+<div  class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document"  >
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div class="modal-content"   >
+    <div class="modal-body" >
+      <!-- style="text-align: center; width: 700px; height: 500px;" -->
+
+   <div class="embed-responsive embed-responsive-16by9">
+
+  <iframe id="video"  frameborder="0" allowfullscreen="1"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      title="YouTube video player"  [src]="url | safe"></iframe>
+  </div>
+
+
+    </div>
+
+  </div>
+</div>
+</div>
+
+
+
+

@@ -101,8 +101,7 @@ export class DetailMovieComponent implements OnInit {
     this.isPhim = false;
     this.cumRapDangCoPhim = this.CumRap.filter((cumRap) => {
       for (let CTR of cumRap.lichChieuPhim) {
-        console.log(CTR);
-
+        // console.log(CTR);
         const ngayChieu = this.dateFormat(CTR.ngayChieuGioChieu);
         if (ngayChieu === ngayChonLich) {
           this.isPhim = true;
@@ -110,7 +109,7 @@ export class DetailMovieComponent implements OnInit {
         }
       }
     });
-    console.log(this.cumRapDangCoPhim);
+    // console.log(this.cumRapDangCoPhim);
   }
 
   defaultCR(maHeThong: string) {
@@ -301,4 +300,5 @@ export class DetailMovieComponent implements OnInit {
   getIdDay(id) {
     this.active = id;
   }
+
 }
