@@ -216,6 +216,7 @@ export class DetailMovieComponent implements OnInit {
   dayOnST: any;
   nstt: any;
   active = 'today-tab';
+
   indexDis: any;
   tabDisabled() {
     for (let day of this.dayOnWeek) {
@@ -300,5 +301,7 @@ export class DetailMovieComponent implements OnInit {
   getIdDay(id) {
     this.active = id;
   }
+
+
 
 }

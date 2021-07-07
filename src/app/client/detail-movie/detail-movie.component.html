@@ -15,7 +15,7 @@
           <div class="info_text col-8 col-sm-9">
             <div class="info_text_movie">
               <div class="row">
-                <div class="col-8 text">
+                <div class="col-7 col-sm-8 text">
                   <div class="date">
                     <p>{{detailMovie?.ngayKhoiChieu | date:'dd/MM/yyyy'}}</p>
                   </div>
@@ -26,7 +26,7 @@
                     <p>120 phút - 0 IMDb - 2D/Digital</p>
                   </div>
                 </div>
-                <div class="col-4 point">
+                <div class="col-5 col-sm-4 point">
                   <div class="single-chart">
                     <svg viewBox="0 0 36 36" class="circular-chart orange">
                       <path class="circle-bg" d="M18 2.0845
@@ -38,7 +38,7 @@
                       <text x="18" y="20.35" class="percentage">{{point}}</text>
                     </svg>
                   </div>
-                  <h3 class="">66 người đánh giá</h3>
+                  <h3 >66 người đánh giá</h3>
                 </div>
 
               </div>
@@ -121,26 +121,56 @@
             </div>
           </div>
         </div>
-        <div class="col-12" *ngSwitchCase="'ThongTin'">
-          <div class="text d-flex justify-content-center" style="line-height: 1.5rem; color: rgb(146, 154, 161); padding: 5px 0; padding-bottom: 30px;">
+        <div class="col-12 wrap" *ngSwitchCase="'ThongTin'">
+          <div class="thong_tin" >
             <!-- <p>{{detailMovie?.moTa}}</p> -->
-              <div class="col-4" style="margin-top: 5px;">
+              <div class="text col-12 col-sm-4" >
                 <p>Ngày công chiếu: {{detailMovie?.ngayKhoiChieu | date:'dd/MM/yyyy'}}</p>
                 <p>Đạo diễn: Lorem ipsum dolor.</p>
                 <p>Diễn viên: Lorem ipsum dolor sit amet.</p>
                 <p>Thể loại: Hành động</p>
                 <p>Ngôn ngữ: Tiếng Việt</p>
               </div>
-              <div class="col-6 my-0 py-0">
+              <div class="col-12 col-sm-6 text">
                     <p class="text-light">Nội dung</p>
                     <p>{{detailMovie?.moTa}}</p>
               </div>
+
         </div>
-        <div class="col-12" *ngSwitchCase="'DanhGia'">
-          DanhGia
+
+      </div>
+
+       <div class="col-12" *ngSwitchCase="'DanhGia'">
+        <h3>DanhGia</h3>
+        <div style="padding: 100px 0;">
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div  class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document"  >
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="modal-content"   >
+      <div class="modal-body" >
+        <!-- style="text-align: center; width: 700px; height: 500px;" -->
+
+     <div class="embed-responsive embed-responsive-16by9">
+
+    <iframe id="video"  frameborder="0" allowfullscreen="1"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        title="YouTube video player"  [src]="url | safe"></iframe>
+    </div>
+
+
+      </div>
+
+    </div>
+  </div>
   </div>
 </div>
 
@@ -155,29 +185,7 @@
 
 
 
-<!-- Modal -->
-<div  class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document"  >
-  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-  <div class="modal-content"   >
-    <div class="modal-body" >
-      <!-- style="text-align: center; width: 700px; height: 500px;" -->
 
-   <div class="embed-responsive embed-responsive-16by9">
-
-  <iframe id="video"  frameborder="0" allowfullscreen="1"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      title="YouTube video player"  [src]="url | safe"></iframe>
-  </div>
-
-
-    </div>
-
-  </div>
-</div>
-</div>
 
 
 

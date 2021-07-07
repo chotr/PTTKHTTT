@@ -1,7 +1,8 @@
 <div class="row cinema">
   <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 cinema_Info">
     <ul>
-      <li *ngFor="let cinema of listCinema; let i = index" class="logo" [class.active]="selectedIndex === i" (click)="setIndex(i)">
+      <li *ngFor="let cinema of listCinema; let i = index" class="logo" [class.active]="selectedIndex === i"
+        (click)="setIndex(i)">
         <a (click)="layThongTinRap(cinema.maHeThongRap)"><img [src]="cinema.logo" width="50px" height="50px"></a>
       </li>
     </ul>
@@ -29,7 +30,7 @@
     </div>
     <div class="listPhim mb-2 text-white" *ngFor="let phim of listPhimNgayHienTai; let i = index">
       <div class="wrapper__collapse">
-        <div class="top" >
+        <div class="top">
           <div class="d-flex" data-toggle="collapse" [attr.data-target]="'#phim-'+phim.maPhim">
             <img class="img_movie mr-3 mb-3" [src]="phim.hinhAnh" alt="" width="70px" height="70px">
             <div class="infoP">
@@ -37,10 +38,10 @@
               <span>116 phút - TIX 8.6 - IMDb 0</span>
             </div>
           </div>
-          <div class="row collapse show" [id]="'phim-'+ phim.maPhim" >
+          <div class="row collapse show" [id]="'phim-'+ phim.maPhim">
             <div class="col-9 time">
               <h3 class="hh">2D Digital</h3>
-              <div *ngFor="let lc of phim.lstLichChieuTheoPhim" >
+              <div *ngFor="let lc of phim.lstLichChieuTheoPhim">
                 <ng-container *ngIf="kiemTraNgayChieu(lc.ngayChieuGioChieu)">
                   <button [disabled]="disabledT" (click)="navigateTo(lc.maLichChieu)" class=" btn  btn-time">
                     {{lc.ngayChieuGioChieu | date: 'HH:mm'}}
