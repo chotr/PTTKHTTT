@@ -17,7 +17,7 @@ export class DetailMovieComponent implements OnInit {
   id: string | null | undefined;
 
   point: any;
-  loaiAction: string = 'LichChieu';
+  loaiAction='LichChieu';
   heThongRap: any;
   maHeThongRap = 'BHDStar';
   maCTR = '';

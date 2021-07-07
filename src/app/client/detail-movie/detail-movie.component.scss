@@ -81,7 +81,7 @@
             align-content: center;
             justify-content: center;
             .img_playVideo {
-              opacity: 0;
+              opacity: 1;
             }
             &:hover .img_playVideo {
               visibility: visible;
@@ -178,6 +178,10 @@
   width: 97%;
   margin-left: auto;
   .content_showtimes {
+    .btn {
+      background-color: #cecece;
+      border-color: #cecece;
+    }
     ul {
       li {
         height: 40px;
@@ -213,7 +217,7 @@
       text-decoration: none;
       color: #ffff;
       font-size: 20px;
-      transition: all 0.5s;
+      transition: all 0.3s;
       &:hover {
         font-size: 25px;
         color: #3bace0;
@@ -397,6 +401,8 @@
       }
 
       .content_showtimes {
+        .btn {
+        }
         ul {
           li {
             height: 40px;
@@ -454,6 +460,62 @@
           .title {
             font-size: 14px;
           }
+        }
+      }
+    }
+
+    .cinema {
+      .cinema_Info {
+        ul {
+          li {
+            a {
+              img {
+                width: 35px;
+                height: 35px;
+              }
+            }
+          }
+        }
+      }
+
+      .content_showtimes {
+        img{
+          width: 40px;
+          height: 40px;
+        }
+        .btn {
+          font-size: 15px;
+          padding: 3px 10px;
+        }
+        ul {
+          li {
+            height: 40px;
+            width: 14%;
+            padding: 5px 10px;
+            a {
+              font-size: 10px;
+            }
+          }
+        }
+        .listPhim{
+          .wrapper__collapse{
+            .info{
+              padding-bottom: 0px!important;
+            }
+          }
+          .text{
+            font-size: 12px;
+            padding-bottom: 0!important;
+          }
+        }
+      }
+    }
+    .contentbot{
+      .link{
+        font-size: 17px;
+        &:hover {
+          font-size: 20px;
+          color: #3bace0;
         }
       }
     }

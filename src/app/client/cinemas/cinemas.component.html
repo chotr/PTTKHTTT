@@ -31,7 +31,7 @@
     <div class="listPhim mb-2 text-white" *ngFor="let phim of listPhimNgayHienTai; let i = index">
       <div class="wrapper__collapse">
         <div class="top">
-          <div class="d-flex" data-toggle="collapse" [attr.data-target]="'#phim-'+phim.maPhim">
+          <div class="d-flex" [attr.data-target]="'#phim-'+phim.maPhim">
             <img class="img_movie mr-3 mb-3" [src]="phim.hinhAnh" alt="" width="70px" height="70px">
             <div class="infoP">
               <p>{{phim.tenPhim}}</p>
@@ -50,7 +50,6 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
