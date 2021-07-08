@@ -65,7 +65,9 @@
       }
       li.disabled {
         pointer-events: none;
-        background: rgb(173, 173, 173);
+        background: #323a40;
+        color: #7e7e7e;
+        border: 1px solid #5c666e;
       }
     }
   }
