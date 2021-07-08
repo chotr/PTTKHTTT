@@ -1,6 +1,6 @@
 import { OnChanges, SimpleChanges } from '@angular/core';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd  } from '@angular/router';
 import { CinemasService } from '../../services/cinemas.service';
 import Swal from 'sweetalert2';
 
@@ -32,7 +32,8 @@ export class DsGheComponent implements OnInit, OnChanges {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private cinema: CinemasService
+    private cinema: CinemasService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -40,18 +41,19 @@ export class DsGheComponent implements OnInit, OnChanges {
     if (account !== null) {
       this.taiKhoan = account.taiKhoan;
     }
-    for (let ghe of this.dsGhe) {
-      if (!ghe.daDat) {
-        // this.soGheConLai = this.dsGhe.length;
-        // this.soGheConLai++;
-      }
-    }
 
     this.id = this.activatedRoute.snapshot.paramMap.get('id') as string;
     if (!this.id) {
       this.getParamsFromUrl();
     }
     this.getDataSeat(this.id);
+
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+          return;
+      }
+      window.scrollTo(0, 0)
+  });
   }
   datGheParent(evt, ghe) {
     let giave = [];

@@ -1,5 +1,6 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { CinemasService } from '../services/cinemas.service';
 
 @Component({
@@ -14,10 +15,36 @@ export class DetailCinemaComponent implements OnInit {
   nameCR: any;
   img: any;
   diaChi: any;
+  loaiAction = 'LichChieu';
+  listCR = [];
+  dayCur = new Date().toString();
+  today: any;
+  listMV = [];
+  listTime = [];
+  dmy: any;
+  CR = [];
+  curList = [];
+  dayOnST: any;
+  nstt: any;
+  active = 'today-tab';
+  indexDis: any;
+  listMovie = [];
+
+  dayOnWeek = [
+    { stt: 1, name: 'Hai', value: 'Mon', id: 'Mon-tab' },
+    { stt: 2, name: 'Ba', value: 'Tue', id: 'Tue-tab' },
+    { stt: 3, name: 'Tư', value: 'Wed', id: 'Wed-tab' },
+    { stt: 4, name: 'Năm', value: 'Thu', id: 'Thu-tab' },
+    { stt: 5, name: 'Sáu', value: 'Fri', id: 'Fri-tab' },
+    { stt: 6, name: 'Bảy', value: 'Sat', id: 'Sat-tab' },
+    { stt: 7, name: 'CN', value: 'Sun', id: 'Sun-tab' },
+  ];
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private cinema: CinemasService
+    private cinema: CinemasService,
+    private router: Router,
+    private datepipe: DatePipe
   ) {}
 
   ngOnInit(): void {
@@ -27,27 +54,44 @@ export class DetailCinemaComponent implements OnInit {
     this.maCR = getUrl[1];
     this.dsCumRap(this.maHeThong);
     this.defaultCR();
-    this.getDetailCinema(this.maHeThong)
+    this.getShowTimesCinema(this.maHeThong);
+    this.getDay();
+    this.displayDate();
+
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+      window.scrollTo(0, 0);
+    });
   }
 
   dsCumRap(maht) {
     this.cinema.getCinemaComplex(maht).subscribe((res) => {
-      if(res){
+      if (res) {
         this.hideloader();
       }
       for (let i of res) {
         if (i.maCumRap === this.maCR) {
           this.nameCR = i.tenCumRap;
           this.diaChi = i.diaChi;
-          console.log(this.nameCR, this.diaChi);
         }
       }
     });
   }
-  getDetailCinema(id){
-    this.cinema.getDetailCenema(id).subscribe((res)=>{
-      console.log(res)
-    })
+
+  getShowTimesCinema(id) {
+    this.cinema.layThongtinHeThongLichChieu(id).subscribe((res) => {
+      for (let list of res) {
+        for (let lstCR of list.lstCumRap) {
+          this.listCR.push(lstCR);
+          if (lstCR.maCumRap === this.maCR) {
+            this.listMovie.push(lstCR.danhSachPhim);
+          }
+        }
+      }
+      console.log(this.listMovie);
+    });
   }
   defaultCR() {
     switch (this.maHeThong) {
@@ -74,5 +118,75 @@ export class DetailCinemaComponent implements OnInit {
   hideloader() {
     document.getElementById('spinner').style.display = 'none';
     document.getElementById('content').style.display = 'block';
+  }
+  chooseAction(loai: string) {
+    this.loaiAction = loai;
+  }
+  getDay() {
+    let date;
+    date = this.dayCur;
+    date = date.split(' ');
+    this.today = date[0];
+    this.dmy = this.datepipe.transform(this.dayCur, 'dd/MM/yyyy');
+  }
+  displayDate() {
+    for (let day of this.dayOnWeek) {
+      if (day.value === this.today) {
+        day.id = 'today-tab';
+        day.name = 'Hôm nay';
+        day.value = 'today';
+      }
+    }
+    for (let sd of this.dayOnWeek) {
+      if (sd.value === 'today') {
+        this.nstt = sd.stt;
+      }
+    }
+  }
+  getListOnDay(index) {
+    let day = this.dmy.split('/');
+    let dd = day[0];
+    let mm = day[1];
+    let yyyy = day[2];
+
+    var today = new Date();
+    var lastDayOfMonth = new Date(
+      today.getFullYear(),
+      today.getMonth() + 1,
+      0
+    ).toString();
+
+    let datString = lastDayOfMonth.split(' ');
+    let maxDay = parseInt(datString[2]);
+
+    let newDay = parseInt(dd) - (parseInt(this.nstt) - index);
+
+    let newMonth = mm;
+    let newYear = yyyy;
+
+    if (newDay > maxDay) {
+      let temp = newDay - maxDay;
+      newDay = temp;
+      newMonth = newMonth + 1;
+    }
+    if (newMonth > 12) {
+      newMonth = 1;
+      newYear = newYear + 1;
+    }
+
+    let fullDate =
+      ('0' + newDay).slice(-2) +
+      '-' +
+      ('0' + newMonth).slice(-2) +
+      '-' +
+      newYear;
+    this.dayOnST = fullDate;
+  }
+  getIdDay(id) {
+    this.active = id;
+  }
+
+  navigateTo(id) {
+    this.router.navigate(['client/danhSachGhe', id]);
   }
 }

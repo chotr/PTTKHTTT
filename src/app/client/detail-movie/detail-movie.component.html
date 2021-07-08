@@ -91,7 +91,7 @@
                     <div class="col-12">
                       <div *ngFor="let lc of cumRap.lichChieuPhim">
                         <ng-container *ngIf="kiemTraNgayChieu(lc.ngayChieuGioChieu)">
-                          <button [disabled]="disabledT" (click)="navigateTo(phim.maLichChieu)" class=" btn btn-time">
+                          <button [disabled]="disabledT" (click)="navigateTo(lc.maLichChieu)" class=" btn btn-time">
                             {{lc.ngayChieuGioChieu | date: 'HH:mm'}}
                           </button>
                         </ng-container>
@@ -106,7 +106,6 @@
         </div>
         <div class="col-12 wrap" *ngSwitchCase="'ThongTin'">
           <div class="thong_tin" >
-            <!-- <p>{{detailMovie?.moTa}}</p> -->
               <div class="text col-12 col-sm-4" >
                 <p>Ngày công chiếu: {{detailMovie?.ngayKhoiChieu | date:'dd/MM/yyyy'}}</p>
                 <p>Đạo diễn: Lorem ipsum dolor.</p>

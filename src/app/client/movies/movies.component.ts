@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { MovieService } from '../services/movie.service';
 
 @Component({
@@ -127,6 +127,14 @@ export class MoviesComponent implements OnInit, AfterViewInit {
           this.selectedIndex = res.currentPage;
         }
       });
+
+      this.router.events.subscribe((evt) => {
+        if (!(evt instanceof NavigationEnd)) {
+            return;
+        }
+        window.scrollTo(0, 0)
+    });
+
   }
   ngAfterViewInit(): void {}
 }

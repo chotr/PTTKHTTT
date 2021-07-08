@@ -17,6 +17,50 @@
                 </div>
             </div>
         </div>
+        <div class="contentbot">
+            <div class="row">
+                <div class="col-12 text-center action">
+                    <a class=" link mr-4" (click)="chooseAction('LichChieu')">Lịch chiếu</a>
+                    <a class=" link mr-4" (click)="chooseAction('ThongTin')">Thông tin</a>
+                    <a class=" link mr-4" (click)="chooseAction('DanhGia')">Đánh giá</a>
+                </div>
+            </div>
+            <div class="row movies" [ngSwitch]="loaiAction">
+                <div class="col-12" *ngSwitchCase="'LichChieu'">
+                    <div class="cinema row">
+                        <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 cinema_Info">
+                            <ul>
+                                <li *ngFor="let cr of listCR; let i = index" class="logo d-flex"
+                                    [class.active]="selectedIndex === i" (click)="setIndex(i)">
+                                    <img [src]="img" width="50px" height="50px">
+                                    <div class="info_cr">
+                                        <div class="name">
+                                            <h3>{{cr.tenCumRap}}</h3>
+                                        </div>
+                                        <div class="address">
+                                            <p>{{cr.diaChi}}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="content_showtimes col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 ">
+                            <ul class="nav d-flex">
+                                <li class="nav-item" *ngFor="let day of dayOnWeek" (click)="getIdDay(day.id)" [class.disabled]="day.stt < indexDis" [class.active]="day.id === active">
+                                    <a (click)="getListOnDay(day.stt)">{{day.name}}</a>
+                                  </li>
+                            </ul>
+                            <div class="listPhim mb-2 text-white">
+                                <div class="wrapper__collapse">
+                                    <div class="row info py-3">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="spinner" id="spinner">

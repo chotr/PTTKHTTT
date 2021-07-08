@@ -1,7 +1,7 @@
 import { map, filter } from 'rxjs/operators';
 import { CinemasService } from 'src/app/client/services/cinemas.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { MovieService } from '../services/movie.service';
 import { DatePipe } from '@angular/common';
 @Component({
@@ -17,7 +17,7 @@ export class DetailMovieComponent implements OnInit {
   id: string | null | undefined;
 
   point: any;
-  loaiAction='LichChieu';
+  loaiAction = 'LichChieu';
   heThongRap: any;
   maHeThongRap = 'BHDStar';
   maCTR = '';
@@ -29,7 +29,8 @@ export class DetailMovieComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private movieSer: MovieService,
     private cinemasService: CinemasService,
-    public datepipe: DatePipe
+    public datepipe: DatePipe,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -46,6 +47,13 @@ export class DetailMovieComponent implements OnInit {
     this.dayOnST = this.datepipe.transform(this.dayCur, 'dd-MM-yyyy');
     this.layLC(this.dayOnST);
     this.tabDisabled();
+
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+      window.scrollTo(0, 0);
+    });
   }
 
   addDays(dateObj, numDays) {
@@ -248,6 +256,7 @@ export class DetailMovieComponent implements OnInit {
   }
   // lấy số thứ tự của thẻ đang chọn
   getListOnDay(index: number) {
+    console.log(index)
     let day = this.dmy.split('/');
     let dd = day[0];
     let mm = day[1];
@@ -302,6 +311,7 @@ export class DetailMovieComponent implements OnInit {
     this.active = id;
   }
 
-
-
+  navigateTo(id) {
+    this.router.navigate(['client/danhSachGhe', id]);
+  }
 }
