@@ -1,3 +1,7 @@
+@import "../../../sass/Base/customize";
+@import "../../../sass/Base/reset";
+@import "../../../sass/Helper/mixin";
+@import "../../../sass/Helper/variables";
 .detail_cinema {
   color: white;
   cursor: context-menu;
@@ -25,8 +29,23 @@
   .contentbot {
     width: 97%;
     margin-left: auto;
+    .action {
+      height: 40px;
+      margin-top: 30px;
+      .link {
+        text-decoration: none;
+        color: #ffff;
+        font-size: 20px;
+        transition: all 0.3s;
+        &:hover {
+          font-size: 25px;
+          color: #3bace0;
+        }
+      }
+    }
     .showTime {
       background: #343a40bd;
+      padding-top: 30px;
       .logo {
         cursor: pointer;
         opacity: 0.5;
@@ -35,11 +54,79 @@
         opacity: 1!important;
       }
       .content_showtimes {
-        .btn {
-          margin-right: 20px;
-          margin-bottom: 14px;
-          background-color: #cecece;
-          border-color: #cecece;
+
+        .listPhim{
+          .info{
+            margin-top: 18px;
+            display: flex;
+            padding-bottom: 10px;
+            img{
+              width: 50px;
+              height: 50px;
+              border-radius: 5px;
+              // margin: 20px 10px;
+              // margin-left: 15px;
+
+            }
+            .tenphim{
+              font-size: 16px;
+
+            }
+          }
+          .btn {
+
+            margin-right: 20px;
+            margin-bottom: 14px;
+            background-color: #cecece;
+            border-color: #cecece;
+          }
+        }
+      }
+      .cinema{
+        .cinema_Info{
+          padding-top: 30px;
+          ul{
+            padding-left: 10px;
+            li {
+              padding: 0;
+              margin: 0;
+              padding-bottom: 5px;
+              margin-bottom: 20px;
+              list-style: none;
+              position: relative;
+                img {
+                  width: 50px;
+                  height: 50px;
+                  margin-right: 7px;
+                  cursor: pointer;
+                  background: wheat;
+                }
+              &::before {
+                position: absolute;
+                content: "";
+                height: 1px;
+                width: 100%;
+                bottom: 0;
+                background: #5c5c5c;
+                margin: auto;
+                right: 0;
+                left: 0;
+              }
+              .name{
+                h3{
+                    font-size: 13px;
+                    color: aqua;
+                    margin-bottom: 0;
+                }
+              }
+              .address{
+                p{
+                  font-weight: 400;
+                  font-size: 12px;
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -82,11 +169,13 @@
       position: absolute;
       top: 18%;
       width: 100%;
+
       .image_cinema {
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
         z-index: 20;
+
       }
       .info_text {
         position: relative;
@@ -110,3 +199,148 @@
     z-index: 10;
   }
 }
+
+@include responsive("large") {
+  .detail {
+    .wrap_cinema{
+      margin-left: 40px;
+      img {
+        width: 300px;
+        height: 200px;
+        margin-left: 30px;
+        object-fit: cover;
+      }
+      .date{
+        p{
+          font-size: 23px;
+        }
+
+      }
+    }
+
+  }
+
+  .cinema{
+      .cinema_Info{
+        ul{
+          li{
+            .name{
+              .cumrap{
+                line-height: 1.2rem;
+                font-size: 12px !important;
+              }
+            }
+            .address{
+              p{
+
+                font-size: 10px !important;
+              }
+            }
+          }
+        }
+      }
+  }
+
+  .content_showtimes {
+    .listPhim{
+      .info{
+        img{
+          width: 50px;
+          height: 50px;
+          border-radius: 5px;
+          margin: 0 0;
+
+        }
+
+      }
+
+    }
+  }
+ }
+
+ @include responsive("mobile") {
+
+  .detail {
+    height: 250px !important;
+
+    .wrap_cinema{
+      margin-left: 40px;
+      img {
+        width: 150px;
+        height: 180px;
+        margin-left: 10px;
+        object-fit: cover;
+      }
+      .info_text {
+        margin: 0;
+        padding: 0;
+        .date{
+          p{
+            font-size: 10px !important;
+          }
+
+        }
+        .name{
+          p{
+            font-size: 10px !important;
+          }
+
+        }
+      }
+
+    }
+
+  }
+
+  .cinema{
+      .cinema_Info{
+        ul{
+          li{
+            .name{
+              .cumrap{
+                line-height: 1.2rem;
+                font-size: 10px !important;
+              }
+            }
+            .address{
+              p{
+
+                font-size: 10px !important;
+              }
+            }
+          }
+        }
+      }
+  }
+  .action {
+    height: 20px;
+    margin: 0;
+    .link {
+      text-decoration: none;
+      color: #ffff;
+      font-size: 20px;
+      transition: all 0.3s;
+      &:hover {
+        font-size: 25px;
+        color: #3bace0;
+      }
+    }
+  }
+
+  .content_showtimes {
+    .listPhim{
+      .info{
+        img{
+          width: 50px;
+          height: 50px;
+          border-radius: 5px;
+          margin: 0 0;
+
+        }
+
+      }
+
+    }
+  }
+ }
+
