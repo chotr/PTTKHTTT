@@ -19,7 +19,6 @@ export class DetailCinemaComponent implements OnInit {
   listCR = [];
   dayCur = new Date().toString();
   today: any;
-  listMV = [];
   listTime = [];
   dmy: any;
   CR = [];
@@ -52,6 +51,7 @@ export class DetailCinemaComponent implements OnInit {
     let getUrl = this.url.split('?maCR=');
     this.maHeThong = getUrl[0];
     this.maCR = getUrl[1];
+    this.dayOnST = this.datepipe.transform(this.dayCur, 'dd-MM-yyyy');
     this.dsCumRap(this.maHeThong);
     this.defaultCR();
     this.getShowTimesCinema(this.maHeThong);
@@ -81,15 +81,35 @@ export class DetailCinemaComponent implements OnInit {
   }
 
   getShowTimesCinema(id) {
+    console.log(this.dayOnST);
+    let arrayMv = [];
     this.cinema.layThongtinHeThongLichChieu(id).subscribe((res) => {
       for (let list of res) {
         for (let lstCR of list.lstCumRap) {
           this.listCR.push(lstCR);
           if (lstCR.maCumRap === this.maCR) {
-            this.listMovie.push(lstCR.danhSachPhim);
+            for (let ds of lstCR.danhSachPhim) {
+              // console.log(ds)
+              for (let lc of ds.lstLichChieuTheoPhim) {               
+                if (
+                  this.datepipe.transform(
+                    lc.ngayChieuGioChieu,
+                    'dd-MM-yyyy'
+                  ) === this.dayOnST
+                ) {
+                  arrayMv.push({
+                    name: ds.tenPhim,
+                    maLichChieu: lc.maLichChieu,
+                    hinhAnh: ds.hinhAnh,
+                    date: lc.ngayChieuGioChieu,
+                  });
+                }
+              }
+            }
           }
         }
       }
+      this.listMovie = arrayMv;
       console.log(this.listMovie);
     });
   }
@@ -122,6 +142,13 @@ export class DetailCinemaComponent implements OnInit {
   chooseAction(loai: string) {
     this.loaiAction = loai;
   }
+  tabDisabled() {
+    for (let day of this.dayOnWeek) {
+      if (day.id === 'today-tab') {
+        this.indexDis = day.stt;
+      }
+    }
+  }
   getDay() {
     let date;
     date = this.dayCur;
@@ -145,6 +172,7 @@ export class DetailCinemaComponent implements OnInit {
   }
   getListOnDay(index) {
     let day = this.dmy.split('/');
+    console.log(day);
     let dd = day[0];
     let mm = day[1];
     let yyyy = day[2];

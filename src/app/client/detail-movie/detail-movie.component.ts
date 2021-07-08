@@ -109,7 +109,6 @@ export class DetailMovieComponent implements OnInit {
     this.isPhim = false;
     this.cumRapDangCoPhim = this.CumRap.filter((cumRap) => {
       for (let CTR of cumRap.lichChieuPhim) {
-        // console.log(CTR);
         const ngayChieu = this.dateFormat(CTR.ngayChieuGioChieu);
         if (ngayChieu === ngayChonLich) {
           this.isPhim = true;
@@ -117,33 +116,26 @@ export class DetailMovieComponent implements OnInit {
         }
       }
     });
-    // console.log(this.cumRapDangCoPhim);
   }
 
   defaultCR(maHeThong: string) {
     switch (maHeThong) {
       case 'BHDStar':
-        // this.maCTR = 'BHD Star Cineplex - 3/2';
         this.img = 'assets/images/bhd.jpg';
         break;
       case 'CGV':
-        // this.maCTR = 'cgv-aeon-binh-tan';
         this.img = 'assets/images/cgv.jpg';
         break;
       case 'CineStar':
-        // this.maCTR = 'cns-hai-ba-trung';
         this.img = 'assets/images/CineStar.jpg';
         break;
       case 'Galaxy':
-        // this.maCTR = 'glx-huynh-tan-phat';
         this.img = 'assets/images/glx.jpg';
         break;
       case 'LotteCinima':
-        // this.maCTR = 'lotte-cantavil';
         this.img = 'assets/images/lotte.jpg';
         break;
       case 'MegaGS':
-        // this.maCTR = 'megags-cao-thang';
         this.img = 'assets/images/megac.jpg';
         break;
     }
