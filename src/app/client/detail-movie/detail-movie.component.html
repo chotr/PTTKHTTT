@@ -53,7 +53,6 @@
         <div class="col-12 text-center action ">
           <a class=" link mr-4" (click)="chooseAction('LichChieu')">Lịch chiếu</a>
           <a class=" link mr-4" (click)="chooseAction('ThongTin')">Thông tin</a>
-          <a class=" link mr-4" (click)="chooseAction('DanhGia')">Đánh giá</a>
         </div>
       </div>
       <div class="row movies" [ngSwitch]="loaiAction">
@@ -123,7 +122,7 @@
       </div>
 
        <div class="col-12" *ngSwitchCase="'DanhGia'">
-        <h3>DanhGia</h3>
+       
         <div style="padding: 100px 0;">
         </div>
       </div>
