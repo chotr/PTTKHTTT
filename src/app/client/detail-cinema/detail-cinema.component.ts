@@ -49,10 +49,7 @@ export class DetailCinemaComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.url = this.activatedRoute.snapshot.paramMap.get('id') as string;
-    let getUrl = this.url.split('?maCR=');
-    this.maHeThong = getUrl[0];
-    this.maCR = getUrl[1];
+    this.getURL();
     this.dayOnST = this.datepipe.transform(this.dayCur, 'dd-MM-yyyy');
     this.dsCumRap(this.maHeThong);
     this.getCR(this.maHeThong);
@@ -70,6 +67,12 @@ export class DetailCinemaComponent implements OnInit {
     });
   }
 
+  getURL() {
+    this.url = this.activatedRoute.snapshot.paramMap.get('id') as string;
+    let getUrl = this.url.split('?maCR=');
+    this.maHeThong = getUrl[0];
+    this.maCR = getUrl[1];
+  }
   dsCumRap(maht) {
     this.cinema.getCinemaComplex(maht).subscribe((res) => {
       if (res) {
@@ -258,14 +261,15 @@ export class DetailCinemaComponent implements OnInit {
 
     return false;
   }
-  
-  
+
   navigateTo(id) {
     this.router.navigate(['client/danhSachGhe', id]);
   }
   navigateToCR(id) {
     this.maCR = id;
     this.getCR(this.maHeThong);
+    this.getURL();
+    this. dsCumRap(this.maHeThong)
     this.router.navigate(['client/detail', this.maHeThong + '?maCR=' + id]);
   }
 }
