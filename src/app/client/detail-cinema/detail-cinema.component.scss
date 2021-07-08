@@ -27,6 +27,13 @@
     margin-left: auto;
     .showTime {
       background: #343a40bd;
+      .logo {
+        cursor: pointer;
+        opacity: 0.5;
+      }
+      .logo.active {
+        opacity: 1!important;
+      }
       .content_showtimes {
         .btn {
           margin-right: 20px;
@@ -38,6 +45,7 @@
     }
     .nav {
       li {
+        cursor: pointer;
         height: 40px;
         width: 14%;
         padding: 5px 10px;

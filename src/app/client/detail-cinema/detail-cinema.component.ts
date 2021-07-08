@@ -88,6 +88,7 @@ export class DetailCinemaComponent implements OnInit {
           this.listCR.push(lstCR);
         }
       }
+      this.firstCR();
     });
   }
 
@@ -118,7 +119,6 @@ export class DetailCinemaComponent implements OnInit {
         }
       }
       this.listMovie = arrayMv;
-      console.log(this.listMovie);
     });
   }
   defaultCR() {
@@ -180,7 +180,6 @@ export class DetailCinemaComponent implements OnInit {
   }
   getListOnDay(index) {
     let day = this.dmy.split('/');
-    console.log(day);
     let dd = day[0];
     let mm = day[1];
     let yyyy = day[2];
@@ -222,8 +221,21 @@ export class DetailCinemaComponent implements OnInit {
   getIdDay(id) {
     this.active = id;
   }
-
+  firstCR() {
+    for (let i = 0; i < this.listCR.length; i++) {
+      if (this.listCR[i].maCumRap === this.maCR) {
+        let ind = this.listCR[0];
+        this.listCR[0] = this.listCR[i];
+        this.listCR[i] = ind;
+      }
+    }
+  }
   navigateTo(id) {
     this.router.navigate(['client/danhSachGhe', id]);
+  }
+  navigateToCR(id) {
+    this.maCR = id
+    this.getCR(this.maHeThong)
+    this.router.navigate(['client/detail', this.maHeThong + '?maCR=' + id]);
   }
 }

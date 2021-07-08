@@ -31,7 +31,7 @@
                         <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 cinema_Info">
                             <ul>
                                 <li *ngFor="let cr of listCR; let i = index" class="logo d-flex"
-                                    [class.active]="selectedIndex === i" (click)="setIndex(i)">
+                                    [class.active]="i === 0" (click)="navigateToCR(cr.maCumRap)">
                                     <img [src]="img" width="50px" height="50px">
                                     <div class="info_cr">
                                         <div class="name">
