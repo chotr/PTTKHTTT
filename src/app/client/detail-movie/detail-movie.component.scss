@@ -33,15 +33,15 @@
   .content {
     display: none;
     position: relative;
-    &::before {
-      content: "";
-      position: absolute;
-      width: 98%;
-      background-color: #2e2d2d;
-      top: 9%;
-      bottom: 0;
-      z-index: 1;
-    }
+    // &::before {
+    //   content: "";
+    //   position: absolute;
+    //   width: 98%;
+    //   background-color: #2e2d2d;
+    //   top: 9%;
+    //   bottom: 0;
+    //   z-index: 1;
+    // }
   }
 
   .detail_movie {
@@ -171,6 +171,8 @@
   margin-left: auto;
   .content_showtimes {
     .btn {
+      margin-right: 20px;
+      margin-bottom: 14px;
       background-color: #cecece;
       border-color: #cecece;
     }
@@ -342,17 +344,17 @@
   }
   .detailMovie {
     .content {
-      &::before {
-        top: 7%;
-      }
-      .overview {
-        width: 50%;
-        margin: 0 auto;
-        iframe {
-          height: 200px;
-          width: 388px;
-        }
-      }
+      // &::before {
+      //   top: 7%;
+      // }
+      // .overview {
+      //   width: 50%;
+      //   margin: 0 auto;
+      //   iframe {
+      //     height: 200px;
+      //     width: 388px;
+      //   }
+      // }
     }
     .detail {
       height: 310px;
@@ -421,10 +423,10 @@
   .detailMovie {
     .content {
       max-width: 600px;
-      &::before {
-        width: 95%;
-        top: 7%;
-      }
+      // &::before {
+      //   width: 95%;
+      //   top: 7%;
+      // }
       .overview {
         width: 50%;
         margin: 0 auto;
@@ -535,10 +537,10 @@
   }
   .detailMovie {
     .content {
-      &::before {
-        width: 100%;
-        left: 0;
-      }
+      // &::before {
+      //   width: 100%;
+      //   left: 0;
+      // }
       .overview {
         width: 34%;
         iframe {

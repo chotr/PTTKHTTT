@@ -25,8 +25,8 @@
                     <a class=" link mr-4" (click)="chooseAction('DanhGia')">Đánh giá</a>
                 </div>
             </div>
-            <div class="row movies" [ngSwitch]="loaiAction">
-                <div class="col-12" *ngSwitchCase="'LichChieu'">
+            <div class="row movies mx-0" [ngSwitch]="loaiAction">
+                <div class="col-12 showTime" *ngSwitchCase="'LichChieu'">
                     <div class="cinema row">
                         <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 cinema_Info">
                             <ul>

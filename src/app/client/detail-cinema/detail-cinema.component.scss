@@ -4,15 +4,15 @@
   .content {
     display: none;
     position: relative;
-    &::before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      background-color: #2e2d2d;
-      top: 10%;
-      bottom: 0;
-      z-index: 1;
-    }
+    // &::before {
+    //   content: "";
+    //   position: absolute;
+    //   width: 100%;
+    //   background-color: #2e2d2d;
+    //   top: 10%;
+    //   bottom: 0;
+    //   z-index: 1;
+    // }
   }
 
   .detail {
@@ -20,6 +20,45 @@
       width: 300px;
       height: 200px;
       object-fit: cover;
+    }
+  }
+  .contentbot {
+    width: 97%;
+    margin-left: auto;
+    .showTime {
+      background: #343a40bd;
+      .content_showtimes {
+        .btn {
+          margin-right: 20px;
+          margin-bottom: 14px;
+          background-color: #cecece;
+          border-color: #cecece;
+        }
+      }
+    }
+    .nav {
+      li {
+        height: 40px;
+        width: 14%;
+        padding: 5px 10px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border: 1px solid #ffff;
+      }
+      li.active {
+        background: white;
+        color: black;
+        border: 1px solid black;
+      }
+      li.disabled {
+        pointer-events: none;
+        background: rgb(173, 173, 173);
+      }
     }
   }
   .row {

@@ -58,6 +58,7 @@ export class DetailCinemaComponent implements OnInit {
     this.getShowTimesCinema(this.maHeThong);
     this.getDay();
     this.displayDate();
+    this.tabDisabled();
 
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
