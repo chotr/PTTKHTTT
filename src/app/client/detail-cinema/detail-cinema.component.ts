@@ -17,6 +17,7 @@ export class DetailCinemaComponent implements OnInit {
   diaChi: any;
   loaiAction = 'LichChieu';
   listCR = [];
+  date = new Date();
   dayCur = new Date().toString();
   today: any;
   listTime = [];
@@ -28,6 +29,7 @@ export class DetailCinemaComponent implements OnInit {
   active = 'today-tab';
   indexDis: any;
   listMovie = [];
+  disabledBtn: boolean;
 
   dayOnWeek = [
     { stt: 1, name: 'Hai', value: 'Mon', id: 'Mon-tab' },
@@ -230,12 +232,40 @@ export class DetailCinemaComponent implements OnInit {
       }
     }
   }
+  dateFormat(value: any): string {
+    let date1 = new Date(value);
+    let latest_date = this.datepipe.transform(date1, 'dd-MM-yyyy');
+    return latest_date;
+  }
+  timeSt: any;
+  timeHienTai: any;
+  disabledT: boolean = true;
+  kiemTraNgayChieu(value: any): boolean {
+    const ngayChieu = this.dateFormat(value);
+    const date = new Date(value);
+    this.timeSt = this.datepipe.transform(date, 'HH');
+    this.timeHienTai = this.date.getHours();
+
+    const ngayTest = this.dayOnST;
+    if (this.timeSt > this.timeHienTai) {
+      this.disabledT = false;
+    } else {
+      this.disabledT = true;
+    }
+    if (ngayChieu == ngayTest) {
+      return true;
+    }
+
+    return false;
+  }
+  
+  
   navigateTo(id) {
     this.router.navigate(['client/danhSachGhe', id]);
   }
   navigateToCR(id) {
-    this.maCR = id
-    this.getCR(this.maHeThong)
+    this.maCR = id;
+    this.getCR(this.maHeThong);
     this.router.navigate(['client/detail', this.maHeThong + '?maCR=' + id]);
   }
 }
