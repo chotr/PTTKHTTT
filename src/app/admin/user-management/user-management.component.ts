@@ -6,7 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { AccountService } from 'src/app/provider/services/account.service';
 import Swal from 'sweetalert2';
 
@@ -31,6 +31,7 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
   conditionNext: boolean;
   totalPageArr: number[] = [];
   public disabledPage: boolean;
+  selectedIndex: number;
   public routerLinkVariable = '/admin/user-management';
 
   states = [
@@ -147,7 +148,7 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
         }).then((result) => {
           if (result.isConfirmed) {
             this.signUpFormTag.reset();
-            this.getDataUser(this.pageCurrent)
+            this.getDataUser(this.pageCurrent);
           }
         });
       }
@@ -190,7 +191,7 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
           confirmButtonText: 'Xác nhận!',
         }).then((result) => {
           if (result.isConfirmed) {
-            this.getDataUser(this.pageCurrent)
+            this.getDataUser(this.pageCurrent);
           }
         });
       }
@@ -215,10 +216,60 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
           confirmButtonText: 'Xác nhận!',
         }).then((result) => {
           if (result.isConfirmed) {
-            this.getDataUser(this.pageCurrent)
+            this.getDataUser(this.pageCurrent);
           }
         });
       }
+    });
+  }
+  navigateTo(p: any) {
+    this.router.navigate(['admin/user-management', p]);
+    this.accountService.listUser(p, this.numPerPage).subscribe((res) => {
+      if (res) {
+        this.users = res.items;
+      }
+    });
+  }
+  navigateToPrev() {
+    const abc = this.activatedRoute.snapshot.paramMap.get('page') as string;
+    const url = parseInt(abc) - 1;
+
+    if (parseInt(abc) > 1) {
+      this.router.navigate(['admin/user-management', url]);
+      this.accountService.listUser(url, this.numPerPage).subscribe((res) => {
+        if (res) {
+          this.users = res.items;
+          this.selectedIndex = res.currentPage;
+        }
+      });
+    }
+  }
+  navigateToNext() {
+    const abc = this.activatedRoute.snapshot.paramMap.get('page') as string;
+    const url = parseInt(abc) + 1;
+
+    if (parseInt(abc) < this.totalPage) {
+      this.router.navigate(['admin/user-management', url]);
+      this.accountService.listUser(url, this.numPerPage).subscribe((res) => {
+        if (res) {
+          this.users = res.items;
+          this.selectedIndex = res.currentPage;
+        }
+      });
+    }
+  }
+  setIndex(index: number) {
+    this.accountService.listUser(index, this.numPerPage).subscribe((res) => {
+      if (res) {
+        this.selectedIndex = res.currentPage;
+      }
+    });
+
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+      window.scrollTo(0, 0);
     });
   }
 }

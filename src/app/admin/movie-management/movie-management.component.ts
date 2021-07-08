@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { MovieService } from 'src/app/client/services/movie.service';
 import Swal from 'sweetalert2';
 
@@ -25,6 +25,7 @@ export class MovieManagementComponent implements OnInit, AfterViewInit {
   conditionNext: boolean;
   totalPageArr: number[] = [];
   isDisabled: boolean;
+  selectedIndex: number;
 
   movie = {
     maPhim: '',
@@ -120,11 +121,10 @@ export class MovieManagementComponent implements OnInit, AfterViewInit {
               this.movie[index] = null;
             }
             this.movie.maNhom = 'GP09';
-            this.getDataMovie(this.p)
+            this.getDataMovie(this.p);
           }
         });
-      }else {
-        
+      } else {
       }
     });
   }
@@ -144,7 +144,7 @@ export class MovieManagementComponent implements OnInit, AfterViewInit {
           confirmButtonText: 'Xác nhận!',
         }).then((result) => {
           if (result.isConfirmed) {
-            this.getDataMovie(this.p)
+            this.getDataMovie(this.p);
           }
         });
       }
@@ -182,10 +182,9 @@ export class MovieManagementComponent implements OnInit, AfterViewInit {
           confirmButtonText: 'Xác nhận!',
         }).then((result) => {
           if (result.isConfirmed) {
-            this.getDataMovie(this.p)
+            this.getDataMovie(this.p);
           }
         });
-
       }
     });
   }
@@ -219,5 +218,63 @@ export class MovieManagementComponent implements OnInit, AfterViewInit {
     if (this.p !== this.totalPage) {
       return true;
     }
+  }
+  navigateTo(p: any) {
+    this.router.navigate(['admin/movie-management', p]);
+    this.movieService
+      .getMoviePagination(p, this.numberItemPage)
+      .subscribe((res) => {
+        if (res) {
+          this.listMovie = res.items;
+        }
+      });
+  }
+  navigateToPrev() {
+    const abc = this.activatedRoute.snapshot.paramMap.get('page') as string;
+    const url = parseInt(abc) - 1;
+
+    if (parseInt(abc) > 1) {
+      this.router.navigate(['admin/movie-management', url]);
+      this.movieService
+        .getMoviePagination(url, this.numberItemPage)
+        .subscribe((res) => {
+          if (res) {
+            this.listMovie = res.items;
+            this.selectedIndex = res.currentPage;
+          }
+        });
+    }
+  }
+  navigateToNext() {
+    const abc = this.activatedRoute.snapshot.paramMap.get('page') as string;
+    const url = parseInt(abc) + 1;
+
+    if (parseInt(abc) < this.totalPage) {
+      this.router.navigate(['admin/movie-management', url]);
+      this.movieService
+        .getMoviePagination(url, this.numberItemPage)
+        .subscribe((res) => {
+          if (res) {
+            this.listMovie = res.items;
+            this.selectedIndex = res.currentPage;
+          }
+        });
+    }
+  }
+  setIndex(index: number) {
+    this.movieService
+      .getMoviePagination(index, this.numberItemPage)
+      .subscribe((res) => {
+        if (res) {
+          this.selectedIndex = res.currentPage;
+        }
+      });
+
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+      window.scrollTo(0, 0);
+    });
   }
 }

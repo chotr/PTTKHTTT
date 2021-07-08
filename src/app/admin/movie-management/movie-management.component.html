@@ -1,6 +1,7 @@
 <div class="movie_management">
     <div class="add_movie">
-        <button type="button" (click)="resetForm()" class="btn btn-primary add my-4" data-toggle="modal" data-target="#exampleModal">Thêm
+        <button type="button" (click)="resetForm()" class="btn btn-primary add my-4" data-toggle="modal"
+            data-target="#exampleModal">Thêm
             phim</button>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -8,7 +9,8 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <form #addMovieForm="ngForm" (ngSubmit)="addMovie()" class="container">
-                            <app-form-add-movie [isDisabled]="isDisabled" (outForm)="getForm($event)" [movie]="movie"></app-form-add-movie>
+                            <app-form-add-movie [isDisabled]="isDisabled" (outForm)="getForm($event)" [movie]="movie">
+                            </app-form-add-movie>
                         </form>
                     </div>
                 </div>
@@ -38,16 +40,12 @@
                     <td>{{film.trailer| shortCut: 25}}</td>
                     <td>{{film.ngayKhoiChieu| date : 'dd/MM/yyyy HH:mm:ss'}}</td>
                     <td>
-                        <button #updateBtn 
-                        [attr.data-hinhAnh]="film.hinhAnh"
-                        [attr.data-maPhim]="film.maPhim"
-                        [attr.data-tenPhim]="film.tenPhim"
-                        [attr.data-moTa]="film.moTa"
-                        [attr.data-trailer]="film.trailer"
-                        [attr.data-ngayKhoiChieu]="film.ngayKhoiChieu"
-                        [attr.data-biDanh]="film.biDanh"
-                        (click)="update(updateBtn)" type="button" class="btn btn-success mr-2" data-toggle="modal"
-                            data-target="#exampleModal1">Chỉnh sửa</button>
+                        <button #updateBtn [attr.data-hinhAnh]="film.hinhAnh" [attr.data-maPhim]="film.maPhim"
+                            [attr.data-tenPhim]="film.tenPhim" [attr.data-moTa]="film.moTa"
+                            [attr.data-trailer]="film.trailer" [attr.data-ngayKhoiChieu]="film.ngayKhoiChieu"
+                            [attr.data-biDanh]="film.biDanh" (click)="update(updateBtn)" type="button"
+                            class="btn btn-success mr-2" data-toggle="modal" data-target="#exampleModal1">Chỉnh
+                            sửa</button>
                         <button class="btn btn-danger" (click)="deleteMovie(film.maPhim)">Xóa</button>
                     </td>
                 </tr>
@@ -57,8 +55,9 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-body">
-                            <form #updateMovie="ngForm" (ngSubmit) ="updateForm()" class="container">
-                                <app-form-add-movie [isDisabled]="isDisabled" (outForm)="getForm($event)" [movie]="movie"></app-form-add-movie>
+                            <form #updateMovie="ngForm" (ngSubmit)="updateForm()" class="container">
+                                <app-form-add-movie [isDisabled]="isDisabled" (outForm)="getForm($event)"
+                                    [movie]="movie"></app-form-add-movie>
                             </form>
                         </div>
                     </div>
@@ -68,15 +67,16 @@
     </div>
     <nav aria-label="Page navigation example">
         <ul class="pagination">
-            <li class="page-item pre"><a [ngClass]="disabledPagePre() ? 'page-link':'page-link disabled'"
-                    (click)="checkPre($event)" href="admin/movie-management/{{p*1 - 1}}">Previous</a></li>
+            <li class="page-item pre"><a class="page-link" (click)="checkPre($event)" (click)="navigateToPrev()"
+                    [ngClass]="{'disabled': selectedIndex===1}">Previous</a></li>
 
-            <li *ngFor="let p of totalPageArr" [class.disabledPage]="disabledPage" class="page-item page">
-                <a class="page-link" href="admin/movie-management/{{p}}" routerLinkActive="active">{{p}}</a>
+            <li *ngFor="let p of totalPageArr" (click)="setIndex(p)" [class.active]="selectedIndex === p"
+                class="page-item page">
+                <a class="page-link" (click)="navigateTo(p)">{{p}}</a>
             </li>
 
-            <li class="page-item next"><a [ngClass]="disabledPageNext() ? 'page-link':'page-link disabled'"
-                    (click)="checkNext($event)" href="admin/movie-management/{{p*1 + 1}}">Next</a></li>
+            <li class="page-item next"><a class="page-link" (click)="checkNext($event)" (click)="navigateToNext()"
+                    [ngClass]="{'disabled': selectedIndex===totalPage}">Next</a></li>
         </ul>
     </nav>
 </div>

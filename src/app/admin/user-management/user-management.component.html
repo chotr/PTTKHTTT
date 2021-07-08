@@ -164,15 +164,16 @@
    </div>
    <nav aria-label="Page navigation example py-4">
       <ul class="pagination">
-         <li class="page-item pre "><a [ngClass]="disabledPagePre() ? 'page-link':'page-link disabled'"
-               (click)="checkPre($event)" href="admin/user-management/{{pageCurrent*1 - 1}}">Previous</a></li>
+         <li class="page-item pre"><a class="page-link" (click)="checkPre($event)" (click)="navigateToPrev()"
+            [ngClass]="{'disabled': selectedIndex===1}">Previous</a></li>
 
-         <li *ngFor="let p of totalPageArr" [class.disabledPage]="disabledPage" class="page-item page">
-            <a class="page-link" href="admin/user-management/{{p}}" routerLinkActive="active">{{p}}</a>
-         </li>
+    <li *ngFor="let p of totalPageArr" (click)="setIndex(p)" [class.active]="selectedIndex === p"
+        class="page-item page">
+        <a class="page-link" (click)="navigateTo(p)">{{p}}</a>
+    </li>
 
-         <li class="page-item next"><a [ngClass]="disabledPageNext() ? 'page-link':'page-link disabled'"
-               (click)="checkNext($event)" href="admin/user-management/{{pageCurrent*1 + 1}}">Next</a></li>
+    <li class="page-item next"><a class="page-link" (click)="checkNext($event)" (click)="navigateToNext()"
+            [ngClass]="{'disabled': selectedIndex===totalPage}">Next</a></li>
       </ul>
    </nav>
 </div>
