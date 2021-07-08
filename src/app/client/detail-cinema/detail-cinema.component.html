@@ -46,13 +46,31 @@
                         </div>
                         <div class="content_showtimes col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 ">
                             <ul class="nav d-flex">
-                                <li class="nav-item" *ngFor="let day of dayOnWeek" (click)="getIdDay(day.id)" [class.disabled]="day.stt < indexDis" [class.active]="day.id === active">
+                                <li class="nav-item" *ngFor="let day of dayOnWeek" (click)="getIdDay(day.id)"
+                                    [class.disabled]="day.stt < indexDis" [class.active]="day.id === active">
                                     <a (click)="getListOnDay(day.stt)">{{day.name}}</a>
-                                  </li>
+                                </li>
                             </ul>
-                            <div class="listPhim mb-2 text-white">
+                            <div class="listPhim mb-2 text-white" *ngFor="let phim of listMovie">
                                 <div class="wrapper__collapse">
                                     <div class="row info py-3">
+                                        <div>
+                                            <img class="ml-4" [src]="phim.hinhAnh" width="50px" height="50px"
+                                                style="border-radius: 5px;">
+                                        </div>
+                                        <div class="col-10 text pl-2 py-3" style="color: aqua ;">
+                                            <p class="tenCR">{{phim.name}}</p>
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div>
+                                            <button [disabled]="disabledT" (click)="navigateTo(phim.maLichChieu)" class=" btn btn-time">
+                                                {{phim.date | date: 'HH:mm'}}
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -53,6 +53,7 @@ export class DetailCinemaComponent implements OnInit {
     this.maCR = getUrl[1];
     this.dayOnST = this.datepipe.transform(this.dayCur, 'dd-MM-yyyy');
     this.dsCumRap(this.maHeThong);
+    this.getCR(this.maHeThong);
     this.defaultCR();
     this.getShowTimesCinema(this.maHeThong);
     this.getDay();
@@ -79,18 +80,24 @@ export class DetailCinemaComponent implements OnInit {
       }
     });
   }
-
-  getShowTimesCinema(id) {
-    console.log(this.dayOnST);
-    let arrayMv = [];
+  getCR(id) {
     this.cinema.layThongtinHeThongLichChieu(id).subscribe((res) => {
       for (let list of res) {
         for (let lstCR of list.lstCumRap) {
           this.listCR.push(lstCR);
+        }
+      }
+    });
+  }
+
+  getShowTimesCinema(id) {
+    let arrayMv = [];
+    this.cinema.layThongtinHeThongLichChieu(id).subscribe((res) => {
+      for (let list of res) {
+        for (let lstCR of list.lstCumRap) {
           if (lstCR.maCumRap === this.maCR) {
             for (let ds of lstCR.danhSachPhim) {
-              // console.log(ds)
-              for (let lc of ds.lstLichChieuTheoPhim) {               
+              for (let lc of ds.lstLichChieuTheoPhim) {
                 if (
                   this.datepipe.transform(
                     lc.ngayChieuGioChieu,
@@ -209,6 +216,7 @@ export class DetailCinemaComponent implements OnInit {
       '-' +
       newYear;
     this.dayOnST = fullDate;
+    this.getShowTimesCinema(this.maHeThong);
   }
   getIdDay(id) {
     this.active = id;
