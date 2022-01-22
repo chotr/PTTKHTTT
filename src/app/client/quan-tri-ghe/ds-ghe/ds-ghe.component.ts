@@ -127,6 +127,7 @@ export class DsGheComponent implements OnInit, OnChanges {
             this.dataContainer1.nativeElement.innerHTML = '';
             this.totalPrice = 0;
           }
+          this.router.navigate(['client/home']);
         });
       }
     });

@@ -141,7 +141,7 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
       if (res) {
         Swal.fire({
           title: 'Thông báo',
-          text: 'Đặt vé thành công!',
+          text: 'Thêm thành công!',
           icon: 'success',
           showCancelButton: false,
           confirmButtonText: 'Xác nhận!',
