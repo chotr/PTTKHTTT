@@ -57,8 +57,9 @@
   .theater_cluster {
     margin: 0;
 
-    // max-height: 600px;
-    // overflow-y: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 600px;
     padding: 20px 0;
     p {
       margin-bottom: 0;
@@ -92,7 +93,10 @@
     }
   }
   .movies {
-    padding: 20px 0;
+    padding: 20px 20px;
+    overflow-y: scroll;
+    height: 600px;
+    overflow-x: hidden;
     .listPhim{
         margin-bottom: 10px;
 

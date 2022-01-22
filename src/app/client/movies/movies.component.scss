@@ -22,7 +22,11 @@
     }
 
     li.active {
-      background-color: aqua;
+      .page-link {
+        background-color: #343a40 !important;
+        border-color: #343a40 !important;
+        color: rgb(255, 255, 255);
+      }
     }
     a:hover {
       text-decoration: none;
@@ -37,6 +41,7 @@
       }
     }
     .page-link {
+      color: #343a40;
       &:focus {
         box-shadow: none;
       }

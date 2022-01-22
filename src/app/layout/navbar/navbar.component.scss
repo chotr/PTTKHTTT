@@ -39,7 +39,7 @@
   border-radius: 1px;
   border-color: #e5e5e5;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  left: -55px;
+  // left: -36px;
   margin: 0.425rem 0 0;
   background: #fffffff5;
 }
@@ -88,7 +88,16 @@
     }
     svg {
       width: 20px;
+      margin-right: 12px;
     }
+  }
+  .dropdown-toggle {
+    &::after {
+      margin-left:12px;
+    }
+  }
+  .user{
+    width: 10%;
   }
 }
 @media (min-width: 1200px) {
