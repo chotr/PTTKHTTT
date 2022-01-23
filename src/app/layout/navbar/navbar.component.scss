@@ -79,8 +79,9 @@
   }
   .dropdown {
     .nav-link {
-      font-weight: 400;
+      font-weight: 500;
       font-size: 15px;
+      color: #1e1e1e;
     }
     .dropdown-item {
       font-size: 15px;
@@ -93,10 +94,10 @@
   }
   .dropdown-toggle {
     &::after {
-      margin-left:12px;
+      margin-left: 12px;
     }
   }
-  .user{
+  .user {
     width: 10%;
   }
 }
@@ -131,7 +132,7 @@
     .nav-item {
       font-size: 14px;
     }
-    .navbar-brand{
+    .navbar-brand {
       font-size: 17px;
     }
     .dropdown {

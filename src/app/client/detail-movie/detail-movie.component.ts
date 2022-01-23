@@ -167,7 +167,7 @@ export class DetailMovieComponent implements OnInit {
 
   layThongTinRap(maCR: string) {
     this.maHeThongRap = maCR;
-    this.getcumRapChieu(this.maHeThongRap, '01-01-2019');
+    this.getcumRapChieu(this.maHeThongRap, this.dayOnST);
     this.defaultCR(maCR);
     this.layLC(this.dayOnST);
   }
@@ -248,7 +248,6 @@ export class DetailMovieComponent implements OnInit {
   }
   // lấy số thứ tự của thẻ đang chọn
   getListOnDay(index: number) {
-    console.log(index)
     let day = this.dmy.split('/');
     let dd = day[0];
     let mm = day[1];
