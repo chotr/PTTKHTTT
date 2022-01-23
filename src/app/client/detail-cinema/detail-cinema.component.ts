@@ -72,6 +72,8 @@ export class DetailCinemaComponent implements OnInit {
     let getUrl = this.url.split('?maCR=');
     this.maHeThong = getUrl[0];
     this.maCR = getUrl[1];
+    console.log(this.url);
+    console.log(getUrl);
   }
   dsCumRap(maht) {
     this.cinema.getCinemaComplex(maht).subscribe((res) => {
@@ -270,6 +272,6 @@ export class DetailCinemaComponent implements OnInit {
     this.getCR(this.maHeThong);
     this.getURL();
     this. dsCumRap(this.maHeThong)
-    this.router.navigate(['client/detail', this.maHeThong + '?maCR=' + id]);
+    // this.router.navigate(['client/detail', this.maHeThong + '?maCR=' + id]);
   }
 }

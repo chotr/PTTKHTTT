@@ -41,6 +41,21 @@
                                         </div>
                                     </div>
                                 </li>
+                                <!-- <li *ngFor="let cr of listCR; let i = index" class="logo d-flex"
+                                    [class.active]="i === 0">
+                                    <a (click)="navigateToCR(cr.maCumRap)"
+                                        routerLink="/client/detail/{{maHeThong}}?maCR={{cr.maCumRap}}">
+                                        <img [src]="img">
+                                        <div class="info_cr">
+                                            <div class="name">
+                                                <h3 class="cumrap">{{cr.tenCumRap}}</h3>
+                                            </div>
+                                            <div class="address">
+                                                <p>{{cr.diaChi}}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li> -->
                             </ul>
                         </div>
                         <div class="content_showtimes col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 ">
@@ -53,8 +68,8 @@
                             <div class="listPhim mb-2 text-white" *ngFor="let phim of listMovie">
                                 <div class="wrapper__collapse">
                                     <div class="info">
-                                        <div >
-                                            <img [src]="phim.hinhAnh" >
+                                        <div>
+                                            <img [src]="phim.hinhAnh">
                                         </div>
                                         <div class="text pl-2 py-3">
                                             <p class="tenphim">{{phim.name}}</p>

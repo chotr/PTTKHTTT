@@ -32,6 +32,7 @@ import { HistoryBookingComponent } from './history-booking/history-booking.compo
 import { BrowserModule } from '@angular/platform-browser';
 import { FooterComponent } from '../layout/footer/footer.component';
 import { DetailCinemaComponent } from './detail-cinema/detail-cinema.component';
+import { ComingComponent } from './coming/coming.component';
 
 const routes = [
   {
@@ -119,7 +120,8 @@ const routes = [
     ShowtimeComponent,
     HistoryBookingComponent,
     FooterComponent,
-    DetailCinemaComponent
+    DetailCinemaComponent,
+    ComingComponent
   ],
   imports: [
     CommonModule,

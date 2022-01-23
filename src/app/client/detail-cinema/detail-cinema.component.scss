@@ -29,6 +29,7 @@
   .contentbot {
     width: 97%;
     margin-left: auto;
+    margin-bottom: 20px;
     .action {
       height: 40px;
       margin-top: 30px;
@@ -51,30 +52,26 @@
         opacity: 0.5;
       }
       .logo.active {
-        opacity: 1!important;
+        opacity: 1 !important;
       }
       .content_showtimes {
-
-        .listPhim{
-          .info{
+        .listPhim {
+          .info {
             margin-top: 18px;
             display: flex;
             padding-bottom: 10px;
-            img{
+            img {
               width: 50px;
               height: 50px;
               border-radius: 5px;
               // margin: 20px 10px;
               // margin-left: 15px;
-
             }
-            .tenphim{
+            .tenphim {
               font-size: 16px;
-
             }
           }
           .btn {
-
             margin-right: 20px;
             margin-bottom: 14px;
             background-color: #cecece;
@@ -82,10 +79,15 @@
           }
         }
       }
-      .cinema{
-        .cinema_Info{
+      .cinema {
+        
+        .cinema_Info {
           padding-top: 30px;
-          ul{
+          overflow-y: scroll;
+          overflow-x: hidden;
+          height: 600px;
+
+          ul {
             padding-left: 10px;
             li {
               padding: 0;
@@ -94,13 +96,13 @@
               margin-bottom: 20px;
               list-style: none;
               position: relative;
-                img {
-                  width: 50px;
-                  height: 50px;
-                  margin-right: 7px;
-                  cursor: pointer;
-                  background: wheat;
-                }
+              img {
+                width: 50px;
+                height: 50px;
+                margin-right: 7px;
+                cursor: pointer;
+                background: wheat;
+              }
               &::before {
                 position: absolute;
                 content: "";
@@ -112,15 +114,15 @@
                 right: 0;
                 left: 0;
               }
-              .name{
-                h3{
-                    font-size: 13px;
-                    color: aqua;
-                    margin-bottom: 0;
+              .name {
+                h3 {
+                  font-size: 13px;
+                  color: aqua;
+                  margin-bottom: 0;
                 }
               }
-              .address{
-                p{
+              .address {
+                p {
                   font-weight: 400;
                   font-size: 12px;
                 }
@@ -175,7 +177,6 @@
         flex-direction: row;
         justify-content: flex-end;
         z-index: 20;
-
       }
       .info_text {
         position: relative;
@@ -202,7 +203,7 @@
 
 @include responsive("large") {
   .detail {
-    .wrap_cinema{
+    .wrap_cinema {
       margin-left: 40px;
       img {
         width: 300px;
@@ -210,60 +211,53 @@
         margin-left: 30px;
         object-fit: cover;
       }
-      .date{
-        p{
+      .date {
+        p {
           font-size: 23px;
         }
-
       }
     }
-
   }
 
-  .cinema{
-      .cinema_Info{
-        ul{
-          li{
-            .name{
-              .cumrap{
-                line-height: 1.2rem;
-                font-size: 12px !important;
-              }
+  .cinema {
+    .cinema_Info {
+      ul {
+        li {
+          .name {
+            .cumrap {
+              line-height: 1.2rem;
+              font-size: 12px !important;
             }
-            .address{
-              p{
-
-                font-size: 10px !important;
-              }
+          }
+          .address {
+            p {
+              font-size: 10px !important;
             }
           }
         }
       }
+    }
   }
 
   .content_showtimes {
-    .listPhim{
-      .info{
-        img{
+    .listPhim {
+      .info {
+        img {
           width: 50px;
           height: 50px;
           border-radius: 5px;
           margin: 0 0;
-
         }
-
       }
-
     }
   }
- }
+}
 
- @include responsive("mobile") {
-
+@include responsive("mobile") {
   .detail {
     height: 250px !important;
 
-    .wrap_cinema{
+    .wrap_cinema {
       margin-left: 40px;
       img {
         width: 150px;
@@ -274,43 +268,38 @@
       .info_text {
         margin: 0;
         padding: 0;
-        .date{
-          p{
+        .date {
+          p {
             font-size: 10px !important;
           }
-
         }
-        .name{
-          p{
+        .name {
+          p {
             font-size: 10px !important;
           }
-
         }
       }
-
     }
-
   }
 
-  .cinema{
-      .cinema_Info{
-        ul{
-          li{
-            .name{
-              .cumrap{
-                line-height: 1.2rem;
-                font-size: 10px !important;
-              }
+  .cinema {
+    .cinema_Info {
+      ul {
+        li {
+          .name {
+            .cumrap {
+              line-height: 1.2rem;
+              font-size: 10px !important;
             }
-            .address{
-              p{
-
-                font-size: 10px !important;
-              }
+          }
+          .address {
+            p {
+              font-size: 10px !important;
             }
           }
         }
       }
+    }
   }
   .action {
     height: 20px;
@@ -328,19 +317,15 @@
   }
 
   .content_showtimes {
-    .listPhim{
-      .info{
-        img{
+    .listPhim {
+      .info {
+        img {
           width: 50px;
           height: 50px;
           border-radius: 5px;
           margin: 0 0;
-
         }
-
       }
-
     }
   }
- }
-
+}
