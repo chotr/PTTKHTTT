@@ -16,6 +16,7 @@ export class ComingComponent implements OnInit {
   trailer: string;
   description: string;
   biDanh: string;
+  index = 2;
   constructor(private moviesService: MovieService) {}
   customOptions: OwlOptions = {
     loop: true,
@@ -51,9 +52,7 @@ export class ComingComponent implements OnInit {
       // }
       this.listMovie = res;
       this.listComing = this.listMovie.slice(20, 25);
-      console.log(this.listComing);
       for (let film of this.listComing) {
-        console.log(film);
         this.image = this.listComing[2].hinhAnh;
         this.name = this.listComing[2].tenPhim;
         this.biDanh = this.listComing[2].biDanh;
@@ -62,14 +61,23 @@ export class ComingComponent implements OnInit {
       }
     });
   }
-  getInfoMovies(maPhim): void {
-    console.log(maPhim);
-  }
   shiftLeft() {
     const boxes = document.querySelectorAll('.box');
     const tmpNode = boxes[0];
     boxes[0].className = 'box move-out-from-left';
+    if (this.index < 4) {
+      this.index = this.index + 1;
+    } else {
+      this.index = 0;
+    }
 
+    for (let film of this.listComing) {
+      this.image = this.listComing[this.index].hinhAnh;
+      this.name = this.listComing[this.index].tenPhim;
+      this.biDanh = this.listComing[this.index].biDanh;
+      this.description = this.listComing[this.index].moTa;
+      this.trailer = this.listComing[this.index].trailer;
+    }
     setTimeout(function () {
       if (boxes.length > 5) {
         tmpNode.classList.add('box--hide');
@@ -83,12 +91,24 @@ export class ComingComponent implements OnInit {
 
       document.querySelector('.cards__container').appendChild(tmpNode);
     }, 500);
-    
   }
 
   shiftRight() {
     const boxes = document.querySelectorAll('.box');
     boxes[4].className = 'box move-out-from-right';
+    if (this.index > 0) {
+      this.index = this.index - 1;
+    } else {
+      this.index = 4;
+    }
+
+    for (let film of this.listComing) {
+      this.image = this.listComing[this.index].hinhAnh;
+      this.name = this.listComing[this.index].tenPhim;
+      this.biDanh = this.listComing[this.index].biDanh;
+      this.description = this.listComing[this.index].moTa;
+      this.trailer = this.listComing[this.index].trailer;
+    }
     setTimeout(function () {
       const noOfCards = boxes.length;
       if (noOfCards > 4) {
@@ -106,5 +126,6 @@ export class ComingComponent implements OnInit {
       boxes[2].className = 'box move-to-position4-from-right';
       boxes[3].className = 'box move-to-position5-from-right';
     }, 500);
+    console.log(this.index);
   }
 }
