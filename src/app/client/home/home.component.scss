@@ -38,6 +38,7 @@
         cursor: context-menu;
         font-family: "Roboto", sans-serif !important;
         margin-bottom: 0;
+        font-weight: 100;
       }
     }
     .more {
@@ -59,7 +60,7 @@
     margin: auto;
     display: none;
     background-color: #343a40bd !important;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
   }
 }
 @include responsive("large") {

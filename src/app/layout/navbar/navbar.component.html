@@ -7,7 +7,7 @@
 		<div class="navbar-nav ml-auto">
 			<a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"  routerLink="/client/home" (click)="onClick('list_movie')" class="nav-item nav-link">Lịch chiếu</a>
 			<a routerLink="/client/home" (click)="onClick('cinema')"   class="nav-item nav-link">Cụm rạp</a>
-			<a routerLink="/client/home" class="nav-item nav-link">Tin tức</a>
+			<a routerLink="/client/home" (click)="onClick('coming')"  class="nav-item nav-link">Sắp chiếu</a>
 		</div>
 		<div class="navbar-nav user ml-auto">
 			<div *ngIf="accountInfo === null" class="nav-item">

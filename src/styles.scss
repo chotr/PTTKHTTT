@@ -8,9 +8,10 @@ html,
 body {
   margin: 0;
   height: 100%;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 
-  background-image: url("./assets/images/dark-blue-blur-desktop-background.jpg");
+  // background-image: url("./assets/images/dark-blue-blur-desktop-background.jpg");
+  background: #020d18;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -91,4 +92,4 @@ body {
 @import "./sass/Base/customize";
 @import "./sass/Base/reset";
 @import "./sass/Helper/mixin";
-@import "./sass/Helper/variables"
+@import "./sass/Helper/variables";

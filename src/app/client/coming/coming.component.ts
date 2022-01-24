@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { MovieService } from '../services/movie.service';
 import Glide from '@glidejs/glide';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-coming',
@@ -17,7 +18,10 @@ export class ComingComponent implements OnInit {
   description: string;
   biDanh: string;
   index = 2;
-  constructor(private moviesService: MovieService) {}
+  dateComing: string;
+  points: number;
+  codeFilm: number;
+  constructor(private router: Router, private moviesService: MovieService) {}
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -58,7 +62,11 @@ export class ComingComponent implements OnInit {
         this.biDanh = this.listComing[2].biDanh;
         this.description = this.listComing[2].moTa;
         this.trailer = this.listComing[2].trailer;
+        this.dateComing = this.listComing[2].ngayKhoiChieu;
+        this.points = this.listComing[2].danhGia;
+        this.codeFilm = this.listComing[2].maPhim;
       }
+      console.log(this.listComing);
     });
   }
   shiftLeft() {
@@ -77,6 +85,9 @@ export class ComingComponent implements OnInit {
       this.biDanh = this.listComing[this.index].biDanh;
       this.description = this.listComing[this.index].moTa;
       this.trailer = this.listComing[this.index].trailer;
+      this.dateComing = this.listComing[this.index].ngayKhoiChieu;
+      this.points = this.listComing[this.index].danhGia;
+      this.codeFilm = this.listComing[this.index].maPhim;
     }
     setTimeout(function () {
       if (boxes.length > 5) {
@@ -108,6 +119,9 @@ export class ComingComponent implements OnInit {
       this.biDanh = this.listComing[this.index].biDanh;
       this.description = this.listComing[this.index].moTa;
       this.trailer = this.listComing[this.index].trailer;
+      this.dateComing = this.listComing[this.index].ngayKhoiChieu;
+      this.points = this.listComing[this.index].danhGia;
+      this.codeFilm = this.listComing[this.index].maPhim;
     }
     setTimeout(function () {
       const noOfCards = boxes.length;
@@ -126,6 +140,8 @@ export class ComingComponent implements OnInit {
       boxes[2].className = 'box move-to-position4-from-right';
       boxes[3].className = 'box move-to-position5-from-right';
     }, 500);
-    console.log(this.index);
+  }
+  navigateTo() {
+    this.router.navigate(['client/detail-movie', this.codeFilm]);
   }
 }

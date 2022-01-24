@@ -1,6 +1,6 @@
 <div class="coming_content ">
-    <div class="tile">
-        <h2>coming soon</h2>
+    <div class="title">
+        <h2>Phim sắp chiếu</h2>
     </div>
     <div class="info_coming container">
         <div class="row">
@@ -8,8 +8,17 @@
                 <div class="name">
                     <h3>{{name}}</h3>
                 </div>
+                <div class="point">
+                    <p>Đánh giá: {{points}}</p>
+                </div>
+                <div class="date_coming">
+                    <p><span><i class="bi bi-calendar2"></i></span> {{dateComing | date:'dd/MM/yyyy'}}</p>
+                </div>
                 <div class="description">
-                    <p>{{description}}</p>
+                    <p>{{description | shortCut:200}}</p>
+                </div>
+                <div class="more">
+                    <a (click)="navigateTo()">Chi tiết</a>
                 </div>
             </div>
             <div class="image col-md-5">
