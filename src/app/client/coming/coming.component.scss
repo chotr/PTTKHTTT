@@ -48,7 +48,7 @@
       .img {
         width: 50%;
         margin-left: auto;
-        
+
         img {
           width: 100%;
           border-radius: 10px;
@@ -59,6 +59,7 @@
   .list_coming {
     background: #020d18;
     display: flex;
+    position: relative;
     flex-direction: row;
     flex-wrap: nowrap;
     align-content: center;
@@ -68,12 +69,21 @@
       width: 100%;
       border-radius: 10px;
     }
+    .left {
+      left: 1%;
+    }
+    .right {
+      right: 1%;
+    }
   }
 }
 
 .button {
-  margin-left: 20px;
-  width: 1rem;
+  // margin-left: 20px;
+  // width: 1rem;
+  position: absolute;
+  top: 50%;
+  z-index: 10;
   cursor: pointer;
 }
 
@@ -96,6 +106,7 @@
   align-items: center;
   justify-content: center;
   height: 25rem;
+  padding-left: 0;
 }
 
 .box {
@@ -114,27 +125,34 @@
 .box:nth-child(2n) {
   transform: scale(0.85);
   z-index: 1;
+  transition: all 0.5s;
 }
 
 .box:nth-child(2) {
   left: 0;
+  opacity: 0.5;
 }
 
 .box:nth-child(4) {
   left: 0;
+  opacity: 0.5;
 }
 
 .box:nth-child(4n + 1) {
   transform: scale(0.75);
   z-index: 0;
+  transition: all 0.5s;
 }
 
 .box:nth-child(1) {
   left: 3%;
+  opacity: 0.5;
+  transition: all 0.5s;
 }
 
 .box:nth-child(5) {
   left: -3%;
+  opacity: 0.5;
 }
 
 .move-out-from-left {
