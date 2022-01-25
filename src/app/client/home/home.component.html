@@ -1,15 +1,85 @@
 <div class="home" id="home">
   <div #carouselSlide class="Carousel" id="Carousel">
     <owl-carousel-o style="height:80%" [options]="customOptions">
-      <ng-template class="fade" carouselSlide><div class="fade_bg"><img width="1280px" height="550px" src="../../../assets/images/banner1.png"></div></ng-template>  
-      <ng-template class="fade" carouselSlide><div class="fade_bg"><img width="1280px" height="550px" src="../../../assets/images/banner2.png"></div></ng-template>  
-      <ng-template class="fade" carouselSlide><div class="fade_bg"><img width="1280px" height="550px" src="../../../assets/images/banner3.png"></div></ng-template>  
+      <ng-template class="fade" carouselSlide>
+        <div class="fade_bg"><img width="1280px" height="550px" src="../../../assets/images/banner1.png"></div>
+      </ng-template>
+      <ng-template class="fade" carouselSlide>
+        <div class="fade_bg"><img width="1280px" height="550px" src="../../../assets/images/banner2.png"></div>
+      </ng-template>
+      <ng-template class="fade" carouselSlide>
+        <div class="fade_bg"><img width="1280px" height="550px" src="../../../assets/images/banner3.png"></div>
+      </ng-template>
     </owl-carousel-o>
     <div class="bg-fade">
     </div>
   </div>
+  <div class="search text-center container">
+    <h2>Tìm kiếm lịch chiếu</h2>
+    <div class="search_cus d-flex">
+      <div class="dropdown movie">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonMV" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          {{tenPhim}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonMV">
+          <ng-container *ngFor="let phim of listMovie">
+            <div class="dropdown-item" (click)="getMaPhim(phim.maPhim, phim.tenPhim)">{{phim.tenPhim}}</div>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="dropdown Rap">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonR" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          {{tenRap}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonR">
+          <ng-container *ngFor="let rap of dsRap">
+            <div class="dropdown-item" (click)="getMaRap(rap.maHT, rap.tenHeThongRap)">{{rap.tenHeThongRap}}</div>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="dropdown CR">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonCR" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          {{cumRap}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonCR">
+          <ng-container *ngFor="let cr of dsCR">
+            <div class="dropdown-item" (click)="getMaCumRap(cr.maCR, cr.tenCR)">{{cr.tenCR}}</div>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="dropdown lc">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonLC" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <!-- <ng-container *ngIf="lc === 'Chọn giờ chiếu ...';else other_content">
+            {{lc}}
+          </ng-container> -->
+          <!-- <ng-container *ngIf="lc !== 'Chọn giờ chiếu ...'">
+            {{lc | date: 'HH:mm'}}
+          </ng-container> -->
+          <!-- <ng-template #other_content>{{lc | date: 'HH:mm'}}</ng-template> -->
+          {{lc}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonLC">
+          <ng-container *ngFor="let lc of dsLC">
+            <div class="dropdown-item" (click)="getMaLC(lc.maLC, lc.ngayChieu)">{{lc.ngayChieu | date: 'HH:mm' }}</div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="submit_dv">
+        <button class="btn btn-primary" (click)="sbmDatVe()" disabled={{!disabledT}}>Đặt vé</button>
+      </div>
+    </div>
+  </div>
   <div class="list_movie" id="list_movie">
-    <div class="title text-center"><h1>Danh sách phim</h1></div>
+    <div class="title text-center">
+      <h1>Danh sách phim</h1>
+    </div>
     <div class="list_movie_home">
       <div class="card_movie container">
         <div class="row">
@@ -21,20 +91,23 @@
       </div>
     </div>
     <div class="more_movie">
-      <button type="button" (click)="navigateTo()" class="btn more mt-4">Xem thêm...<span><i class="bi bi-caret-right-fill"></i></span></button>
+      <button type="button" (click)="navigateTo()" class="btn more mt-4">Xem thêm...<span><i
+            class="bi bi-caret-right-fill"></i></span></button>
     </div>
     <div class="cinema  mt-5" id="cinema">
-        <app-cinemas></app-cinemas>
+      <app-cinemas></app-cinemas>
+    </div>
+    <div class="coming" id="coming">
+      <app-coming></app-coming>
+    </div>
+
   </div>
-</div>
-<div class="coming" id="coming">
-  <app-coming></app-coming>
-</div>
-<div class="spinner" id="spinner">
-  <div class="loader">
-  <p class="text-center text-white">Đang tải</p>
+
+  <div class="spinner" id="spinner">
+    <div class="loader">
+      <p class="text-center text-white">Đang tải</p>
       <div class="inner one"></div>
       <div class="inner two"></div>
       <div class="inner three"></div>
+    </div>
   </div>
-</div>

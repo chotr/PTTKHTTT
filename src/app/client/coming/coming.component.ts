@@ -66,45 +66,10 @@ export class ComingComponent implements OnInit {
         this.points = this.listComing[2].danhGia;
         this.codeFilm = this.listComing[2].maPhim;
       }
-      console.log(this.listComing);
+      // console.log(this.listComing);
     });
   }
   shiftLeft() {
-    const boxes = document.querySelectorAll('.box');
-    const tmpNode = boxes[0];
-    boxes[0].className = 'box move-out-from-left';
-    if (this.index < 4) {
-      this.index = this.index + 1;
-    } else {
-      this.index = 0;
-    }
-
-    for (let film of this.listComing) {
-      this.image = this.listComing[this.index].hinhAnh;
-      this.name = this.listComing[this.index].tenPhim;
-      this.biDanh = this.listComing[this.index].biDanh;
-      this.description = this.listComing[this.index].moTa;
-      this.trailer = this.listComing[this.index].trailer;
-      this.dateComing = this.listComing[this.index].ngayKhoiChieu;
-      this.points = this.listComing[this.index].danhGia;
-      this.codeFilm = this.listComing[this.index].maPhim;
-    }
-    setTimeout(function () {
-      if (boxes.length > 5) {
-        tmpNode.classList.add('box--hide');
-        boxes[5].className = 'box move-to-position5-from-left';
-      }
-      boxes[1].className = 'box move-to-position1-from-left';
-      boxes[2].className = 'box move-to-position2-from-left';
-      boxes[3].className = 'box move-to-position3-from-left';
-      boxes[4].className = 'box move-to-position4-from-left';
-      boxes[0].remove();
-
-      document.querySelector('.cards__container').appendChild(tmpNode);
-    }, 500);
-  }
-
-  shiftRight() {
     const boxes = document.querySelectorAll('.box');
     boxes[4].className = 'box move-out-from-right';
     if (this.index > 0) {
@@ -139,6 +104,41 @@ export class ComingComponent implements OnInit {
       boxes[1].className = 'box move-to-position3-from-right';
       boxes[2].className = 'box move-to-position4-from-right';
       boxes[3].className = 'box move-to-position5-from-right';
+    }, 500);
+  }
+
+  shiftRight() {
+    const boxes = document.querySelectorAll('.box');
+    const tmpNode = boxes[0];
+    boxes[0].className = 'box move-out-from-left';
+    if (this.index < 4) {
+      this.index = this.index + 1;
+    } else {
+      this.index = 0;
+    }
+
+    for (let film of this.listComing) {
+      this.image = this.listComing[this.index].hinhAnh;
+      this.name = this.listComing[this.index].tenPhim;
+      this.biDanh = this.listComing[this.index].biDanh;
+      this.description = this.listComing[this.index].moTa;
+      this.trailer = this.listComing[this.index].trailer;
+      this.dateComing = this.listComing[this.index].ngayKhoiChieu;
+      this.points = this.listComing[this.index].danhGia;
+      this.codeFilm = this.listComing[this.index].maPhim;
+    }
+    setTimeout(function () {
+      if (boxes.length > 5) {
+        tmpNode.classList.add('box--hide');
+        boxes[5].className = 'box move-to-position5-from-left';
+      }
+      boxes[1].className = 'box move-to-position1-from-left';
+      boxes[2].className = 'box move-to-position2-from-left';
+      boxes[3].className = 'box move-to-position3-from-left';
+      boxes[4].className = 'box move-to-position4-from-left';
+      boxes[0].remove();
+
+      document.querySelector('.cards__container').appendChild(tmpNode);
     }, 500);
   }
   navigateTo() {

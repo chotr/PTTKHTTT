@@ -11,6 +11,9 @@
   .bg-booking {
     width: 530px;
     margin: auto;
+    .modal-dialog {
+      max-width: 1024px;
+    }
     .modal-header {
       border-bottom: none;
       h5 {

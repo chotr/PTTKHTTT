@@ -1,6 +1,6 @@
 import { OnChanges, SimpleChanges } from '@angular/core';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router, NavigationEnd  } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { CinemasService } from '../../services/cinemas.service';
 import Swal from 'sweetalert2';
 
@@ -24,6 +24,10 @@ export class DsGheComponent implements OnInit, OnChanges {
   totalPrice = 0;
   dsVe = [];
   taiKhoan: any;
+  name: any;
+  email: any;
+  phone: any;
+  disabledT = false;
 
   bgColor = '#ffb100';
   bgColor1 = '#6c757d';
@@ -33,13 +37,16 @@ export class DsGheComponent implements OnInit, OnChanges {
   constructor(
     private activatedRoute: ActivatedRoute,
     private cinema: CinemasService,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     const account = JSON.parse(localStorage.getItem('account') as string);
     if (account !== null) {
       this.taiKhoan = account.taiKhoan;
+      this.email = account.email;
+      this.name = account.hoTen;
+      this.phone = account.soDT;
     }
 
     this.id = this.activatedRoute.snapshot.paramMap.get('id') as string;
@@ -50,10 +57,10 @@ export class DsGheComponent implements OnInit, OnChanges {
 
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
-          return;
+        return;
       }
-      window.scrollTo(0, 0)
-  });
+      window.scrollTo(0, 0);
+    });
   }
   datGheParent(evt, ghe) {
     let giave = [];
@@ -80,6 +87,13 @@ export class DsGheComponent implements OnInit, OnChanges {
     }
     this.price = giave;
     this.dsVe = ds;
+    console.log(this.dsVe);
+    if (this.dsVe !== []) {
+      this.disabledT = true;
+    }
+    if (this.dsVe === []) {
+      this.disabledT = false;
+    }
     for (let i of this.price) {
       total += i;
     }
