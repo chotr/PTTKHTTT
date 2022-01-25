@@ -6,8 +6,14 @@
   color: #7367f0 !important;
   outline: none !important;
   box-shadow: none;
-  &:hover {
+  &:focus {
     outline: none !important;
-    box-shadow: none;
+    box-shadow: none!important;
   }
+}
+
+.btn.focus,
+.btn:focus {
+  outline: 0;
+  box-shadow: none;
 }

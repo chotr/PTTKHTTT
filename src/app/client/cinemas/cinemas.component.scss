@@ -3,6 +3,9 @@
 @import "../../../sass/Helper/mixin";
 @import "../../../sass/Helper/variables";
 .cinema {
+  ::-webkit-scrollbar {
+    width: 4px!important;
+  }
   width: 100%;
   // margin-bottom: 40px;
   padding-top: 30px;
