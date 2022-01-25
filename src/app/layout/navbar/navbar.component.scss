@@ -13,20 +13,24 @@
   left: 0;
   right: 0;
   z-index: 30;
-  border-bottom: 1px solid #d6d6d6;
+  // border-bottom: 1px solid #d6d6d6;
   padding: 7px 18px;
 }
 .navbar .navbar-brand {
-  color: #555;
+  color: #dd003f;
   font-family: "Merienda One", sans-serif;
   padding-left: 0;
   font-size: 20px;
 }
 
+.navbar .nav-item.active {
+  color: #fbfbfb;
+}
 .navbar .nav-item {
   font-family: "Roboto", sans-serif !important;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 100;
+  color: #abb7c4;
 }
 .navbar .dropdown-item i {
   font-size: 15px;
@@ -37,20 +41,22 @@
 }
 .navbar .dropdown-menu {
   border-radius: 1px;
-  border-color: #e5e5e5;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  // left: -36px;
+  border-color: #0f2133;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
   margin: 0.425rem 0 0;
-  background: #fffffff5;
+  background: #0f2133cf;
+}
+.navbar .dropdown-menu a:hover {
+  background: #0f213300;
 }
 .navbar .dropdown-menu a {
-  color: #777;
+  color: #abb7c4;
   padding: 8px 20px;
   line-height: normal;
 }
 .navbar .dropdown-menu a:hover,
 .navbar .dropdown-menu a:active {
-  color: #333;
+  color: #abb7c4;
 }
 
 .navbar .badge {
@@ -70,7 +76,8 @@
   background: transparent !important;
 }
 .navbar {
-  background: #fffffff5;
+  // background: #fffffff5;
+  background: #0f2133;
   a {
     cursor: pointer;
   }
@@ -79,9 +86,9 @@
   }
   .dropdown {
     .nav-link {
-      font-weight: 500;
-      font-size: 15px;
-      color: #1e1e1e;
+      font-size: 18px;
+      font-weight: 100;
+      color: #abb7c4;
     }
     .dropdown-item {
       font-size: 15px;
