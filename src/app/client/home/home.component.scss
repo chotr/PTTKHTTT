@@ -28,6 +28,7 @@
     }
   }
   .search {
+    padding-bottom: 30px;
     h2 {
       font-size: 37px;
       cursor: context-menu;
@@ -51,6 +52,10 @@
         }
       }
       button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        vertical-align: middle;
         background: #ffffff00;
         border-radius: 0;
         border: none;
