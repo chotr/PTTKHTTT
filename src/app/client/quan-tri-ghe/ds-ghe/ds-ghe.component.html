@@ -76,7 +76,47 @@
             </div>
         </div>
         <div class="booking_button text-center py-4">
-            <button (click)="bookingSubmit()" class="btn btn-success">Đặt vé</button>
+            <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Đặt vé</button>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Xác nhận đặt vé</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="note">
+                            <p style="color:#ae8d19">*Lưu ý: quý khách vui lòng kiểm tra chính xác thông tin ghế và giá vé đã đặt</p>
+                        </div>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th scope="col">Số ghế</th>
+                                    <th scope="col"><span>Giá vé</span></th>
+                                </tr>
+                                <ng-container *ngFor=" let ghe of soGheDangDat">
+                                    <tr>
+                                        <th scope="col"><span>{{ghe.tenGhe}}</span></th>
+                                        <th scope="col"><span>{{ghe.giaVe | number}}</span></th>
+                                    </tr>
+                                </ng-container>
+                                <tr>
+                                    <th scope="col">Tổng tiền:</th>
+                                    <th scope="col"><span>{{totalPrice | number}}</span></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button (click)="bookingSubmit()" type="button" data-dismiss="modal" class="btn btn-primary">Xác nhận</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<!-- (click)="bookingSubmit()" -->

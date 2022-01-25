@@ -67,6 +67,7 @@ export class DashboardComponent implements OnInit {
      ]
    }
   };
+  
   barChartLabels1: Label[] = ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7'];
   barChartType1: ChartType = 'bar';
   barChartLegend1 = true;
@@ -76,7 +77,6 @@ export class DashboardComponent implements OnInit {
     { backgroundColor: 'green' },
   ]
   
-
   barChartData: ChartDataSets[] = [
     { data: [9333, 9800, 6000, 5821, 2500, 0, 0], label: 'Số lượng vé bán' },
   ];
