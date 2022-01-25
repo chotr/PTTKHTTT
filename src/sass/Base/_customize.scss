@@ -1,0 +1,13 @@
+.swal2-styled.swal2-confirm {
+  border-radius: 0.25em;
+  background: initial;
+  background-color: #ffffff !important;
+  border: 2px solid #7367f0 !important;
+  color: #7367f0 !important;
+  outline: none !important;
+  box-shadow: none;
+  &:hover {
+    outline: none !important;
+    box-shadow: none;
+  }
+}

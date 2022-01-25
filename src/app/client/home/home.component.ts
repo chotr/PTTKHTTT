@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CinemasService } from '../services/cinemas.service';
 import { MovieService } from '../services/movie.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -140,13 +141,46 @@ export class HomeComponent implements OnInit {
   }
   getMaLC(maLC: any, ngayChieu): void {
     this.maLC = maLC;
-    this.lc = ngayChieu
-    if(this.maLC !== "Chọn giờ chiếu ..."){
-      this.disabledT = true
+    this.lc = ngayChieu;
+    if (this.maLC !== 'Chọn giờ chiếu ...') {
+      this.disabledT = true;
     }
   }
   sbmDatVe() {
-    this.router.navigate(['client/danhSachGhe', this.maLC]);
+    const account = JSON.parse(localStorage.getItem('account') as string);
+    if (account !== null) {
+      if (
+        this.tenPhim === 'Chọn phim ...' ||
+        this.tenRap === 'Chọn rạp ...' ||
+        this.cumRap === 'Chọn cụm rạp ...' ||
+        this.lc === 'Chọn giờ chiếu ...'
+      ) {
+        Swal.fire({
+          title: 'Thông báo',
+          text: 'Vui lòng chọn đủ thông tin!',
+          icon: 'warning',
+          showCancelButton: false,
+          confirmButtonText: 'Xác nhận!',
+        });
+      }
+      if (
+        this.tenPhim !== 'Chọn phim ...' &&
+        this.tenRap !== 'Chọn rạp ...' &&
+        this.cumRap !== 'Chọn cụm rạp ...' &&
+        this.lc !== 'Chọn giờ chiếu ...'
+      ) {
+        this.router.navigate(['client/danhSachGhe', this.maLC]);
+      }
+    }
+    if (account === null) {
+      Swal.fire({
+        title: 'Thông báo',
+        text: 'Vui lòng đăng nhập!',
+        icon: 'warning',
+        showCancelButton: false,
+        confirmButtonText: 'Xác nhận!',
+      });
+    }
   }
   navigateTo() {
     this.router.navigate(['client/movies/Page']);
