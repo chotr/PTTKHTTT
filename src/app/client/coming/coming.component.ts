@@ -67,7 +67,6 @@ export class ComingComponent implements OnInit {
     });
 
     this.replay();
-
   }
   replay() {
     this.windowInterval = window.setInterval(() => {
@@ -118,7 +117,7 @@ export class ComingComponent implements OnInit {
     const tmpNode = boxes[0];
     const url = this.router.url;
 
-    if (url !== '/client/home') {
+    if (url !== '/client/home' && url !== '/home') {
       return clearInterval(this.windowInterval);
     }
 
