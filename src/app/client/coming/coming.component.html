@@ -22,15 +22,15 @@
                 </div>
             </div>
             <div class="image col-md-5">
-                <div class="img">
+                <div id="imgclass" class="img topToDown">
                     <img src="{{image}}" alt="{{biDanh}}">
                 </div>
             </div>
         </div>
     </div>
     <div class="list_coming container-fluid">
-        <div class="button left" (click)="shiftLeft()"><span style="font-size:50px; color:white; z-index: 10;"><i
-                    class="bi bi-chevron-left"></i></span></div>
+        <div class="button left" (click)="shiftLeft()" (click)="stopInter()"><span
+                style="font-size:50px; color:white; z-index: 10;"><i class="bi bi-chevron-left"></i></span></div>
         <div class="cards-wrapper">
             <ul class="cards__container container">
                 <ng-container *ngFor="let film of listComing">
@@ -40,7 +40,7 @@
                 </ng-container>
             </ul>
         </div>
-        <div class="button right" (click)="shiftRight()" id="button_right"><span style="font-size:50px; color:white; z-index: 10;"><i
-                    class="bi bi-chevron-right"></i></span></div>
+        <div class="button right" (click)="shiftRight()" (click)="stopInter()" id="button_right"><span
+                style="font-size:50px; color:white; z-index: 10;"><i class="bi bi-chevron-right"></i></span></div>
     </div>
 </div>

@@ -49,11 +49,9 @@ export class ComingComponent implements OnInit {
     },
     nav: false,
   };
+  windowInterval: number;
   ngOnInit(): void {
     this.moviesService.getDataMovies().subscribe((res) => {
-      // if (res) {
-      //   this.hideloader()
-      // }
       this.listMovie = res;
       this.listComing = this.listMovie.slice(20, 25);
       for (let film of this.listComing) {
@@ -66,9 +64,14 @@ export class ComingComponent implements OnInit {
         this.points = this.listComing[2].danhGia;
         this.codeFilm = this.listComing[2].maPhim;
       }
-      // console.log(this.listComing);
     });
-    const doc = document.getElementById('button_right');
+
+    this.replay();
+  }
+  replay() {
+    this.windowInterval = window.setInterval(() => {
+      this.shiftRight();
+    }, 5000);
   }
   shiftLeft() {
     const boxes = document.querySelectorAll('.box');
@@ -119,7 +122,6 @@ export class ComingComponent implements OnInit {
       this.index = 0;
     }
 
-    // for (let film of this.listComing) {
     this.image = this.listComing[this.index].hinhAnh;
     this.name = this.listComing[this.index].tenPhim;
     this.biDanh = this.listComing[this.index].biDanh;
@@ -128,7 +130,7 @@ export class ComingComponent implements OnInit {
     this.dateComing = this.listComing[this.index].ngayKhoiChieu;
     this.points = this.listComing[this.index].danhGia;
     this.codeFilm = this.listComing[this.index].maPhim;
-    // }
+
     setTimeout(function () {
       if (boxes.length > 5) {
         tmpNode.classList.add('box--hide');
@@ -143,7 +145,18 @@ export class ComingComponent implements OnInit {
       document.querySelector('.cards__container').appendChild(tmpNode);
       boxes[0].className = 'box move-out-from-left';
     }, 0);
-    // setTimeout(this.shiftRight, 5000);
+    this.animationImage();
+  }
+  animationImage() {
+    const element = document.getElementById('imgclass');
+    element.classList.remove('topToDown');
+    setTimeout(() => {
+      element.classList.add('topToDown');
+    }, 0);
+  }
+  stopInter() {
+    clearInterval(this.windowInterval);
+    this.replay();
   }
   navigateTo() {
     this.router.navigate(['client/detail-movie', this.codeFilm]);
