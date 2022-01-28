@@ -67,6 +67,7 @@ export class ComingComponent implements OnInit {
     });
 
     this.replay();
+
   }
   replay() {
     this.windowInterval = window.setInterval(() => {
@@ -115,6 +116,11 @@ export class ComingComponent implements OnInit {
   shiftRight() {
     const boxes = document.querySelectorAll('.box');
     const tmpNode = boxes[0];
+    const url = this.router.url;
+
+    if (url !== '/client/home') {
+      return clearInterval(this.windowInterval);
+    }
 
     if (this.index < 4) {
       this.index = this.index + 1;
@@ -131,7 +137,7 @@ export class ComingComponent implements OnInit {
     this.points = this.listComing[this.index].danhGia;
     this.codeFilm = this.listComing[this.index].maPhim;
 
-    setTimeout(function () {
+    setTimeout(() => {
       if (boxes.length > 5) {
         tmpNode.classList.add('box--hide');
         boxes[5].className = 'box move-to-position5-from-left';
