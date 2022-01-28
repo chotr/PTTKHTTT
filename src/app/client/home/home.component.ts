@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 export class HomeComponent implements OnInit {
   @ViewChild('carouselSlide') carouselSlide: any;
   listMovie: any[] = [];
+  listNewMovie: any[] = [];
   dsRap: any[] = [];
   dsCR: any[] = [];
   dsLC: any[] = [];
@@ -65,11 +66,19 @@ export class HomeComponent implements OnInit {
       this.listMovie = res.slice(10, 20);
       // console.log(this.listMovie);
     });
+    this.listNewMovie = [
+      { id: 1, name: '', image: '', moTa: '', bgImage: '' },
+      { id: 2, name: '', image: '', moTa: '', bgImage: '' },
+      { id: 3, name: '', image: '', moTa: '', bgImage: '' },
+      { id: 4, name: '', image: '', moTa: '', bgImage: '' },
+      { id: 5, name: '', image: '', moTa: '', bgImage: '' },
+    ];
+    
   }
   getMaPhim(maPhim, tenPhim): void {
     this.tenRap = 'Chọn rạp ...';
     this.cumRap = 'Chọn cụm rạp ...';
-    this.lc = 'Chọn giờ chiếu';
+    this.lc = 'Chọn giờ chiếu ...';
     this.dsRap = [];
     this.dsCR = [];
     this.maPhim = maPhim;
@@ -89,7 +98,7 @@ export class HomeComponent implements OnInit {
   }
   getMaRap(maHT, tenHT): void {
     this.cumRap = 'Chọn cụm rạp ...';
-    this.lc = 'Chọn giờ chiếu';
+    this.lc = 'Chọn giờ chiếu ...';
     this.tenRap = tenHT;
     this.maHT = maHT;
     let listTemp = [];
@@ -112,7 +121,7 @@ export class HomeComponent implements OnInit {
     this.dsCR = listTemp;
   }
   getMaCumRap(maCR, tenCR): void {
-    this.lc = 'Chọn giờ chiếu';
+    this.lc = 'Chọn giờ chiếu ...';
     this.cumRap = tenCR;
     let listTemp = [];
     this.cinemaSer
@@ -149,12 +158,7 @@ export class HomeComponent implements OnInit {
   sbmDatVe() {
     const account = JSON.parse(localStorage.getItem('account') as string);
     if (account !== null) {
-      if (
-        this.tenPhim === 'Chọn phim ...' ||
-        this.tenRap === 'Chọn rạp ...' ||
-        this.cumRap === 'Chọn cụm rạp ...' ||
-        this.lc === 'Chọn giờ chiếu ...'
-      ) {
+      if (this.lc === 'Chọn giờ chiếu ...') {
         Swal.fire({
           title: 'Thông báo',
           text: 'Vui lòng chọn đủ thông tin!',

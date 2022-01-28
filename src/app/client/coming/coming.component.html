@@ -15,7 +15,7 @@
                     <p><span><i class="bi bi-calendar2"></i></span> {{dateComing | date:'dd/MM/yyyy'}}</p>
                 </div>
                 <div class="description">
-                    <p>{{description | shortCut:200}}</p>
+                    <p>{{description}}</p>
                 </div>
                 <div class="more">
                     <a (click)="navigateTo()">Chi tiết</a>
@@ -32,7 +32,7 @@
         <div class="button left" (click)="shiftLeft()"><span style="font-size:50px; color:white; z-index: 10;"><i
                     class="bi bi-chevron-left"></i></span></div>
         <div class="cards-wrapper">
-            <ul class="cards__container">
+            <ul class="cards__container container">
                 <ng-container *ngFor="let film of listComing">
                     <li class="box">
                         <img [src]="film.hinhAnh">
@@ -40,7 +40,7 @@
                 </ng-container>
             </ul>
         </div>
-        <div class="button right" (click)="shiftRight()"><span style="font-size:50px; color:white; z-index: 10;"><i
+        <div class="button right" (click)="shiftRight()" id="button_right"><span style="font-size:50px; color:white; z-index: 10;"><i
                     class="bi bi-chevron-right"></i></span></div>
     </div>
 </div>
