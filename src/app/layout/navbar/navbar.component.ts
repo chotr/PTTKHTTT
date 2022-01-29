@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
 import { LoginService } from 'src/app/provider/services/login.service';
 import { AccountService } from '../../provider/services/account.service';
 import { ViewportScroller } from '@angular/common';
@@ -36,6 +37,8 @@ export class NavbarComponent implements OnInit {
       this.userName = account.taiKhoan;
     }
     this.accountInfo = account;
+
+    this.scrollNav();
   }
   public onClick(elementId: string): void {
     this.viewportScroller.scrollToAnchor(elementId);
@@ -50,5 +53,29 @@ export class NavbarComponent implements OnInit {
   }
   onClickedOutside(e: Event) {
     this.showBox = false;
+  }
+  scrollNav() {
+    window.addEventListener(
+      'scroll',
+      function (event) {
+        const element = document.getElementById('navbar-client');
+        let top = this.scrollY;
+        if (top >= 80) {
+          element.classList.add('nav-fixed-top');
+        } else {
+          // if (top >= 50 && top < 100) {
+          //   element.classList.remove('nav-fixed-top');
+          //   element.classList.add('nav-fixed-back');
+          //   setTimeout(() => {
+          //     element.classList.remove('nav-fixed-back');
+          //   }, 0.6);
+          // } else {
+          //   element.classList.remove('nav-fixed-top');
+          // }
+          element.classList.remove('nav-fixed-top');
+        }
+      },
+      false
+    );
   }
 }
