@@ -138,6 +138,7 @@ export class HomeComponent implements OnInit {
       this.listMovie = res.slice(10, 20);
     });
     this.getInfo(0);
+    this.replay();
   }
   getMaPhim(maPhim, tenPhim): void {
     this.tenRap = 'Chọn rạp ...';
@@ -311,5 +312,10 @@ export class HomeComponent implements OnInit {
       element2.classList.add('leftToRightInfo');
       element.classList.add('fade-in');
     }, 0);
+  }
+  replay() {
+    this.windowInterval = window.setInterval(() => {
+      this.shiftRight();
+    }, 5000);
   }
 }
