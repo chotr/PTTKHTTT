@@ -1,6 +1,6 @@
 <div class="home" id="home">
-  <div #carouselSlide class="Carousel" id="Carousel">
-    <owl-carousel-o style="height:80%" [options]="customOptions">
+  <div class="Carousel" id="Carousel">
+    <!-- <owl-carousel-o style="height:80%" [options]="customOptions">
       <ng-template class="fade" carouselSlide>
         <div class="fade_bg"><img width="1280px" height="550px" src="../../../assets/images/banner1.png"></div>
       </ng-template>
@@ -10,9 +10,39 @@
       <ng-template class="fade" carouselSlide>
         <div class="fade_bg"><img width="1280px" height="550px" src="../../../assets/images/banner3.png"></div>
       </ng-template>
-    </owl-carousel-o>
+    </owl-carousel-o> -->
 
-    <div class="bg-fade">
+    <div class="carousel-content">
+      <div class="info_movie">
+        <div class="info leftToRightInfo" id="info">
+          <div class="name">
+            <h3>{{name}}</h3>
+          </div>
+          <div class="description">
+            <p>{{description}}</p>
+          </div>
+        </div>
+        <div class="image" id="imageCR">
+          <img src="{{bg_image}}" alt="{{biDanh}}">
+        </div>
+      </div>
+      <div class="list_movie_new">
+        <div class="button left" (click)="shiftLeft()" (click)="stopInter()"><span
+            style="font-size:50px; color:white; z-index: 10;"><i class="bi bi-chevron-left"></i></span></div>
+        <div class="cards-wrapper_carousel">
+          <ul class="cards__container_carousel container-fluid">
+            <ng-container *ngFor="let film of listNewMovie">
+              <li class="boxs">
+                <div class="img">
+                  <img [src]="film.image" class="img-fade">
+                </div>
+              </li>
+            </ng-container>
+          </ul>
+        </div>
+        <div class="button right" (click)="shiftRight()" (click)="stopInter()" id="button_right1"><span
+            style="font-size:50px; color:white; z-index: 10;"><i class="bi bi-chevron-right"></i></span></div>
+      </div>
     </div>
   </div>
   <div class="search text-center container">

@@ -60,10 +60,10 @@ export class NavbarComponent implements OnInit {
       function (event) {
         const element = document.getElementById('navbar-client');
         let top = this.scrollY;
-        if (top >= 80) {
+        if (top >= 70) {
           element.classList.add('nav-fixed-top');
         } else {
-          // if (top >= 50 && top < 100) {
+          // if (top < 80) {
           //   element.classList.remove('nav-fixed-top');
           //   element.classList.add('nav-fixed-back');
           //   setTimeout(() => {
