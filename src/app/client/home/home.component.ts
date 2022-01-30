@@ -302,7 +302,10 @@ export class HomeComponent implements OnInit {
     this.animationImage();
     console.log(this.index);
   }
-  stopInter() {}
+  stopInter() {
+    clearInterval(this.windowInterval);
+    this.replay();
+  }
   animationImage() {
     const element = document.getElementById('imageCR');
     const element2 = document.getElementById('info');
