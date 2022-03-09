@@ -12,7 +12,7 @@
       </ng-template>
     </owl-carousel-o> -->
 
-    <div class="carousel-content">
+    <div class="carousel-content" id="carousel-content">
       <div class="info_movie">
         <div class="info leftToRightInfo" id="info">
           <div class="name">
@@ -23,18 +23,20 @@
           </div>
         </div>
         <div class="image" id="imageCR">
-          <img src="{{bg_image}}" alt="{{biDanh}}">
+          <img src="{{bg_image}}" alt="{{biDanh}}" id="bg-CR">
         </div>
       </div>
+      
       <div class="list_movie_new">
         <div class="button left" (click)="shiftLeft()" (click)="stopInter()"><span
             style="font-size:50px; color:white; z-index: 10;"><i class="bi bi-chevron-left"></i></span></div>
         <div class="cards-wrapper_carousel">
+
           <ul class="cards__container_carousel container-fluid">
             <ng-container *ngFor="let film of listNewMovie">
-              <li class="boxs">
+              <li class="boxs" data-id="{{film.id -1}}">
                 <div class="img">
-                  <img [src]="film.image" class="img-fade">
+                  <img [src]="film.image" class="img-fade" height="250px" >
                 </div>
               </li>
             </ng-container>

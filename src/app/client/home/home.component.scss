@@ -21,39 +21,17 @@
         rgba(255, 255, 255, 0) 100%
       );
     }
-    .fade_bg {
-      position: relative;
-      img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-      }
-      &::before {
-        background: linear-gradient(
-          0deg,
-          #000000ba 0%,
-          rgb(75 75 75 / 0%) 100%
-        );
-        content: "";
-        display: block;
-        height: 100%;
-        position: absolute;
-        width: 100%;
-        z-index: 10;
-      }
-    }
     .carousel-content {
       height: 750px;
     }
     .info_movie {
       cursor: context-menu;
-      min-height: 45vh;
+      min-height: 350px;
       .info {
         position: absolute;
         width: 35%;
         top: 30%;
         left: 10%;
-        bottom: 0;
         z-index: 20;
       }
       img {
@@ -207,18 +185,15 @@
 }
 
 .boxs {
-  /*     margin: -1.5rem; */
   width: 12rem;
-  // -webkit-box-shadow: 2px 4px 15px 6px rgba(0, 0, 0, 0.47);
-  // box-shadow: 2px 4px 15px 6px rgba(0, 0, 0, 0.47);
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  transition: all 0.5s;
+  transition: all 0.7s;
   z-index: 3;
   padding: 7px;
-  opacity: 1;
+  height: 18rem;
 
   img {
     width: 100%;
@@ -228,7 +203,8 @@
 
 .boxs:nth-child(1) {
   transition: all 0.5s;
-  width: 13rem;
+  // width: 13rem;
+  transform: scale(1.1);
   .img {
     &::before {
       background: #ffffff00;
@@ -259,9 +235,6 @@
   to {
     transform: translateX(0);
   }
-}
-
-.move-out-from-right-CR {
 }
 
 .move-to-position7-from-left-CR {
@@ -342,30 +315,86 @@
     transform: scale(0.95) translateX(100%);
   }
   to {
-    transform: scale(1) translateX(0);
+    transform: scale(1.1) translateX(0);
   }
 }
-
+// to right
 .move-to-position7-from-right-CR {
+  animation: moveToP7RightCR 0.7s ease-in-out;
 }
-
+@keyframes moveToP7RightCR {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
 .move-to-position6-from-right-CR {
+  animation: moveToP6RightCR 0.7s ease-in-out;
 }
-
+@keyframes moveToP6RightCR {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
 .move-to-position5-from-right-CR {
-  animation: moveToP5Right 0.7s ease-in-out;
+  animation: moveToP5RightCR 0.7s ease-in-out;
+}
+@keyframes moveToP5RightCR {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 .move-to-position4-from-right-CR {
-  animation: moveToP4Right 0.7s ease-in-out;
+  animation: moveToP4RightCR 0.7s ease-in-out;
+}
+@keyframes moveToP4RightCR {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 .move-to-position3-from-right-CR {
-  animation: moveToP3Right 0.7s ease-in-out;
+  animation: moveToP3RightCR 0.7s ease-in-out;
+}
+@keyframes moveToP3RightCR {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 .move-to-position2-from-right-CR {
-  animation: moveToP2Right 0.7s ease-in-out;
+  animation: moveToP2RightCR 0.7s ease-in-out;
+}
+@keyframes moveToP2RightCR {
+  from {
+    transform: scale(1) translateX(-100%);
+  }
+  to {
+    transform: scale(0.98) translateX(0);
+  }
 }
 .move-to-position1-from-right-CR {
-  animation: moveToP1Right 0.7s ease-in-out;
+  animation: moveToP1RightCR 0.7s ease-in-out;
+}
+@keyframes moveToP1RightCR {
+  from {
+    transform: scale(0.75) translateX(-100%);
+  }
+  to {
+    transform: scale(1) translateX(0);
+  }
 }
 
 @keyframes moveOutLeft {
@@ -377,12 +406,16 @@
   }
 }
 
+.move-out-from-right {
+  animation: moveOutRight 0.7s ease-in-out;
+}
+
 @keyframes moveOutRight {
   from {
-    transform: translateX(100%);
+    transform: scale(0.15) translateX(-100%);
   }
   to {
-    transform: translateX(0);
+    transform: scale(1) translateX(0);
   }
 }
 
@@ -395,8 +428,36 @@
     height: 180%;
   }
 }
+
 @include responsive("large") {
   .home {
+    .Carousel {
+      &::before {
+        height: 590px;
+      }
+      .carousel-content {
+        height: 550px;
+      }
+      .info_movie {
+        cursor: context-menu;
+        min-height: 150px;
+        .info {
+          width: 45%;
+          top: 30%;
+        }
+        img {
+          height: 550px;
+        }
+        .name {
+          h3 {
+            font-size: 25px;
+          }
+        }
+        p {
+          font-size: 12px;
+        }
+      }
+    }
     .list_movie {
       .title {
         padding: 42px;
@@ -408,8 +469,12 @@
         font-size: 14px;
       }
     }
+    .button {
+      top: 65%;
+    }
   }
 }
+
 @include responsive("medium") {
   .home {
     .list_movie {
@@ -422,6 +487,7 @@
     }
   }
 }
+
 @include responsive("small") {
   .home {
     .cinema {
@@ -454,6 +520,174 @@
 @keyframes leftToRightInfo {
   from {
     transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+// move
+.position-item-7-move {
+  animation: moveToFirt7 0.7s ease-in-out;
+}
+
+@keyframes moveToFirt7 {
+  from {
+    transform: translateX(700%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.position-item-6-move {
+  animation: moveToFirt6 0.7s ease-in-out;
+}
+
+@keyframes moveToFirt6 {
+  from {
+    transform: translateX(600%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.position-item-5-move {
+  animation: moveToFirt5 0.7s ease-in-out;
+}
+
+@keyframes moveToFirt5 {
+  from {
+    transform: translateX(500%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.position-item-4-move {
+  animation: moveToFirt4 0.7s ease-in-out;
+}
+
+@keyframes moveToFirt4 {
+  from {
+    transform: translateX(400%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.position-item-3-move {
+  animation: moveToFirt3 0.7s ease-in-out;
+}
+
+@keyframes moveToFirt3 {
+  from {
+    transform: translateX(300%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.position-item-2-move {
+  animation: moveToFirt2 0.7s ease-in-out;
+}
+
+@keyframes moveToFirt2 {
+  from {
+    transform: translateX(200%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.position-item-1-move {
+  animation: moveToFirt1 0.7s ease-in-out;
+}
+
+@keyframes moveToFirt1 {
+  from {
+    transform: scale(0.95) translateX(100%);
+  }
+  to {
+    transform: scale(1) translateX(0);
+  }
+}
+// behind
+.position-item-2-move-behind {
+  animation: moveBehind2 0.7s ease-in-out;
+}
+
+@keyframes moveBehind2 {
+  from {
+    transform: translateX(200%);
+  }
+  to {
+    transform: translateX(-0);
+  }
+}
+
+.position-item-3-move-behind {
+  animation: moveBehind3 0.7s ease-in-out;
+}
+
+@keyframes moveBehind3 {
+  from {
+    transform: translateX(300%);
+  }
+  to {
+    transform: translateX(-0);
+  }
+}
+
+.position-item-4-move-behind {
+  animation: moveBehind4 0.7s ease-in-out;
+}
+
+@keyframes moveBehind4 {
+  from {
+    transform: translateX(400%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.position-item-5-move-behind {
+  animation: moveBehind5 0.7s ease-in-out;
+}
+
+@keyframes moveBehind5 {
+  from {
+    transform: translateX(500%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.position-item-6-move-behind {
+  animation: moveBehind6 0.7s ease-in-out;
+}
+
+@keyframes moveBehind6 {
+  from {
+    transform: translateX(600%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.position-item-7-move-behind {
+  animation: moveBehind7 0.7s ease-in-out;
+}
+@keyframes moveBehind7 {
+  from {
+    transform: translateX(700%);
   }
   to {
     transform: translateX(0);

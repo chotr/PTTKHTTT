@@ -63,15 +63,6 @@ export class NavbarComponent implements OnInit {
         if (top >= 70) {
           element.classList.add('nav-fixed-top');
         } else {
-          // if (top < 80) {
-          //   element.classList.remove('nav-fixed-top');
-          //   element.classList.add('nav-fixed-back');
-          //   setTimeout(() => {
-          //     element.classList.remove('nav-fixed-back');
-          //   }, 0.6);
-          // } else {
-          //   element.classList.remove('nav-fixed-top');
-          // }
           element.classList.remove('nav-fixed-top');
         }
       },

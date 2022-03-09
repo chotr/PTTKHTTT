@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  HostListener,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { CinemasService } from '../services/cinemas.service';
 import { MovieService } from '../services/movie.service';
@@ -10,7 +16,7 @@ import Swal from 'sweetalert2';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild('carouselSlide') carouselSlide: any;
   listMovie: any[] = [];
   listNewMovie = [
@@ -53,7 +59,7 @@ export class HomeComponent implements OnInit {
     {
       id: 5,
       name: 'Spider-Man: No Way Home',
-      image: '../../../assets/imageMV/image_spider.jpg',
+      image: '../../../assets/imageMV/nguoi-tinh.jpg',
       moTa: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit illo nobis a rerum quae tenetur sint quas dolor maiores unde officia, quo nulla minus voluptatum eligendi illum voluptatem quisquam iste.Aut, sequi veniam possimus natus consequuntur accusantium alias recusandae cum fuga. Ipsam obcaecati temporibus atque aliquid quos. Pariatur minima aspernatur quis, id, possimus repellendus odio porro recusandae perferendis iste harum.',
       bgImage: '../../../assets/imageMV/banner_spider.jpg',
       biDanh: '',
@@ -70,10 +76,10 @@ export class HomeComponent implements OnInit {
     },
     {
       id: 7,
-      name: 'Spider-Man: No Way Home',
-      image: '../../../assets/imageMV/image_spider.jpg',
+      name: 'Chia Khoá Trăm Tỷ',
+      image: '../../../assets/imageMV/image_chiaKhoaTramTy.jpg',
       moTa: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit illo nobis a rerum quae tenetur sint quas dolor maiores unde officia, quo nulla minus voluptatum eligendi illum voluptatem quisquam iste.Aut, sequi veniam possimus natus consequuntur accusantium alias recusandae cum fuga. Ipsam obcaecati temporibus atque aliquid quos. Pariatur minima aspernatur quis, id, possimus repellendus odio porro recusandae perferendis iste harum.',
-      bgImage: '../../../assets/imageMV/banner_spider.jpg',
+      bgImage: '../../../assets/imageMV/banner_chiaKhoaTramTy.jpg',
       biDanh: '',
       ngayCHieu: '',
     },
@@ -97,6 +103,7 @@ export class HomeComponent implements OnInit {
   tenRap = 'Chọn rạp ...';
   cumRap = 'Chọn cụm rạp ...';
   lc = 'Chọn giờ chiếu ...';
+  selected: number;
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -129,6 +136,10 @@ export class HomeComponent implements OnInit {
     private moviesService: MovieService,
     private cinemaSer: CinemasService
   ) {}
+  ngAfterViewInit(): void {
+    // this.setTarget();
+    // this.chooseItem();
+  }
 
   ngOnInit(): void {
     this.moviesService.getDataMovies().subscribe((res) => {
@@ -137,9 +148,11 @@ export class HomeComponent implements OnInit {
       }
       this.listMovie = res.slice(10, 20);
     });
+
     this.getInfo(0);
-    this.replay();
+    this.stopInter();
   }
+
   getMaPhim(maPhim, tenPhim): void {
     this.tenRap = 'Chọn rạp ...';
     this.cumRap = 'Chọn cụm rạp ...';
@@ -259,6 +272,8 @@ export class HomeComponent implements OnInit {
     document.getElementById('list_movie').style.display = 'block';
     document.getElementById('cinema').style.display = 'block';
   }
+
+  // carousel part code
   getInfo(index) {
     this.image = this.listNewMovie[index].image;
     this.name = this.listNewMovie[index].name;
@@ -267,7 +282,39 @@ export class HomeComponent implements OnInit {
     this.description = this.listNewMovie[index].moTa;
     this.ngayCHieu = this.listNewMovie[index].ngayCHieu;
   }
-  shiftLeft() {}
+  shiftLeft() {
+    const boxes = document.querySelectorAll('.boxs');
+
+    if (this.index > 0) {
+      this.index = this.index - 1;
+    } else {
+      this.index = 6;
+    }
+    this.getInfo(this.index);
+
+    setTimeout(() => {
+      const noOfCards = boxes.length;
+      if (noOfCards > 6) {
+        boxes[6].className = 'boxs box--hide';
+      }
+
+      const tmpNode = boxes[noOfCards - 1];
+      tmpNode.classList.remove('boxs--hide');
+      boxes[noOfCards - 1].remove();
+      let parentObj = document.querySelector('.cards__container_carousel');
+      parentObj.insertBefore(tmpNode, parentObj.firstChild);
+      tmpNode.className = 'boxs move-to-position1-from-right-CR';
+      boxes[0].className = 'boxs move-to-position2-from-right-CR';
+      boxes[1].className = 'boxs move-to-position3-from-right-CR';
+      boxes[2].className = 'boxs move-to-position4-from-right-CR';
+      boxes[3].className = 'boxs move-to-position5-from-right-CR';
+      boxes[4].className = 'boxs move-to-position6-from-right-CR';
+      boxes[5].className = 'boxs move-to-position7-from-right-CR';
+      boxes[6].className = 'boxs move-to-position1-from-right-CR';
+    }, 0);
+    // this.shiftRight();
+    this.animationImage();
+  }
   shiftRight() {
     const boxes = document.querySelectorAll('.boxs');
     const tmpNode = boxes[0];
@@ -275,7 +322,6 @@ export class HomeComponent implements OnInit {
     if (url !== '/client/home' && url !== '/home') {
       return clearInterval(this.windowInterval);
     }
-
     if (this.index < 6) {
       this.index = this.index + 1;
     } else {
@@ -284,9 +330,9 @@ export class HomeComponent implements OnInit {
     this.getInfo(this.index);
 
     setTimeout(() => {
-      if (boxes.length > 7) {
+      if (boxes.length > 6) {
         tmpNode.classList.add('boxs--hide');
-        boxes[7].className = 'boxs move-to-position7-from-left-CR';
+        boxes[6].className = 'boxs move-to-position7-from-left-CR';
       }
       boxes[1].className = 'boxs move-to-position1-from-left-CR';
       boxes[2].className = 'boxs move-to-position2-from-left-CR';
@@ -300,7 +346,6 @@ export class HomeComponent implements OnInit {
       boxes[0].className = 'boxs move-out-from-left-CR';
     }, 0);
     this.animationImage();
-    console.log(this.index);
   }
   stopInter() {
     clearInterval(this.windowInterval);
@@ -320,5 +365,89 @@ export class HomeComponent implements OnInit {
     this.windowInterval = window.setInterval(() => {
       this.shiftRight();
     }, 5000);
+  }
+  // setTarget() {
+  //   const number = document.querySelectorAll('.boxs').length;
+  //   for (let i = 0; i < number; i++) {
+  //     //remove and set data
+  //     let boxes = document.querySelectorAll('.boxs');
+  //     boxes.item(i).removeAttribute('data-target');
+  //     boxes.item(i).setAttribute('data-target', i.toString());
+  //   }
+  // }
+  // chooseItem() {
+  //   const number = document.querySelectorAll('.boxs').length;
+  //   let selected = 0;
+  //   for (let i = 0; i < number; i++) {
+  //     let boxes = document.querySelectorAll('.boxs');
+  //     boxes[i].addEventListener('click', () => {
+  //       this.setTarget();
+  //       let active = boxes[i].getAttribute('data-target');
+  //       let idFilm = boxes[i].getAttribute('data-id');
+  //       selected = parseInt(active);
+  //       this.setMovie(parseInt(idFilm));
+  //       this.setContent(selected);
+  //       console.log(selected);
+  //     });
+  //   }
+  // }
+  setMovie(id) {}
+  addChild(child) {
+    document
+      .querySelector('.boxs')
+      .closest('.cards__container_carousel')
+      .appendChild(child);
+  }
+  setContent(selected: number) {
+    const number = document.querySelectorAll('.boxs').length;
+
+    for (let index = 0; index < number; index++) {
+      let boxs = document.querySelectorAll('.boxs');
+
+      if (index === selected) {
+        boxs[index].className = 'boxs position-item-' + index + '-move';
+      } else if (index > selected) {
+        boxs[index].className = 'boxs position-item-' + index + '-move-behind';
+      } else if (index < selected) {
+        let temp = document.querySelectorAll('.boxs')[index];
+        let temp1 = document.querySelectorAll('.boxs')[index];
+        boxs[index].className =
+          'boxs position-item-' + (index + 1) + '-move-FO';
+        this.addChild(temp1);
+        //let temp = document.querySelectorAll('.boxs')[index];
+        //let temp1 = document.querySelectorAll('.boxs')[index];
+        // let temp1 = boxs[index];
+        //document.querySelector('.cards__container_carousel').appendChild(temp1);
+        //temp1.className = 'boxs position-item-' + temp1 + '-move-after';
+
+        setTimeout(() => {
+          // console.log(temp);
+          // console.log("/////////////");
+          // console.log(temp1);
+          // temp.remove();
+          function test() {
+            let res = 0;
+            for (let i = 0; i <= 100000; i++) {
+              res++;
+            }
+            return 'Fist';
+          }
+          console.log(test());
+          console.log('Later');
+          // document
+          //   .querySelector('.cards__container_carousel')
+          //   .appendChild(temp);
+          // // boxs[index].className = 'boxs';
+          // temp.className = 'boxs position-item-' + temp + '-move-after';
+        }, 5000);
+        // this.setTarget();
+      }
+    }
+    // for (let index = 0; index < number; index++) {
+    //   if(index < selected){
+    //     let temp1 = document.querySelectorAll('.boxs')[index];
+    //     document.querySelector('.cards__container_carousel').appendChild(temp1);
+    //   }
+    // }
   }
 }
