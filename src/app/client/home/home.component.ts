@@ -227,8 +227,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
     console.log(this.dsLC);
   }
   getMaLC(maLC: any, ngayChieu): void {
+    let gioChieu = ngayChieu.split('T');
+    let gioChieuHHmm = gioChieu[1].split(':');
     this.maLC = maLC;
-    this.lc = ngayChieu;
+    this.lc = gioChieuHHmm[0] + ':' + gioChieuHHmm[1];
     if (this.maLC !== 'Chọn giờ chiếu ...') {
       this.disabledT = true;
     }

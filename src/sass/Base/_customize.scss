@@ -8,7 +8,7 @@
   box-shadow: none;
   &:focus {
     outline: none !important;
-    box-shadow: none!important;
+    box-shadow: none !important;
   }
 }
 
@@ -16,4 +16,8 @@
 .btn:focus {
   outline: 0;
   box-shadow: none;
+}
+
+.top_space {
+  margin-top: 100px;
 }
