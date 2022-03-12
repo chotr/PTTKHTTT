@@ -1,3 +1,7 @@
+@import "../../../sass/Base/customize";
+@import "../../../sass/Base/reset";
+@import "../../../sass/Helper/mixin";
+@import "../../../sass/Helper/variables";
 .coming_content {
   background: url(../../../assets/images/slider-bg.jpg) no-repeat;
   background-position: center;
@@ -8,7 +12,7 @@
   .title {
     h2 {
       font-weight: 100;
-      font-size: 0px;
+      font-size: 35px;
       text-align: center;
       color: #cbafaf;
       // text-transform: capitalize;
@@ -120,6 +124,8 @@
   justify-content: center;
   height: 25rem;
   padding-left: 0;
+  padding-right: 0;
+  overflow: hidden;
 }
 
 .box {
@@ -210,6 +216,188 @@
 }
 .move-to-position1-from-right {
   animation: moveToP1Right 0.7s ease-in-out;
+}
+
+@include responsive("extra-large") {
+  .coming_content {
+    .info_coming {
+      padding: 20px 0;
+      min-height: 350px;
+      .name {
+        h3 {
+          font-size: 30px;
+        }
+      }
+      .point {
+        p {
+          font-size: 14px;
+        }
+      }
+      .date_coming {
+        font-size: 14px;
+      }
+      .description {
+        p {
+          font-size: 14px;
+        }
+      }
+      .more {
+        font-size: 14px;
+      }
+      .image {
+        .img {
+          right: 4%;
+        }
+      }
+    }
+  }
+}
+
+@include responsive("large") {
+  .coming_content {
+    .info_coming {
+      padding: 20px 0;
+      min-height: 300px;
+      .name {
+        h3 {
+          font-size: 25px;
+        }
+      }
+      .point {
+        p {
+          font-size: 12px;
+        }
+      }
+      .date_coming {
+        font-size: 12px;
+      }
+      .description {
+        padding: 0;
+        p {
+          font-size: 12px;
+        }
+      }
+      .more {
+        font-size: 12px;
+      }
+      .image {
+        .img {
+          width: 60%;
+        }
+      }
+    }
+
+    .list_coming {
+      .button {
+        top: 40%;
+        span {
+          font-size: 40px !important;
+        }
+      }
+    }
+    .cards__container {
+      height: 16rem;
+    }
+  }
+}
+
+@include responsive("medium") {
+  .coming_content {
+    .info_coming {
+      padding: 20px 0;
+      min-height: 300px;
+      .name {
+        h3 {
+          font-size: 25px;
+        }
+      }
+      .point {
+        p {
+          font-size: 12px;
+        }
+      }
+      .date_coming {
+        font-size: 12px;
+      }
+      .description {
+        padding: 0;
+        p {
+          font-size: 12px;
+        }
+      }
+      .more {
+        font-size: 12px;
+      }
+      .image {
+        .img {
+          width: 100%;
+        }
+      }
+    }
+    .cards__container {
+      height: 12rem;
+    }
+  }
+}
+
+@include responsive("small") {
+  .coming_content {
+    .info_coming {
+      padding: 20px 0;
+      min-height: 300px;
+      .row {
+        margin: 0 !important;
+      }
+      .name {
+        h3 {
+          font-size: 25px;
+        }
+      }
+      .point {
+        p {
+          font-size: 12px;
+        }
+      }
+      .date_coming {
+        font-size: 12px;
+      }
+      .description {
+        padding: 0;
+        p {
+          font-size: 11px;
+        }
+      }
+      .more {
+        font-size: 11px;
+      }
+      .image {
+        .img {
+          right: 7%;
+          padding-top: 60px;
+        }
+      }
+    }
+
+    .list_coming {
+      .button {
+        top: 40%;
+        span {
+          font-size: 26px !important;
+        }
+      }
+    }
+    .cards__container {
+      .box{
+        width: 7rem;
+      }
+      li:nth-child(1) {
+        display: none;
+      }
+      li:nth-child(5) {
+        display: none;
+      }
+    }
+  }
 }
 
 @keyframes moveOutLeft {
