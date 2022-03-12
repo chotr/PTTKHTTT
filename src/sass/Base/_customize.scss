@@ -21,29 +21,29 @@
 }
 
 .top_space {
-  margin-top: 100px;
+  margin-top: 100px!important;
 }
 
 @include responsive("extra-large") {
   .top_space {
-    margin-top: 80px;
+    margin-top: 80px!important;
   }
 }
 
 @include responsive("large") {
   .top_space {
-    margin-top: 60px;
+    margin-top: 60px!important;
   }
 }
 
 @include responsive("medium") {
   .top_space {
-    margin-top: 50px;
+    margin-top: 50px!important;
   }
 }
 
 @include responsive("small") {
   .top_space {
-    margin-top: 40px;
+    margin-top: 40px!important;
   }
 }

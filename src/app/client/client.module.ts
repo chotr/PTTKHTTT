@@ -9,7 +9,6 @@ import { DetailMovieComponent } from './detail-movie/detail-movie.component';
 import { ProviderModule } from '../provider/provider.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { JwPaginationModule } from 'jw-angular-pagination';
-import { LayoutComponent } from './layout/layout.component';
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -108,7 +107,6 @@ const routes = [
     MoviesComponent,
     CardMovieComponent,
     DetailMovieComponent,
-    LayoutComponent,
     HomeComponent,
     UserComponent,
     LoginComponent,

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-xl navbar-light" id="navbar-client" >
 	<a routerLink="/home" class="navbar-brand">SAYOHYEAH</a>
-	<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+	<button type="button" id="menuBtn" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 
@@ -10,9 +10,9 @@
 			<a routerLink="/client/home" (click)="onClick('cinema')"   class="nav-item nav-link">Cụm rạp</a>
 			<a routerLink="/client/home" (click)="onClick('coming')"  class="nav-item nav-link">Sắp chiếu</a>
 		</div>
-		<div class="navbar-nav user ml-auto">
+		<div class="navbar-nav user ml-l-0 ml-xl-auto">
 			<div *ngIf="accountInfo === null" class="nav-item">
-				<button class="btn" routerLink="/client/login">Đăng nhập</button>
+				<a class="sigin" routerLink="/client/login">Đăng nhập</a>
 			</div>
 			<div *ngIf="accountInfo !== null" class="nav-item dropdown">
 				<a *ngIf="accountInfo.maLoaiNguoiDung === 'QuanTri'" data-toggle="dropdown"

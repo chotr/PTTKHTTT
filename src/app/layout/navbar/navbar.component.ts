@@ -39,6 +39,7 @@ export class NavbarComponent implements OnInit {
     this.accountInfo = account;
 
     this.scrollNav();
+    this.onClickedOutside();
   }
   public onClick(elementId: string): void {
     this.viewportScroller.scrollToAnchor(elementId);
@@ -51,8 +52,23 @@ export class NavbarComponent implements OnInit {
       window.location.reload();
     }
   }
-  onClickedOutside(e: Event) {
-    this.showBox = false;
+  onClickedOutside() {
+    const ignoreClickOnMeElement = document.getElementById('navbar-client');
+    document.addEventListener('click', function (event) {
+      const isClickInsideElement = ignoreClickOnMeElement.contains(
+        <HTMLElement>event.target
+      );
+      if (!isClickInsideElement) {
+        document.getElementById('menuBtn').className =
+          'navbar-toggler collapsed';
+        document.getElementById('navbarCollapse').className =
+          'navbar-collapse collapsing';
+        // setTimeout(() => {
+        //   document.getElementById('navbarCollapse').className =
+        //   'navbar-collapse collapse';
+        // }, 350);
+      }
+    });
   }
   scrollNav() {
     window.addEventListener(

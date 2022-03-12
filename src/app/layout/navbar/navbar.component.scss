@@ -14,7 +14,6 @@
   right: 0;
   z-index: 30;
   padding: 18px 18px;
- 
 }
 .nav-fixed-top {
   position: fixed;
@@ -40,13 +39,7 @@
   color: #cbafaf;
   font-weight: 400;
 }
-.navbar .nav-item {
-  font-family: "Roboto", sans-serif !important;
-  font-size: 20px;
-  font-weight: 100;
-  color: #ffffff;
-  // color: #abb7c4;
-}
+
 .navbar .dropdown-item i {
   font-size: 15px;
   min-width: 22px;
@@ -96,6 +89,12 @@
   a {
     cursor: pointer;
   }
+  .nav-item {
+    font-family: "Roboto", sans-serif !important;
+    font-size: 20px;
+    font-weight: 100;
+    color: #ffffff;
+  }
   .navbar-toggler {
     border: none;
   }
@@ -114,10 +113,15 @@
       margin-right: 12px;
     }
   }
-  .btn {
+
+  .navbar-nav {
+    padding: 0.5rem 0;
+  }
+  .sigin {
     font-size: 18px;
     font-weight: 100;
-    color: #abb7c4;
+    color: #ffffff;
+    text-decoration: none;
   }
   .dropdown-toggle {
     &::after {
@@ -127,11 +131,15 @@
   .user {
     width: 10%;
   }
-  
+  .collapsing{
+    height: 0;
+    overflow: hidden;
+    animation: collapsed_cus 0.35s;
+  }
 }
 .navbar-light {
   .navbar-toggler-icon {
-    background-image: url(../../../assets/icon/menu.svg)!important;
+    background-image: url(../../../assets/icon/menu.svg) !important;
   }
 }
 @media (min-width: 1200px) {
@@ -147,6 +155,13 @@
   }
   .input-group {
     width: 100%;
+  }
+}
+@include responsive("extra-large") {
+  .navbar {
+    .nav-item {
+      font-size: 18px;
+    }
   }
 }
 @include responsive("large") {
@@ -174,8 +189,25 @@
         font-size: 13px;
       }
     }
+    .user {
+      padding-top: 0;
+      width: 100%;
+      .sigin {
+        font-size: 14px;
+      }
+    }
   }
 }
+@include responsive("medium") {
+  .navbar {
+    .user {
+      .sigin {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
 @keyframes navTop {
   0% {
     top: -20%;
@@ -190,5 +222,14 @@
   }
   100% {
     top: -20%;
+  }
+}
+
+@keyframes collapsed_cus{
+  0% {
+    height: 160px;
+  }
+  100%{
+    height: 0;
   }
 }
