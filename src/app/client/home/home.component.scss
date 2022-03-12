@@ -4,8 +4,6 @@
 @import "../../../sass/Helper/variables";
 .home {
   .Carousel {
-    min-height: 500px;
-    // display: none;
     overflow: hidden;
     &::before {
       position: absolute;
@@ -180,7 +178,8 @@
   align-items: flex-end;
   justify-content: center;
   height: 25rem;
-  padding-left: 0;
+  padding-left: 7px;
+  padding-right: 0;
   width: 90%;
   overflow: hidden;
 }
@@ -229,6 +228,166 @@
 .move-out-from-left-CR {
   animation: moveoutfromleftCR 0.7s ease-in-out;
 }
+
+@include responsive("extra-large"){
+  .home{
+    .Carousel{
+      &::before {
+        height: 650px;
+      }
+      .carousel-content {
+        height: 650px;
+        p{
+          font-size: 14px;
+        }
+        .name{
+          h3{
+            font-size: 30px;
+          }
+        }
+      }
+      .info_movie {
+        min-height: 250px;
+        .info {
+          width: 45%;
+        }
+        img {
+          height: 650px;
+        }
+      }
+      .boxs{
+        img{
+          height: 200px;
+        }
+      }
+      
+    }
+  }
+}
+@include responsive("large"){
+  .home{
+    .Carousel{
+      .carousel-content {
+        p{
+          font-size: 14px;
+        }
+        .name{
+          h3{
+            font-size: 30px;
+          }
+        }
+      }
+      .info_movie {
+        .info {
+          width: 55%!important;
+        }
+      }
+      .boxs{
+        padding: 4px;
+        img{
+          height: 160px;
+        }
+      }
+      .cards__container_carousel {
+        height: 28rem;
+        width: 93%;
+      }
+      .list_movie_new{
+        .button{
+          top: 60%;
+          span{
+            font-size: 40px!important;
+          }
+          
+        }
+        .right{
+          right: 0;
+        }
+        .left{
+          left: 0;
+        }
+      }
+    }
+  }
+}
+@include responsive("medium"){
+  .home{
+    .Carousel{
+      .info_movie {
+        .info {
+          width: 65%!important;
+        }
+      }
+      .boxs{
+        padding: 3px;
+        img{
+          height: 130px;
+        }
+      }
+      .list_movie_new{
+        .button{
+          top: 60%;
+          span{
+            font-size: 30px!important;
+          }
+          
+        }
+      }
+      .cards__container_carousel{
+        li:nth-child(7){
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@include responsive("small"){
+  .home{
+    .Carousel{
+      .carousel-content {
+        p{
+          font-size: 11px!important;
+        }
+        .name{
+          h3{
+            font-size: 25px!important;
+          }
+        }
+      }
+      .info_movie {
+        .info {
+          width: 80%!important;
+        }
+      }
+      .boxs{
+        padding: 3px;
+        img{
+          height: 130px;
+        }
+      }
+      .list_movie_new{
+        .button{
+          top: 60%;
+          span{
+            font-size: 30px!important;
+          }
+          
+        }
+      }
+      .cards__container_carousel{
+        li:nth-child(6){
+          display: none;
+        }
+
+        li:nth-child(5){
+          display: none;
+        }
+      }
+    }
+  }
+}
+
 @keyframes moveoutfromleftCR {
   from {
     transform: translateX(100%);

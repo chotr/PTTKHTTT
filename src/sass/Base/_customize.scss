@@ -12,6 +12,8 @@
   }
 }
 
+@import "../Helper/mixin";
+@import "../Helper/variables";
 .btn.focus,
 .btn:focus {
   outline: 0;
@@ -20,4 +22,28 @@
 
 .top_space {
   margin-top: 100px;
+}
+
+@include responsive("extra-large") {
+  .top_space {
+    margin-top: 80px;
+  }
+}
+
+@include responsive("large") {
+  .top_space {
+    margin-top: 60px;
+  }
+}
+
+@include responsive("medium") {
+  .top_space {
+    margin-top: 50px;
+  }
+}
+
+@include responsive("small") {
+  .top_space {
+    margin-top: 40px;
+  }
 }
