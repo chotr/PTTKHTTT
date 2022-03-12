@@ -9,14 +9,12 @@
 
 .navbar {
   position: absolute;
-  // position: -webkit-sticky;
-  // position: sticky;
   top: 0;
   left: 0;
   right: 0;
   z-index: 30;
-  // border-bottom: 1px solid #d6d6d6;
   padding: 18px 18px;
+ 
 }
 .nav-fixed-top {
   position: fixed;
@@ -128,6 +126,12 @@
   }
   .user {
     width: 10%;
+  }
+  
+}
+.navbar-light {
+  .navbar-toggler-icon {
+    background-image: url(../../../assets/icon/menu.svg)!important;
   }
 }
 @media (min-width: 1200px) {
