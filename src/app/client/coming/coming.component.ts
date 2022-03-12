@@ -52,8 +52,20 @@ export class ComingComponent implements OnInit {
   windowInterval: number;
   ngOnInit(): void {
     this.moviesService.getDataMovies().subscribe((res) => {
-      this.listMovie = res;
-      this.listComing = this.listMovie.slice(20, 25);
+      this.listMovie = res.slice(20, 25);
+      for (let film of this.listMovie) {
+        this.listComing.push({
+          biDanh: film.biDanh,
+          danhGia: film.danhGia,
+          hinhAnh: film.hinhAnh,
+          maNhom: 'GP09',
+          maPhim: film.maPhim,
+          moTa: film.moTa.slice(0, 150) + '...',
+          ngayKhoiChieu: film.ngayKhoiChieu,
+          tenPhim: film.tenPhim,
+          trailer: film.trailer,
+        });
+      }
       for (let film of this.listComing) {
         this.image = this.listComing[2].hinhAnh;
         this.name = this.listComing[2].tenPhim;
@@ -166,14 +178,8 @@ export class ComingComponent implements OnInit {
     this.replay();
   }
 
-  shortCut(text: string): string {
-    let textS = '';
-    for (let index = 0; index < text.length; index++) {
-      if (index <= 150) {
-        textS += text[index];
-      }
-    }
-    return textS + '...';
+  shortCut(text: String): String {
+    return text.slice(0, 150) + '...';
   }
 
   navigateTo() {
