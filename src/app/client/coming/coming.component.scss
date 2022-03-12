@@ -12,7 +12,7 @@
   .title {
     h2 {
       font-weight: 100;
-      font-size: 35px;
+      font-size: 30px;
       text-align: center;
       color: #cbafaf;
       // text-transform: capitalize;
@@ -255,6 +255,11 @@
 
 @include responsive("large") {
   .coming_content {
+    .title {
+      h2 {
+        font-size: 28px;
+      }
+    }
     .info_coming {
       padding: 20px 0;
       min-height: 300px;
@@ -282,7 +287,7 @@
       }
       .image {
         .img {
-          width: 60%;
+          width: 57%;
         }
       }
     }
@@ -303,6 +308,11 @@
 
 @include responsive("medium") {
   .coming_content {
+    .title {
+      h2 {
+        font-size: 25px;
+      }
+    }
     .info_coming {
       padding: 20px 0;
       min-height: 300px;
@@ -330,7 +340,7 @@
       }
       .image {
         .img {
-          width: 100%;
+          width: 93%;
         }
       }
     }
@@ -365,6 +375,7 @@
         padding: 0;
         p {
           font-size: 11px;
+          line-height: 13px;
         }
       }
       .more {
@@ -373,7 +384,8 @@
       .image {
         .img {
           right: 7%;
-          padding-top: 60px;
+          padding-top: 30px;
+          width: 87%;
         }
       }
     }
@@ -387,7 +399,7 @@
       }
     }
     .cards__container {
-      .box{
+      .box {
         width: 7rem;
       }
       li:nth-child(1) {

@@ -4,7 +4,7 @@
 @import "../../../sass/Helper/variables";
 .cinema {
   ::-webkit-scrollbar {
-    width: 4px!important;
+    width: 4px !important;
   }
   width: 100%;
   // margin-bottom: 40px;
@@ -228,6 +228,14 @@
 @include responsive("small") {
   .cinema {
     .cinema_Info {
+      ul {
+        li {
+          padding-left: 10px;
+          &::before{
+            left: 10px;
+          }
+        }
+      }
       .logo {
         a {
           padding: 25px 0 !important;

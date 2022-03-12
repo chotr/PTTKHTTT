@@ -152,6 +152,7 @@ export class ComingComponent implements OnInit {
     }, 0);
     this.animationImage();
   }
+
   animationImage() {
     const element = document.getElementById('imgclass');
     element.classList.remove('topToDown');
@@ -159,10 +160,22 @@ export class ComingComponent implements OnInit {
       element.classList.add('topToDown');
     }, 0);
   }
+
   stopInter() {
     clearInterval(this.windowInterval);
     this.replay();
   }
+
+  shortCut(text: string): string {
+    let textS = '';
+    for (let index = 0; index < text.length; index++) {
+      if (index <= 150) {
+        textS += text[index];
+      }
+    }
+    return textS + '...';
+  }
+
   navigateTo() {
     this.router.navigate(['client/detail-movie', this.codeFilm]);
   }
