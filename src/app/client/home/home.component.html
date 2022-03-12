@@ -26,7 +26,7 @@
           <img src="{{bg_image}}" alt="{{biDanh}}" id="bg-CR">
         </div>
       </div>
-      
+
       <div class="list_movie_new">
         <div class="button left" (click)="shiftLeft()" (click)="stopInter()"><span
             style="font-size:50px; color:white; z-index: 10;"><i class="bi bi-chevron-left"></i></span></div>
@@ -36,7 +36,7 @@
             <ng-container *ngFor="let film of listNewMovie">
               <li class="boxs" data-id="{{film.id -1}}">
                 <div class="img">
-                  <img [src]="film.image" class="img-fade" height="250px" >
+                  <img [src]="film.image" class="img-fade" height="250px">
                 </div>
               </li>
             </ng-container>
@@ -64,10 +64,10 @@
 
       <div class="dropdown Rap">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonR" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
+          aria-haspopup="true" aria-expanded="false" (click)="maRapNull()">
           {{tenRap}}
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonR">
+        <div class="dropdown-menu" id="menuR" aria-labelledby="dropdownMenuButtonR">
           <ng-container *ngFor="let rap of dsRap">
             <div class="dropdown-item" (click)="getMaRap(rap.maHT, rap.tenHeThongRap)">{{rap.tenHeThongRap}}</div>
           </ng-container>
@@ -76,10 +76,10 @@
 
       <div class="dropdown CR">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonCR" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
+          aria-haspopup="true" aria-expanded="false" (click)="maCumRapNull()">
           {{cumRap}}
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonCR">
+        <div class="dropdown-menu" id="menuCR" aria-labelledby="dropdownMenuButtonCR">
           <ng-container *ngFor="let cr of dsCR">
             <div class="dropdown-item" (click)="getMaCumRap(cr.maCR, cr.tenCR)">{{cr.tenCR}}</div>
           </ng-container>
@@ -88,19 +88,12 @@
 
       <div class="dropdown lc">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonLC" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          <!-- <ng-container *ngIf="lc === 'Chọn giờ chiếu ...';else other_content">
-            {{lc}}
-          </ng-container> -->
-          <!-- <ng-container *ngIf="lc !== 'Chọn giờ chiếu ...'">
-            {{lc | date: 'HH:mm'}}
-          </ng-container> -->
-          <!-- <ng-template #other_content>{{lc | date: 'HH:mm'}}</ng-template> -->
+          aria-haspopup="true" aria-expanded="false" (click)="maPhimNull()">
           {{lc}}
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonLC">
+        <div class="dropdown-menu" id="menuPhim" aria-labelledby="dropdownMenuButtonLC">
           <ng-container *ngFor="let lc of dsLC">
-            <div class="dropdown-item" (click)="getMaLC(lc.maLC, lc.ngayChieu)">{{lc.ngayChieu | date: 'HH:mm' }}</div>
+            <div class="dropdown-item" (click)="getMaLC(lc.maLC, lc.ngayChieu)">{{formatTime(lc.ngayChieu)}}</div>
           </ng-container>
         </div>
       </div>

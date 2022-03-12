@@ -84,9 +84,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
       ngayCHieu: '',
     },
   ];
-  dsRap: any[] = [];
-  dsCR: any[] = [];
-  dsLC: any[] = [];
+  dsRap = [{ maPhim: null, tenHeThongRap: 'Vui lòng chọn phim' }];
+  dsCR = [{ maCR: null, tenCR: 'Vui lòng chọn rạp phim' }];
+  dsLC = [{ maLC: null, ngayChieu: 'Vui lòng chọn cụm rạp phim' }];
   maPhim: any;
   maHT: any;
   maLC: any;
@@ -145,8 +145,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.moviesService.getDataMovies().subscribe((res) => {
       if (res) {
         this.hideloader();
+        this.listMovie = res.slice(10, 20);
+      } else {
+        this.listMovie = [{ maPhim: null, tenPhim: 'Không có phim' }];
       }
-      this.listMovie = res.slice(10, 20);
     });
 
     this.getInfo(0);
@@ -157,8 +159,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.tenRap = 'Chọn rạp ...';
     this.cumRap = 'Chọn cụm rạp ...';
     this.lc = 'Chọn giờ chiếu ...';
-    this.dsRap = [];
-    this.dsCR = [];
+    this.dsRap = [{ maPhim: null, tenHeThongRap: 'Vui lòng chọn phim' }];
+    this.dsCR = [{ maCR: null, tenCR: 'Vui lòng chọn rạp phim' }];
     this.maPhim = maPhim;
     this.tenPhim = tenPhim;
     let listTemp = [];
@@ -172,8 +174,36 @@ export class HomeComponent implements OnInit, AfterViewInit {
         }
       }
     });
-    listTemp = this.dsRap;
+    this.dsRap = listTemp;
   }
+
+  maRapNull() {
+    if (this.dsRap[0].maPhim === null) {
+      this.dsRap = [{ maPhim: null, tenHeThongRap: 'Vui lòng chọn phim' }];
+      document.getElementById('menuR').style.pointerEvents = 'none';
+    } else if (this.dsRap[0].maPhim !== null) {
+      document.getElementById('menuR').style.pointerEvents = 'auto';
+    }
+  }
+
+  maCumRapNull() {
+    if (this.dsCR[0].maCR === null) {
+      this.dsCR = [{ maCR: null, tenCR: 'Vui lòng chọn rạp phim' }];
+      document.getElementById('menuCR').style.pointerEvents = 'none';
+    } else if (this.dsCR[0].maCR !== null) {
+      document.getElementById('menuCR').style.pointerEvents = 'auto';
+    }
+  }
+
+  maPhimNull() {
+    if (this.dsLC[0].maLC === null) {
+      this.dsLC = [{ maLC: null, ngayChieu: 'Vui lòng chọn cụm rạp phim' }];
+      document.getElementById('menuPhim').style.pointerEvents = 'none';
+    } else if (this.dsLC[0].maLC !== null) {
+      document.getElementById('menuPhim').style.pointerEvents = 'auto';
+    }
+  }
+
   getMaRap(maHT, tenHT): void {
     this.cumRap = 'Chọn cụm rạp ...';
     this.lc = 'Chọn giờ chiếu ...';
@@ -198,6 +228,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       });
     this.dsCR = listTemp;
   }
+
   getMaCumRap(maCR, tenCR): void {
     this.lc = 'Chọn giờ chiếu ...';
     this.cumRap = tenCR;
@@ -223,9 +254,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
         }
       });
 
-    listTemp = this.dsLC;
-    console.log(this.dsLC);
+    this.dsLC = listTemp;
   }
+
   getMaLC(maLC: any, ngayChieu): void {
     let gioChieu = ngayChieu.split('T');
     let gioChieuHHmm = gioChieu[1].split(':');
@@ -233,6 +264,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.lc = gioChieuHHmm[0] + ':' + gioChieuHHmm[1];
     if (this.maLC !== 'Chọn giờ chiếu ...') {
       this.disabledT = true;
+    }
+  }
+
+  formatTime(ngayChieu: string): string {
+    let gioChieu = ngayChieu.slice(11, 16);
+    if (this.dsLC[0].maLC !== null) {
+      return gioChieu;
+    } else if (this.dsLC[0].maLC === null) {
+      return ngayChieu;
     }
   }
   sbmDatVe() {

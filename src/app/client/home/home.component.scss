@@ -76,6 +76,8 @@
       .dropdown-menu {
         z-index: 15;
         background-color: #020d18c7;
+        transform: translate3d(0px, 40px, 0px) !important;
+        left: -10% !important;
       }
       .dropdown-item {
         color: #fff;
@@ -229,19 +231,19 @@
   animation: moveoutfromleftCR 0.7s ease-in-out;
 }
 
-@include responsive("extra-large"){
-  .home{
-    .Carousel{
+@include responsive("extra-large") {
+  .home {
+    .Carousel {
       &::before {
         height: 650px;
       }
       .carousel-content {
         height: 650px;
-        p{
+        p {
           font-size: 14px;
         }
-        .name{
-          h3{
+        .name {
+          h3 {
             font-size: 30px;
           }
         }
@@ -255,36 +257,44 @@
           height: 650px;
         }
       }
-      .boxs{
-        img{
-          height: 200px;
+      .boxs {
+        img {
+          height: 190px;
         }
       }
-      
+    }
+    .search {
+      .dropdown {
+        cursor: pointer;
+        .dropdown-menu {
+          left: -15% !important;
+        }
+      }
     }
   }
 }
-@include responsive("large"){
-  .home{
-    .Carousel{
+
+@include responsive("large") {
+  .home {
+    .Carousel {
       .carousel-content {
-        p{
+        p {
           font-size: 14px;
         }
-        .name{
-          h3{
+        .name {
+          h3 {
             font-size: 30px;
           }
         }
       }
       .info_movie {
         .info {
-          width: 55%!important;
+          width: 55% !important;
         }
       }
-      .boxs{
+      .boxs {
         padding: 4px;
-        img{
+        img {
           height: 160px;
         }
       }
@@ -292,95 +302,151 @@
         height: 28rem;
         width: 93%;
       }
-      .list_movie_new{
-        .button{
+      .list_movie_new {
+        .button {
           top: 60%;
-          span{
-            font-size: 40px!important;
+          span {
+            font-size: 40px !important;
           }
-          
         }
-        .right{
+        .right {
           right: 0;
         }
-        .left{
+        .left {
           left: 0;
         }
       }
     }
-  }
-}
-@include responsive("medium"){
-  .home{
-    .Carousel{
-      .info_movie {
-        .info {
-          width: 65%!important;
+    .search {
+      h2 {
+        font-size: 28px;
+      }
+      .dropdown {
+        button {
+          font-size: 14px;
+          width: 92%;
         }
       }
-      .boxs{
-        padding: 3px;
-        img{
-          height: 130px;
+      .submit_dv {
+        button {
+          font-size: 14px;
+          padding: 7px 20px;
         }
       }
-      .list_movie_new{
-        .button{
-          top: 60%;
-          span{
-            font-size: 30px!important;
-          }
-          
-        }
-      }
-      .cards__container_carousel{
-        li:nth-child(7){
-          display: none;
+      .dropdown {
+        .dropdown-menu {
+          font-size: 14px;
+          left: -18% !important;
         }
       }
     }
   }
 }
 
-@include responsive("small"){
-  .home{
-    .Carousel{
-      .carousel-content {
-        p{
-          font-size: 11px!important;
+@include responsive("medium") {
+  .home {
+    .Carousel {
+      .info_movie {
+        .info {
+          width: 65% !important;
         }
-        .name{
-          h3{
-            font-size: 25px!important;
+      }
+      .boxs {
+        padding: 3px;
+        img {
+          height: 130px;
+        }
+      }
+      .list_movie_new {
+        .button {
+          top: 60%;
+          span {
+            font-size: 30px !important;
+          }
+        }
+      }
+      .cards__container_carousel {
+        li:nth-child(7) {
+          display: none;
+        }
+      }
+    }
+    .search {
+      h2 {
+        font-size: 25px;
+      }
+      .search_cus {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .dropdown {
+        width: 100%;
+        padding-bottom: 10px;
+        button {
+          font-size: 12px;
+          width: 80%;
+          margin: auto;
+        }
+      }
+      .submit_dv {
+        button {
+          font-size: 12px;
+          padding: 5px 17px;
+        }
+      }
+      .dropdown {
+        .dropdown-menu {
+          font-size: 12px;
+          left: 5% !important;
+          top: -23% !important;
+          .dropdown-item {
+            padding: 0rem 1.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include responsive("small") {
+  .home {
+    .Carousel {
+      .carousel-content {
+        p {
+          font-size: 11px !important;
+        }
+        .name {
+          h3 {
+            font-size: 25px !important;
           }
         }
       }
       .info_movie {
         .info {
-          width: 80%!important;
+          width: 80% !important;
         }
       }
-      .boxs{
+      .boxs {
         padding: 3px;
-        img{
+        img {
           height: 130px;
         }
       }
-      .list_movie_new{
-        .button{
+      .list_movie_new {
+        .button {
           top: 60%;
-          span{
-            font-size: 30px!important;
+          span {
+            font-size: 26px !important;
           }
-          
         }
       }
-      .cards__container_carousel{
-        li:nth-child(6){
+      .cards__container_carousel {
+        li:nth-child(6) {
           display: none;
         }
 
-        li:nth-child(5){
+        li:nth-child(5) {
           display: none;
         }
       }
