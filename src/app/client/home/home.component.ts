@@ -150,7 +150,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
 
     this.getInfo(0);
-    // this.stopInter();
+    this.stopInter();
   }
 
   getMaPhim(maPhim, tenPhim): void {
