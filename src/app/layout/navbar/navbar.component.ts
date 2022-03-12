@@ -54,19 +54,22 @@ export class NavbarComponent implements OnInit {
   }
   onClickedOutside() {
     const ignoreClickOnMeElement = document.getElementById('navbar-client');
+    const navbarCollapse = document.getElementById('navbarCollapse');
+    const menuBtn = document.getElementById('menuBtn');
     document.addEventListener('click', function (event) {
       const isClickInsideElement = ignoreClickOnMeElement.contains(
         <HTMLElement>event.target
       );
       if (!isClickInsideElement) {
-        document.getElementById('menuBtn').className =
-          'navbar-toggler collapsed';
-        document.getElementById('navbarCollapse').className =
-          'navbar-collapse collapsing';
-        // setTimeout(() => {
-        //   document.getElementById('navbarCollapse').className =
-        //   'navbar-collapse collapse';
-        // }, 350);
+        menuBtn.className = 'navbar-toggler collapsed';
+        let text = menuBtn.getAttribute('aria-expanded');
+        if (text === 'true') {
+          navbarCollapse.className = 'navbar-collapse collapsed_cus';
+          menuBtn.setAttribute('aria-expanded', 'false');
+          setTimeout(() => {
+            navbarCollapse.className = 'navbar-collapse collapse';
+          }, 350);
+        }
       }
     });
   }
