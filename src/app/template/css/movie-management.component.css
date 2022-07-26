@@ -1,0 +1,117 @@
+.swal2-styled.swal2-confirm {
+  border-radius: 0.25em;
+  background: initial;
+  background-color: #ffffff !important;
+  border: 2px solid #7367f0 !important;
+  color: #7367f0 !important;
+  outline: none !important;
+  box-shadow: none;
+}
+
+.swal2-styled.swal2-confirm:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.btn.focus,
+.btn:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.top_space {
+  margin-top: 100px !important;
+}
+
+@media screen and (max-width: 1200px) {
+  .top_space {
+    margin-top: 80px !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .top_space {
+    margin-top: 60px !important;
+  }
+}
+
+@media screen and (max-width: 767.89px) {
+  .top_space {
+    margin-top: 50px !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .top_space {
+    margin-top: 40px !important;
+  }
+}
+
+.movie_management {
+  padding-left: 15px;
+}
+
+.movie_management .table_movie {
+  width: 100%;
+  overflow: auto;
+}
+
+.movie_management .table_movie table {
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.movie_management .table_movie table td,
+.movie_management .table_movie table th {
+  padding: 0.5rem;
+  vertical-align: middle;
+}
+
+.movie_management .table_movie table .btn {
+  font-size: 14px;
+  padding: 5px 7px;
+}
+
+@media screen and (max-width: 1200px) {
+  .movie_management .table_movie table {
+    font-size: 12px;
+  }
+  .movie_management .table_movie table td,
+  .movie_management .table_movie table th {
+    padding: 0.3rem;
+  }
+  .movie_management .table_movie table .btn {
+    font-size: 12px;
+    padding: 5px 5px;
+  }
+  .movie_management .table_movie table img {
+    width: 50px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .movie_management {
+    padding-right: 0 !important;
+  }
+  .movie_management .add {
+    padding: 5px;
+    font-size: 12px;
+  }
+  .movie_management .table_movie table {
+    font-size: 11px;
+    width: 900px;
+    margin: auto;
+  }
+  .movie_management .table_movie table td,
+  .movie_management .table_movie table th {
+    padding: 0.3rem;
+  }
+  .movie_management .table_movie table .btn {
+    font-size: 12px;
+    padding: 5px 5px;
+  }
+  .movie_management .table_movie table img {
+    width: 40px;
+  }
+}
+/*# sourceMappingURL=movie-management.component.css.map */

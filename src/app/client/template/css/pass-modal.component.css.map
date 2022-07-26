@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../../user/pass-modal/pass-modal.component.scss"
+    ],
+    "names": [],
+    "file": "pass-modal.component.css"
+}

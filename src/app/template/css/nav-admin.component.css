@@ -1,0 +1,100 @@
+.swal2-styled.swal2-confirm {
+  border-radius: 0.25em;
+  background: initial;
+  background-color: #ffffff !important;
+  border: 2px solid #7367f0 !important;
+  color: #7367f0 !important;
+  outline: none !important;
+  box-shadow: none;
+}
+
+.swal2-styled.swal2-confirm:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.btn.focus,
+.btn:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.top_space {
+  margin-top: 100px !important;
+}
+
+@media screen and (max-width: 1200px) {
+  .top_space {
+    margin-top: 80px !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .top_space {
+    margin-top: 60px !important;
+  }
+}
+
+@media screen and (max-width: 767.89px) {
+  .top_space {
+    margin-top: 50px !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .top_space {
+    margin-top: 40px !important;
+  }
+}
+
+.nav_admin {
+  position: relative;
+  height: 70px;
+}
+
+.nav_admin::after {
+  content: "";
+  height: 1px;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #cccccc;
+  position: absolute;
+}
+
+.nav_admin .path {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.nav_admin .path span {
+  font-size: 20px;
+  color: #767676;
+  cursor: context-menu;
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 991px) {
+  .nav_admin .path {
+    padding-right: 0;
+  }
+  .nav_admin .path span {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 767.89px) {
+  .nav_admin .path span {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .nav_admin .path span {
+    font-size: 13px;
+    margin-left: 10px;
+  }
+}
+/*# sourceMappingURL=nav-admin.component.css.map */

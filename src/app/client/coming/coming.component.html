@@ -34,7 +34,7 @@
         <div class="cards-wrapper">
             <ul class="cards__container container">
                 <ng-container *ngFor="let film of listComing">
-                    <li class="box">
+                    <li class="box" data-id="{{film.maPhim}}">
                         <img [src]="film.hinhAnh">
                     </li>
                 </ng-container>

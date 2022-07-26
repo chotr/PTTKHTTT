@@ -1,0 +1,219 @@
+.swal2-styled.swal2-confirm {
+  border-radius: 0.25em;
+  background: initial;
+  background-color: #ffffff !important;
+  border: 2px solid #7367f0 !important;
+  color: #7367f0 !important;
+  outline: none !important;
+  box-shadow: none;
+}
+
+.swal2-styled.swal2-confirm:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.btn.focus,
+.btn:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.top_space {
+  margin-top: 100px !important;
+}
+
+@media screen and (max-width: 1200px) {
+  .top_space {
+    margin-top: 80px !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .top_space {
+    margin-top: 60px !important;
+  }
+}
+
+@media screen and (max-width: 767.89px) {
+  .top_space {
+    margin-top: 50px !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .top_space {
+    margin-top: 40px !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar:hover {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #c7c2c2;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.pagination {
+  cursor: pointer;
+}
+
+.login {
+  height: 80vh;
+}
+
+.login .title {
+  color: #e1c9c9;
+  cursor: context-menu;
+}
+
+.login .title h2 {
+  font-size: 30px;
+  font-weight: 100;
+}
+
+.login .form_login {
+  margin-top: 40px !important;
+  width: 600px;
+  margin: 0 auto;
+  background: rgba(128, 128, 128, 0.34);
+  border-radius: 15px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.login .form_login .login_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.login .form_login .text {
+  display: flex;
+  font-style: italic;
+  font-weight: 100;
+  cursor: context-menu;
+}
+
+.login .form_login .text .text_1 {
+  color: white;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+
+.login .form_login .text .text_2 {
+  color: aqua;
+  font-size: 20px;
+  margin-top: 2px;
+}
+
+.login .form_login .form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 auto;
+}
+
+.login .form_login .form .userName {
+  color: #e1c9c9;
+  font-size: 17px;
+}
+
+.login .form_login .form .password {
+  font-size: 17px;
+  color: #e1c9c9;
+}
+
+.login .form_login .form span {
+  font-size: 15px;
+  cursor: context-menu;
+}
+
+.login .form_login .form .btn {
+  background-color: darkgrey;
+}
+
+.login .form_login .form .text_if_none_account {
+  color: #e1c9c9;
+  font-size: 15px;
+  padding-top: 30px;
+  cursor: context-menu;
+}
+
+.login .form_login .form input {
+  color: #fafafa;
+}
+
+.login .form_login .example-full-width {
+  margin-bottom: 20px;
+  width: 80%;
+}
+
+.login .form_login .register_link {
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  color: aqua;
+  padding-top: 10px;
+}
+
+@media screen and (max-width: 767.89px) {
+  .login .title h2 {
+    font-size: 25px;
+  }
+  .login .form_login {
+    width: 500px;
+  }
+  .login .form_login .text .text_1 {
+    font-size: 20px;
+  }
+  .login .form_login .text .text_2 {
+    font-size: 18px;
+  }
+  .login .mat-form-field-underline {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .login .form_login {
+    width: 400px;
+  }
+  .login .form_login .text .text_1 {
+    font-size: 17px;
+  }
+  .login .form_login .text .text_2 {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .login .form_login {
+    width: 380px;
+  }
+}
+/*# sourceMappingURL=login.component.css.map */

@@ -18,6 +18,7 @@ import { JwPaginationModule } from 'jw-angular-pagination';
 import { DatePipe } from '@angular/common'
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ClickOutsideModule } from 'ng-click-outside';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ClickOutsideModule } from 'ng-click-outside';
     AngularFirestoreModule,
     NgSelectModule,
     ClickOutsideModule,
+    FormsModule
   ],
   providers: [
     {

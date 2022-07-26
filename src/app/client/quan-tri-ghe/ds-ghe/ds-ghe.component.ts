@@ -41,6 +41,7 @@ export class DsGheComponent implements OnInit, OnChanges {
   ) {}
 
   ngOnInit(): void {
+    // window.scrollTo(0,0);
     const account = JSON.parse(localStorage.getItem('account') as string);
     if (account !== null) {
       this.taiKhoan = account.taiKhoan;
@@ -54,6 +55,8 @@ export class DsGheComponent implements OnInit, OnChanges {
       this.getParamsFromUrl();
     }
     this.getDataSeat(this.id);
+
+    console.log(this.getDataSeat(this.id))
 
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {

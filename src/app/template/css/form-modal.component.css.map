@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../../admin/form-modal/form-modal.component.scss"
+    ],
+    "names": [],
+    "file": "form-modal.component.css"
+}

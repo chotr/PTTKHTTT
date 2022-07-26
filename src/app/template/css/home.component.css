@@ -1,0 +1,955 @@
+.swal2-styled.swal2-confirm {
+  border-radius: 0.25em;
+  background: initial;
+  background-color: #ffffff !important;
+  border: 2px solid #7367f0 !important;
+  color: #7367f0 !important;
+  outline: none !important;
+  box-shadow: none;
+}
+
+.swal2-styled.swal2-confirm:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.btn.focus,
+.btn:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.top_space {
+  margin-top: 100px !important;
+}
+
+@media screen and (max-width: 1200px) {
+  .top_space {
+    margin-top: 80px !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .top_space {
+    margin-top: 60px !important;
+  }
+}
+
+@media screen and (max-width: 767.89px) {
+  .top_space {
+    margin-top: 50px !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .top_space {
+    margin-top: 40px !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar:hover {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #c7c2c2;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.pagination {
+  cursor: pointer;
+}
+
+.home .Carousel {
+  overflow: hidden;
+}
+
+.home .Carousel::before {
+  position: absolute;
+  content: "";
+  width: 80%;
+  z-index: 1;
+  top: 0;
+  height: 750px;
+  background: linear-gradient(90deg, #020024 10%, rgba(0, 0, 0, 0.42) 70%, rgba(255, 255, 255, 0) 100%);
+}
+
+.home .Carousel .carousel-content {
+  height: 750px;
+}
+
+.home .Carousel .info_movie {
+  cursor: context-menu;
+  min-height: 350px;
+}
+
+.home .Carousel .info_movie .info {
+  position: absolute;
+  width: 35%;
+  top: 30%;
+  left: 10%;
+  z-index: 20;
+}
+
+.home .Carousel .info_movie img {
+  position: absolute;
+  width: 100%;
+  object-fit: cover;
+  height: 750px;
+}
+
+.home .Carousel .info_movie .description {
+  color: #bebebe;
+}
+
+.home .Carousel .info_movie .name h3 {
+  font-size: 35px;
+  color: #dc924b;
+  font-weight: 100;
+}
+
+.home .Carousel .list_movie_new {
+  position: relative;
+}
+
+.home .Carousel .list_movie_new .left {
+  left: 1%;
+}
+
+.home .Carousel .list_movie_new .right {
+  right: 1%;
+}
+
+.home .search {
+  padding-bottom: 30px;
+}
+
+.home .search h2 {
+  font-size: 30px;
+  cursor: context-menu;
+  font-family: "Roboto", sans-serif !important;
+  margin-bottom: 0;
+  font-weight: 100;
+  padding: 50px;
+  color: #cbafaf;
+}
+
+.home .search .dropdown {
+  width: 20%;
+  cursor: pointer;
+}
+
+.home .search .dropdown .dropdown-menu {
+  z-index: 15;
+  width: 100%;
+  background-color: #020d18c7;
+  transform: translate3d(0px, 40px, 0px) !important;
+  left: -10% !important;
+}
+
+.home .search .dropdown .dropdown-item {
+  color: #fff;
+}
+
+.home .search .dropdown .dropdown-item:hover {
+  background: #ffffff00;
+}
+
+.home .search .dropdown button {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  vertical-align: middle;
+  background: #ffffff00;
+  border-radius: 0;
+  border: none;
+  border-bottom: 2px solid #bfa8aa;
+  margin-right: 10px;
+  width: 80%;
+  text-align: left;
+  padding-left: 0;
+}
+
+.home .search .dropdown button:focus {
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.home .search .search_cus {
+  flex-direction: row;
+  justify-content: center;
+}
+
+.home .list_movie {
+  display: none;
+}
+
+.home .list_movie .title {
+  padding: 50px;
+  color: #cbafaf;
+}
+
+.home .list_movie .title h1 {
+  font-size: 30px;
+  cursor: context-menu;
+  font-family: "Roboto", sans-serif !important;
+  margin-bottom: 0;
+  font-weight: 100;
+}
+
+.home .list_movie .more {
+  display: flex;
+  margin: auto;
+  color: #bcd4d4;
+  transition: all 0.5s;
+}
+
+.home .list_movie .more span {
+  margin-top: 1px;
+}
+
+.home .list_movie .more:hover {
+  color: #ffffff;
+}
+
+.home .cinema {
+  width: 90%;
+  margin: auto;
+  display: none;
+  background-color: #343a40bd !important;
+  margin-bottom: 50px;
+}
+
+.home .submit_dv button {
+  background-color: #020d18;
+  border-color: #cbafaf;
+  padding: 0.375rem 1.75rem;
+}
+
+.fade-in {
+  animation: fadein 0.9s;
+}
+
+.button {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.button--inactive {
+  opacity: 0.2;
+}
+
+.cards-wrapper_carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cards__container_carousel {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 25rem;
+  padding-left: 7px;
+  padding-right: 0;
+  width: 90%;
+  overflow: hidden;
+}
+
+.boxs {
+  width: 12rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: all 0.7s;
+  z-index: 3;
+  padding: 7px;
+  height: 18rem;
+}
+
+.boxs img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.boxs:nth-child(1) {
+  transition: all 0.5s;
+  transform: scale(1.1);
+}
+
+.boxs:nth-child(1) .img::before {
+  background: #ffffff00;
+}
+
+.img {
+  position: relative;
+}
+
+.img::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #0000007a;
+  border-radius: 10px;
+}
+
+.leftToRightInfo {
+  animation: leftToRightInfo 0.9s;
+}
+
+.move-out-from-left-CR {
+  animation: moveoutfromleftCR 0.7s ease-in-out;
+}
+
+@media screen and (max-width: 1200px) {
+  .home .Carousel::before {
+    height: 650px;
+  }
+  .home .Carousel .carousel-content {
+    height: 650px;
+  }
+  .home .Carousel .carousel-content p {
+    font-size: 14px;
+  }
+  .home .Carousel .carousel-content .name h3 {
+    font-size: 30px;
+  }
+  .home .Carousel .info_movie {
+    min-height: 250px;
+  }
+  .home .Carousel .info_movie .info {
+    width: 45%;
+  }
+  .home .Carousel .info_movie img {
+    height: 650px;
+  }
+  .home .Carousel .boxs img {
+    height: 190px;
+  }
+  .home .search .dropdown {
+    cursor: pointer;
+  }
+  .home .search .dropdown .dropdown-menu {
+    left: -15% !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .home .Carousel::before {
+    height: 590px;
+  }
+  .home .Carousel .carousel-content {
+    height: 550px;
+  }
+  .home .Carousel .carousel-content p {
+    font-size: 14px;
+  }
+  .home .Carousel .carousel-content .name h3 {
+    font-size: 30px;
+  }
+  .home .Carousel .info_movie {
+    min-height: 150px;
+  }
+  .home .Carousel .info_movie .info {
+    width: 55%;
+    top: 30%;
+  }
+  .home .Carousel .info_movie img {
+    height: 550px;
+  }
+  .home .Carousel .info_movie .name h3 {
+    font-size: 25px;
+  }
+  .home .Carousel .info_movie p {
+    font-size: 12px;
+  }
+  .home .Carousel .boxs {
+    padding: 4px;
+  }
+  .home .Carousel .boxs img {
+    height: 160px;
+  }
+  .home .Carousel .cards__container_carousel {
+    height: 28rem;
+    width: 93%;
+  }
+  .home .Carousel .list_movie_new .button {
+    top: 60%;
+  }
+  .home .Carousel .list_movie_new .button span {
+    font-size: 40px !important;
+  }
+  .home .Carousel .list_movie_new .right {
+    right: 0;
+  }
+  .home .Carousel .list_movie_new .left {
+    left: 0;
+  }
+  .home .search h2 {
+    font-size: 28px;
+  }
+  .home .search .dropdown button {
+    font-size: 14px;
+    width: 92%;
+  }
+  .home .search .submit_dv button {
+    font-size: 14px;
+    padding: 7px 20px;
+  }
+  .home .search .dropdown .dropdown-menu {
+    font-size: 14px;
+    left: -18% !important;
+  }
+  .home .list_movie .title {
+    padding: 42px;
+  }
+  .home .list_movie .title h1 {
+    font-size: 28px;
+  }
+  .home .list_movie .more {
+    font-size: 14px;
+  }
+  .home .button {
+    top: 65%;
+  }
+}
+
+@media screen and (max-width: 767.89px) {
+  .home .Carousel .info_movie .info {
+    width: 65% !important;
+  }
+  .home .Carousel .boxs {
+    padding: 3px;
+  }
+  .home .Carousel .boxs img {
+    height: 130px;
+  }
+  .home .Carousel .list_movie_new .button {
+    top: 60%;
+  }
+  .home .Carousel .list_movie_new .button span {
+    font-size: 30px !important;
+  }
+  .home .Carousel .cards__container_carousel li:nth-child(7) {
+    display: none;
+  }
+  .home .search h2 {
+    font-size: 25px;
+  }
+  .home .search .search_cus {
+    display: flex;
+    flex-direction: column;
+  }
+  .home .search .dropdown {
+    width: 100%;
+    padding-bottom: 10px;
+  }
+  .home .search .dropdown button {
+    font-size: 12px;
+    width: 80%;
+    margin: auto;
+  }
+  .home .search .submit_dv button {
+    font-size: 12px;
+    padding: 5px 17px;
+  }
+  .home .search .dropdown .dropdown-menu {
+    font-size: 12px;
+    left: 5% !important;
+    top: -23% !important;
+  }
+  .home .search .dropdown .dropdown-menu .dropdown-item {
+    padding: 0rem 1.5rem;
+  }
+  .home .list_movie .title {
+    padding: 35px !important;
+  }
+  .home .list_movie .title h1 {
+    font-size: 25px !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .home .Carousel .carousel-content p {
+    font-size: 11px !important;
+    line-height: 13px;
+  }
+  .home .Carousel .carousel-content .name h3 {
+    font-size: 25px !important;
+  }
+  .home .Carousel .info_movie .info {
+    width: 80% !important;
+  }
+  .home .Carousel .boxs {
+    padding: 3px;
+  }
+  .home .Carousel .boxs img {
+    height: 130px;
+  }
+  .home .Carousel .list_movie_new .button {
+    top: 60%;
+  }
+  .home .Carousel .list_movie_new .button span {
+    font-size: 26px !important;
+  }
+  .home .Carousel .cards__container_carousel li:nth-child(6) {
+    display: none;
+  }
+  .home .Carousel .cards__container_carousel li:nth-child(5) {
+    display: none;
+  }
+  .home .search .dropdown .dropdown-menu {
+    left: 4% !important;
+  }
+  .home .cinema {
+    width: 100%;
+  }
+}
+
+@keyframes moveoutfromleftCR {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.move-to-position7-from-left-CR {
+  animation: moveLeft7 0.7s ease-in-out;
+}
+
+@keyframes moveLeft7 {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.move-to-position6-from-left-CR {
+  animation: moveLeft6 0.7s ease-in-out;
+}
+
+@keyframes moveLeft6 {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.move-to-position5-from-left-CR {
+  animation: moveLeft5 0.7s ease-in-out;
+}
+
+@keyframes moveLeft5 {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.move-to-position4-from-left-CR {
+  animation: moveLeft4 0.7s ease-in-out;
+}
+
+@keyframes moveLeft4 {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.move-to-position3-from-left-CR {
+  animation: moveLeft3 0.7s ease-in-out;
+}
+
+@keyframes moveLeft3 {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.move-to-position2-from-left-CR {
+  animation: moveLeft2 0.7s ease-in-out;
+}
+
+@keyframes moveLeft2 {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.move-to-position1-from-left-CR {
+  animation: moveLeft1 0.7s ease-in-out;
+}
+
+@keyframes moveLeft1 {
+  from {
+    transform: scale(0.95) translateX(100%);
+  }
+  to {
+    transform: scale(1.1) translateX(0);
+  }
+}
+
+.move-to-position7-from-right-CR {
+  animation: moveToP7RightCR 0.7s ease-in-out;
+}
+
+@keyframes moveToP7RightCR {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.move-to-position6-from-right-CR {
+  animation: moveToP6RightCR 0.7s ease-in-out;
+}
+
+@keyframes moveToP6RightCR {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.move-to-position5-from-right-CR {
+  animation: moveToP5RightCR 0.7s ease-in-out;
+}
+
+@keyframes moveToP5RightCR {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.move-to-position4-from-right-CR {
+  animation: moveToP4RightCR 0.7s ease-in-out;
+}
+
+@keyframes moveToP4RightCR {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.move-to-position3-from-right-CR {
+  animation: moveToP3RightCR 0.7s ease-in-out;
+}
+
+@keyframes moveToP3RightCR {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.move-to-position2-from-right-CR {
+  animation: moveToP2RightCR 0.7s ease-in-out;
+}
+
+@keyframes moveToP2RightCR {
+  from {
+    transform: scale(1) translateX(-100%);
+  }
+  to {
+    transform: scale(0.98) translateX(0);
+  }
+}
+
+.move-to-position1-from-right-CR {
+  animation: moveToP1RightCR 0.7s ease-in-out;
+}
+
+@keyframes moveToP1RightCR {
+  from {
+    transform: scale(0.75) translateX(-100%);
+  }
+  to {
+    transform: scale(1) translateX(0);
+  }
+}
+
+@keyframes moveOutLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.move-out-from-right {
+  animation: moveOutRight 0.7s ease-in-out;
+}
+
+@keyframes moveOutRight {
+  from {
+    transform: scale(0.15) translateX(-100%);
+  }
+  to {
+    transform: scale(1) translateX(0);
+  }
+}
+
+@keyframes topToDown {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 180%;
+  }
+}
+
+@keyframes MoveUpDown {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadein {
+  from {
+    transform: scale(2);
+    opacity: 0.2;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes leftToRightInfo {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.position-item-7-move {
+  animation: moveToFirt7 0.7s ease-in-out;
+}
+
+@keyframes moveToFirt7 {
+  from {
+    transform: translateX(700%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.position-item-6-move {
+  animation: moveToFirt6 0.7s ease-in-out;
+}
+
+@keyframes moveToFirt6 {
+  from {
+    transform: translateX(600%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.position-item-5-move {
+  animation: moveToFirt5 0.7s ease-in-out;
+}
+
+@keyframes moveToFirt5 {
+  from {
+    transform: translateX(500%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.position-item-4-move {
+  animation: moveToFirt4 0.7s ease-in-out;
+}
+
+@keyframes moveToFirt4 {
+  from {
+    transform: translateX(400%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.position-item-3-move {
+  animation: moveToFirt3 0.7s ease-in-out;
+}
+
+@keyframes moveToFirt3 {
+  from {
+    transform: translateX(300%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.position-item-2-move {
+  animation: moveToFirt2 0.7s ease-in-out;
+}
+
+@keyframes moveToFirt2 {
+  from {
+    transform: translateX(200%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.position-item-1-move {
+  animation: moveToFirt1 0.7s ease-in-out;
+}
+
+@keyframes moveToFirt1 {
+  from {
+    transform: scale(0.95) translateX(100%);
+  }
+  to {
+    transform: scale(1) translateX(0);
+  }
+}
+
+.position-item-2-move-behind {
+  animation: moveBehind2 0.7s ease-in-out;
+}
+
+@keyframes moveBehind2 {
+  from {
+    transform: translateX(200%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.position-item-3-move-behind {
+  animation: moveBehind3 0.7s ease-in-out;
+}
+
+@keyframes moveBehind3 {
+  from {
+    transform: translateX(300%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.position-item-4-move-behind {
+  animation: moveBehind4 0.7s ease-in-out;
+}
+
+@keyframes moveBehind4 {
+  from {
+    transform: translateX(400%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.position-item-5-move-behind {
+  animation: moveBehind5 0.7s ease-in-out;
+}
+
+@keyframes moveBehind5 {
+  from {
+    transform: translateX(500%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.position-item-6-move-behind {
+  animation: moveBehind6 0.7s ease-in-out;
+}
+
+@keyframes moveBehind6 {
+  from {
+    transform: translateX(600%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.position-item-7-move-behind {
+  animation: moveBehind7 0.7s ease-in-out;
+}
+
+@keyframes moveBehind7 {
+  from {
+    transform: translateX(700%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+/*# sourceMappingURL=home.component.css.map */

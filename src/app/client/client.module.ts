@@ -17,7 +17,6 @@ import { LoginAugthGuard } from '../provider/guards/login-augth.guard';
 import { UserAcessGuard } from '../provider/guards/user-acess.guard';
 import { DsGheComponent } from './quan-tri-ghe/ds-ghe/ds-ghe.component';
 import { MaterialModule } from '../material/material.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { DeactiveGuard } from '../provider/guards/deactive.guard';
@@ -32,6 +31,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FooterComponent } from '../layout/footer/footer.component';
 import { DetailCinemaComponent } from './detail-cinema/detail-cinema.component';
 import { ComingComponent } from './coming/coming.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PipesModule } from '../provider/pipes/pipes.module';
 
 const routes = [
   {
@@ -133,7 +134,7 @@ const routes = [
     FormsModule,
     ReactiveFormsModule,
     CarouselModule,
-    // PipesModule
+    PipesModule
   ],
   exports: [ClientComponent, HomeComponent],
 })

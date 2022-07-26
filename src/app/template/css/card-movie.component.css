@@ -1,0 +1,153 @@
+.swal2-styled.swal2-confirm {
+  border-radius: 0.25em;
+  background: initial;
+  background-color: #ffffff !important;
+  border: 2px solid #7367f0 !important;
+  color: #7367f0 !important;
+  outline: none !important;
+  box-shadow: none;
+}
+
+.swal2-styled.swal2-confirm:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.btn.focus,
+.btn:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.top_space {
+  margin-top: 100px !important;
+}
+
+@media screen and (max-width: 1200px) {
+  .top_space {
+    margin-top: 80px !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .top_space {
+    margin-top: 60px !important;
+  }
+}
+
+@media screen and (max-width: 767.89px) {
+  .top_space {
+    margin-top: 50px !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .top_space {
+    margin-top: 40px !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar:hover {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #c7c2c2;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.pagination {
+  cursor: pointer;
+}
+
+.card {
+  color: white;
+  height: 80%;
+  background-color: #ffffff00;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  width: 85%;
+  margin: auto;
+}
+
+.card img {
+  height: 320px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.card .card-body {
+  padding: 0 !important;
+  padding-top: 1rem !important;
+}
+
+.card .card-body h4 {
+  font-size: 17px;
+  font-family: "Roboto", serif;
+}
+
+@media screen and (max-width: 1200px) {
+  .card {
+    width: 100%;
+  }
+  .card img {
+    height: 280px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .card {
+    width: 100%;
+    height: 75%;
+  }
+  .card img {
+    height: 210px;
+  }
+  .card .card-body h4 {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 767.89px) {
+  .card {
+    height: 90%;
+  }
+  .card img {
+    height: 190px;
+  }
+  .card .card-body h4 {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .card {
+    width: 70%;
+    height: 80%;
+  }
+  .card img {
+    height: 280px;
+  }
+}
+/*# sourceMappingURL=card-movie.component.css.map */

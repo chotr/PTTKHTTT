@@ -1,0 +1,61 @@
+.card_movie {
+  padding-top: 50px;
+}
+
+.card_movie .pagination::ng-deep {
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.card_movie .pagination::ng-deep .ngx-pagination {
+  padding: 0px !important;
+}
+
+.card_movie .row {
+  justify-content: center;
+}
+
+.card_movie a.disabled {
+  pointer-events: all;
+  cursor: default;
+}
+
+.card_movie nav li {
+  cursor: pointer;
+}
+
+.card_movie nav li.active .page-link {
+  background-color: #343a40 !important;
+  border-color: #343a40 !important;
+  color: white;
+}
+
+.card_movie nav a:hover {
+  text-decoration: none;
+}
+
+.card_movie nav a.disabled {
+  cursor: context-menu;
+  color: darkgrey;
+  background-color: #bababa !important;
+  border-color: #bababa !important;
+}
+
+.card_movie nav a.disabled:hover {
+  background-color: white !important;
+}
+
+.card_movie nav .page-link {
+  color: #343a40;
+}
+
+.card_movie nav .page-link:focus {
+  box-shadow: none;
+}
+
+@media screen and (max-width: 767.89px) {
+  .card_movie ul li a {
+    padding: 0.3rem 0.55rem;
+  }
+}
+/*# sourceMappingURL=movies.component.css.map */

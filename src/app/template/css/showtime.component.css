@@ -1,0 +1,17 @@
+.getShowtime {
+  color: white;
+}
+
+.getShowtime li {
+  padding: 20px;
+}
+
+.getShowtime li .logo {
+  width: 50px;
+  cursor: pointer;
+}
+
+.getShowtime li .img_cinema {
+  width: 70px;
+}
+/*# sourceMappingURL=showtime.component.css.map */

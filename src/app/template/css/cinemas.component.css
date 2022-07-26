@@ -1,0 +1,302 @@
+.swal2-styled.swal2-confirm {
+  border-radius: 0.25em;
+  background: initial;
+  background-color: #ffffff !important;
+  border: 2px solid #7367f0 !important;
+  color: #7367f0 !important;
+  outline: none !important;
+  box-shadow: none;
+}
+
+.swal2-styled.swal2-confirm:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.btn.focus,
+.btn:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.top_space {
+  margin-top: 100px !important;
+}
+
+@media screen and (max-width: 1200px) {
+  .top_space {
+    margin-top: 80px !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .top_space {
+    margin-top: 60px !important;
+  }
+}
+
+@media screen and (max-width: 767.89px) {
+  .top_space {
+    margin-top: 50px !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .top_space {
+    margin-top: 40px !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar:hover {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #c7c2c2;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.pagination {
+  cursor: pointer;
+}
+
+.cinema {
+  width: 100%;
+  padding-top: 30px;
+}
+
+.cinema ::-webkit-scrollbar {
+  width: 4px !important;
+}
+
+.cinema .cinema_Info {
+  width: 100px;
+  padding: 0;
+  margin: 0;
+}
+
+.cinema .cinema_Info ul {
+  padding: 0;
+}
+
+.cinema .cinema_Info ul li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: relative;
+}
+
+.cinema .cinema_Info ul li a {
+  margin: 0;
+  display: block;
+  padding: 20px 40px;
+  text-align: center;
+  height: 100%;
+}
+
+.cinema .cinema_Info ul li a img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  background: wheat;
+}
+
+.cinema .cinema_Info ul li::before {
+  position: absolute;
+  content: "";
+  height: 1px;
+  width: 50%;
+  bottom: 0;
+  background: #5c5c5c;
+  margin: auto;
+  right: 0;
+  left: 0;
+}
+
+.cinema .cinema_Info .active img {
+  box-shadow: 0px 1px 14px 0px white;
+  transition: all 0.5s;
+}
+
+.cinema .theater_cluster {
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 600px;
+  padding: 20px 0;
+}
+
+.cinema .theater_cluster p {
+  margin-bottom: 0;
+}
+
+.cinema .theater_cluster .text .tenCR {
+  color: aqua;
+}
+
+.cinema .theater_cluster .cumRap {
+  cursor: pointer;
+  margin-bottom: 20px !important;
+  padding-bottom: 20px;
+  position: relative;
+  opacity: 0.3;
+  transition: all 0.5s;
+}
+
+.cinema .theater_cluster .cumRap::before {
+  position: absolute;
+  content: "";
+  height: 1px;
+  width: 83%;
+  bottom: 0;
+  background: #5c5c5c;
+  margin: auto;
+  left: 0;
+}
+
+.cinema .theater_cluster .active {
+  opacity: 1 !important;
+  transition: all 0.5s;
+}
+
+.cinema .movies {
+  padding: 20px 20px;
+  overflow-y: scroll;
+  height: 600px;
+  overflow-x: hidden;
+}
+
+.cinema .movies .listPhim {
+  margin-bottom: 10px;
+}
+
+.cinema .movies .listPhim .digital {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.cinema .movies .listPhim .time .btn-time {
+  font-size: 15px;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 14px;
+  background-color: #cecece;
+  border-color: #cecece;
+}
+
+.cinema .movies .listPhim .time .btn-time:hover {
+  transition: all 0.5s;
+}
+
+.cinema .movies .listPhim .time .btn-time .timeSt {
+  font-size: 18px;
+}
+
+@keyframes mymove {
+  from {
+    left: 0px;
+  }
+  to {
+    left: 200px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .cinema .cinema_Info ul li a img {
+    width: 50px;
+    height: 50px;
+  }
+  .cinema .cinema_Info .logo a {
+    padding: 25px 0 !important;
+  }
+  .cinema .theater_cluster .img img {
+    width: 43px;
+    height: 43px;
+  }
+  .cinema .theater_cluster .text {
+    font-size: 13px;
+  }
+  .cinema .movies h2 {
+    font-size: 17px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .cinema .cinema_Info ul li a img {
+    width: 40px;
+    height: 40px;
+  }
+  .cinema .theater_cluster .cumRap {
+    padding-bottom: 10px;
+  }
+  .cinema .theater_cluster .img {
+    padding-top: 10px;
+  }
+  .cinema .movies .wrapper__collapse .img_movie {
+    width: 55px;
+    height: 55px;
+  }
+  .cinema .movies .btn-time {
+    padding: 3px 10px;
+    margin-right: 12px;
+  }
+}
+
+@media screen and (max-width: 767.89px) {
+  .cinema .theater_cluster .text {
+    padding: 0 25px;
+    font-size: 11px;
+  }
+  .cinema .theater_cluster .cumRap {
+    padding-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .cinema .cinema_Info ul li {
+    padding-left: 10px;
+  }
+  .cinema .cinema_Info ul li::before {
+    left: 10px;
+  }
+  .cinema .cinema_Info .logo a {
+    padding: 25px 0 !important;
+  }
+  .cinema .theater_cluster .text {
+    padding: 0 25px;
+    font-size: 11px;
+    line-height: 15px;
+  }
+  .cinema .theater_cluster .cumRap {
+    padding-bottom: 10px;
+  }
+  .cinema .theater_cluster .img img {
+    width: 39px;
+    height: 39px;
+  }
+  .cinema .movies h2 {
+    font-size: 15px;
+  }
+}
+/*# sourceMappingURL=cinemas.component.css.map */

@@ -129,7 +129,7 @@
     }
   }
   .user {
-    width: 10%;
+    // width: 10%;
   }
   .collapsed_cus{
     height: 0;
@@ -147,6 +147,11 @@
     width: 300px;
     margin-left: 30px;
   }
+  .navbar-expand-xl .navbar-nav .dropdown-menu {
+    position: absolute;
+    right: 0;
+    left: auto;
+}
 }
 @media (max-width: 1199px) {
   .form-inline {

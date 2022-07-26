@@ -1,0 +1,363 @@
+.swal2-styled.swal2-confirm {
+  border-radius: 0.25em;
+  background: initial;
+  background-color: #ffffff !important;
+  border: 2px solid #7367f0 !important;
+  color: #7367f0 !important;
+  outline: none !important;
+  box-shadow: none;
+}
+
+.swal2-styled.swal2-confirm:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.btn.focus,
+.btn:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.top_space {
+  margin-top: 100px !important;
+}
+
+@media screen and (max-width: 1200px) {
+  .top_space {
+    margin-top: 80px !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .top_space {
+    margin-top: 60px !important;
+  }
+}
+
+@media screen and (max-width: 767.89px) {
+  .top_space {
+    margin-top: 50px !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .top_space {
+    margin-top: 40px !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar:hover {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #c7c2c2;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.pagination {
+  cursor: pointer;
+}
+
+.detail_cinema {
+  color: white;
+  cursor: context-menu;
+}
+
+.detail_cinema .content {
+  display: none;
+  position: relative;
+}
+
+.detail_cinema .detail img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.detail_cinema .contentbot {
+  width: 97%;
+  margin-left: auto;
+  margin-bottom: 20px;
+}
+
+.detail_cinema .contentbot .action {
+  height: 40px;
+  margin-top: 30px;
+}
+
+.detail_cinema .contentbot .action .link {
+  text-decoration: none;
+  color: #ffff;
+  font-size: 20px;
+  transition: all 0.3s;
+}
+
+.detail_cinema .contentbot .action .link:hover {
+  font-size: 25px;
+  color: #3bace0;
+}
+
+.detail_cinema .contentbot .showTime {
+  background: #343a40bd;
+  padding-top: 30px;
+}
+
+.detail_cinema .contentbot .showTime .logo {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.detail_cinema .contentbot .showTime .logo.active {
+  opacity: 1 !important;
+}
+
+.detail_cinema .contentbot .showTime .content_showtimes .listPhim .info {
+  margin-top: 18px;
+  display: flex;
+  padding-bottom: 10px;
+}
+
+.detail_cinema .contentbot .showTime .content_showtimes .listPhim .info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.detail_cinema .contentbot .showTime .content_showtimes .listPhim .info .tenphim {
+  font-size: 16px;
+}
+
+.detail_cinema .contentbot .showTime .content_showtimes .listPhim .btn {
+  margin-right: 20px;
+  margin-bottom: 14px;
+  background-color: #cecece;
+  border-color: #cecece;
+}
+
+.detail_cinema .contentbot .showTime .cinema .cinema_Info {
+  padding-top: 30px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 600px;
+}
+
+.detail_cinema .contentbot .showTime .cinema .cinema_Info ul {
+  padding-left: 10px;
+}
+
+.detail_cinema .contentbot .showTime .cinema .cinema_Info ul li {
+  padding: 0;
+  margin: 0;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  list-style: none;
+  position: relative;
+}
+
+.detail_cinema .contentbot .showTime .cinema .cinema_Info ul li img {
+  width: 50px;
+  height: 50px;
+  margin-right: 7px;
+  cursor: pointer;
+  background: wheat;
+}
+
+.detail_cinema .contentbot .showTime .cinema .cinema_Info ul li::before {
+  position: absolute;
+  content: "";
+  height: 1px;
+  width: 100%;
+  bottom: 0;
+  background: #5c5c5c;
+  margin: auto;
+  right: 0;
+  left: 0;
+}
+
+.detail_cinema .contentbot .showTime .cinema .cinema_Info ul li .name h3 {
+  font-size: 13px;
+  color: aqua;
+  margin-bottom: 0;
+}
+
+.detail_cinema .contentbot .showTime .cinema .cinema_Info ul li .address p {
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.detail_cinema .contentbot .nav li {
+  cursor: pointer;
+  height: 40px;
+  width: 14%;
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: 1px solid #ffff;
+}
+
+.detail_cinema .contentbot .nav li.active {
+  background: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.detail_cinema .contentbot .nav li.disabled {
+  pointer-events: none;
+  background: #323a40;
+  color: #7e7e7e;
+  border: 1px solid #5c666e;
+}
+
+.detail_cinema .row {
+  width: 100%;
+}
+
+.detail_cinema .detail {
+  height: 300px;
+  position: relative;
+  z-index: 10;
+}
+
+.detail_cinema .detail .info {
+  position: absolute;
+  top: 18%;
+  width: 100%;
+}
+
+.detail_cinema .detail .info .image_cinema {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  z-index: 20;
+}
+
+.detail_cinema .detail .info .info_text {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.detail_cinema .detail .info .info_text .date {
+  color: white;
+  font-weight: 500;
+  font-size: 27px;
+}
+
+.detail_cinema .detail .info .info_text .name {
+  font-size: 15px;
+  color: #999999;
+}
+
+.detail_cinema .contentbot {
+  position: relative;
+  z-index: 10;
+}
+
+@media screen and (max-width: 991px) {
+  .detail .wrap_cinema {
+    margin-left: 40px;
+  }
+  .detail .wrap_cinema img {
+    width: 300px;
+    height: 200px;
+    margin-left: 30px;
+    object-fit: cover;
+  }
+  .detail .wrap_cinema .date p {
+    font-size: 23px;
+  }
+  .cinema .cinema_Info ul li .name .cumrap {
+    line-height: 1.2rem;
+    font-size: 12px !important;
+  }
+  .cinema .cinema_Info ul li .address p {
+    font-size: 10px !important;
+  }
+  .content_showtimes .listPhim .info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin: 0 0;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .detail {
+    height: 250px !important;
+  }
+  .detail .wrap_cinema {
+    margin-left: 40px;
+  }
+  .detail .wrap_cinema img {
+    width: 150px;
+    height: 180px;
+    margin-left: 10px;
+    object-fit: cover;
+  }
+  .detail .wrap_cinema .info_text {
+    margin: 0;
+    padding: 0;
+  }
+  .detail .wrap_cinema .info_text .date p {
+    font-size: 10px !important;
+  }
+  .detail .wrap_cinema .info_text .name p {
+    font-size: 10px !important;
+  }
+  .cinema .cinema_Info ul li .name .cumrap {
+    line-height: 1.2rem;
+    font-size: 10px !important;
+  }
+  .cinema .cinema_Info ul li .address p {
+    font-size: 10px !important;
+  }
+  .action {
+    height: 20px;
+    margin: 0;
+  }
+  .action .link {
+    text-decoration: none;
+    color: #ffff;
+    font-size: 20px;
+    transition: all 0.3s;
+  }
+  .action .link:hover {
+    font-size: 25px;
+    color: #3bace0;
+  }
+  .content_showtimes .listPhim .info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin: 0 0;
+  }
+}
+/*# sourceMappingURL=detail-cinema.component.css.map */

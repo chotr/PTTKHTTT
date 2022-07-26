@@ -137,7 +137,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private cinemaSer: CinemasService
   ) {}
   ngAfterViewInit(): void {
-    // this.setTarget();
+    this.setTarget();
     // this.chooseItem();
   }
 
@@ -178,10 +178,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   maRapNull() {
-    if (this.dsRap[0].maPhim === null) {
+    if (this.dsRap == null) {
       this.dsRap = [{ maPhim: null, tenHeThongRap: 'Vui lòng chọn phim' }];
       document.getElementById('menuR').style.pointerEvents = 'none';
-    } else if (this.dsRap[0].maPhim !== null) {
+    } else if (this.dsRap != null) {
       document.getElementById('menuR').style.pointerEvents = 'auto';
     }
   }
@@ -360,16 +360,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
   shiftRight() {
     const boxes = document.querySelectorAll('.boxs');
     const tmpNode = boxes[0];
-    const url = this.router.url;
+    let url = this.router.url;
     if (url !== '/client/home' && url !== '/home') {
-      return clearInterval(this.windowInterval);
+      return clearTimeout(this.windowInterval);
     }
-    if (this.index < 6) {
-      this.index = this.index + 1;
-    } else {
-      this.index = 0;
-    }
-    this.getInfo(this.index);
+    let idP = boxes[1].getAttribute('data-target');
+    this.getInfo(idP);
 
     setTimeout(() => {
       if (boxes.length > 6) {
@@ -390,7 +386,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.animationImage();
   }
   stopInter() {
-    clearInterval(this.windowInterval);
+    clearTimeout(this.windowInterval);
     this.replay();
   }
   animationImage() {
@@ -404,19 +400,20 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }, 0);
   }
   replay() {
-    this.windowInterval = window.setInterval(() => {
+    this.windowInterval = window.setTimeout(() => {
       this.shiftRight();
+      this.stopInter();
     }, 5000);
   }
-  // setTarget() {
-  //   const number = document.querySelectorAll('.boxs').length;
-  //   for (let i = 0; i < number; i++) {
-  //     //remove and set data
-  //     let boxes = document.querySelectorAll('.boxs');
-  //     boxes.item(i).removeAttribute('data-target');
-  //     boxes.item(i).setAttribute('data-target', i.toString());
-  //   }
-  // }
+  setTarget() {
+    const number = document.querySelectorAll('.boxs').length;
+    for (let i = 0; i < number; i++) {
+      //remove and set data
+      let boxes = document.querySelectorAll('.boxs');
+      boxes.item(i).removeAttribute('data-target');
+      boxes.item(i).setAttribute('data-target', i.toString());
+    }
+  }
   // chooseItem() {
   //   const number = document.querySelectorAll('.boxs').length;
   //   let selected = 0;
@@ -433,13 +430,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
   //     });
   //   }
   // }
-  setMovie(id) {}
+
   addChild(child) {
     document
       .querySelector('.boxs')
       .closest('.cards__container_carousel')
       .appendChild(child);
   }
+
   setContent(selected: number) {
     const number = document.querySelectorAll('.boxs').length;
 

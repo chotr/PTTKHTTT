@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { MovieService } from '../services/movie.service';
 import Glide from '@glidejs/glide';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './coming.component.html',
   styleUrls: ['./coming.component.scss'],
 })
-export class ComingComponent implements OnInit {
+export class ComingComponent implements OnInit, AfterViewInit {
   listMovie: any[] = [];
   listComing: any[] = [];
   image: string;
@@ -50,9 +50,15 @@ export class ComingComponent implements OnInit {
     nav: false,
   };
   windowInterval: number;
+
+  ngAfterViewInit(): void {
+    this.setTarget();
+    // this.chooseItem();
+  }
   ngOnInit(): void {
     this.moviesService.getDataMovies().subscribe((res) => {
-      this.listMovie = res.slice(20, 25);
+      
+      this.listMovie = res.slice(10, 15);
       for (let film of this.listMovie) {
         this.listComing.push({
           biDanh: film.biDanh,
@@ -66,25 +72,28 @@ export class ComingComponent implements OnInit {
           trailer: film.trailer,
         });
       }
-      for (let film of this.listComing) {
-        this.image = this.listComing[2].hinhAnh;
-        this.name = this.listComing[2].tenPhim;
-        this.biDanh = this.listComing[2].biDanh;
-        this.description = this.listComing[2].moTa;
-        this.trailer = this.listComing[2].trailer;
-        this.dateComing = this.listComing[2].ngayKhoiChieu;
-        this.points = this.listComing[2].danhGia;
-        this.codeFilm = this.listComing[2].maPhim;
-      }
+
+      this.image = this.listComing[2].hinhAnh;
+      this.name = this.listComing[2].tenPhim;
+      this.biDanh = this.listComing[2].biDanh;
+      this.description = this.listComing[2].moTa;
+      this.trailer = this.listComing[2].trailer;
+      this.dateComing = this.listComing[2].ngayKhoiChieu;
+      this.points = this.listComing[2].danhGia;
+      this.codeFilm = this.listComing[2].maPhim;
     });
 
-    this.replay();
+    
+
+    this.stopInter();
   }
+
   replay() {
     this.windowInterval = window.setInterval(() => {
       this.shiftRight();
     }, 5000);
   }
+
   shiftLeft() {
     const boxes = document.querySelectorAll('.box');
 
@@ -127,19 +136,17 @@ export class ComingComponent implements OnInit {
   shiftRight() {
     const boxes = document.querySelectorAll('.box');
     const tmpNode = boxes[0];
-    const url = this.router.url;
-
+    let url = this.router.url;
     if (url !== '/client/home' && url !== '/home') {
       return clearInterval(this.windowInterval);
     }
 
-    if (this.index < 4) {
-      this.index = this.index + 1;
-    } else {
-      this.index = 0;
+    let idP = boxes[3].getAttribute('id');
+    for (let film of this.listMovie) {
+      if (film.maPhim === parseInt(idP)) {
+        this.image = film.hinhAnh;
+      } 
     }
-
-    this.image = this.listComing[this.index].hinhAnh;
     this.name = this.listComing[this.index].tenPhim;
     this.biDanh = this.listComing[this.index].biDanh;
     this.description = this.listComing[this.index].moTa;
@@ -176,6 +183,16 @@ export class ComingComponent implements OnInit {
   stopInter() {
     clearInterval(this.windowInterval);
     this.replay();
+  }
+
+  setTarget() {
+    const number = document.querySelectorAll('.box').length;
+    for (let i = 0; i < number; i++) {
+      //remove and set data
+      let boxes = document.querySelectorAll('.box');
+      boxes.item(i).removeAttribute('data-target');
+      boxes.item(i).setAttribute('data-target', i.toString());
+    }
   }
 
   shortCut(text: String): String {

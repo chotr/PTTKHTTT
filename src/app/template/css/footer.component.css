@@ -1,0 +1,187 @@
+.swal2-styled.swal2-confirm {
+  border-radius: 0.25em;
+  background: initial;
+  background-color: #ffffff !important;
+  border: 2px solid #7367f0 !important;
+  color: #7367f0 !important;
+  outline: none !important;
+  box-shadow: none;
+}
+
+.swal2-styled.swal2-confirm:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.btn.focus,
+.btn:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.top_space {
+  margin-top: 100px !important;
+}
+
+@media screen and (max-width: 1200px) {
+  .top_space {
+    margin-top: 80px !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .top_space {
+    margin-top: 60px !important;
+  }
+}
+
+@media screen and (max-width: 767.89px) {
+  .top_space {
+    margin-top: 50px !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .top_space {
+    margin-top: 40px !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar:hover {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #c7c2c2;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.pagination {
+  cursor: pointer;
+}
+
+footer {
+  cursor: context-menu;
+  background: #292929;
+  color: grey;
+}
+
+footer a {
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 40px;
+  position: relative;
+  font-size: 14px;
+  transition: all 0.5s;
+}
+
+footer h6 {
+  font-size: 17px;
+  color: darkgrey;
+}
+
+footer .doiTac .content img {
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  background: wheat;
+  border-radius: 50%;
+}
+
+.btn-footer {
+  color: grey;
+  text-decoration: none;
+  border: 1px solid;
+  border-radius: 43px;
+  font-size: 13px;
+  padding: 7px 30px;
+  line-height: 47px;
+}
+
+.btn-footer:hover {
+  text-decoration: none;
+}
+
+footer ul li {
+  display: block;
+  line-height: 35px;
+}
+
+footer ul {
+  padding-left: 0;
+  line-height: 20px;
+}
+
+footer ul li a {
+  text-decoration: none;
+  color: grey;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #f5f5f5 !important;
+}
+
+.logo-part {
+  border-right: 1px solid grey;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo-part h1 {
+  font-size: 22px;
+  font-family: "Merienda One", sans-serif;
+  color: #dd003f;
+}
+
+@media screen and (max-width: 991px) {
+  footer .logo {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 767.89px) {
+  footer {
+    padding: 20px 0 !important;
+    padding-left: 10px !important;
+  }
+  footer .logo .logo-part {
+    border: none;
+  }
+  footer .contact {
+    margin-bottom: 15px;
+  }
+  footer .btn-footer {
+    padding: 7px 17px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  footer {
+    padding-left: 10px;
+  }
+}
+/*# sourceMappingURL=footer.component.css.map */

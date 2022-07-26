@@ -1,0 +1,138 @@
+.profile {
+  height: 100vh;
+  cursor: context-menu;
+  display: none;
+}
+
+.profile .content {
+  height: 100%;
+  width: 80%;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile .left {
+  background: rgba(128, 128, 128, 0.212);
+  height: 65%;
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+.profile .left .text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(90deg, #88d0ff, #db8cfc);
+  width: 90px;
+  height: 90px;
+  font-size: 30px;
+  color: #fff;
+  border-radius: 50%;
+}
+
+.profile .right {
+  height: 65%;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background: #cbcbcbde;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+  padding-left: 20px;
+  font-size: 17px;
+}
+
+.profile .right .btn {
+  color: #32329e;
+}
+
+.profile .right .btn:focus {
+  box-shadow: none;
+}
+
+.profile .right table {
+  height: 60%;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 991px) {
+  .profile .content {
+    width: 100%;
+  }
+  .profile .left {
+    height: 60%;
+  }
+  .profile .left .text {
+    width: 70px;
+    height: 70px;
+  }
+  .profile .right {
+    height: 65%;
+    font-size: 14px;
+    width: 55%;
+  }
+  .profile .right .btn {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 767.89px) {
+  .profile .content {
+    width: 100%;
+  }
+  .profile .left .text {
+    width: 60px;
+    height: 60px;
+  }
+  .profile .right {
+    width: 65%;
+    height: 60%;
+    font-size: 14px;
+  }
+  .profile .right .btn {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .profile .left {
+    height: 55%;
+  }
+  .profile .left .text {
+    width: 55px;
+    height: 55px;
+  }
+  .profile .right {
+    width: 70%;
+    height: 55%;
+    font-size: 12px;
+  }
+  .profile .right .btn {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .profile .left {
+    height: 55%;
+  }
+  .profile .left .text {
+    width: 45px;
+    height: 45px;
+  }
+  .profile .right {
+    width: 75%;
+    height: 55%;
+    font-size: 11px;
+  }
+  .profile .right .btn {
+    font-size: 11px;
+  }
+}
+/*# sourceMappingURL=user.component.css.map */
